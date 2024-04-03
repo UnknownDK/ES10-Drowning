@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSoCSampler\SamplingCircuit\SamplingCircuit.cydwr\System">
 <ExpandedNodeIds>
 <v>PSoCSampler</v>
 <v>PSoCSampler\SamplingCircuit</v>
@@ -96,6 +96,14 @@
 <v>PSoCSampler\SamplingCircuit\CY8C58LP Family Datasheet</v>
 <v>PSoCSampler\SamplingCircuit\System Reference Guides</v>
 <v>PSoCSampler\SamplingCircuit\System Reference Guides\cy_boot_v6_0</v>
+<v>PSoCSampler\SamplingCircuit\cy_clock_v2_20.pdf</v>
+<v>PSoCSampler\SamplingCircuit\cy_dma_v1_70.pdf</v>
+<v>PSoCSampler\SamplingCircuit\cy_pins_v2_20</v>
+<v>PSoCSampler\SamplingCircuit\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>PSoCSampler\SamplingCircuit\cy_vref_v1_70</v>
+<v>PSoCSampler\SamplingCircuit\cy_vref_v1_70\cy_vref_v1_70.pdf</v>
+<v>PSoCSampler\SamplingCircuit\I2S_v2_70.pdf</v>
+<v>PSoCSampler\SamplingCircuit\PGA_v2_0.pdf</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>PSoCSampler</v>
@@ -104,6 +112,14 @@
 <v>PSoCSampler\SamplingCircuit\CY8C58LP Family Datasheet</v>
 <v>PSoCSampler\SamplingCircuit\System Reference Guides</v>
 <v>PSoCSampler\SamplingCircuit\System Reference Guides\cy_boot_v6_0</v>
+<v>PSoCSampler\SamplingCircuit\cy_clock_v2_20.pdf</v>
+<v>PSoCSampler\SamplingCircuit\cy_dma_v1_70.pdf</v>
+<v>PSoCSampler\SamplingCircuit\cy_pins_v2_20</v>
+<v>PSoCSampler\SamplingCircuit\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>PSoCSampler\SamplingCircuit\cy_vref_v1_70</v>
+<v>PSoCSampler\SamplingCircuit\cy_vref_v1_70\cy_vref_v1_70.pdf</v>
+<v>PSoCSampler\SamplingCircuit\I2S_v2_70.pdf</v>
+<v>PSoCSampler\SamplingCircuit\PGA_v2_0.pdf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
@@ -112,7 +128,16 @@
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
-<OpenDocs />
+<OpenDocs>
+<name v=".\SamplingCircuit.cydsn\TopDesign\TopDesign.cysch" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="848, 571" SelectedTabbedMdiWindow="a9649a8c-c953-4b07-822e-64c804c38f51"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="b76e0848-ca35-4eae-8338-00706e134da4" /><DocumentWindow Key="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\TopDesign\TopDesign.cysch" Guid="a9649a8c-c953-4b07-822e-64c804c38f51" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
