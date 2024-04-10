@@ -34,6 +34,7 @@
 #include "USBUART_pvt.h"
 #include "USBUART_cydmac.h"
 #include "USBUART_msc.h"
+#include "DmaI2S.h"
 #include "USBUART_Dm_aliases.h"
 #include "USBUART_Dm.h"
 #include "USBUART_Dp_aliases.h"

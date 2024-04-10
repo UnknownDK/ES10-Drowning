@@ -2,7 +2,7 @@
 --	Conversion of SamplingCircuit.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Fri Apr 05 08:34:57 2024
+--	Tue Apr 09 15:47:36 2024
 --
 
 USE cypress.cypress.all;
@@ -84,7 +84,7 @@ SIGNAL \I2S:bI2S:Rx:STS[0]:status_4\ : bit;
 SIGNAL \I2S:bI2S:Rx:STS[0]:status_3\ : bit;
 SIGNAL \I2S:bI2S:rx_int_out_0\ : bit;
 SIGNAL \I2S:bI2S:rx_int_reg\ : bit;
-SIGNAL Net_17 : bit;
+SIGNAL Net_92 : bit;
 SIGNAL \I2S:bI2S:rx_f0_full_0\ : bit;
 SIGNAL \I2S:rx_drq0_0\ : bit;
 SIGNAL \I2S:rx_drq1_0\ : bit;
@@ -565,7 +565,7 @@ Clock_1:cy_clock_v1_0
 		id=>"6f064781-c084-43ef-90dd-4dfdf6b784fd",
 		source_clock_id=>"",
 		divisor=>0,
-		period=>"325520833.333333",
+		period=>"83333333.3333333",
 		is_direct=>'0',
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_14,
@@ -931,6 +931,10 @@ I2S_CLK:cy_psoc3_pins_v1_10
 	GENERIC MAP(int_type=>"10",
 		is_nmi=>'0')
 	PORT MAP(int_signal=>Net_84);
+DmaI2S:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_27);
 \I2S:bI2S:reset\:cy_dff
 	PORT MAP(d=>\I2S:bI2S:reset\\D\,
 		clk=>\I2S:bI2S:op_clk\,

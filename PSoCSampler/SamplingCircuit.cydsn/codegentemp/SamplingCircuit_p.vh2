@@ -1,5 +1,5 @@
 -- Project:   SamplingCircuit
--- Generated: 04/05/2024 08:34:58
+-- Generated: 04/09/2024 15:47:37
 -- PSoC Creator  4.4
 
 ENTITY SamplingCircuit IS
@@ -1203,6 +1203,14 @@ BEGIN
             is_nmi => 0)
         PORT MAP(
             interrupt => Net_84,
+            clock => ClockBlock_BUS_CLK);
+
+    DmaI2S:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_27,
             clock => ClockBlock_BUS_CLK);
 
     \I2S:bI2S:reset\:macrocell

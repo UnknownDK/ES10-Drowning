@@ -11,14 +11,12 @@
 */
 #include "project.h"
 #include <stdio.h>
-
-#define I2S_CLOCK_FACTOR    (I2S_DATA_BITS*AUDIO_CH*2)
-#define I2S_DATA_SIZE       (I2S_DATA_BITS/8*AUDIO_CH)
-#define I2S_TRANSFER_SIZE   (TRANSFER_SIZE*I2S_DATA_SIZE)
-#define I2S_BUFFER_SIZE     (I2S_TRANSFER_SIZE * NUM_OF_BUFFERS)
+#include <stdlib.h>
 
 
-#define DMA_BYTES_PER_BURST 2
+
+
+#define DMA_BYTES_PER_BURST 4
 #define DMA_REQUEST_PER_BURST 1
 #define DMA_SRC_BASE (CYDEV_PERIPH_BASE)
 #define DMA_DST_BASE (CYDEV_SRAM_BASE)
@@ -26,21 +24,22 @@
 // Assuming a buffer size of 1024 bytes for demonstration
 #define BUFFER_SIZE 1024
 
-// Circular buffer
-uint8 circularBuffer[BUFFER_SIZE];
-uint16 writeIndex = 0; // Index where the DMA will write next
-uint16 readIndex = 0;  // Index where the CPU will read next
+uint8 soundBuffer_I2S[BUFFER_SIZE];
+
 
 // DMA Configuration Variables
 uint8 dmaChannel;
 uint8 dmaTd;
 
 
-
+volatile uint16 dmaIndex = 0;
+uint16 cpuIndex = 0;
 
 void initComponents(void);
 void initDMA(void);
-void OutputAudioValuesToUSBUART(uint8* buffer, uint16 start, uint16 numSamples);
+void OutputAudioValuesToUSBUART(uint32* buffer, uint16 start, uint16 numSamples);
+
+CY_ISR_PROTO(DmaI2S);
 
 
 int main(void)
@@ -50,19 +49,36 @@ int main(void)
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 
     initComponents();
-    
-    uint16 numSamplesToOutput = 1; // Example: Number of samples to output each time
-
+    char str[12]; // Buffer for decimal representation
     
     for(;;)
     {
-        if (USBUART_GetConfiguration()) {
-            // Assuming `readIndex` is updated elsewhere (e.g., in an ISR) to point to new data
-            OutputAudioValuesToUSBUART(circularBuffer, readIndex, numSamplesToOutput);
-            // Ensure `readIndex` management avoids buffer overrun and correctly handles wraparound
+
+        if (dmaIndex != cpuIndex) {
+            cpuIndex = dmaIndex;
+
+            // Assuming cpuIndex is properly initialized and within bounds of soundBuffer_I2S
+            // Extract the first byte and perform sign extension.
+            int32_t value = 0;
+            
+            value |= soundBuffer_I2S[cpuIndex]     << 24; // Shift the first byte 24 bits to the left
+            value |= soundBuffer_I2S[cpuIndex + 1] << 16; // Shift the second byte 16 bits to the left
+            value |= soundBuffer_I2S[cpuIndex + 2] << 8;  // Shift the third byte 8 bits to the left
+            value |= soundBuffer_I2S[cpuIndex + 3];       // No shift needed for the fourth byte
+
+            // Note: sampleValue is already a signed 32-bit integer due to the sign extension performed.
+
+            // Preparing for UART transmission
+            char str[15]; // Adjusted size for "-2147483648\r\n\0"
+            sprintf(str, "%ld\r\n", value); // Convert the integer to a string and append \r\n for newline
+
+            
+            USBUART_PutString(str);
         }
-        CyDelay(100); // Delay to control the output rate (for demonstration purposes)
+                //CyDelay(10); // Delay to control the output rate (for demonstration purposes)
+        //}
     }
+
 }
 
 
@@ -85,8 +101,8 @@ void initComponents() {
     
     initDMA();
     
+    DmaI2S_StartEx(&DmaI2S);
     
-
 
 
 }
@@ -105,45 +121,28 @@ void initDMA(void) {
                             TD_INC_DST_ADR | I2S_DMA__TD_TERMOUT_EN);
     
     /* Step 4: Set the source and destination addresses */
-    CyDmaTdSetAddress(dmaTd, LO16((uint32)I2S_RX_CH0_F0_PTR), LO16((uint32)circularBuffer));
+    CyDmaTdSetAddress(dmaTd, LO16((uint32)I2S_RX_CH0_F0_PTR), LO16((uint32)soundBuffer_I2S));
     
     /* Step 5: Set the initial TD for the channel */
     CyDmaChSetInitialTd(dmaChannel, dmaTd);
     
     /* Step 6: Enable the DMA channel */
     CyDmaChEnable(dmaChannel, 1);
+    
+    
 }
 
 
 
-void OutputAudioValuesToUSBUART(uint8* buffer, uint16 start, uint16 numSamples) {
-    char str[12]; // Buffer for decimal representation
 
-    for (uint16 i = 0; i < numSamples; ++i) {
-        uint32 index = (start + i * 4) % BUFFER_SIZE; // For 32-bit words
-        // Extract the 24-bit audio data, assuming the relevant data is in the LSBs
-        uint32 sample = (uint32)((buffer[index + 1] << 16) |
-                                 (buffer[index + 2] << 8)  |
-                                  buffer[index + 3]);
-
-        // Assuming the 24-bit data is left-aligned and we need to ignore the 6 null bits,
-        // we shift the sample right by 6 bits. This adjusts the 24-bit data to 18-bit precision.
-        int32 signedSample = (sample >> 6) & 0x3FFFF; // Extract 18-bit precision data
-
-        // For signed representation, adjust if necessary
-        // Here you would handle sign extension if your data is in two's complement format
-        // This example does not perform sign extension
-
-        // Format the sample as a decimal integer string
-        snprintf(str, sizeof(str), "%ld\r\n", signedSample);
-
-        // Output routine remains the same
-        while (!USBUART_GetConfiguration()) { /* Wait */ }
-        while(!USBUART_CDCIsReady()) { /* Wait */ }
-        USBUART_PutString(str);
+CY_ISR(DmaI2S) {
+    if (dmaIndex + 4 > BUFFER_SIZE) {
+        dmaIndex = 0;
+    } else {
+        dmaIndex = dmaIndex + 4;
     }
-}
 
+}
 
 
 /* [] END OF FILE */

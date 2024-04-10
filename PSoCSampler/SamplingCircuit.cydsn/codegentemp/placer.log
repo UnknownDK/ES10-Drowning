@@ -6,7 +6,7 @@
 
 #Build Date:         Sep  9 2019 11:47:43
 
-#File Generated:     Apr 5 2024 08:34:58
+#File Generated:     Apr 9 2024 15:47:37
 
 #Purpose:            
 
@@ -80,7 +80,7 @@ analysis after routing.
                      Clock Summary 
 ======================================================================
 Number of clocks: 6
-Clock: Clock_1              | Frequency:  76.8 MHz | Target:   3.0 MHz
+Clock: Clock_1              | Frequency:  76.8 MHz | Target:  12.0 MHz
 Clock: CyBUS_CLK            | Frequency:  97.9 MHz | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
@@ -98,7 +98,7 @@ Phase 7
                      Clock Summary 
 ======================================================================
 Number of clocks: 6
-Clock: Clock_1              | Frequency:  76.8 MHz | Target:   3.0 MHz
+Clock: Clock_1              | Frequency:  76.8 MHz | Target:  12.0 MHz
 Clock: CyBUS_CLK            | Frequency:  97.9 MHz | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
@@ -139,7 +139,7 @@ analysis after routing.
                      Clock Summary 
 ======================================================================
 Number of clocks: 6
-Clock: Clock_1              | Frequency:  76.8 MHz | Target:   3.3 MHz
+Clock: Clock_1              | Frequency:  76.8 MHz | Target:  13.2 MHz
 Clock: CyBUS_CLK            | Frequency:  97.9 MHz | Target:  26.3 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz

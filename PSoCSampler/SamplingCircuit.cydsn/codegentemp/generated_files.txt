@@ -55,6 +55,8 @@
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\USBUART_cydmac.h" value="HEADER;;;;;USBUART" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\USBUART_msc.c" value="SOURCE_C;CortexM3;;;;USBUART" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\USBUART_msc.h" value="HEADER;;;;;USBUART" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S.c" value="SOURCE_C;CortexM3;;;;DmaI2S" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S.h" value="HEADER;;;;;DmaI2S" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\USBUART_Dm_aliases.h" value="HEADER;;;;;USBUART_Dm" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\USBUART_Dm.c" value="SOURCE_C;CortexM3;;;;USBUART_Dm" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\USBUART_Dm.h" value="HEADER;;;;;USBUART_Dm" />

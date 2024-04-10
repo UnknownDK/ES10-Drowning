@@ -1,6 +1,6 @@
 // ======================================================================
 // SamplingCircuit.v generated from TopDesign.cysch
-// 04/05/2024 at 08:34
+// 04/09/2024 at 15:47
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -686,16 +686,16 @@ module top ;
           wire  Net_85;
           wire  Net_84;
           wire  Net_28;
-          wire  Net_27;
           wire  Net_25;
           wire  Net_21;
           wire [0:0] Net_20;
           wire [0:0] Net_19;
           wire [0:0] Net_18;
           wire  Net_7;
-          wire  Net_17;
+          wire  Net_92;
           wire [0:0] Net_16;
           wire [0:0] Net_13;
+          wire  Net_27;
     electrical  Net_76;
           wire  Net_74;
     electrical  Net_2633;
@@ -709,7 +709,7 @@ module top ;
         .clock(Net_14),
         .rx_dma0(Net_26[0:0]),
         .rx_dma1(Net_16[0:0]),
-        .rx_interrupt(Net_17),
+        .rx_interrupt(Net_92),
         .sck(Net_73),
         .sdi(Net_7),
         .sdo(Net_18[0:0]),
@@ -797,7 +797,7 @@ module top ;
 		#(.id("6f064781-c084-43ef-90dd-4dfdf6b784fd"),
 		  .source_clock_id(""),
 		  .divisor(0),
-		  .period("325520833.333333"),
+		  .period("83333333.3333333"),
 		  .is_direct(0),
 		  .is_digital(1))
 		Clock_1
@@ -990,6 +990,13 @@ module top ;
         .sof(Net_84),
         .vbusdet(1'b0));
     defparam USBUART.epDMAautoOptimization = 0;
+
+
+	cy_isr_v1_0
+		#(.int_type(2'b10))
+		DmaI2S
+		 (.int_signal(Net_27));
+
 
 
 

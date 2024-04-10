@@ -1,5 +1,5 @@
 -- Project:   SamplingCircuit
--- Generated: 04/05/2024 08:34:59
+-- Generated: 04/09/2024 15:47:37
 -- PSoC Creator  4.4
 
 ENTITY SamplingCircuit IS
@@ -140,13 +140,14 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     ATTRIBUTE Location OF \I2S_3v3:SC\ : LABEL IS "F(SC,0)";
     ATTRIBUTE Location OF \USBUART:dp_int\ : LABEL IS "[IntrContainer=(0)][IntrId=(12)]";
     ATTRIBUTE Location OF \USBUART:USB\ : LABEL IS "F(USB,0)";
-    ATTRIBUTE Location OF \USBUART:ep_3\ : LABEL IS "[IntrContainer=(0)][IntrId=(2)]";
-    ATTRIBUTE Location OF \USBUART:ep_2\ : LABEL IS "[IntrContainer=(0)][IntrId=(1)]";
-    ATTRIBUTE Location OF \USBUART:ep_1\ : LABEL IS "[IntrContainer=(0)][IntrId=(0)]";
+    ATTRIBUTE Location OF \USBUART:ep_3\ : LABEL IS "[IntrContainer=(0)][IntrId=(3)]";
+    ATTRIBUTE Location OF \USBUART:ep_2\ : LABEL IS "[IntrContainer=(0)][IntrId=(2)]";
+    ATTRIBUTE Location OF \USBUART:ep_1\ : LABEL IS "[IntrContainer=(0)][IntrId=(1)]";
     ATTRIBUTE Location OF \USBUART:ep_0\ : LABEL IS "[IntrContainer=(0)][IntrId=(24)]";
     ATTRIBUTE Location OF \USBUART:bus_reset\ : LABEL IS "[IntrContainer=(0)][IntrId=(23)]";
     ATTRIBUTE Location OF \USBUART:arb_int\ : LABEL IS "[IntrContainer=(0)][IntrId=(22)]";
     ATTRIBUTE Location OF \USBUART:sof_int\ : LABEL IS "[IntrContainer=(0)][IntrId=(21)]";
+    ATTRIBUTE Location OF DmaI2S : LABEL IS "[IntrContainer=(0)][IntrId=(0)]";
     ATTRIBUTE lib_model OF \I2S:bI2S:reset\ : LABEL IS "macrocell2";
     ATTRIBUTE Location OF \I2S:bI2S:reset\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF Net_74 : LABEL IS "macrocell3";
@@ -1216,6 +1217,14 @@ BEGIN
             is_nmi => 0)
         PORT MAP(
             interrupt => Net_84,
+            clock => ClockBlock_BUS_CLK);
+
+    DmaI2S:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_27,
             clock => ClockBlock_BUS_CLK);
 
     \I2S:bI2S:reset\:macrocell

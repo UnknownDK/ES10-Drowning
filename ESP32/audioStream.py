@@ -3,14 +3,14 @@ import wave
 import struct
 
 # Serial port configuration
-COM_PORT = '/dev/ttyUSB0'  # Adjust this to your setup
+COM_PORT = 'COM6'  # Adjust this to your setup
 BAUD_RATE = 2000000        # Adjust baud rate to match your serial configuration
 
 # Audio configuration
 CHANNELS = 1
-SAMPLE_RATE = 12000
+SAMPLE_RATE = 8000
 SAMPLE_BITS = 32  # Storing as 32-bit for this example, could be converted to 16-bit
-DURATION_SECONDS = 10
+DURATION_SECONDS = 2
 
 # Output WAV file configuration
 OUTPUT_WAV_FILE = "recorded_audio.wav"
@@ -29,7 +29,11 @@ def capture_audio_to_wav(port, baud_rate, output_file, duration):
         print("Capturing audio samples...")
         while sample_count < max_samples:
             line = ser.readline().decode('ascii').strip()
+            #print(line)
+            #print(line)
             if line:
+                if sample_count % 10000 == 0:
+                    print(f"Captured {sample_count} samples")
                 try:
                     # Parse the integer value from the line
                     sample = int(line)
