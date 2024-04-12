@@ -2,34 +2,34 @@
 	"sources" : 
 	[
 		{
-			"file" : "/home/greven/I2Sdemo/build/CMakeFiles/bootloader"
+			"file" : "/home/greven/repos/ES10-Drowning/ESP32/I2Sdemo/build/CMakeFiles/bootloader"
 		},
 		{
-			"file" : "/home/greven/I2Sdemo/build/CMakeFiles/bootloader.rule"
+			"file" : "/home/greven/repos/ES10-Drowning/ESP32/I2Sdemo/build/CMakeFiles/bootloader.rule"
 		},
 		{
-			"file" : "/home/greven/I2Sdemo/build/CMakeFiles/bootloader-complete.rule"
+			"file" : "/home/greven/repos/ES10-Drowning/ESP32/I2Sdemo/build/CMakeFiles/bootloader-complete.rule"
 		},
 		{
-			"file" : "/home/greven/I2Sdemo/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
+			"file" : "/home/greven/repos/ES10-Drowning/ESP32/I2Sdemo/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
 		},
 		{
-			"file" : "/home/greven/I2Sdemo/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
+			"file" : "/home/greven/repos/ES10-Drowning/ESP32/I2Sdemo/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
 		},
 		{
-			"file" : "/home/greven/I2Sdemo/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
+			"file" : "/home/greven/repos/ES10-Drowning/ESP32/I2Sdemo/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
 		},
 		{
-			"file" : "/home/greven/I2Sdemo/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
+			"file" : "/home/greven/repos/ES10-Drowning/ESP32/I2Sdemo/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
 		},
 		{
-			"file" : "/home/greven/I2Sdemo/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
+			"file" : "/home/greven/repos/ES10-Drowning/ESP32/I2Sdemo/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
 		},
 		{
-			"file" : "/home/greven/I2Sdemo/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
+			"file" : "/home/greven/repos/ES10-Drowning/ESP32/I2Sdemo/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
 		},
 		{
-			"file" : "/home/greven/I2Sdemo/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
+			"file" : "/home/greven/repos/ES10-Drowning/ESP32/I2Sdemo/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
 		}
 	],
 	"target" : 

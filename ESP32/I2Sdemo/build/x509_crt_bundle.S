@@ -1,4 +1,4 @@
-/* * Data converted from /home/greven/I2Sdemo/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from /home/greven/repos/ES10-Drowning/ESP32/I2Sdemo/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 .section .rodata.embedded

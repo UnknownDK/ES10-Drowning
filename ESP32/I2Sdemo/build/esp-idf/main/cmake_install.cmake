@@ -1,4 +1,4 @@
-# Install script for directory: /home/greven/I2Sdemo/main
+# Install script for directory: /home/greven/repos/ES10-Drowning/ESP32/I2Sdemo/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
