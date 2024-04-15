@@ -31,7 +31,8 @@ uint8_t soundBuffer_I2S[BUFFER_SIZE];
 uint8 dmaChannel;
 uint8 dmaTd;
 
-
+uint8 i2sStatus;
+uint8 old_i2sStatus;
 volatile uint16 dmaIndex = 0;
 uint16 cpuIndex = 0;
 
@@ -41,6 +42,7 @@ void initDMA(void);
 CY_ISR_PROTO(DmaI2S);
 
 char hex_string[13];
+
 char newline[6] = "\r\n";
 
 
@@ -53,17 +55,16 @@ int main(void)
 
     initComponents();
 
-    uint32_t* data = (uint32_t*)soundBuffer_I2S;
-    size_t num_values = BUFFER_SIZE / sizeof(uint32_t);
+
     
     for(;;)
     {
 
             
             if (dmaIndex > 0) {
+                uint32_t* data = (uint32_t*)soundBuffer_I2S;
+                size_t num_values = BUFFER_SIZE / sizeof(uint32_t);
                 for (size_t i = 0; i < num_values; i++) {
-                    
-                
                     sprintf(hex_string, "%08X\r\n", data[i]);
                     USBUART_PutString(hex_string);
                     dmaIndex = 0;
