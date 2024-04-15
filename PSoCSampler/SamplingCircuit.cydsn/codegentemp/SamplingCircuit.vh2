@@ -2,7 +2,7 @@
 --	Conversion of SamplingCircuit.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue Apr 09 15:47:36 2024
+--	Mon Apr 15 08:48:57 2024
 --
 
 USE cypress.cypress.all;
@@ -565,13 +565,13 @@ Clock_1:cy_clock_v1_0
 		id=>"6f064781-c084-43ef-90dd-4dfdf6b784fd",
 		source_clock_id=>"",
 		divisor=>0,
-		period=>"83333333.3333333",
+		period=>"162760416.666667",
 		is_direct=>'0',
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_14,
 		dig_domain_out=>open);
 I2S_DMA:cy_dma_v1_0
-	GENERIC MAP(drq_type=>"01",
+	GENERIC MAP(drq_type=>"10",
 		num_tds=>0)
 	PORT MAP(drq=>Net_26_0,
 		trq=>zero,

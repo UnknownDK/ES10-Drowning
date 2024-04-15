@@ -1175,18 +1175,6 @@ library (timing) {
         }
         pin (dmareq) {
             direction : input;
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 7.100;
-                intrinsic_fall : 7.100;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.000;
-                intrinsic_fall : 0.000;
-            }
         }
         pin (termin) {
             direction : input;

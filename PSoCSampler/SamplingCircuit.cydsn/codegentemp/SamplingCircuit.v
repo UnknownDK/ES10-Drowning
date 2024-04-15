@@ -1,6 +1,6 @@
 // ======================================================================
 // SamplingCircuit.v generated from TopDesign.cysch
-// 04/09/2024 at 15:47
+// 04/15/2024 at 08:48
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -797,7 +797,7 @@ module top ;
 		#(.id("6f064781-c084-43ef-90dd-4dfdf6b784fd"),
 		  .source_clock_id(""),
 		  .divisor(0),
-		  .period("83333333.3333333"),
+		  .period("162760416.666667"),
 		  .is_direct(0),
 		  .is_digital(1))
 		Clock_1
@@ -806,7 +806,7 @@ module top ;
 
 
 	cy_dma_v1_0
-		#(.drq_type(2'b01))
+		#(.drq_type(2'b10))
 		I2S_DMA
 		 (.drq(Net_26[0:0]),
 		  .nrq(Net_27),

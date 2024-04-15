@@ -1,5 +1,5 @@
 -- Project:   SamplingCircuit
--- Generated: 04/09/2024 15:47:37
+-- Generated: 04/15/2024 08:48:58
 -- PSoC Creator  4.4
 
 ENTITY SamplingCircuit IS
@@ -1099,7 +1099,7 @@ BEGIN
 
     I2S_DMA:drqcell
         GENERIC MAP(
-            drq_type => "01",
+            drq_type => "10",
             num_tds => 0)
         PORT MAP(
             dmareq => Net_26_0,

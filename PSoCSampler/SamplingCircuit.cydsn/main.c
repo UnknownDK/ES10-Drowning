@@ -15,8 +15,8 @@
 
 
 
-
-#define DMA_BYTES_PER_BURST 4
+// Find ud af hvordan bytes per burst og request per burst skal sættes
+#define DMA_BYTES_PER_BURST 1
 #define DMA_REQUEST_PER_BURST 1
 #define DMA_SRC_BASE (CYDEV_PERIPH_BASE)
 #define DMA_DST_BASE (CYDEV_SRAM_BASE)
@@ -24,7 +24,7 @@
 // Assuming a buffer size of 1024 bytes for demonstration
 #define BUFFER_SIZE 1024
 
-uint8 soundBuffer_I2S[BUFFER_SIZE];
+uint8_t soundBuffer_I2S[BUFFER_SIZE];
 
 
 // DMA Configuration Variables
@@ -37,9 +37,12 @@ uint16 cpuIndex = 0;
 
 void initComponents(void);
 void initDMA(void);
-void OutputAudioValuesToUSBUART(uint32* buffer, uint16 start, uint16 numSamples);
 
 CY_ISR_PROTO(DmaI2S);
+
+char hex_string[13];
+char newline[6] = "\r\n";
+
 
 
 int main(void)
@@ -49,34 +52,29 @@ int main(void)
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 
     initComponents();
-    char str[12]; // Buffer for decimal representation
+
+    uint32_t* data = (uint32_t*)soundBuffer_I2S;
+    size_t num_values = BUFFER_SIZE / sizeof(uint32_t);
     
     for(;;)
     {
 
-        if (dmaIndex != cpuIndex) {
-            cpuIndex = dmaIndex;
-
-            // Assuming cpuIndex is properly initialized and within bounds of soundBuffer_I2S
-            // Extract the first byte and perform sign extension.
-            int32_t value = 0;
             
-            value |= soundBuffer_I2S[cpuIndex]     << 24; // Shift the first byte 24 bits to the left
-            value |= soundBuffer_I2S[cpuIndex + 1] << 16; // Shift the second byte 16 bits to the left
-            value |= soundBuffer_I2S[cpuIndex + 2] << 8;  // Shift the third byte 8 bits to the left
-            value |= soundBuffer_I2S[cpuIndex + 3];       // No shift needed for the fourth byte
-
-            // Note: sampleValue is already a signed 32-bit integer due to the sign extension performed.
-
-            // Preparing for UART transmission
-            char str[15]; // Adjusted size for "-2147483648\r\n\0"
-            sprintf(str, "%ld\r\n", value); // Convert the integer to a string and append \r\n for newline
-
+            if (dmaIndex > 0) {
+                for (size_t i = 0; i < num_values; i++) {
+                    
+                
+                    sprintf(hex_string, "%08X\r\n", data[i]);
+                    USBUART_PutString(hex_string);
+                    dmaIndex = 0;
+                }
+            }
             
-            USBUART_PutString(str);
-        }
-                //CyDelay(10); // Delay to control the output rate (for demonstration purposes)
-        //}
+            //CyDelay(1000);
+            //sprintf(hex_string, "%08lX\r\n", dmaIndex);
+            //    USBUART_PutString(hex_string);
+            //   dmaIndex = 0;
+
     }
 
 }
@@ -111,7 +109,7 @@ void initComponents() {
 void initDMA(void) {
     /* Step 1: DMA Initialization */
     dmaChannel = I2S_DMA_DmaInitialize(DMA_BYTES_PER_BURST, DMA_REQUEST_PER_BURST, 
-                                   HI16(DMA_SRC_BASE), HI16(DMA_DST_BASE));
+                                   HI16(CYDEV_PERIPH_BASE), HI16(CYDEV_SRAM_BASE));
     
     /* Step 2: Allocate TD */
     dmaTd = CyDmaTdAllocate();
@@ -136,12 +134,7 @@ void initDMA(void) {
 
 
 CY_ISR(DmaI2S) {
-    if (dmaIndex + 4 > BUFFER_SIZE) {
-        dmaIndex = 0;
-    } else {
-        dmaIndex = dmaIndex + 4;
-    }
-
+    dmaIndex += 1;
 }
 
 

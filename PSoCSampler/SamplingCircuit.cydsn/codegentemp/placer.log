@@ -6,7 +6,7 @@
 
 #Build Date:         Sep  9 2019 11:47:43
 
-#File Generated:     Apr 9 2024 15:47:37
+#File Generated:     Apr 15 2024 08:48:58
 
 #Purpose:            
 
@@ -80,7 +80,7 @@ analysis after routing.
                      Clock Summary 
 ======================================================================
 Number of clocks: 6
-Clock: Clock_1              | Frequency:  76.8 MHz | Target:  12.0 MHz
+Clock: Clock_1              | Frequency:  76.8 MHz | Target:   6.0 MHz
 Clock: CyBUS_CLK            | Frequency:  97.9 MHz | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
@@ -98,7 +98,7 @@ Phase 7
                      Clock Summary 
 ======================================================================
 Number of clocks: 6
-Clock: Clock_1              | Frequency:  76.8 MHz | Target:  12.0 MHz
+Clock: Clock_1              | Frequency:  76.8 MHz | Target:   6.0 MHz
 Clock: CyBUS_CLK            | Frequency:  97.9 MHz | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
@@ -139,7 +139,7 @@ analysis after routing.
                      Clock Summary 
 ======================================================================
 Number of clocks: 6
-Clock: Clock_1              | Frequency:  76.8 MHz | Target:  13.2 MHz
+Clock: Clock_1              | Frequency:  76.8 MHz | Target:   6.6 MHz
 Clock: CyBUS_CLK            | Frequency:  97.9 MHz | Target:  26.3 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
@@ -155,5 +155,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 0.4 sec.
+I2076: Total run-time: 0.3 sec.
 

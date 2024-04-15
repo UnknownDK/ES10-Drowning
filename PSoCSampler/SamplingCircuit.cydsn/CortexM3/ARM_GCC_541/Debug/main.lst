@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 1
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 1
 
 
    1              		.syntax unified
@@ -45,8 +45,8 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 1
   15:main.c        **** 
   16:main.c        **** 
   17:main.c        **** 
-  18:main.c        **** 
-  19:main.c        **** #define DMA_BYTES_PER_BURST 4
+  18:main.c        **** // Find ud af hvordan bytes per burst og request per burst skal sættes
+  19:main.c        **** #define DMA_BYTES_PER_BURST 1
   20:main.c        **** #define DMA_REQUEST_PER_BURST 1
   21:main.c        **** #define DMA_SRC_BASE (CYDEV_PERIPH_BASE)
   22:main.c        **** #define DMA_DST_BASE (CYDEV_SRAM_BASE)
@@ -54,11 +54,11 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 1
   24:main.c        **** // Assuming a buffer size of 1024 bytes for demonstration
   25:main.c        **** #define BUFFER_SIZE 1024
   26:main.c        **** 
-  27:main.c        **** uint8 soundBuffer_I2S[BUFFER_SIZE];
+  27:main.c        **** uint8_t soundBuffer_I2S[BUFFER_SIZE];
   28:main.c        **** 
   29:main.c        **** 
   30:main.c        **** // DMA Configuration Variables
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 2
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 2
 
 
   31:main.c        **** uint8 dmaChannel;
@@ -70,1580 +70,1638 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 1
   37:main.c        **** 
   38:main.c        **** void initComponents(void);
   39:main.c        **** void initDMA(void);
-  40:main.c        **** void OutputAudioValuesToUSBUART(uint32* buffer, uint16 start, uint16 numSamples);
-  41:main.c        **** 
-  42:main.c        **** CY_ISR_PROTO(DmaI2S);
-  43:main.c        **** 
-  44:main.c        **** 
-  45:main.c        **** int main(void)
-  46:main.c        **** {
-  47:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
-  48:main.c        **** 
-  49:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-  50:main.c        **** 
-  51:main.c        ****     initComponents();
-  52:main.c        ****     char str[12]; // Buffer for decimal representation
-  53:main.c        ****     
-  54:main.c        ****     for(;;)
-  55:main.c        ****     {
-  56:main.c        **** 
-  57:main.c        ****         if (dmaIndex != cpuIndex) {
-  58:main.c        ****             cpuIndex = dmaIndex;
-  59:main.c        **** 
-  60:main.c        ****             // Assuming cpuIndex is properly initialized and within bounds of soundBuffer_I2S
-  61:main.c        ****             // Extract the first byte and perform sign extension.
-  62:main.c        ****             int32_t value = 0;
-  63:main.c        ****             
-  64:main.c        ****             value |= soundBuffer_I2S[cpuIndex]     << 24; // Shift the first byte 24 bits to the le
-  65:main.c        ****             value |= soundBuffer_I2S[cpuIndex + 1] << 16; // Shift the second byte 16 bits to the l
-  66:main.c        ****             value |= soundBuffer_I2S[cpuIndex + 2] << 8;  // Shift the third byte 8 bits to the lef
-  67:main.c        ****             value |= soundBuffer_I2S[cpuIndex + 3];       // No shift needed for the fourth byte
-  68:main.c        **** 
-  69:main.c        ****             // Note: sampleValue is already a signed 32-bit integer due to the sign extension perfo
-  70:main.c        **** 
-  71:main.c        ****             // Preparing for UART transmission
-  72:main.c        ****             char str[15]; // Adjusted size for "-2147483648\r\n\0"
-  73:main.c        ****             sprintf(str, "%ld\r\n", value); // Convert the integer to a string and append \r\n for 
-  74:main.c        **** 
-  75:main.c        ****             
-  76:main.c        ****             USBUART_PutString(str);
-  77:main.c        ****         }
-  78:main.c        ****                 //CyDelay(10); // Delay to control the output rate (for demonstration purposes)
-  79:main.c        ****         //}
-  80:main.c        ****     }
+  40:main.c        **** 
+  41:main.c        **** CY_ISR_PROTO(DmaI2S);
+  42:main.c        **** 
+  43:main.c        **** char hex_string[13];
+  44:main.c        **** char newline[6] = "\r\n";
+  45:main.c        **** 
+  46:main.c        **** 
+  47:main.c        **** 
+  48:main.c        **** int main(void)
+  49:main.c        **** {
+  50:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  51:main.c        **** 
+  52:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  53:main.c        **** 
+  54:main.c        ****     initComponents();
+  55:main.c        **** 
+  56:main.c        ****     uint32_t* data = (uint32_t*)soundBuffer_I2S;
+  57:main.c        ****     size_t num_values = BUFFER_SIZE / sizeof(uint32_t);
+  58:main.c        ****     
+  59:main.c        ****     for(;;)
+  60:main.c        ****     {
+  61:main.c        **** 
+  62:main.c        ****             
+  63:main.c        ****             if (dmaIndex > 0) {
+  64:main.c        ****                 for (size_t i = 0; i < num_values; i++) {
+  65:main.c        ****                     
+  66:main.c        ****                 
+  67:main.c        ****                     sprintf(hex_string, "%08X\r\n", data[i]);
+  68:main.c        ****                     USBUART_PutString(hex_string);
+  69:main.c        ****                     dmaIndex = 0;
+  70:main.c        ****                 }
+  71:main.c        ****             }
+  72:main.c        ****             
+  73:main.c        ****             //CyDelay(1000);
+  74:main.c        ****             //sprintf(hex_string, "%08lX\r\n", dmaIndex);
+  75:main.c        ****             //    USBUART_PutString(hex_string);
+  76:main.c        ****             //   dmaIndex = 0;
+  77:main.c        **** 
+  78:main.c        ****     }
+  79:main.c        **** 
+  80:main.c        **** }
   81:main.c        **** 
-  82:main.c        **** }
-  83:main.c        **** 
-  84:main.c        **** 
-  85:main.c        **** void initComponents() {
-  86:main.c        ****     /* Enable global interrupts. */
-  87:main.c        ****     CyGlobalIntEnable;
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 3
+  82:main.c        **** 
+  83:main.c        **** void initComponents() {
+  84:main.c        ****     /* Enable global interrupts. */
+  85:main.c        ****     CyGlobalIntEnable;
+  86:main.c        **** 
+  87:main.c        **** 
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 3
 
 
-  88:main.c        **** 
-  89:main.c        **** 
-  90:main.c        ****  
-  91:main.c        ****     USBUART_Start(0, USBUART_5V_OPERATION);
+  88:main.c        ****  
+  89:main.c        ****     USBUART_Start(0, USBUART_5V_OPERATION);
+  90:main.c        ****     
+  91:main.c        ****     while(USBUART_GetConfiguration()==0){}
   92:main.c        ****     
-  93:main.c        ****     while(USBUART_GetConfiguration()==0){}
-  94:main.c        ****     
-  95:main.c        ****     /* Start PGA for 3v3 generation. */
-  96:main.c        ****     I2S_3v3_Start();
-  97:main.c        **** 
-  98:main.c        ****     /* Start I2S */
-  99:main.c        ****     I2S_Start();
- 100:main.c        ****     I2S_EnableRx();
+  93:main.c        ****     /* Start PGA for 3v3 generation. */
+  94:main.c        ****     I2S_3v3_Start();
+  95:main.c        **** 
+  96:main.c        ****     /* Start I2S */
+  97:main.c        ****     I2S_Start();
+  98:main.c        ****     I2S_EnableRx();
+  99:main.c        ****     
+ 100:main.c        ****     initDMA();
  101:main.c        ****     
- 102:main.c        ****     initDMA();
+ 102:main.c        ****     DmaI2S_StartEx(&DmaI2S);
  103:main.c        ****     
- 104:main.c        ****     DmaI2S_StartEx(&DmaI2S);
- 105:main.c        ****     
- 106:main.c        **** 
+ 104:main.c        **** 
+ 105:main.c        **** 
+ 106:main.c        **** }
  107:main.c        **** 
- 108:main.c        **** }
- 109:main.c        **** 
- 110:main.c        **** 
- 111:main.c        **** void initDMA(void) {
- 112:main.c        ****     /* Step 1: DMA Initialization */
- 113:main.c        ****     dmaChannel = I2S_DMA_DmaInitialize(DMA_BYTES_PER_BURST, DMA_REQUEST_PER_BURST, 
- 114:main.c        ****                                    HI16(DMA_SRC_BASE), HI16(DMA_DST_BASE));
- 115:main.c        ****     
- 116:main.c        ****     /* Step 2: Allocate TD */
- 117:main.c        ****     dmaTd = CyDmaTdAllocate();
- 118:main.c        ****     
- 119:main.c        ****     /* Step 3: Configure the TD */
- 120:main.c        ****     CyDmaTdSetConfiguration(dmaTd, BUFFER_SIZE, dmaTd, 
- 121:main.c        ****                             TD_INC_DST_ADR | I2S_DMA__TD_TERMOUT_EN);
- 122:main.c        ****     
- 123:main.c        ****     /* Step 4: Set the source and destination addresses */
- 124:main.c        ****     CyDmaTdSetAddress(dmaTd, LO16((uint32)I2S_RX_CH0_F0_PTR), LO16((uint32)soundBuffer_I2S));
- 125:main.c        ****     
- 126:main.c        ****     /* Step 5: Set the initial TD for the channel */
- 127:main.c        ****     CyDmaChSetInitialTd(dmaChannel, dmaTd);
- 128:main.c        ****     
- 129:main.c        ****     /* Step 6: Enable the DMA channel */
- 130:main.c        ****     CyDmaChEnable(dmaChannel, 1);
- 131:main.c        ****     
- 132:main.c        ****     
- 133:main.c        **** }
+ 108:main.c        **** 
+ 109:main.c        **** void initDMA(void) {
+ 110:main.c        ****     /* Step 1: DMA Initialization */
+ 111:main.c        ****     dmaChannel = I2S_DMA_DmaInitialize(DMA_BYTES_PER_BURST, DMA_REQUEST_PER_BURST, 
+ 112:main.c        ****                                    HI16(CYDEV_PERIPH_BASE), HI16(CYDEV_SRAM_BASE));
+ 113:main.c        ****     
+ 114:main.c        ****     /* Step 2: Allocate TD */
+ 115:main.c        ****     dmaTd = CyDmaTdAllocate();
+ 116:main.c        ****     
+ 117:main.c        ****     /* Step 3: Configure the TD */
+ 118:main.c        ****     CyDmaTdSetConfiguration(dmaTd, BUFFER_SIZE, dmaTd, 
+ 119:main.c        ****                             TD_INC_DST_ADR | I2S_DMA__TD_TERMOUT_EN);
+ 120:main.c        ****     
+ 121:main.c        ****     /* Step 4: Set the source and destination addresses */
+ 122:main.c        ****     CyDmaTdSetAddress(dmaTd, LO16((uint32)I2S_RX_CH0_F0_PTR), LO16((uint32)soundBuffer_I2S));
+ 123:main.c        ****     
+ 124:main.c        ****     /* Step 5: Set the initial TD for the channel */
+ 125:main.c        ****     CyDmaChSetInitialTd(dmaChannel, dmaTd);
+ 126:main.c        ****     
+ 127:main.c        ****     /* Step 6: Enable the DMA channel */
+ 128:main.c        ****     CyDmaChEnable(dmaChannel, 1);
+ 129:main.c        ****     
+ 130:main.c        ****     
+ 131:main.c        **** }
+ 132:main.c        **** 
+ 133:main.c        **** 
  134:main.c        **** 
  135:main.c        **** 
- 136:main.c        **** 
- 137:main.c        **** 
- 138:main.c        **** CY_ISR(DmaI2S) {
-  28              		.loc 1 138 0
+ 136:main.c        **** CY_ISR(DmaI2S) {
+  28              		.loc 1 136 0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
   32              		@ link register save eliminated.
- 139:main.c        ****     if (dmaIndex + 4 > BUFFER_SIZE) {
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 4
+ 137:main.c        ****     dmaIndex += 1;
+  33              		.loc 1 137 0
+  34 0000 034A     		ldr	r2, .L2
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 4
 
 
-  33              		.loc 1 139 0
-  34 0000 084B     		ldr	r3, .L4
-  35 0002 1B88     		ldrh	r3, [r3]
+  35 0002 1388     		ldrh	r3, [r2]
   36 0004 9BB2     		uxth	r3, r3
-  37 0006 0433     		adds	r3, r3, #4
-  38 0008 B3F5806F 		cmp	r3, #1024
-  39 000c 03DD     		ble	.L2
- 140:main.c        ****         dmaIndex = 0;
-  40              		.loc 1 140 0
-  41 000e 0022     		movs	r2, #0
-  42 0010 044B     		ldr	r3, .L4
-  43 0012 1A80     		strh	r2, [r3]	@ movhi
-  44 0014 7047     		bx	lr
-  45              	.L2:
- 141:main.c        ****     } else {
- 142:main.c        ****         dmaIndex = dmaIndex + 4;
-  46              		.loc 1 142 0
-  47 0016 034A     		ldr	r2, .L4
-  48 0018 1388     		ldrh	r3, [r2]
-  49 001a 9BB2     		uxth	r3, r3
-  50 001c 0433     		adds	r3, r3, #4
-  51 001e 9BB2     		uxth	r3, r3
-  52 0020 1380     		strh	r3, [r2]	@ movhi
-  53 0022 7047     		bx	lr
-  54              	.L5:
-  55              		.align	2
-  56              	.L4:
-  57 0024 00000000 		.word	.LANCHOR0
-  58              		.cfi_endproc
-  59              	.LFE67:
-  60              		.size	DmaI2S, .-DmaI2S
-  61              		.section	.text.initDMA,"ax",%progbits
-  62              		.align	2
-  63              		.global	initDMA
-  64              		.thumb
-  65              		.thumb_func
-  66              		.type	initDMA, %function
-  67              	initDMA:
-  68              	.LFB66:
- 111:main.c        ****     /* Step 1: DMA Initialization */
-  69              		.loc 1 111 0
-  70              		.cfi_startproc
-  71              		@ args = 0, pretend = 0, frame = 0
-  72              		@ frame_needed = 0, uses_anonymous_args = 0
-  73 0000 38B5     		push	{r3, r4, r5, lr}
-  74              		.cfi_def_cfa_offset 16
-  75              		.cfi_offset 3, -16
-  76              		.cfi_offset 4, -12
-  77              		.cfi_offset 5, -8
-  78              		.cfi_offset 14, -4
- 113:main.c        ****                                    HI16(DMA_SRC_BASE), HI16(DMA_DST_BASE));
-  79              		.loc 1 113 0
-  80 0002 41F6FF73 		movw	r3, #8191
-  81 0006 4FF48042 		mov	r2, #16384
-  82 000a 0121     		movs	r1, #1
-  83 000c 0420     		movs	r0, #4
-  84 000e FFF7FEFF 		bl	I2S_DMA_DmaInitialize
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 5
+  37 0006 0133     		adds	r3, r3, #1
+  38 0008 9BB2     		uxth	r3, r3
+  39 000a 1380     		strh	r3, [r2]	@ movhi
+  40 000c 7047     		bx	lr
+  41              	.L3:
+  42 000e 00BF     		.align	2
+  43              	.L2:
+  44 0010 00000000 		.word	.LANCHOR0
+  45              		.cfi_endproc
+  46              	.LFE67:
+  47              		.size	DmaI2S, .-DmaI2S
+  48              		.section	.text.initDMA,"ax",%progbits
+  49              		.align	2
+  50              		.global	initDMA
+  51              		.thumb
+  52              		.thumb_func
+  53              		.type	initDMA, %function
+  54              	initDMA:
+  55              	.LFB66:
+ 109:main.c        ****     /* Step 1: DMA Initialization */
+  56              		.loc 1 109 0
+  57              		.cfi_startproc
+  58              		@ args = 0, pretend = 0, frame = 0
+  59              		@ frame_needed = 0, uses_anonymous_args = 0
+  60 0000 38B5     		push	{r3, r4, r5, lr}
+  61              		.cfi_def_cfa_offset 16
+  62              		.cfi_offset 3, -16
+  63              		.cfi_offset 4, -12
+  64              		.cfi_offset 5, -8
+  65              		.cfi_offset 14, -4
+ 111:main.c        ****                                    HI16(CYDEV_PERIPH_BASE), HI16(CYDEV_SRAM_BASE));
+  66              		.loc 1 111 0
+  67 0002 41F6FF73 		movw	r3, #8191
+  68 0006 4FF48042 		mov	r2, #16384
+  69 000a 0121     		movs	r1, #1
+  70 000c 0846     		mov	r0, r1
+  71 000e FFF7FEFF 		bl	I2S_DMA_DmaInitialize
+  72              	.LVL0:
+  73 0012 0E4C     		ldr	r4, .L6
+  74 0014 2070     		strb	r0, [r4]
+ 115:main.c        ****     
+  75              		.loc 1 115 0
+  76 0016 FFF7FEFF 		bl	CyDmaTdAllocate
+  77              	.LVL1:
+  78 001a 0246     		mov	r2, r0
+  79 001c 0C4D     		ldr	r5, .L6+4
+  80 001e 2870     		strb	r0, [r5]
+ 118:main.c        ****                             TD_INC_DST_ADR | I2S_DMA__TD_TERMOUT_EN);
+  81              		.loc 1 118 0
+  82 0020 0623     		movs	r3, #6
+  83 0022 4FF48061 		mov	r1, #1024
+  84 0026 FFF7FEFF 		bl	CyDmaTdSetConfiguration
+  85              	.LVL2:
+ 122:main.c        ****     
+  86              		.loc 1 122 0
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 5
 
 
-  85              	.LVL0:
-  86 0012 0E4C     		ldr	r4, .L8
-  87 0014 2070     		strb	r0, [r4]
- 117:main.c        ****     
-  88              		.loc 1 117 0
-  89 0016 FFF7FEFF 		bl	CyDmaTdAllocate
-  90              	.LVL1:
-  91 001a 0246     		mov	r2, r0
-  92 001c 0C4D     		ldr	r5, .L8+4
-  93 001e 2870     		strb	r0, [r5]
- 120:main.c        ****                             TD_INC_DST_ADR | I2S_DMA__TD_TERMOUT_EN);
-  94              		.loc 1 120 0
-  95 0020 0623     		movs	r3, #6
-  96 0022 4FF48061 		mov	r1, #1024
-  97 0026 FFF7FEFF 		bl	CyDmaTdSetConfiguration
-  98              	.LVL2:
- 124:main.c        ****     
-  99              		.loc 1 124 0
- 100 002a 0A4A     		ldr	r2, .L8+8
- 101 002c 92B2     		uxth	r2, r2
- 102 002e 46F24441 		movw	r1, #25668
- 103 0032 2878     		ldrb	r0, [r5]	@ zero_extendqisi2
- 104 0034 FFF7FEFF 		bl	CyDmaTdSetAddress
- 105              	.LVL3:
- 127:main.c        ****     
- 106              		.loc 1 127 0
- 107 0038 2978     		ldrb	r1, [r5]	@ zero_extendqisi2
- 108 003a 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
- 109 003c FFF7FEFF 		bl	CyDmaChSetInitialTd
- 110              	.LVL4:
- 130:main.c        ****     
- 111              		.loc 1 130 0
- 112 0040 0121     		movs	r1, #1
- 113 0042 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
- 114 0044 FFF7FEFF 		bl	CyDmaChEnable
- 115              	.LVL5:
- 116 0048 38BD     		pop	{r3, r4, r5, pc}
- 117              	.L9:
- 118 004a 00BF     		.align	2
- 119              	.L8:
- 120 004c 00000000 		.word	dmaChannel
- 121 0050 00000000 		.word	dmaTd
- 122 0054 00000000 		.word	soundBuffer_I2S
- 123              		.cfi_endproc
- 124              	.LFE66:
- 125              		.size	initDMA, .-initDMA
- 126              		.section	.text.initComponents,"ax",%progbits
- 127              		.align	2
- 128              		.global	initComponents
- 129              		.thumb
- 130              		.thumb_func
- 131              		.type	initComponents, %function
- 132              	initComponents:
- 133              	.LFB65:
-  85:main.c        ****     /* Enable global interrupts. */
- 134              		.loc 1 85 0
- 135              		.cfi_startproc
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 6
+  87 002a 0A4A     		ldr	r2, .L6+8
+  88 002c 92B2     		uxth	r2, r2
+  89 002e 46F24441 		movw	r1, #25668
+  90 0032 2878     		ldrb	r0, [r5]	@ zero_extendqisi2
+  91 0034 FFF7FEFF 		bl	CyDmaTdSetAddress
+  92              	.LVL3:
+ 125:main.c        ****     
+  93              		.loc 1 125 0
+  94 0038 2978     		ldrb	r1, [r5]	@ zero_extendqisi2
+  95 003a 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+  96 003c FFF7FEFF 		bl	CyDmaChSetInitialTd
+  97              	.LVL4:
+ 128:main.c        ****     
+  98              		.loc 1 128 0
+  99 0040 0121     		movs	r1, #1
+ 100 0042 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+ 101 0044 FFF7FEFF 		bl	CyDmaChEnable
+ 102              	.LVL5:
+ 103 0048 38BD     		pop	{r3, r4, r5, pc}
+ 104              	.L7:
+ 105 004a 00BF     		.align	2
+ 106              	.L6:
+ 107 004c 00000000 		.word	dmaChannel
+ 108 0050 00000000 		.word	dmaTd
+ 109 0054 00000000 		.word	soundBuffer_I2S
+ 110              		.cfi_endproc
+ 111              	.LFE66:
+ 112              		.size	initDMA, .-initDMA
+ 113              		.section	.text.initComponents,"ax",%progbits
+ 114              		.align	2
+ 115              		.global	initComponents
+ 116              		.thumb
+ 117              		.thumb_func
+ 118              		.type	initComponents, %function
+ 119              	initComponents:
+ 120              	.LFB65:
+  83:main.c        ****     /* Enable global interrupts. */
+ 121              		.loc 1 83 0
+ 122              		.cfi_startproc
+ 123              		@ args = 0, pretend = 0, frame = 0
+ 124              		@ frame_needed = 0, uses_anonymous_args = 0
+ 125 0000 08B5     		push	{r3, lr}
+ 126              		.cfi_def_cfa_offset 8
+ 127              		.cfi_offset 3, -8
+ 128              		.cfi_offset 14, -4
+  85:main.c        **** 
+ 129              		.loc 1 85 0
+ 130              		.syntax unified
+ 131              	@ 85 "main.c" 1
+ 132 0002 62B6     		CPSIE   i
+ 133              	@ 0 "" 2
+  89:main.c        ****     
+ 134              		.loc 1 89 0
+ 135              		.thumb
+ 136              		.syntax unified
+ 137 0004 0121     		movs	r1, #1
+ 138 0006 0020     		movs	r0, #0
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 6
 
 
- 136              		@ args = 0, pretend = 0, frame = 0
- 137              		@ frame_needed = 0, uses_anonymous_args = 0
- 138 0000 08B5     		push	{r3, lr}
- 139              		.cfi_def_cfa_offset 8
- 140              		.cfi_offset 3, -8
- 141              		.cfi_offset 14, -4
-  87:main.c        **** 
- 142              		.loc 1 87 0
- 143              		.syntax unified
- 144              	@ 87 "main.c" 1
- 145 0002 62B6     		CPSIE   i
- 146              	@ 0 "" 2
+ 139 0008 FFF7FEFF 		bl	USBUART_Start
+ 140              	.LVL6:
+ 141              	.L9:
   91:main.c        ****     
- 147              		.loc 1 91 0
- 148              		.thumb
- 149              		.syntax unified
- 150 0004 0121     		movs	r1, #1
- 151 0006 0020     		movs	r0, #0
- 152 0008 FFF7FEFF 		bl	USBUART_Start
- 153              	.LVL6:
- 154              	.L11:
-  93:main.c        ****     
- 155              		.loc 1 93 0 discriminator 1
- 156 000c FFF7FEFF 		bl	USBUART_GetConfiguration
- 157              	.LVL7:
- 158 0010 0028     		cmp	r0, #0
- 159 0012 FBD0     		beq	.L11
-  96:main.c        **** 
- 160              		.loc 1 96 0
- 161 0014 FFF7FEFF 		bl	I2S_3v3_Start
- 162              	.LVL8:
-  99:main.c        ****     I2S_EnableRx();
- 163              		.loc 1 99 0
- 164 0018 FFF7FEFF 		bl	I2S_Start
- 165              	.LVL9:
+ 142              		.loc 1 91 0 discriminator 1
+ 143 000c FFF7FEFF 		bl	USBUART_GetConfiguration
+ 144              	.LVL7:
+ 145 0010 0028     		cmp	r0, #0
+ 146 0012 FBD0     		beq	.L9
+  94:main.c        **** 
+ 147              		.loc 1 94 0
+ 148 0014 FFF7FEFF 		bl	I2S_3v3_Start
+ 149              	.LVL8:
+  97:main.c        ****     I2S_EnableRx();
+ 150              		.loc 1 97 0
+ 151 0018 FFF7FEFF 		bl	I2S_Start
+ 152              	.LVL9:
+  98:main.c        ****     
+ 153              		.loc 1 98 0
+ 154 001c FFF7FEFF 		bl	I2S_EnableRx
+ 155              	.LVL10:
  100:main.c        ****     
- 166              		.loc 1 100 0
- 167 001c FFF7FEFF 		bl	I2S_EnableRx
- 168              	.LVL10:
+ 156              		.loc 1 100 0
+ 157 0020 FFF7FEFF 		bl	initDMA
+ 158              	.LVL11:
  102:main.c        ****     
- 169              		.loc 1 102 0
- 170 0020 FFF7FEFF 		bl	initDMA
- 171              	.LVL11:
- 104:main.c        ****     
- 172              		.loc 1 104 0
- 173 0024 0148     		ldr	r0, .L13
- 174 0026 FFF7FEFF 		bl	DmaI2S_StartEx
- 175              	.LVL12:
- 176 002a 08BD     		pop	{r3, pc}
- 177              	.L14:
- 178              		.align	2
- 179              	.L13:
- 180 002c 00000000 		.word	DmaI2S
- 181              		.cfi_endproc
- 182              	.LFE65:
- 183              		.size	initComponents, .-initComponents
- 184              		.section	.text.main,"ax",%progbits
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 7
+ 159              		.loc 1 102 0
+ 160 0024 0148     		ldr	r0, .L11
+ 161 0026 FFF7FEFF 		bl	DmaI2S_StartEx
+ 162              	.LVL12:
+ 163 002a 08BD     		pop	{r3, pc}
+ 164              	.L12:
+ 165              		.align	2
+ 166              	.L11:
+ 167 002c 00000000 		.word	DmaI2S
+ 168              		.cfi_endproc
+ 169              	.LFE65:
+ 170              		.size	initComponents, .-initComponents
+ 171              		.section	.text.main,"ax",%progbits
+ 172              		.align	2
+ 173              		.global	main
+ 174              		.thumb
+ 175              		.thumb_func
+ 176              		.type	main, %function
+ 177              	main:
+ 178              	.LFB64:
+  49:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+ 179              		.loc 1 49 0
+ 180              		.cfi_startproc
+ 181              		@ args = 0, pretend = 0, frame = 0
+ 182              		@ frame_needed = 0, uses_anonymous_args = 0
+ 183 0000 38B5     		push	{r3, r4, r5, lr}
+ 184              		.cfi_def_cfa_offset 16
+ 185              		.cfi_offset 3, -16
+ 186              		.cfi_offset 4, -12
+ 187              		.cfi_offset 5, -8
+ 188              		.cfi_offset 14, -4
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 7
 
 
- 185              		.align	2
- 186              		.global	main
- 187              		.thumb
- 188              		.thumb_func
- 189              		.type	main, %function
- 190              	main:
- 191              	.LFB64:
-  46:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
- 192              		.loc 1 46 0
- 193              		.cfi_startproc
- 194              		@ args = 0, pretend = 0, frame = 16
- 195              		@ frame_needed = 0, uses_anonymous_args = 0
- 196 0000 00B5     		push	{lr}
- 197              		.cfi_def_cfa_offset 4
- 198              		.cfi_offset 14, -4
- 199 0002 85B0     		sub	sp, sp, #20
- 200              		.cfi_def_cfa_offset 24
-  47:main.c        **** 
- 201              		.loc 1 47 0
- 202              		.syntax unified
- 203              	@ 47 "main.c" 1
- 204 0004 62B6     		CPSIE   i
- 205              	@ 0 "" 2
-  51:main.c        ****     char str[12]; // Buffer for decimal representation
- 206              		.loc 1 51 0
- 207              		.thumb
- 208              		.syntax unified
- 209 0006 FFF7FEFF 		bl	initComponents
- 210              	.LVL13:
- 211              	.L16:
-  57:main.c        ****             cpuIndex = dmaIndex;
- 212              		.loc 1 57 0
- 213 000a 104A     		ldr	r2, .L19
- 214 000c 1388     		ldrh	r3, [r2]
- 215 000e 9BB2     		uxth	r3, r3
- 216 0010 5288     		ldrh	r2, [r2, #2]
- 217 0012 9342     		cmp	r3, r2
- 218 0014 F9D0     		beq	.L16
- 219              	.LBB2:
-  58:main.c        **** 
- 220              		.loc 1 58 0
- 221 0016 0D4A     		ldr	r2, .L19
- 222 0018 1388     		ldrh	r3, [r2]
- 223 001a 9BB2     		uxth	r3, r3
- 224 001c 5380     		strh	r3, [r2, #2]	@ movhi
- 225              	.LVL14:
-  64:main.c        ****             value |= soundBuffer_I2S[cpuIndex + 1] << 16; // Shift the second byte 16 bits to the l
- 226              		.loc 1 64 0
- 227 001e 0C49     		ldr	r1, .L19+4
- 228 0020 C85C     		ldrb	r0, [r1, r3]	@ zero_extendqisi2
- 229              	.LVL15:
-  65:main.c        ****             value |= soundBuffer_I2S[cpuIndex + 2] << 8;  // Shift the third byte 8 bits to the lef
- 230              		.loc 1 65 0
- 231 0022 5A1C     		adds	r2, r3, #1
- 232 0024 8A5C     		ldrb	r2, [r1, r2]	@ zero_extendqisi2
- 233 0026 1204     		lsls	r2, r2, #16
- 234 0028 42EA0062 		orr	r2, r2, r0, lsl #24
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 8
+  50:main.c        **** 
+ 189              		.loc 1 50 0
+ 190              		.syntax unified
+ 191              	@ 50 "main.c" 1
+ 192 0002 62B6     		CPSIE   i
+ 193              	@ 0 "" 2
+  54:main.c        **** 
+ 194              		.loc 1 54 0
+ 195              		.thumb
+ 196              		.syntax unified
+ 197 0004 FFF7FEFF 		bl	initComponents
+ 198              	.LVL13:
+ 199              	.L15:
+  63:main.c        ****                 for (size_t i = 0; i < num_values; i++) {
+ 200              		.loc 1 63 0
+ 201 0008 0C4B     		ldr	r3, .L20
+ 202 000a 1B88     		ldrh	r3, [r3]
+ 203 000c 9BB2     		uxth	r3, r3
+ 204 000e 002B     		cmp	r3, #0
+ 205 0010 FAD0     		beq	.L15
+ 206 0012 0FE0     		b	.L18
+ 207              	.LVL14:
+ 208              	.L16:
+ 209              	.LBB2:
+  67:main.c        ****                     USBUART_PutString(hex_string);
+ 210              		.loc 1 67 0 discriminator 3
+ 211 0014 0A4D     		ldr	r5, .L20+4
+ 212 0016 0B4B     		ldr	r3, .L20+8
+ 213 0018 53F82420 		ldr	r2, [r3, r4, lsl #2]
+ 214 001c 0A49     		ldr	r1, .L20+12
+ 215 001e 2846     		mov	r0, r5
+ 216 0020 FFF7FEFF 		bl	sprintf
+ 217              	.LVL15:
+  68:main.c        ****                     dmaIndex = 0;
+ 218              		.loc 1 68 0 discriminator 3
+ 219 0024 2846     		mov	r0, r5
+ 220 0026 FFF7FEFF 		bl	USBUART_PutString
+ 221              	.LVL16:
+  69:main.c        ****                 }
+ 222              		.loc 1 69 0 discriminator 3
+ 223 002a 0022     		movs	r2, #0
+ 224 002c 034B     		ldr	r3, .L20
+ 225 002e 1A80     		strh	r2, [r3]	@ movhi
+  64:main.c        ****                     
+ 226              		.loc 1 64 0 discriminator 3
+ 227 0030 0134     		adds	r4, r4, #1
+ 228              	.LVL17:
+ 229 0032 00E0     		b	.L14
+ 230              	.LVL18:
+ 231              	.L18:
+ 232              	.LBE2:
+ 233 0034 0024     		movs	r4, #0
+ 234              	.L14:
+ 235              	.LVL19:
+ 236              	.LBB3:
+  64:main.c        ****                     
+ 237              		.loc 1 64 0 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 8
 
 
- 235              	.LVL16:
-  66:main.c        ****             value |= soundBuffer_I2S[cpuIndex + 3];       // No shift needed for the fourth byte
- 236              		.loc 1 66 0
- 237 002c 981C     		adds	r0, r3, #2
- 238 002e 085C     		ldrb	r0, [r1, r0]	@ zero_extendqisi2
- 239 0030 42EA0022 		orr	r2, r2, r0, lsl #8
- 240              	.LVL17:
-  67:main.c        **** 
- 241              		.loc 1 67 0
- 242 0034 0333     		adds	r3, r3, #3
- 243 0036 CB5C     		ldrb	r3, [r1, r3]	@ zero_extendqisi2
- 244              	.LVL18:
-  73:main.c        **** 
- 245              		.loc 1 73 0
- 246 0038 1A43     		orrs	r2, r2, r3
- 247              	.LVL19:
- 248 003a 0649     		ldr	r1, .L19+8
- 249 003c 6846     		mov	r0, sp
- 250 003e FFF7FEFF 		bl	sprintf
- 251              	.LVL20:
-  76:main.c        ****         }
- 252              		.loc 1 76 0
- 253 0042 6846     		mov	r0, sp
- 254 0044 FFF7FEFF 		bl	USBUART_PutString
- 255              	.LVL21:
- 256 0048 DFE7     		b	.L16
- 257              	.L20:
- 258 004a 00BF     		.align	2
- 259              	.L19:
- 260 004c 00000000 		.word	.LANCHOR0
- 261 0050 00000000 		.word	soundBuffer_I2S
- 262 0054 00000000 		.word	.LC0
- 263              	.LBE2:
- 264              		.cfi_endproc
- 265              	.LFE64:
- 266              		.size	main, .-main
- 267              		.global	cpuIndex
- 268              		.global	dmaIndex
- 269              		.comm	dmaTd,1,1
- 270              		.comm	dmaChannel,1,1
- 271              		.comm	soundBuffer_I2S,1024,4
- 272              		.section	.rodata.str1.4,"aMS",%progbits,1
- 273              		.align	2
- 274              	.LC0:
- 275 0000 256C640D 		.ascii	"%ld\015\012\000"
- 275      0A00
- 276              		.bss
- 277              		.align	1
- 278              		.set	.LANCHOR0,. + 0
- 279              		.type	dmaIndex, %object
- 280              		.size	dmaIndex, 2
- 281              	dmaIndex:
- 282 0000 0000     		.space	2
- 283              		.type	cpuIndex, %object
- 284              		.size	cpuIndex, 2
- 285              	cpuIndex:
- 286 0002 0000     		.space	2
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 9
+ 238 0036 FF2C     		cmp	r4, #255
+ 239 0038 ECD9     		bls	.L16
+ 240 003a E5E7     		b	.L15
+ 241              	.L21:
+ 242              		.align	2
+ 243              	.L20:
+ 244 003c 00000000 		.word	.LANCHOR0
+ 245 0040 00000000 		.word	hex_string
+ 246 0044 00000000 		.word	soundBuffer_I2S
+ 247 0048 00000000 		.word	.LC0
+ 248              	.LBE3:
+ 249              		.cfi_endproc
+ 250              	.LFE64:
+ 251              		.size	main, .-main
+ 252              		.global	newline
+ 253              		.comm	hex_string,13,4
+ 254              		.global	cpuIndex
+ 255              		.global	dmaIndex
+ 256              		.comm	dmaTd,1,1
+ 257              		.comm	dmaChannel,1,1
+ 258              		.comm	soundBuffer_I2S,1024,4
+ 259              		.data
+ 260              		.align	2
+ 261              		.type	newline, %object
+ 262              		.size	newline, 6
+ 263              	newline:
+ 264 0000 0D0A00   		.ascii	"\015\012\000"
+ 265 0003 000000   		.space	3
+ 266              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 267              		.align	2
+ 268              	.LC0:
+ 269 0000 25303858 		.ascii	"%08X\015\012\000"
+ 269      0D0A00
+ 270              		.bss
+ 271              		.align	1
+ 272              		.set	.LANCHOR0,. + 0
+ 273              		.type	dmaIndex, %object
+ 274              		.size	dmaIndex, 2
+ 275              	dmaIndex:
+ 276 0000 0000     		.space	2
+ 277              		.type	cpuIndex, %object
+ 278              		.size	cpuIndex, 2
+ 279              	cpuIndex:
+ 280 0002 0000     		.space	2
+ 281              		.text
+ 282              	.Letext0:
+ 283              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 284              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 285              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 286              		.file 5 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 287              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 288              		.file 7 "Generated_Source\\PSoC5/I2S_DMA_dma.h"
+ 289              		.file 8 "Generated_Source\\PSoC5/CYDMAC.H"
+ 290              		.file 9 "Generated_Source\\PSoC5/USBUART.h"
+ 291              		.file 10 "Generated_Source\\PSoC5/I2S_3v3.h"
+ 292              		.file 11 "Generated_Source\\PSoC5/I2S.h"
+ 293              		.file 12 "Generated_Source\\PSoC5/DmaI2S.h"
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 9
 
 
- 287              		.text
- 288              	.Letext0:
- 289              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
- 290              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
- 291              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
- 292              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
- 293              		.file 6 "Generated_Source\\PSoC5/I2S_DMA_dma.h"
- 294              		.file 7 "Generated_Source\\PSoC5/CYDMAC.H"
- 295              		.file 8 "Generated_Source\\PSoC5/USBUART.h"
- 296              		.file 9 "Generated_Source\\PSoC5/I2S_3v3.h"
- 297              		.file 10 "Generated_Source\\PSoC5/I2S.h"
- 298              		.file 11 "Generated_Source\\PSoC5/DmaI2S.h"
- 299              		.file 12 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4
- 300              		.file 13 "Generated_Source\\PSoC5/USBUART_cdc.h"
- 301              		.section	.debug_info,"",%progbits
- 302              	.Ldebug_info0:
- 303 0000 A8030000 		.4byte	0x3a8
- 304 0004 0400     		.2byte	0x4
- 305 0006 00000000 		.4byte	.Ldebug_abbrev0
- 306 000a 04       		.byte	0x4
- 307 000b 01       		.uleb128 0x1
- 308 000c B7000000 		.4byte	.LASF43
- 309 0010 0C       		.byte	0xc
- 310 0011 97020000 		.4byte	.LASF44
- 311 0015 87010000 		.4byte	.LASF45
- 312 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 313 001d 00000000 		.4byte	0
- 314 0021 00000000 		.4byte	.Ldebug_line0
- 315 0025 02       		.uleb128 0x2
- 316 0026 01       		.byte	0x1
- 317 0027 06       		.byte	0x6
- 318 0028 D8020000 		.4byte	.LASF0
- 319 002c 02       		.uleb128 0x2
- 320 002d 01       		.byte	0x1
- 321 002e 08       		.byte	0x8
- 322 002f A9000000 		.4byte	.LASF1
- 323 0033 02       		.uleb128 0x2
- 324 0034 02       		.byte	0x2
- 325 0035 05       		.byte	0x5
- 326 0036 A3020000 		.4byte	.LASF2
- 327 003a 02       		.uleb128 0x2
- 328 003b 02       		.byte	0x2
- 329 003c 07       		.byte	0x7
- 330 003d 74010000 		.4byte	.LASF3
- 331 0041 03       		.uleb128 0x3
- 332 0042 0F000000 		.4byte	.LASF9
- 333 0046 02       		.byte	0x2
- 334 0047 3F       		.byte	0x3f
- 335 0048 4C000000 		.4byte	0x4c
- 336 004c 02       		.uleb128 0x2
- 337 004d 04       		.byte	0x4
- 338 004e 05       		.byte	0x5
- 339 004f C3020000 		.4byte	.LASF4
- 340 0053 02       		.uleb128 0x2
- 341 0054 04       		.byte	0x4
- 342 0055 07       		.byte	0x7
- 343 0056 62010000 		.4byte	.LASF5
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 10
+ 294              		.file 13 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4
+ 295              		.file 14 "Generated_Source\\PSoC5/USBUART_cdc.h"
+ 296              		.section	.debug_info,"",%progbits
+ 297              	.Ldebug_info0:
+ 298 0000 07040000 		.4byte	0x407
+ 299 0004 0400     		.2byte	0x4
+ 300 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 301 000a 04       		.byte	0x4
+ 302 000b 01       		.uleb128 0x1
+ 303 000c DA000000 		.4byte	.LASF51
+ 304 0010 0C       		.byte	0xc
+ 305 0011 CF020000 		.4byte	.LASF52
+ 306 0015 B3010000 		.4byte	.LASF53
+ 307 0019 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 308 001d 00000000 		.4byte	0
+ 309 0021 00000000 		.4byte	.Ldebug_line0
+ 310 0025 02       		.uleb128 0x2
+ 311 0026 01       		.byte	0x1
+ 312 0027 06       		.byte	0x6
+ 313 0028 1A030000 		.4byte	.LASF0
+ 314 002c 03       		.uleb128 0x3
+ 315 002d 00000000 		.4byte	.LASF4
+ 316 0031 02       		.byte	0x2
+ 317 0032 1D       		.byte	0x1d
+ 318 0033 37000000 		.4byte	0x37
+ 319 0037 02       		.uleb128 0x2
+ 320 0038 01       		.byte	0x1
+ 321 0039 08       		.byte	0x8
+ 322 003a CC000000 		.4byte	.LASF1
+ 323 003e 02       		.uleb128 0x2
+ 324 003f 02       		.byte	0x2
+ 325 0040 05       		.byte	0x5
+ 326 0041 DB020000 		.4byte	.LASF2
+ 327 0045 02       		.uleb128 0x2
+ 328 0046 02       		.byte	0x2
+ 329 0047 07       		.byte	0x7
+ 330 0048 97010000 		.4byte	.LASF3
+ 331 004c 03       		.uleb128 0x3
+ 332 004d 11000000 		.4byte	.LASF5
+ 333 0051 02       		.byte	0x2
+ 334 0052 3F       		.byte	0x3f
+ 335 0053 57000000 		.4byte	0x57
+ 336 0057 02       		.uleb128 0x2
+ 337 0058 04       		.byte	0x4
+ 338 0059 05       		.byte	0x5
+ 339 005a 06030000 		.4byte	.LASF6
+ 340 005e 03       		.uleb128 0x3
+ 341 005f A7000000 		.4byte	.LASF7
+ 342 0063 02       		.byte	0x2
+ 343 0064 41       		.byte	0x41
+ 344 0065 69000000 		.4byte	0x69
+ 345 0069 02       		.uleb128 0x2
+ 346 006a 04       		.byte	0x4
+ 347 006b 07       		.byte	0x7
+ 348 006c 85010000 		.4byte	.LASF8
+ 349 0070 02       		.uleb128 0x2
+ 350 0071 08       		.byte	0x8
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 10
 
 
- 344 005a 02       		.uleb128 0x2
- 345 005b 08       		.byte	0x8
- 346 005c 05       		.byte	0x5
- 347 005d 7C020000 		.4byte	.LASF6
- 348 0061 02       		.uleb128 0x2
- 349 0062 08       		.byte	0x8
- 350 0063 07       		.byte	0x7
- 351 0064 41020000 		.4byte	.LASF7
- 352 0068 04       		.uleb128 0x4
- 353 0069 04       		.byte	0x4
- 354 006a 05       		.byte	0x5
- 355 006b 696E7400 		.ascii	"int\000"
- 356 006f 02       		.uleb128 0x2
- 357 0070 04       		.byte	0x4
- 358 0071 07       		.byte	0x7
- 359 0072 20020000 		.4byte	.LASF8
- 360 0076 03       		.uleb128 0x3
- 361 0077 62020000 		.4byte	.LASF10
- 362 007b 03       		.byte	0x3
- 363 007c 2C       		.byte	0x2c
- 364 007d 41000000 		.4byte	0x41
- 365 0081 05       		.uleb128 0x5
- 366 0082 AD020000 		.4byte	.LASF11
- 367 0086 04       		.byte	0x4
- 368 0087 E801     		.2byte	0x1e8
- 369 0089 2C000000 		.4byte	0x2c
- 370 008d 05       		.uleb128 0x5
- 371 008e FF010000 		.4byte	.LASF12
- 372 0092 04       		.byte	0x4
- 373 0093 E901     		.2byte	0x1e9
- 374 0095 3A000000 		.4byte	0x3a
- 375 0099 05       		.uleb128 0x5
- 376 009a 06020000 		.4byte	.LASF13
- 377 009e 04       		.byte	0x4
- 378 009f EA01     		.2byte	0x1ea
- 379 00a1 53000000 		.4byte	0x53
- 380 00a5 02       		.uleb128 0x2
- 381 00a6 04       		.byte	0x4
- 382 00a7 04       		.byte	0x4
- 383 00a8 9D000000 		.4byte	.LASF14
- 384 00ac 02       		.uleb128 0x2
- 385 00ad 08       		.byte	0x8
- 386 00ae 04       		.byte	0x4
- 387 00af DB010000 		.4byte	.LASF15
- 388 00b3 02       		.uleb128 0x2
- 389 00b4 01       		.byte	0x1
- 390 00b5 08       		.byte	0x8
- 391 00b6 9E020000 		.4byte	.LASF16
- 392 00ba 05       		.uleb128 0x5
- 393 00bb 45010000 		.4byte	.LASF17
- 394 00bf 04       		.byte	0x4
- 395 00c0 9202     		.2byte	0x292
- 396 00c2 C6000000 		.4byte	0xc6
- 397 00c6 06       		.uleb128 0x6
- 398 00c7 81000000 		.4byte	0x81
- 399 00cb 06       		.uleb128 0x6
- 400 00cc 8D000000 		.4byte	0x8d
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 11
+ 351 0072 05       		.byte	0x5
+ 352 0073 B8020000 		.4byte	.LASF9
+ 353 0077 02       		.uleb128 0x2
+ 354 0078 08       		.byte	0x8
+ 355 0079 07       		.byte	0x7
+ 356 007a 7A020000 		.4byte	.LASF10
+ 357 007e 04       		.uleb128 0x4
+ 358 007f 04       		.byte	0x4
+ 359 0080 05       		.byte	0x5
+ 360 0081 696E7400 		.ascii	"int\000"
+ 361 0085 02       		.uleb128 0x2
+ 362 0086 04       		.byte	0x4
+ 363 0087 07       		.byte	0x7
+ 364 0088 59020000 		.4byte	.LASF11
+ 365 008c 03       		.uleb128 0x3
+ 366 008d B0020000 		.4byte	.LASF12
+ 367 0091 03       		.byte	0x3
+ 368 0092 18       		.byte	0x18
+ 369 0093 2C000000 		.4byte	0x2c
+ 370 0097 03       		.uleb128 0x3
+ 371 0098 8F000000 		.4byte	.LASF13
+ 372 009c 03       		.byte	0x3
+ 373 009d 2C       		.byte	0x2c
+ 374 009e 4C000000 		.4byte	0x4c
+ 375 00a2 03       		.uleb128 0x3
+ 376 00a3 AA010000 		.4byte	.LASF14
+ 377 00a7 03       		.byte	0x3
+ 378 00a8 30       		.byte	0x30
+ 379 00a9 5E000000 		.4byte	0x5e
+ 380 00ad 05       		.uleb128 0x5
+ 381 00ae E5020000 		.4byte	.LASF15
+ 382 00b2 04       		.byte	0x4
+ 383 00b3 E801     		.2byte	0x1e8
+ 384 00b5 37000000 		.4byte	0x37
+ 385 00b9 05       		.uleb128 0x5
+ 386 00ba 2B020000 		.4byte	.LASF16
+ 387 00be 04       		.byte	0x4
+ 388 00bf E901     		.2byte	0x1e9
+ 389 00c1 45000000 		.4byte	0x45
+ 390 00c5 05       		.uleb128 0x5
+ 391 00c6 3F020000 		.4byte	.LASF17
+ 392 00ca 04       		.byte	0x4
+ 393 00cb EA01     		.2byte	0x1ea
+ 394 00cd 69000000 		.4byte	0x69
+ 395 00d1 02       		.uleb128 0x2
+ 396 00d2 04       		.byte	0x4
+ 397 00d3 04       		.byte	0x4
+ 398 00d4 B2000000 		.4byte	.LASF18
+ 399 00d8 02       		.uleb128 0x2
+ 400 00d9 08       		.byte	0x8
+ 401 00da 04       		.byte	0x4
+ 402 00db 07020000 		.4byte	.LASF19
+ 403 00df 02       		.uleb128 0x2
+ 404 00e0 01       		.byte	0x1
+ 405 00e1 08       		.byte	0x8
+ 406 00e2 D6020000 		.4byte	.LASF20
+ 407 00e6 05       		.uleb128 0x5
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 11
 
 
- 401 00d0 02       		.uleb128 0x2
- 402 00d1 08       		.byte	0x8
- 403 00d2 04       		.byte	0x4
- 404 00d3 CC020000 		.4byte	.LASF18
- 405 00d7 02       		.uleb128 0x2
- 406 00d8 04       		.byte	0x4
- 407 00d9 07       		.byte	0x7
- 408 00da 73020000 		.4byte	.LASF19
- 409 00de 07       		.uleb128 0x7
- 410 00df 5E000000 		.4byte	.LASF46
- 411 00e3 01       		.byte	0x1
- 412 00e4 8A       		.byte	0x8a
- 413 00e5 00000000 		.4byte	.LFB67
- 414 00e9 28000000 		.4byte	.LFE67-.LFB67
- 415 00ed 01       		.uleb128 0x1
- 416 00ee 9C       		.byte	0x9c
- 417 00ef 08       		.uleb128 0x8
- 418 00f0 44000000 		.4byte	.LASF20
- 419 00f4 01       		.byte	0x1
- 420 00f5 6F       		.byte	0x6f
- 421 00f6 00000000 		.4byte	.LFB66
- 422 00fa 58000000 		.4byte	.LFE66-.LFB66
- 423 00fe 01       		.uleb128 0x1
- 424 00ff 9C       		.byte	0x9c
- 425 0100 84010000 		.4byte	0x184
- 426 0104 09       		.uleb128 0x9
- 427 0105 12000000 		.4byte	.LVL0
- 428 0109 0F030000 		.4byte	0x30f
- 429 010d 2A010000 		.4byte	0x12a
- 430 0111 0A       		.uleb128 0xa
- 431 0112 01       		.uleb128 0x1
- 432 0113 50       		.byte	0x50
- 433 0114 01       		.uleb128 0x1
- 434 0115 34       		.byte	0x34
- 435 0116 0A       		.uleb128 0xa
- 436 0117 01       		.uleb128 0x1
- 437 0118 51       		.byte	0x51
- 438 0119 01       		.uleb128 0x1
- 439 011a 31       		.byte	0x31
- 440 011b 0A       		.uleb128 0xa
- 441 011c 01       		.uleb128 0x1
- 442 011d 52       		.byte	0x52
- 443 011e 03       		.uleb128 0x3
- 444 011f 0A       		.byte	0xa
- 445 0120 0040     		.2byte	0x4000
- 446 0122 0A       		.uleb128 0xa
- 447 0123 01       		.uleb128 0x1
- 448 0124 53       		.byte	0x53
- 449 0125 03       		.uleb128 0x3
- 450 0126 0A       		.byte	0xa
- 451 0127 FF1F     		.2byte	0x1fff
- 452 0129 00       		.byte	0
- 453 012a 0B       		.uleb128 0xb
- 454 012b 1A000000 		.4byte	.LVL1
- 455 012f 1A030000 		.4byte	0x31a
- 456 0133 09       		.uleb128 0x9
- 457 0134 2A000000 		.4byte	.LVL2
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 12
+ 408 00e7 68010000 		.4byte	.LASF21
+ 409 00eb 04       		.byte	0x4
+ 410 00ec 9202     		.2byte	0x292
+ 411 00ee F2000000 		.4byte	0xf2
+ 412 00f2 06       		.uleb128 0x6
+ 413 00f3 AD000000 		.4byte	0xad
+ 414 00f7 06       		.uleb128 0x6
+ 415 00f8 B9000000 		.4byte	0xb9
+ 416 00fc 03       		.uleb128 0x3
+ 417 00fd 0A000000 		.4byte	.LASF22
+ 418 0101 05       		.byte	0x5
+ 419 0102 D8       		.byte	0xd8
+ 420 0103 85000000 		.4byte	0x85
+ 421 0107 02       		.uleb128 0x2
+ 422 0108 08       		.byte	0x8
+ 423 0109 04       		.byte	0x4
+ 424 010a 9B020000 		.4byte	.LASF23
+ 425 010e 02       		.uleb128 0x2
+ 426 010f 04       		.byte	0x4
+ 427 0110 07       		.byte	0x7
+ 428 0111 C6020000 		.4byte	.LASF24
+ 429 0115 07       		.uleb128 0x7
+ 430 0116 6F000000 		.4byte	.LASF54
+ 431 011a 01       		.byte	0x1
+ 432 011b 88       		.byte	0x88
+ 433 011c 00000000 		.4byte	.LFB67
+ 434 0120 14000000 		.4byte	.LFE67-.LFB67
+ 435 0124 01       		.uleb128 0x1
+ 436 0125 9C       		.byte	0x9c
+ 437 0126 08       		.uleb128 0x8
+ 438 0127 46000000 		.4byte	.LASF25
+ 439 012b 01       		.byte	0x1
+ 440 012c 6D       		.byte	0x6d
+ 441 012d 00000000 		.4byte	.LFB66
+ 442 0131 58000000 		.4byte	.LFE66-.LFB66
+ 443 0135 01       		.uleb128 0x1
+ 444 0136 9C       		.byte	0x9c
+ 445 0137 BB010000 		.4byte	0x1bb
+ 446 013b 09       		.uleb128 0x9
+ 447 013c 12000000 		.4byte	.LVL0
+ 448 0140 6E030000 		.4byte	0x36e
+ 449 0144 61010000 		.4byte	0x161
+ 450 0148 0A       		.uleb128 0xa
+ 451 0149 01       		.uleb128 0x1
+ 452 014a 50       		.byte	0x50
+ 453 014b 01       		.uleb128 0x1
+ 454 014c 31       		.byte	0x31
+ 455 014d 0A       		.uleb128 0xa
+ 456 014e 01       		.uleb128 0x1
+ 457 014f 51       		.byte	0x51
+ 458 0150 01       		.uleb128 0x1
+ 459 0151 31       		.byte	0x31
+ 460 0152 0A       		.uleb128 0xa
+ 461 0153 01       		.uleb128 0x1
+ 462 0154 52       		.byte	0x52
+ 463 0155 03       		.uleb128 0x3
+ 464 0156 0A       		.byte	0xa
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 12
 
 
- 458 0138 25030000 		.4byte	0x325
- 459 013c 4D010000 		.4byte	0x14d
- 460 0140 0A       		.uleb128 0xa
- 461 0141 01       		.uleb128 0x1
- 462 0142 51       		.byte	0x51
- 463 0143 03       		.uleb128 0x3
- 464 0144 0A       		.byte	0xa
- 465 0145 0004     		.2byte	0x400
- 466 0147 0A       		.uleb128 0xa
- 467 0148 01       		.uleb128 0x1
- 468 0149 53       		.byte	0x53
- 469 014a 01       		.uleb128 0x1
- 470 014b 36       		.byte	0x36
- 471 014c 00       		.byte	0
- 472 014d 09       		.uleb128 0x9
- 473 014e 38000000 		.4byte	.LVL3
- 474 0152 30030000 		.4byte	0x330
- 475 0156 6B010000 		.4byte	0x16b
- 476 015a 0A       		.uleb128 0xa
- 477 015b 01       		.uleb128 0x1
- 478 015c 51       		.byte	0x51
- 479 015d 03       		.uleb128 0x3
- 480 015e 0A       		.byte	0xa
- 481 015f 4464     		.2byte	0x6444
- 482 0161 0A       		.uleb128 0xa
- 483 0162 01       		.uleb128 0x1
- 484 0163 52       		.byte	0x52
- 485 0164 05       		.uleb128 0x5
- 486 0165 03       		.byte	0x3
- 487 0166 00000000 		.4byte	soundBuffer_I2S
- 488 016a 00       		.byte	0
- 489 016b 0B       		.uleb128 0xb
- 490 016c 40000000 		.4byte	.LVL4
- 491 0170 3B030000 		.4byte	0x33b
- 492 0174 0C       		.uleb128 0xc
- 493 0175 48000000 		.4byte	.LVL5
- 494 0179 46030000 		.4byte	0x346
- 495 017d 0A       		.uleb128 0xa
- 496 017e 01       		.uleb128 0x1
- 497 017f 51       		.byte	0x51
- 498 0180 01       		.uleb128 0x1
- 499 0181 31       		.byte	0x31
- 500 0182 00       		.byte	0
- 501 0183 00       		.byte	0
- 502 0184 08       		.uleb128 0x8
- 503 0185 7E000000 		.4byte	.LASF21
- 504 0189 01       		.byte	0x1
- 505 018a 55       		.byte	0x55
- 506 018b 00000000 		.4byte	.LFB65
- 507 018f 30000000 		.4byte	.LFE65-.LFB65
- 508 0193 01       		.uleb128 0x1
- 509 0194 9C       		.byte	0x9c
- 510 0195 F2010000 		.4byte	0x1f2
- 511 0199 09       		.uleb128 0x9
- 512 019a 0C000000 		.4byte	.LVL6
- 513 019e 51030000 		.4byte	0x351
- 514 01a2 B1010000 		.4byte	0x1b1
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 13
+ 465 0157 0040     		.2byte	0x4000
+ 466 0159 0A       		.uleb128 0xa
+ 467 015a 01       		.uleb128 0x1
+ 468 015b 53       		.byte	0x53
+ 469 015c 03       		.uleb128 0x3
+ 470 015d 0A       		.byte	0xa
+ 471 015e FF1F     		.2byte	0x1fff
+ 472 0160 00       		.byte	0
+ 473 0161 0B       		.uleb128 0xb
+ 474 0162 1A000000 		.4byte	.LVL1
+ 475 0166 79030000 		.4byte	0x379
+ 476 016a 09       		.uleb128 0x9
+ 477 016b 2A000000 		.4byte	.LVL2
+ 478 016f 84030000 		.4byte	0x384
+ 479 0173 84010000 		.4byte	0x184
+ 480 0177 0A       		.uleb128 0xa
+ 481 0178 01       		.uleb128 0x1
+ 482 0179 51       		.byte	0x51
+ 483 017a 03       		.uleb128 0x3
+ 484 017b 0A       		.byte	0xa
+ 485 017c 0004     		.2byte	0x400
+ 486 017e 0A       		.uleb128 0xa
+ 487 017f 01       		.uleb128 0x1
+ 488 0180 53       		.byte	0x53
+ 489 0181 01       		.uleb128 0x1
+ 490 0182 36       		.byte	0x36
+ 491 0183 00       		.byte	0
+ 492 0184 09       		.uleb128 0x9
+ 493 0185 38000000 		.4byte	.LVL3
+ 494 0189 8F030000 		.4byte	0x38f
+ 495 018d A2010000 		.4byte	0x1a2
+ 496 0191 0A       		.uleb128 0xa
+ 497 0192 01       		.uleb128 0x1
+ 498 0193 51       		.byte	0x51
+ 499 0194 03       		.uleb128 0x3
+ 500 0195 0A       		.byte	0xa
+ 501 0196 4464     		.2byte	0x6444
+ 502 0198 0A       		.uleb128 0xa
+ 503 0199 01       		.uleb128 0x1
+ 504 019a 52       		.byte	0x52
+ 505 019b 05       		.uleb128 0x5
+ 506 019c 03       		.byte	0x3
+ 507 019d 00000000 		.4byte	soundBuffer_I2S
+ 508 01a1 00       		.byte	0
+ 509 01a2 0B       		.uleb128 0xb
+ 510 01a3 40000000 		.4byte	.LVL4
+ 511 01a7 9A030000 		.4byte	0x39a
+ 512 01ab 0C       		.uleb128 0xc
+ 513 01ac 48000000 		.4byte	.LVL5
+ 514 01b0 A5030000 		.4byte	0x3a5
+ 515 01b4 0A       		.uleb128 0xa
+ 516 01b5 01       		.uleb128 0x1
+ 517 01b6 51       		.byte	0x51
+ 518 01b7 01       		.uleb128 0x1
+ 519 01b8 31       		.byte	0x31
+ 520 01b9 00       		.byte	0
+ 521 01ba 00       		.byte	0
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 13
 
 
- 515 01a6 0A       		.uleb128 0xa
- 516 01a7 01       		.uleb128 0x1
- 517 01a8 50       		.byte	0x50
- 518 01a9 01       		.uleb128 0x1
- 519 01aa 30       		.byte	0x30
- 520 01ab 0A       		.uleb128 0xa
- 521 01ac 01       		.uleb128 0x1
- 522 01ad 51       		.byte	0x51
- 523 01ae 01       		.uleb128 0x1
- 524 01af 31       		.byte	0x31
- 525 01b0 00       		.byte	0
- 526 01b1 0B       		.uleb128 0xb
- 527 01b2 10000000 		.4byte	.LVL7
- 528 01b6 5D030000 		.4byte	0x35d
- 529 01ba 0B       		.uleb128 0xb
- 530 01bb 18000000 		.4byte	.LVL8
- 531 01bf 69030000 		.4byte	0x369
- 532 01c3 0B       		.uleb128 0xb
- 533 01c4 1C000000 		.4byte	.LVL9
- 534 01c8 74030000 		.4byte	0x374
- 535 01cc 0B       		.uleb128 0xb
- 536 01cd 20000000 		.4byte	.LVL10
- 537 01d1 7F030000 		.4byte	0x37f
- 538 01d5 0B       		.uleb128 0xb
- 539 01d6 24000000 		.4byte	.LVL11
- 540 01da EF000000 		.4byte	0xef
- 541 01de 0C       		.uleb128 0xc
- 542 01df 2A000000 		.4byte	.LVL12
- 543 01e3 8A030000 		.4byte	0x38a
- 544 01e7 0A       		.uleb128 0xa
- 545 01e8 01       		.uleb128 0x1
- 546 01e9 50       		.byte	0x50
- 547 01ea 05       		.uleb128 0x5
- 548 01eb 03       		.byte	0x3
- 549 01ec 00000000 		.4byte	DmaI2S
- 550 01f0 00       		.byte	0
- 551 01f1 00       		.byte	0
- 552 01f2 0D       		.uleb128 0xd
- 553 01f3 0D020000 		.4byte	.LASF47
- 554 01f7 01       		.byte	0x1
- 555 01f8 2D       		.byte	0x2d
- 556 01f9 68000000 		.4byte	0x68
- 557 01fd 00000000 		.4byte	.LFB64
- 558 0201 58000000 		.4byte	.LFE64-.LFB64
- 559 0205 01       		.uleb128 0x1
- 560 0206 9C       		.byte	0x9c
- 561 0207 78020000 		.4byte	0x278
- 562 020b 0E       		.uleb128 0xe
- 563 020c 73747200 		.ascii	"str\000"
- 564 0210 01       		.byte	0x1
- 565 0211 34       		.byte	0x34
- 566 0212 78020000 		.4byte	0x278
- 567 0216 0F       		.uleb128 0xf
- 568 0217 16000000 		.4byte	.LBB2
- 569 021b 42000000 		.4byte	.LBE2-.LBB2
- 570 021f 6E020000 		.4byte	0x26e
- 571 0223 10       		.uleb128 0x10
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 14
+ 522 01bb 08       		.uleb128 0x8
+ 523 01bc 60000000 		.4byte	.LASF26
+ 524 01c0 01       		.byte	0x1
+ 525 01c1 53       		.byte	0x53
+ 526 01c2 00000000 		.4byte	.LFB65
+ 527 01c6 30000000 		.4byte	.LFE65-.LFB65
+ 528 01ca 01       		.uleb128 0x1
+ 529 01cb 9C       		.byte	0x9c
+ 530 01cc 29020000 		.4byte	0x229
+ 531 01d0 09       		.uleb128 0x9
+ 532 01d1 0C000000 		.4byte	.LVL6
+ 533 01d5 B0030000 		.4byte	0x3b0
+ 534 01d9 E8010000 		.4byte	0x1e8
+ 535 01dd 0A       		.uleb128 0xa
+ 536 01de 01       		.uleb128 0x1
+ 537 01df 50       		.byte	0x50
+ 538 01e0 01       		.uleb128 0x1
+ 539 01e1 30       		.byte	0x30
+ 540 01e2 0A       		.uleb128 0xa
+ 541 01e3 01       		.uleb128 0x1
+ 542 01e4 51       		.byte	0x51
+ 543 01e5 01       		.uleb128 0x1
+ 544 01e6 31       		.byte	0x31
+ 545 01e7 00       		.byte	0
+ 546 01e8 0B       		.uleb128 0xb
+ 547 01e9 10000000 		.4byte	.LVL7
+ 548 01ed BC030000 		.4byte	0x3bc
+ 549 01f1 0B       		.uleb128 0xb
+ 550 01f2 18000000 		.4byte	.LVL8
+ 551 01f6 C8030000 		.4byte	0x3c8
+ 552 01fa 0B       		.uleb128 0xb
+ 553 01fb 1C000000 		.4byte	.LVL9
+ 554 01ff D3030000 		.4byte	0x3d3
+ 555 0203 0B       		.uleb128 0xb
+ 556 0204 20000000 		.4byte	.LVL10
+ 557 0208 DE030000 		.4byte	0x3de
+ 558 020c 0B       		.uleb128 0xb
+ 559 020d 24000000 		.4byte	.LVL11
+ 560 0211 26010000 		.4byte	0x126
+ 561 0215 0C       		.uleb128 0xc
+ 562 0216 2A000000 		.4byte	.LVL12
+ 563 021a E9030000 		.4byte	0x3e9
+ 564 021e 0A       		.uleb128 0xa
+ 565 021f 01       		.uleb128 0x1
+ 566 0220 50       		.byte	0x50
+ 567 0221 05       		.uleb128 0x5
+ 568 0222 03       		.byte	0x3
+ 569 0223 00000000 		.4byte	DmaI2S
+ 570 0227 00       		.byte	0
+ 571 0228 00       		.byte	0
+ 572 0229 0D       		.uleb128 0xd
+ 573 022a 46020000 		.4byte	.LASF55
+ 574 022e 01       		.byte	0x1
+ 575 022f 30       		.byte	0x30
+ 576 0230 7E000000 		.4byte	0x7e
+ 577 0234 00000000 		.4byte	.LFB64
+ 578 0238 4C000000 		.4byte	.LFE64-.LFB64
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 14
 
 
- 572 0224 09000000 		.4byte	.LASF22
- 573 0228 01       		.byte	0x1
- 574 0229 3E       		.byte	0x3e
- 575 022a 76000000 		.4byte	0x76
- 576 022e 00000000 		.4byte	.LLST0
- 577 0232 11       		.uleb128 0x11
- 578 0233 73747200 		.ascii	"str\000"
- 579 0237 01       		.byte	0x1
- 580 0238 48       		.byte	0x48
- 581 0239 88020000 		.4byte	0x288
- 582 023d 02       		.uleb128 0x2
- 583 023e 91       		.byte	0x91
- 584 023f 68       		.sleb128 -24
- 585 0240 09       		.uleb128 0x9
- 586 0241 42000000 		.4byte	.LVL20
- 587 0245 95030000 		.4byte	0x395
- 588 0249 5D020000 		.4byte	0x25d
- 589 024d 0A       		.uleb128 0xa
- 590 024e 01       		.uleb128 0x1
- 591 024f 50       		.byte	0x50
- 592 0250 02       		.uleb128 0x2
- 593 0251 7D       		.byte	0x7d
- 594 0252 00       		.sleb128 0
- 595 0253 0A       		.uleb128 0xa
- 596 0254 01       		.uleb128 0x1
- 597 0255 51       		.byte	0x51
- 598 0256 05       		.uleb128 0x5
- 599 0257 03       		.byte	0x3
- 600 0258 00000000 		.4byte	.LC0
- 601 025c 00       		.byte	0
- 602 025d 0C       		.uleb128 0xc
- 603 025e 48000000 		.4byte	.LVL21
- 604 0262 A0030000 		.4byte	0x3a0
- 605 0266 0A       		.uleb128 0xa
- 606 0267 01       		.uleb128 0x1
- 607 0268 50       		.byte	0x50
- 608 0269 02       		.uleb128 0x2
- 609 026a 7D       		.byte	0x7d
- 610 026b 00       		.sleb128 0
- 611 026c 00       		.byte	0
- 612 026d 00       		.byte	0
- 613 026e 0B       		.uleb128 0xb
- 614 026f 0A000000 		.4byte	.LVL13
- 615 0273 84010000 		.4byte	0x184
- 616 0277 00       		.byte	0
- 617 0278 12       		.uleb128 0x12
- 618 0279 B3000000 		.4byte	0xb3
- 619 027d 88020000 		.4byte	0x288
- 620 0281 13       		.uleb128 0x13
- 621 0282 D7000000 		.4byte	0xd7
- 622 0286 0B       		.byte	0xb
- 623 0287 00       		.byte	0
- 624 0288 12       		.uleb128 0x12
- 625 0289 B3000000 		.4byte	0xb3
- 626 028d 98020000 		.4byte	0x298
- 627 0291 13       		.uleb128 0x13
- 628 0292 D7000000 		.4byte	0xd7
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 15
+ 579 023c 01       		.uleb128 0x1
+ 580 023d 9C       		.byte	0x9c
+ 581 023e AF020000 		.4byte	0x2af
+ 582 0242 0E       		.uleb128 0xe
+ 583 0243 B8000000 		.4byte	.LASF27
+ 584 0247 01       		.byte	0x1
+ 585 0248 38       		.byte	0x38
+ 586 0249 AF020000 		.4byte	0x2af
+ 587 024d 06       		.uleb128 0x6
+ 588 024e 03       		.byte	0x3
+ 589 024f 00000000 		.4byte	soundBuffer_I2S
+ 590 0253 9F       		.byte	0x9f
+ 591 0254 0F       		.uleb128 0xf
+ 592 0255 EB020000 		.4byte	.LASF28
+ 593 0259 01       		.byte	0x1
+ 594 025a 39       		.byte	0x39
+ 595 025b FC000000 		.4byte	0xfc
+ 596 025f 0001     		.2byte	0x100
+ 597 0261 10       		.uleb128 0x10
+ 598 0262 00000000 		.4byte	.Ldebug_ranges0+0
+ 599 0266 A5020000 		.4byte	0x2a5
+ 600 026a 11       		.uleb128 0x11
+ 601 026b 6900     		.ascii	"i\000"
+ 602 026d 01       		.byte	0x1
+ 603 026e 40       		.byte	0x40
+ 604 026f FC000000 		.4byte	0xfc
+ 605 0273 00000000 		.4byte	.LLST0
+ 606 0277 09       		.uleb128 0x9
+ 607 0278 24000000 		.4byte	.LVL15
+ 608 027c F4030000 		.4byte	0x3f4
+ 609 0280 94020000 		.4byte	0x294
+ 610 0284 0A       		.uleb128 0xa
+ 611 0285 01       		.uleb128 0x1
+ 612 0286 50       		.byte	0x50
+ 613 0287 02       		.uleb128 0x2
+ 614 0288 75       		.byte	0x75
+ 615 0289 00       		.sleb128 0
+ 616 028a 0A       		.uleb128 0xa
+ 617 028b 01       		.uleb128 0x1
+ 618 028c 51       		.byte	0x51
+ 619 028d 05       		.uleb128 0x5
+ 620 028e 03       		.byte	0x3
+ 621 028f 00000000 		.4byte	.LC0
+ 622 0293 00       		.byte	0
+ 623 0294 0C       		.uleb128 0xc
+ 624 0295 2A000000 		.4byte	.LVL16
+ 625 0299 FF030000 		.4byte	0x3ff
+ 626 029d 0A       		.uleb128 0xa
+ 627 029e 01       		.uleb128 0x1
+ 628 029f 50       		.byte	0x50
+ 629 02a0 02       		.uleb128 0x2
+ 630 02a1 75       		.byte	0x75
+ 631 02a2 00       		.sleb128 0
+ 632 02a3 00       		.byte	0
+ 633 02a4 00       		.byte	0
+ 634 02a5 0B       		.uleb128 0xb
+ 635 02a6 08000000 		.4byte	.LVL13
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 15
 
 
- 629 0296 0E       		.byte	0xe
- 630 0297 00       		.byte	0
- 631 0298 14       		.uleb128 0x14
- 632 0299 CE010000 		.4byte	.LASF23
- 633 029d 05       		.byte	0x5
- 634 029e 1207     		.2byte	0x712
- 635 02a0 A4020000 		.4byte	0x2a4
- 636 02a4 06       		.uleb128 0x6
- 637 02a5 76000000 		.4byte	0x76
- 638 02a9 12       		.uleb128 0x12
- 639 02aa 81000000 		.4byte	0x81
- 640 02ae BA020000 		.4byte	0x2ba
- 641 02b2 15       		.uleb128 0x15
- 642 02b3 D7000000 		.4byte	0xd7
- 643 02b7 FF03     		.2byte	0x3ff
- 644 02b9 00       		.byte	0
- 645 02ba 16       		.uleb128 0x16
- 646 02bb B3020000 		.4byte	.LASF24
- 647 02bf 01       		.byte	0x1
- 648 02c0 1B       		.byte	0x1b
- 649 02c1 A9020000 		.4byte	0x2a9
- 650 02c5 05       		.uleb128 0x5
- 651 02c6 03       		.byte	0x3
- 652 02c7 00000000 		.4byte	soundBuffer_I2S
- 653 02cb 16       		.uleb128 0x16
- 654 02cc 2B000000 		.4byte	.LASF25
- 655 02d0 01       		.byte	0x1
- 656 02d1 1F       		.byte	0x1f
- 657 02d2 81000000 		.4byte	0x81
- 658 02d6 05       		.uleb128 0x5
- 659 02d7 03       		.byte	0x3
- 660 02d8 00000000 		.4byte	dmaChannel
- 661 02dc 16       		.uleb128 0x16
- 662 02dd A3000000 		.4byte	.LASF26
- 663 02e1 01       		.byte	0x1
- 664 02e2 20       		.byte	0x20
- 665 02e3 81000000 		.4byte	0x81
- 666 02e7 05       		.uleb128 0x5
- 667 02e8 03       		.byte	0x3
- 668 02e9 00000000 		.4byte	dmaTd
- 669 02ed 16       		.uleb128 0x16
- 670 02ee 00000000 		.4byte	.LASF27
- 671 02f2 01       		.byte	0x1
- 672 02f3 23       		.byte	0x23
- 673 02f4 CB000000 		.4byte	0xcb
- 674 02f8 05       		.uleb128 0x5
- 675 02f9 03       		.byte	0x3
- 676 02fa 00000000 		.4byte	dmaIndex
- 677 02fe 16       		.uleb128 0x16
- 678 02ff 6A020000 		.4byte	.LASF28
- 679 0303 01       		.byte	0x1
- 680 0304 24       		.byte	0x24
- 681 0305 8D000000 		.4byte	0x8d
- 682 0309 05       		.uleb128 0x5
- 683 030a 03       		.byte	0x3
- 684 030b 00000000 		.4byte	cpuIndex
- 685 030f 17       		.uleb128 0x17
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 16
+ 636 02aa BB010000 		.4byte	0x1bb
+ 637 02ae 00       		.byte	0
+ 638 02af 12       		.uleb128 0x12
+ 639 02b0 04       		.byte	0x4
+ 640 02b1 A2000000 		.4byte	0xa2
+ 641 02b5 13       		.uleb128 0x13
+ 642 02b6 FA010000 		.4byte	.LASF29
+ 643 02ba 06       		.byte	0x6
+ 644 02bb 1207     		.2byte	0x712
+ 645 02bd C1020000 		.4byte	0x2c1
+ 646 02c1 06       		.uleb128 0x6
+ 647 02c2 97000000 		.4byte	0x97
+ 648 02c6 14       		.uleb128 0x14
+ 649 02c7 8C000000 		.4byte	0x8c
+ 650 02cb D7020000 		.4byte	0x2d7
+ 651 02cf 15       		.uleb128 0x15
+ 652 02d0 0E010000 		.4byte	0x10e
+ 653 02d4 FF03     		.2byte	0x3ff
+ 654 02d6 00       		.byte	0
+ 655 02d7 16       		.uleb128 0x16
+ 656 02d8 F6020000 		.4byte	.LASF30
+ 657 02dc 01       		.byte	0x1
+ 658 02dd 1B       		.byte	0x1b
+ 659 02de C6020000 		.4byte	0x2c6
+ 660 02e2 05       		.uleb128 0x5
+ 661 02e3 03       		.byte	0x3
+ 662 02e4 00000000 		.4byte	soundBuffer_I2S
+ 663 02e8 16       		.uleb128 0x16
+ 664 02e9 2D000000 		.4byte	.LASF31
+ 665 02ed 01       		.byte	0x1
+ 666 02ee 1F       		.byte	0x1f
+ 667 02ef AD000000 		.4byte	0xad
+ 668 02f3 05       		.uleb128 0x5
+ 669 02f4 03       		.byte	0x3
+ 670 02f5 00000000 		.4byte	dmaChannel
+ 671 02f9 16       		.uleb128 0x16
+ 672 02fa C6000000 		.4byte	.LASF32
+ 673 02fe 01       		.byte	0x1
+ 674 02ff 20       		.byte	0x20
+ 675 0300 AD000000 		.4byte	0xad
+ 676 0304 05       		.uleb128 0x5
+ 677 0305 03       		.byte	0x3
+ 678 0306 00000000 		.4byte	dmaTd
+ 679 030a 16       		.uleb128 0x16
+ 680 030b BD000000 		.4byte	.LASF33
+ 681 030f 01       		.byte	0x1
+ 682 0310 23       		.byte	0x23
+ 683 0311 F7000000 		.4byte	0xf7
+ 684 0315 05       		.uleb128 0x5
+ 685 0316 03       		.byte	0x3
+ 686 0317 00000000 		.4byte	dmaIndex
+ 687 031b 16       		.uleb128 0x16
+ 688 031c A7020000 		.4byte	.LASF34
+ 689 0320 01       		.byte	0x1
+ 690 0321 24       		.byte	0x24
+ 691 0322 B9000000 		.4byte	0xb9
+ 692 0326 05       		.uleb128 0x5
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 16
 
 
- 686 0310 E4020000 		.4byte	.LASF29
- 687 0314 E4020000 		.4byte	.LASF29
- 688 0318 06       		.byte	0x6
- 689 0319 1E       		.byte	0x1e
- 690 031a 17       		.uleb128 0x17
- 691 031b 8D000000 		.4byte	.LASF30
- 692 031f 8D000000 		.4byte	.LASF30
- 693 0323 07       		.byte	0x7
- 694 0324 38       		.byte	0x38
- 695 0325 17       		.uleb128 0x17
- 696 0326 4A010000 		.4byte	.LASF31
- 697 032a 4A010000 		.4byte	.LASF31
- 698 032e 07       		.byte	0x7
- 699 032f 3B       		.byte	0x3b
- 700 0330 17       		.uleb128 0x17
- 701 0331 19000000 		.4byte	.LASF32
- 702 0335 19000000 		.4byte	.LASF32
- 703 0339 07       		.byte	0x7
- 704 033a 3F       		.byte	0x3f
- 705 033b 17       		.uleb128 0x17
- 706 033c 2D020000 		.4byte	.LASF33
- 707 0340 2D020000 		.4byte	.LASF33
- 708 0344 07       		.byte	0x7
- 709 0345 2F       		.byte	0x2f
- 710 0346 17       		.uleb128 0x17
- 711 0347 F1010000 		.4byte	.LASF34
- 712 034b F1010000 		.4byte	.LASF34
- 713 034f 07       		.byte	0x7
- 714 0350 29       		.byte	0x29
- 715 0351 18       		.uleb128 0x18
- 716 0352 12020000 		.4byte	.LASF35
- 717 0356 12020000 		.4byte	.LASF35
- 718 035a 08       		.byte	0x8
- 719 035b 2A01     		.2byte	0x12a
- 720 035d 18       		.uleb128 0x18
- 721 035e 65000000 		.4byte	.LASF36
- 722 0362 65000000 		.4byte	.LASF36
- 723 0366 08       		.byte	0x8
- 724 0367 2D01     		.2byte	0x12d
- 725 0369 17       		.uleb128 0x17
- 726 036a 36000000 		.4byte	.LASF37
- 727 036e 36000000 		.4byte	.LASF37
- 728 0372 09       		.byte	0x9
- 729 0373 3E       		.byte	0x3e
- 730 0374 17       		.uleb128 0x17
- 731 0375 58020000 		.4byte	.LASF38
- 732 0379 58020000 		.4byte	.LASF38
- 733 037d 0A       		.byte	0xa
- 734 037e 28       		.byte	0x28
- 735 037f 17       		.uleb128 0x17
- 736 0380 8A020000 		.4byte	.LASF39
- 737 0384 8A020000 		.4byte	.LASF39
- 738 0388 0A       		.byte	0xa
- 739 0389 3A       		.byte	0x3a
- 740 038a 17       		.uleb128 0x17
- 741 038b E2010000 		.4byte	.LASF40
- 742 038f E2010000 		.4byte	.LASF40
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 17
+ 693 0327 03       		.byte	0x3
+ 694 0328 00000000 		.4byte	cpuIndex
+ 695 032c 14       		.uleb128 0x14
+ 696 032d DF000000 		.4byte	0xdf
+ 697 0331 3C030000 		.4byte	0x33c
+ 698 0335 17       		.uleb128 0x17
+ 699 0336 0E010000 		.4byte	0x10e
+ 700 033a 0C       		.byte	0xc
+ 701 033b 00       		.byte	0
+ 702 033c 16       		.uleb128 0x16
+ 703 033d 0F030000 		.4byte	.LASF35
+ 704 0341 01       		.byte	0x1
+ 705 0342 2B       		.byte	0x2b
+ 706 0343 2C030000 		.4byte	0x32c
+ 707 0347 05       		.uleb128 0x5
+ 708 0348 03       		.byte	0x3
+ 709 0349 00000000 		.4byte	hex_string
+ 710 034d 14       		.uleb128 0x14
+ 711 034e DF000000 		.4byte	0xdf
+ 712 0352 5D030000 		.4byte	0x35d
+ 713 0356 17       		.uleb128 0x17
+ 714 0357 0E010000 		.4byte	0x10e
+ 715 035b 05       		.byte	0x5
+ 716 035c 00       		.byte	0
+ 717 035d 16       		.uleb128 0x16
+ 718 035e 26030000 		.4byte	.LASF36
+ 719 0362 01       		.byte	0x1
+ 720 0363 2C       		.byte	0x2c
+ 721 0364 4D030000 		.4byte	0x34d
+ 722 0368 05       		.uleb128 0x5
+ 723 0369 03       		.byte	0x3
+ 724 036a 00000000 		.4byte	newline
+ 725 036e 18       		.uleb128 0x18
+ 726 036f 2E030000 		.4byte	.LASF37
+ 727 0373 2E030000 		.4byte	.LASF37
+ 728 0377 07       		.byte	0x7
+ 729 0378 1E       		.byte	0x1e
+ 730 0379 18       		.uleb128 0x18
+ 731 037a 97000000 		.4byte	.LASF38
+ 732 037e 97000000 		.4byte	.LASF38
+ 733 0382 08       		.byte	0x8
+ 734 0383 38       		.byte	0x38
+ 735 0384 18       		.uleb128 0x18
+ 736 0385 6D010000 		.4byte	.LASF39
+ 737 0389 6D010000 		.4byte	.LASF39
+ 738 038d 08       		.byte	0x8
+ 739 038e 3B       		.byte	0x3b
+ 740 038f 18       		.uleb128 0x18
+ 741 0390 1B000000 		.4byte	.LASF40
+ 742 0394 1B000000 		.4byte	.LASF40
+ 743 0398 08       		.byte	0x8
+ 744 0399 3F       		.byte	0x3f
+ 745 039a 18       		.uleb128 0x18
+ 746 039b 66020000 		.4byte	.LASF41
+ 747 039f 66020000 		.4byte	.LASF41
+ 748 03a3 08       		.byte	0x8
+ 749 03a4 2F       		.byte	0x2f
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 17
 
 
- 743 0393 0B       		.byte	0xb
- 744 0394 18       		.byte	0x18
- 745 0395 17       		.uleb128 0x17
- 746 0396 FA020000 		.4byte	.LASF41
- 747 039a FA020000 		.4byte	.LASF41
- 748 039e 0C       		.byte	0xc
- 749 039f E7       		.byte	0xe7
- 750 03a0 17       		.uleb128 0x17
- 751 03a1 4C000000 		.4byte	.LASF42
- 752 03a5 4C000000 		.4byte	.LASF42
- 753 03a9 0D       		.byte	0xd
- 754 03aa 24       		.byte	0x24
- 755 03ab 00       		.byte	0
- 756              		.section	.debug_abbrev,"",%progbits
- 757              	.Ldebug_abbrev0:
- 758 0000 01       		.uleb128 0x1
- 759 0001 11       		.uleb128 0x11
- 760 0002 01       		.byte	0x1
- 761 0003 25       		.uleb128 0x25
- 762 0004 0E       		.uleb128 0xe
- 763 0005 13       		.uleb128 0x13
- 764 0006 0B       		.uleb128 0xb
- 765 0007 03       		.uleb128 0x3
- 766 0008 0E       		.uleb128 0xe
- 767 0009 1B       		.uleb128 0x1b
- 768 000a 0E       		.uleb128 0xe
- 769 000b 55       		.uleb128 0x55
- 770 000c 17       		.uleb128 0x17
- 771 000d 11       		.uleb128 0x11
- 772 000e 01       		.uleb128 0x1
- 773 000f 10       		.uleb128 0x10
- 774 0010 17       		.uleb128 0x17
- 775 0011 00       		.byte	0
- 776 0012 00       		.byte	0
- 777 0013 02       		.uleb128 0x2
- 778 0014 24       		.uleb128 0x24
- 779 0015 00       		.byte	0
- 780 0016 0B       		.uleb128 0xb
- 781 0017 0B       		.uleb128 0xb
- 782 0018 3E       		.uleb128 0x3e
- 783 0019 0B       		.uleb128 0xb
- 784 001a 03       		.uleb128 0x3
- 785 001b 0E       		.uleb128 0xe
- 786 001c 00       		.byte	0
- 787 001d 00       		.byte	0
- 788 001e 03       		.uleb128 0x3
- 789 001f 16       		.uleb128 0x16
- 790 0020 00       		.byte	0
- 791 0021 03       		.uleb128 0x3
- 792 0022 0E       		.uleb128 0xe
- 793 0023 3A       		.uleb128 0x3a
- 794 0024 0B       		.uleb128 0xb
- 795 0025 3B       		.uleb128 0x3b
- 796 0026 0B       		.uleb128 0xb
- 797 0027 49       		.uleb128 0x49
- 798 0028 13       		.uleb128 0x13
- 799 0029 00       		.byte	0
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 18
+ 750 03a5 18       		.uleb128 0x18
+ 751 03a6 1D020000 		.4byte	.LASF42
+ 752 03aa 1D020000 		.4byte	.LASF42
+ 753 03ae 08       		.byte	0x8
+ 754 03af 29       		.byte	0x29
+ 755 03b0 19       		.uleb128 0x19
+ 756 03b1 4B020000 		.4byte	.LASF43
+ 757 03b5 4B020000 		.4byte	.LASF43
+ 758 03b9 09       		.byte	0x9
+ 759 03ba 2A01     		.2byte	0x12a
+ 760 03bc 19       		.uleb128 0x19
+ 761 03bd 76000000 		.4byte	.LASF44
+ 762 03c1 76000000 		.4byte	.LASF44
+ 763 03c5 09       		.byte	0x9
+ 764 03c6 2D01     		.2byte	0x12d
+ 765 03c8 18       		.uleb128 0x18
+ 766 03c9 38000000 		.4byte	.LASF45
+ 767 03cd 38000000 		.4byte	.LASF45
+ 768 03d1 0A       		.byte	0xa
+ 769 03d2 3E       		.byte	0x3e
+ 770 03d3 18       		.uleb128 0x18
+ 771 03d4 91020000 		.4byte	.LASF46
+ 772 03d8 91020000 		.4byte	.LASF46
+ 773 03dc 0B       		.byte	0xb
+ 774 03dd 28       		.byte	0x28
+ 775 03de 18       		.uleb128 0x18
+ 776 03df 32020000 		.4byte	.LASF47
+ 777 03e3 32020000 		.4byte	.LASF47
+ 778 03e7 0B       		.byte	0xb
+ 779 03e8 3A       		.byte	0x3a
+ 780 03e9 18       		.uleb128 0x18
+ 781 03ea 0E020000 		.4byte	.LASF48
+ 782 03ee 0E020000 		.4byte	.LASF48
+ 783 03f2 0C       		.byte	0xc
+ 784 03f3 18       		.byte	0x18
+ 785 03f4 18       		.uleb128 0x18
+ 786 03f5 44030000 		.4byte	.LASF49
+ 787 03f9 44030000 		.4byte	.LASF49
+ 788 03fd 0D       		.byte	0xd
+ 789 03fe E7       		.byte	0xe7
+ 790 03ff 18       		.uleb128 0x18
+ 791 0400 4E000000 		.4byte	.LASF50
+ 792 0404 4E000000 		.4byte	.LASF50
+ 793 0408 0E       		.byte	0xe
+ 794 0409 24       		.byte	0x24
+ 795 040a 00       		.byte	0
+ 796              		.section	.debug_abbrev,"",%progbits
+ 797              	.Ldebug_abbrev0:
+ 798 0000 01       		.uleb128 0x1
+ 799 0001 11       		.uleb128 0x11
+ 800 0002 01       		.byte	0x1
+ 801 0003 25       		.uleb128 0x25
+ 802 0004 0E       		.uleb128 0xe
+ 803 0005 13       		.uleb128 0x13
+ 804 0006 0B       		.uleb128 0xb
+ 805 0007 03       		.uleb128 0x3
+ 806 0008 0E       		.uleb128 0xe
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 18
 
 
- 800 002a 00       		.byte	0
- 801 002b 04       		.uleb128 0x4
- 802 002c 24       		.uleb128 0x24
- 803 002d 00       		.byte	0
- 804 002e 0B       		.uleb128 0xb
- 805 002f 0B       		.uleb128 0xb
- 806 0030 3E       		.uleb128 0x3e
- 807 0031 0B       		.uleb128 0xb
- 808 0032 03       		.uleb128 0x3
- 809 0033 08       		.uleb128 0x8
- 810 0034 00       		.byte	0
- 811 0035 00       		.byte	0
- 812 0036 05       		.uleb128 0x5
- 813 0037 16       		.uleb128 0x16
- 814 0038 00       		.byte	0
- 815 0039 03       		.uleb128 0x3
- 816 003a 0E       		.uleb128 0xe
- 817 003b 3A       		.uleb128 0x3a
- 818 003c 0B       		.uleb128 0xb
- 819 003d 3B       		.uleb128 0x3b
- 820 003e 05       		.uleb128 0x5
- 821 003f 49       		.uleb128 0x49
- 822 0040 13       		.uleb128 0x13
- 823 0041 00       		.byte	0
- 824 0042 00       		.byte	0
- 825 0043 06       		.uleb128 0x6
- 826 0044 35       		.uleb128 0x35
- 827 0045 00       		.byte	0
- 828 0046 49       		.uleb128 0x49
- 829 0047 13       		.uleb128 0x13
- 830 0048 00       		.byte	0
- 831 0049 00       		.byte	0
- 832 004a 07       		.uleb128 0x7
- 833 004b 2E       		.uleb128 0x2e
- 834 004c 00       		.byte	0
- 835 004d 3F       		.uleb128 0x3f
- 836 004e 19       		.uleb128 0x19
- 837 004f 03       		.uleb128 0x3
- 838 0050 0E       		.uleb128 0xe
- 839 0051 3A       		.uleb128 0x3a
- 840 0052 0B       		.uleb128 0xb
- 841 0053 3B       		.uleb128 0x3b
- 842 0054 0B       		.uleb128 0xb
- 843 0055 27       		.uleb128 0x27
- 844 0056 19       		.uleb128 0x19
- 845 0057 11       		.uleb128 0x11
- 846 0058 01       		.uleb128 0x1
- 847 0059 12       		.uleb128 0x12
- 848 005a 06       		.uleb128 0x6
- 849 005b 40       		.uleb128 0x40
- 850 005c 18       		.uleb128 0x18
- 851 005d 9742     		.uleb128 0x2117
- 852 005f 19       		.uleb128 0x19
- 853 0060 00       		.byte	0
- 854 0061 00       		.byte	0
- 855 0062 08       		.uleb128 0x8
- 856 0063 2E       		.uleb128 0x2e
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 19
+ 807 0009 1B       		.uleb128 0x1b
+ 808 000a 0E       		.uleb128 0xe
+ 809 000b 55       		.uleb128 0x55
+ 810 000c 17       		.uleb128 0x17
+ 811 000d 11       		.uleb128 0x11
+ 812 000e 01       		.uleb128 0x1
+ 813 000f 10       		.uleb128 0x10
+ 814 0010 17       		.uleb128 0x17
+ 815 0011 00       		.byte	0
+ 816 0012 00       		.byte	0
+ 817 0013 02       		.uleb128 0x2
+ 818 0014 24       		.uleb128 0x24
+ 819 0015 00       		.byte	0
+ 820 0016 0B       		.uleb128 0xb
+ 821 0017 0B       		.uleb128 0xb
+ 822 0018 3E       		.uleb128 0x3e
+ 823 0019 0B       		.uleb128 0xb
+ 824 001a 03       		.uleb128 0x3
+ 825 001b 0E       		.uleb128 0xe
+ 826 001c 00       		.byte	0
+ 827 001d 00       		.byte	0
+ 828 001e 03       		.uleb128 0x3
+ 829 001f 16       		.uleb128 0x16
+ 830 0020 00       		.byte	0
+ 831 0021 03       		.uleb128 0x3
+ 832 0022 0E       		.uleb128 0xe
+ 833 0023 3A       		.uleb128 0x3a
+ 834 0024 0B       		.uleb128 0xb
+ 835 0025 3B       		.uleb128 0x3b
+ 836 0026 0B       		.uleb128 0xb
+ 837 0027 49       		.uleb128 0x49
+ 838 0028 13       		.uleb128 0x13
+ 839 0029 00       		.byte	0
+ 840 002a 00       		.byte	0
+ 841 002b 04       		.uleb128 0x4
+ 842 002c 24       		.uleb128 0x24
+ 843 002d 00       		.byte	0
+ 844 002e 0B       		.uleb128 0xb
+ 845 002f 0B       		.uleb128 0xb
+ 846 0030 3E       		.uleb128 0x3e
+ 847 0031 0B       		.uleb128 0xb
+ 848 0032 03       		.uleb128 0x3
+ 849 0033 08       		.uleb128 0x8
+ 850 0034 00       		.byte	0
+ 851 0035 00       		.byte	0
+ 852 0036 05       		.uleb128 0x5
+ 853 0037 16       		.uleb128 0x16
+ 854 0038 00       		.byte	0
+ 855 0039 03       		.uleb128 0x3
+ 856 003a 0E       		.uleb128 0xe
+ 857 003b 3A       		.uleb128 0x3a
+ 858 003c 0B       		.uleb128 0xb
+ 859 003d 3B       		.uleb128 0x3b
+ 860 003e 05       		.uleb128 0x5
+ 861 003f 49       		.uleb128 0x49
+ 862 0040 13       		.uleb128 0x13
+ 863 0041 00       		.byte	0
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 19
 
 
- 857 0064 01       		.byte	0x1
- 858 0065 3F       		.uleb128 0x3f
- 859 0066 19       		.uleb128 0x19
- 860 0067 03       		.uleb128 0x3
- 861 0068 0E       		.uleb128 0xe
- 862 0069 3A       		.uleb128 0x3a
- 863 006a 0B       		.uleb128 0xb
- 864 006b 3B       		.uleb128 0x3b
- 865 006c 0B       		.uleb128 0xb
- 866 006d 27       		.uleb128 0x27
- 867 006e 19       		.uleb128 0x19
- 868 006f 11       		.uleb128 0x11
- 869 0070 01       		.uleb128 0x1
- 870 0071 12       		.uleb128 0x12
- 871 0072 06       		.uleb128 0x6
- 872 0073 40       		.uleb128 0x40
- 873 0074 18       		.uleb128 0x18
- 874 0075 9742     		.uleb128 0x2117
- 875 0077 19       		.uleb128 0x19
- 876 0078 01       		.uleb128 0x1
- 877 0079 13       		.uleb128 0x13
- 878 007a 00       		.byte	0
- 879 007b 00       		.byte	0
- 880 007c 09       		.uleb128 0x9
- 881 007d 898201   		.uleb128 0x4109
- 882 0080 01       		.byte	0x1
- 883 0081 11       		.uleb128 0x11
- 884 0082 01       		.uleb128 0x1
- 885 0083 31       		.uleb128 0x31
- 886 0084 13       		.uleb128 0x13
- 887 0085 01       		.uleb128 0x1
- 888 0086 13       		.uleb128 0x13
- 889 0087 00       		.byte	0
- 890 0088 00       		.byte	0
- 891 0089 0A       		.uleb128 0xa
- 892 008a 8A8201   		.uleb128 0x410a
- 893 008d 00       		.byte	0
- 894 008e 02       		.uleb128 0x2
- 895 008f 18       		.uleb128 0x18
- 896 0090 9142     		.uleb128 0x2111
- 897 0092 18       		.uleb128 0x18
- 898 0093 00       		.byte	0
- 899 0094 00       		.byte	0
- 900 0095 0B       		.uleb128 0xb
- 901 0096 898201   		.uleb128 0x4109
- 902 0099 00       		.byte	0
- 903 009a 11       		.uleb128 0x11
- 904 009b 01       		.uleb128 0x1
- 905 009c 31       		.uleb128 0x31
- 906 009d 13       		.uleb128 0x13
- 907 009e 00       		.byte	0
- 908 009f 00       		.byte	0
- 909 00a0 0C       		.uleb128 0xc
- 910 00a1 898201   		.uleb128 0x4109
- 911 00a4 01       		.byte	0x1
- 912 00a5 11       		.uleb128 0x11
- 913 00a6 01       		.uleb128 0x1
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 20
+ 864 0042 00       		.byte	0
+ 865 0043 06       		.uleb128 0x6
+ 866 0044 35       		.uleb128 0x35
+ 867 0045 00       		.byte	0
+ 868 0046 49       		.uleb128 0x49
+ 869 0047 13       		.uleb128 0x13
+ 870 0048 00       		.byte	0
+ 871 0049 00       		.byte	0
+ 872 004a 07       		.uleb128 0x7
+ 873 004b 2E       		.uleb128 0x2e
+ 874 004c 00       		.byte	0
+ 875 004d 3F       		.uleb128 0x3f
+ 876 004e 19       		.uleb128 0x19
+ 877 004f 03       		.uleb128 0x3
+ 878 0050 0E       		.uleb128 0xe
+ 879 0051 3A       		.uleb128 0x3a
+ 880 0052 0B       		.uleb128 0xb
+ 881 0053 3B       		.uleb128 0x3b
+ 882 0054 0B       		.uleb128 0xb
+ 883 0055 27       		.uleb128 0x27
+ 884 0056 19       		.uleb128 0x19
+ 885 0057 11       		.uleb128 0x11
+ 886 0058 01       		.uleb128 0x1
+ 887 0059 12       		.uleb128 0x12
+ 888 005a 06       		.uleb128 0x6
+ 889 005b 40       		.uleb128 0x40
+ 890 005c 18       		.uleb128 0x18
+ 891 005d 9742     		.uleb128 0x2117
+ 892 005f 19       		.uleb128 0x19
+ 893 0060 00       		.byte	0
+ 894 0061 00       		.byte	0
+ 895 0062 08       		.uleb128 0x8
+ 896 0063 2E       		.uleb128 0x2e
+ 897 0064 01       		.byte	0x1
+ 898 0065 3F       		.uleb128 0x3f
+ 899 0066 19       		.uleb128 0x19
+ 900 0067 03       		.uleb128 0x3
+ 901 0068 0E       		.uleb128 0xe
+ 902 0069 3A       		.uleb128 0x3a
+ 903 006a 0B       		.uleb128 0xb
+ 904 006b 3B       		.uleb128 0x3b
+ 905 006c 0B       		.uleb128 0xb
+ 906 006d 27       		.uleb128 0x27
+ 907 006e 19       		.uleb128 0x19
+ 908 006f 11       		.uleb128 0x11
+ 909 0070 01       		.uleb128 0x1
+ 910 0071 12       		.uleb128 0x12
+ 911 0072 06       		.uleb128 0x6
+ 912 0073 40       		.uleb128 0x40
+ 913 0074 18       		.uleb128 0x18
+ 914 0075 9742     		.uleb128 0x2117
+ 915 0077 19       		.uleb128 0x19
+ 916 0078 01       		.uleb128 0x1
+ 917 0079 13       		.uleb128 0x13
+ 918 007a 00       		.byte	0
+ 919 007b 00       		.byte	0
+ 920 007c 09       		.uleb128 0x9
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 20
 
 
- 914 00a7 31       		.uleb128 0x31
- 915 00a8 13       		.uleb128 0x13
- 916 00a9 00       		.byte	0
- 917 00aa 00       		.byte	0
- 918 00ab 0D       		.uleb128 0xd
- 919 00ac 2E       		.uleb128 0x2e
- 920 00ad 01       		.byte	0x1
- 921 00ae 3F       		.uleb128 0x3f
- 922 00af 19       		.uleb128 0x19
- 923 00b0 03       		.uleb128 0x3
- 924 00b1 0E       		.uleb128 0xe
- 925 00b2 3A       		.uleb128 0x3a
- 926 00b3 0B       		.uleb128 0xb
- 927 00b4 3B       		.uleb128 0x3b
- 928 00b5 0B       		.uleb128 0xb
- 929 00b6 27       		.uleb128 0x27
- 930 00b7 19       		.uleb128 0x19
- 931 00b8 49       		.uleb128 0x49
- 932 00b9 13       		.uleb128 0x13
- 933 00ba 8701     		.uleb128 0x87
- 934 00bc 19       		.uleb128 0x19
- 935 00bd 11       		.uleb128 0x11
- 936 00be 01       		.uleb128 0x1
- 937 00bf 12       		.uleb128 0x12
- 938 00c0 06       		.uleb128 0x6
- 939 00c1 40       		.uleb128 0x40
- 940 00c2 18       		.uleb128 0x18
- 941 00c3 9742     		.uleb128 0x2117
- 942 00c5 19       		.uleb128 0x19
- 943 00c6 01       		.uleb128 0x1
- 944 00c7 13       		.uleb128 0x13
- 945 00c8 00       		.byte	0
- 946 00c9 00       		.byte	0
- 947 00ca 0E       		.uleb128 0xe
- 948 00cb 34       		.uleb128 0x34
- 949 00cc 00       		.byte	0
- 950 00cd 03       		.uleb128 0x3
- 951 00ce 08       		.uleb128 0x8
- 952 00cf 3A       		.uleb128 0x3a
- 953 00d0 0B       		.uleb128 0xb
- 954 00d1 3B       		.uleb128 0x3b
- 955 00d2 0B       		.uleb128 0xb
- 956 00d3 49       		.uleb128 0x49
- 957 00d4 13       		.uleb128 0x13
- 958 00d5 00       		.byte	0
- 959 00d6 00       		.byte	0
- 960 00d7 0F       		.uleb128 0xf
- 961 00d8 0B       		.uleb128 0xb
- 962 00d9 01       		.byte	0x1
- 963 00da 11       		.uleb128 0x11
- 964 00db 01       		.uleb128 0x1
- 965 00dc 12       		.uleb128 0x12
- 966 00dd 06       		.uleb128 0x6
- 967 00de 01       		.uleb128 0x1
- 968 00df 13       		.uleb128 0x13
- 969 00e0 00       		.byte	0
- 970 00e1 00       		.byte	0
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 21
+ 921 007d 898201   		.uleb128 0x4109
+ 922 0080 01       		.byte	0x1
+ 923 0081 11       		.uleb128 0x11
+ 924 0082 01       		.uleb128 0x1
+ 925 0083 31       		.uleb128 0x31
+ 926 0084 13       		.uleb128 0x13
+ 927 0085 01       		.uleb128 0x1
+ 928 0086 13       		.uleb128 0x13
+ 929 0087 00       		.byte	0
+ 930 0088 00       		.byte	0
+ 931 0089 0A       		.uleb128 0xa
+ 932 008a 8A8201   		.uleb128 0x410a
+ 933 008d 00       		.byte	0
+ 934 008e 02       		.uleb128 0x2
+ 935 008f 18       		.uleb128 0x18
+ 936 0090 9142     		.uleb128 0x2111
+ 937 0092 18       		.uleb128 0x18
+ 938 0093 00       		.byte	0
+ 939 0094 00       		.byte	0
+ 940 0095 0B       		.uleb128 0xb
+ 941 0096 898201   		.uleb128 0x4109
+ 942 0099 00       		.byte	0
+ 943 009a 11       		.uleb128 0x11
+ 944 009b 01       		.uleb128 0x1
+ 945 009c 31       		.uleb128 0x31
+ 946 009d 13       		.uleb128 0x13
+ 947 009e 00       		.byte	0
+ 948 009f 00       		.byte	0
+ 949 00a0 0C       		.uleb128 0xc
+ 950 00a1 898201   		.uleb128 0x4109
+ 951 00a4 01       		.byte	0x1
+ 952 00a5 11       		.uleb128 0x11
+ 953 00a6 01       		.uleb128 0x1
+ 954 00a7 31       		.uleb128 0x31
+ 955 00a8 13       		.uleb128 0x13
+ 956 00a9 00       		.byte	0
+ 957 00aa 00       		.byte	0
+ 958 00ab 0D       		.uleb128 0xd
+ 959 00ac 2E       		.uleb128 0x2e
+ 960 00ad 01       		.byte	0x1
+ 961 00ae 3F       		.uleb128 0x3f
+ 962 00af 19       		.uleb128 0x19
+ 963 00b0 03       		.uleb128 0x3
+ 964 00b1 0E       		.uleb128 0xe
+ 965 00b2 3A       		.uleb128 0x3a
+ 966 00b3 0B       		.uleb128 0xb
+ 967 00b4 3B       		.uleb128 0x3b
+ 968 00b5 0B       		.uleb128 0xb
+ 969 00b6 27       		.uleb128 0x27
+ 970 00b7 19       		.uleb128 0x19
+ 971 00b8 49       		.uleb128 0x49
+ 972 00b9 13       		.uleb128 0x13
+ 973 00ba 8701     		.uleb128 0x87
+ 974 00bc 19       		.uleb128 0x19
+ 975 00bd 11       		.uleb128 0x11
+ 976 00be 01       		.uleb128 0x1
+ 977 00bf 12       		.uleb128 0x12
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 21
 
 
- 971 00e2 10       		.uleb128 0x10
- 972 00e3 34       		.uleb128 0x34
- 973 00e4 00       		.byte	0
- 974 00e5 03       		.uleb128 0x3
- 975 00e6 0E       		.uleb128 0xe
- 976 00e7 3A       		.uleb128 0x3a
- 977 00e8 0B       		.uleb128 0xb
- 978 00e9 3B       		.uleb128 0x3b
- 979 00ea 0B       		.uleb128 0xb
- 980 00eb 49       		.uleb128 0x49
- 981 00ec 13       		.uleb128 0x13
- 982 00ed 02       		.uleb128 0x2
- 983 00ee 17       		.uleb128 0x17
- 984 00ef 00       		.byte	0
- 985 00f0 00       		.byte	0
- 986 00f1 11       		.uleb128 0x11
- 987 00f2 34       		.uleb128 0x34
- 988 00f3 00       		.byte	0
- 989 00f4 03       		.uleb128 0x3
- 990 00f5 08       		.uleb128 0x8
- 991 00f6 3A       		.uleb128 0x3a
- 992 00f7 0B       		.uleb128 0xb
- 993 00f8 3B       		.uleb128 0x3b
- 994 00f9 0B       		.uleb128 0xb
- 995 00fa 49       		.uleb128 0x49
- 996 00fb 13       		.uleb128 0x13
- 997 00fc 02       		.uleb128 0x2
- 998 00fd 18       		.uleb128 0x18
- 999 00fe 00       		.byte	0
- 1000 00ff 00       		.byte	0
- 1001 0100 12       		.uleb128 0x12
- 1002 0101 01       		.uleb128 0x1
- 1003 0102 01       		.byte	0x1
- 1004 0103 49       		.uleb128 0x49
- 1005 0104 13       		.uleb128 0x13
- 1006 0105 01       		.uleb128 0x1
- 1007 0106 13       		.uleb128 0x13
- 1008 0107 00       		.byte	0
- 1009 0108 00       		.byte	0
- 1010 0109 13       		.uleb128 0x13
- 1011 010a 21       		.uleb128 0x21
- 1012 010b 00       		.byte	0
- 1013 010c 49       		.uleb128 0x49
- 1014 010d 13       		.uleb128 0x13
- 1015 010e 2F       		.uleb128 0x2f
- 1016 010f 0B       		.uleb128 0xb
- 1017 0110 00       		.byte	0
- 1018 0111 00       		.byte	0
- 1019 0112 14       		.uleb128 0x14
- 1020 0113 34       		.uleb128 0x34
- 1021 0114 00       		.byte	0
- 1022 0115 03       		.uleb128 0x3
- 1023 0116 0E       		.uleb128 0xe
- 1024 0117 3A       		.uleb128 0x3a
- 1025 0118 0B       		.uleb128 0xb
- 1026 0119 3B       		.uleb128 0x3b
- 1027 011a 05       		.uleb128 0x5
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 22
+ 978 00c0 06       		.uleb128 0x6
+ 979 00c1 40       		.uleb128 0x40
+ 980 00c2 18       		.uleb128 0x18
+ 981 00c3 9742     		.uleb128 0x2117
+ 982 00c5 19       		.uleb128 0x19
+ 983 00c6 01       		.uleb128 0x1
+ 984 00c7 13       		.uleb128 0x13
+ 985 00c8 00       		.byte	0
+ 986 00c9 00       		.byte	0
+ 987 00ca 0E       		.uleb128 0xe
+ 988 00cb 34       		.uleb128 0x34
+ 989 00cc 00       		.byte	0
+ 990 00cd 03       		.uleb128 0x3
+ 991 00ce 0E       		.uleb128 0xe
+ 992 00cf 3A       		.uleb128 0x3a
+ 993 00d0 0B       		.uleb128 0xb
+ 994 00d1 3B       		.uleb128 0x3b
+ 995 00d2 0B       		.uleb128 0xb
+ 996 00d3 49       		.uleb128 0x49
+ 997 00d4 13       		.uleb128 0x13
+ 998 00d5 02       		.uleb128 0x2
+ 999 00d6 18       		.uleb128 0x18
+ 1000 00d7 00       		.byte	0
+ 1001 00d8 00       		.byte	0
+ 1002 00d9 0F       		.uleb128 0xf
+ 1003 00da 34       		.uleb128 0x34
+ 1004 00db 00       		.byte	0
+ 1005 00dc 03       		.uleb128 0x3
+ 1006 00dd 0E       		.uleb128 0xe
+ 1007 00de 3A       		.uleb128 0x3a
+ 1008 00df 0B       		.uleb128 0xb
+ 1009 00e0 3B       		.uleb128 0x3b
+ 1010 00e1 0B       		.uleb128 0xb
+ 1011 00e2 49       		.uleb128 0x49
+ 1012 00e3 13       		.uleb128 0x13
+ 1013 00e4 1C       		.uleb128 0x1c
+ 1014 00e5 05       		.uleb128 0x5
+ 1015 00e6 00       		.byte	0
+ 1016 00e7 00       		.byte	0
+ 1017 00e8 10       		.uleb128 0x10
+ 1018 00e9 0B       		.uleb128 0xb
+ 1019 00ea 01       		.byte	0x1
+ 1020 00eb 55       		.uleb128 0x55
+ 1021 00ec 17       		.uleb128 0x17
+ 1022 00ed 01       		.uleb128 0x1
+ 1023 00ee 13       		.uleb128 0x13
+ 1024 00ef 00       		.byte	0
+ 1025 00f0 00       		.byte	0
+ 1026 00f1 11       		.uleb128 0x11
+ 1027 00f2 34       		.uleb128 0x34
+ 1028 00f3 00       		.byte	0
+ 1029 00f4 03       		.uleb128 0x3
+ 1030 00f5 08       		.uleb128 0x8
+ 1031 00f6 3A       		.uleb128 0x3a
+ 1032 00f7 0B       		.uleb128 0xb
+ 1033 00f8 3B       		.uleb128 0x3b
+ 1034 00f9 0B       		.uleb128 0xb
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 22
 
 
- 1028 011b 49       		.uleb128 0x49
- 1029 011c 13       		.uleb128 0x13
- 1030 011d 3F       		.uleb128 0x3f
- 1031 011e 19       		.uleb128 0x19
- 1032 011f 3C       		.uleb128 0x3c
- 1033 0120 19       		.uleb128 0x19
- 1034 0121 00       		.byte	0
- 1035 0122 00       		.byte	0
- 1036 0123 15       		.uleb128 0x15
- 1037 0124 21       		.uleb128 0x21
- 1038 0125 00       		.byte	0
- 1039 0126 49       		.uleb128 0x49
- 1040 0127 13       		.uleb128 0x13
- 1041 0128 2F       		.uleb128 0x2f
- 1042 0129 05       		.uleb128 0x5
- 1043 012a 00       		.byte	0
- 1044 012b 00       		.byte	0
- 1045 012c 16       		.uleb128 0x16
- 1046 012d 34       		.uleb128 0x34
- 1047 012e 00       		.byte	0
- 1048 012f 03       		.uleb128 0x3
- 1049 0130 0E       		.uleb128 0xe
- 1050 0131 3A       		.uleb128 0x3a
- 1051 0132 0B       		.uleb128 0xb
- 1052 0133 3B       		.uleb128 0x3b
- 1053 0134 0B       		.uleb128 0xb
- 1054 0135 49       		.uleb128 0x49
- 1055 0136 13       		.uleb128 0x13
- 1056 0137 3F       		.uleb128 0x3f
- 1057 0138 19       		.uleb128 0x19
- 1058 0139 02       		.uleb128 0x2
- 1059 013a 18       		.uleb128 0x18
- 1060 013b 00       		.byte	0
- 1061 013c 00       		.byte	0
- 1062 013d 17       		.uleb128 0x17
- 1063 013e 2E       		.uleb128 0x2e
- 1064 013f 00       		.byte	0
- 1065 0140 3F       		.uleb128 0x3f
- 1066 0141 19       		.uleb128 0x19
- 1067 0142 3C       		.uleb128 0x3c
- 1068 0143 19       		.uleb128 0x19
- 1069 0144 6E       		.uleb128 0x6e
- 1070 0145 0E       		.uleb128 0xe
- 1071 0146 03       		.uleb128 0x3
- 1072 0147 0E       		.uleb128 0xe
- 1073 0148 3A       		.uleb128 0x3a
- 1074 0149 0B       		.uleb128 0xb
- 1075 014a 3B       		.uleb128 0x3b
- 1076 014b 0B       		.uleb128 0xb
- 1077 014c 00       		.byte	0
- 1078 014d 00       		.byte	0
- 1079 014e 18       		.uleb128 0x18
- 1080 014f 2E       		.uleb128 0x2e
- 1081 0150 00       		.byte	0
- 1082 0151 3F       		.uleb128 0x3f
- 1083 0152 19       		.uleb128 0x19
- 1084 0153 3C       		.uleb128 0x3c
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 23
+ 1035 00fa 49       		.uleb128 0x49
+ 1036 00fb 13       		.uleb128 0x13
+ 1037 00fc 02       		.uleb128 0x2
+ 1038 00fd 17       		.uleb128 0x17
+ 1039 00fe 00       		.byte	0
+ 1040 00ff 00       		.byte	0
+ 1041 0100 12       		.uleb128 0x12
+ 1042 0101 0F       		.uleb128 0xf
+ 1043 0102 00       		.byte	0
+ 1044 0103 0B       		.uleb128 0xb
+ 1045 0104 0B       		.uleb128 0xb
+ 1046 0105 49       		.uleb128 0x49
+ 1047 0106 13       		.uleb128 0x13
+ 1048 0107 00       		.byte	0
+ 1049 0108 00       		.byte	0
+ 1050 0109 13       		.uleb128 0x13
+ 1051 010a 34       		.uleb128 0x34
+ 1052 010b 00       		.byte	0
+ 1053 010c 03       		.uleb128 0x3
+ 1054 010d 0E       		.uleb128 0xe
+ 1055 010e 3A       		.uleb128 0x3a
+ 1056 010f 0B       		.uleb128 0xb
+ 1057 0110 3B       		.uleb128 0x3b
+ 1058 0111 05       		.uleb128 0x5
+ 1059 0112 49       		.uleb128 0x49
+ 1060 0113 13       		.uleb128 0x13
+ 1061 0114 3F       		.uleb128 0x3f
+ 1062 0115 19       		.uleb128 0x19
+ 1063 0116 3C       		.uleb128 0x3c
+ 1064 0117 19       		.uleb128 0x19
+ 1065 0118 00       		.byte	0
+ 1066 0119 00       		.byte	0
+ 1067 011a 14       		.uleb128 0x14
+ 1068 011b 01       		.uleb128 0x1
+ 1069 011c 01       		.byte	0x1
+ 1070 011d 49       		.uleb128 0x49
+ 1071 011e 13       		.uleb128 0x13
+ 1072 011f 01       		.uleb128 0x1
+ 1073 0120 13       		.uleb128 0x13
+ 1074 0121 00       		.byte	0
+ 1075 0122 00       		.byte	0
+ 1076 0123 15       		.uleb128 0x15
+ 1077 0124 21       		.uleb128 0x21
+ 1078 0125 00       		.byte	0
+ 1079 0126 49       		.uleb128 0x49
+ 1080 0127 13       		.uleb128 0x13
+ 1081 0128 2F       		.uleb128 0x2f
+ 1082 0129 05       		.uleb128 0x5
+ 1083 012a 00       		.byte	0
+ 1084 012b 00       		.byte	0
+ 1085 012c 16       		.uleb128 0x16
+ 1086 012d 34       		.uleb128 0x34
+ 1087 012e 00       		.byte	0
+ 1088 012f 03       		.uleb128 0x3
+ 1089 0130 0E       		.uleb128 0xe
+ 1090 0131 3A       		.uleb128 0x3a
+ 1091 0132 0B       		.uleb128 0xb
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 23
 
 
- 1085 0154 19       		.uleb128 0x19
- 1086 0155 6E       		.uleb128 0x6e
- 1087 0156 0E       		.uleb128 0xe
- 1088 0157 03       		.uleb128 0x3
- 1089 0158 0E       		.uleb128 0xe
- 1090 0159 3A       		.uleb128 0x3a
- 1091 015a 0B       		.uleb128 0xb
- 1092 015b 3B       		.uleb128 0x3b
- 1093 015c 05       		.uleb128 0x5
- 1094 015d 00       		.byte	0
- 1095 015e 00       		.byte	0
- 1096 015f 00       		.byte	0
- 1097              		.section	.debug_loc,"",%progbits
- 1098              	.Ldebug_loc0:
- 1099              	.LLST0:
- 1100 0000 1E000000 		.4byte	.LVL14
- 1101 0004 22000000 		.4byte	.LVL15
- 1102 0008 0200     		.2byte	0x2
- 1103 000a 30       		.byte	0x30
- 1104 000b 9F       		.byte	0x9f
- 1105 000c 22000000 		.4byte	.LVL15
- 1106 0010 2C000000 		.4byte	.LVL16
- 1107 0014 0500     		.2byte	0x5
- 1108 0016 70       		.byte	0x70
- 1109 0017 00       		.sleb128 0
- 1110 0018 48       		.byte	0x48
- 1111 0019 24       		.byte	0x24
- 1112 001a 9F       		.byte	0x9f
- 1113 001b 2C000000 		.4byte	.LVL16
- 1114 001f 38000000 		.4byte	.LVL18
- 1115 0023 0100     		.2byte	0x1
- 1116 0025 52       		.byte	0x52
- 1117 0026 38000000 		.4byte	.LVL18
- 1118 002a 3A000000 		.4byte	.LVL19
- 1119 002e 0600     		.2byte	0x6
- 1120 0030 73       		.byte	0x73
- 1121 0031 00       		.sleb128 0
- 1122 0032 72       		.byte	0x72
- 1123 0033 00       		.sleb128 0
- 1124 0034 21       		.byte	0x21
- 1125 0035 9F       		.byte	0x9f
- 1126 0036 3A000000 		.4byte	.LVL19
- 1127 003a 41000000 		.4byte	.LVL20-1
- 1128 003e 0100     		.2byte	0x1
- 1129 0040 52       		.byte	0x52
- 1130 0041 00000000 		.4byte	0
- 1131 0045 00000000 		.4byte	0
- 1132              		.section	.debug_aranges,"",%progbits
- 1133 0000 34000000 		.4byte	0x34
- 1134 0004 0200     		.2byte	0x2
- 1135 0006 00000000 		.4byte	.Ldebug_info0
- 1136 000a 04       		.byte	0x4
- 1137 000b 00       		.byte	0
- 1138 000c 0000     		.2byte	0
- 1139 000e 0000     		.2byte	0
- 1140 0010 00000000 		.4byte	.LFB67
- 1141 0014 28000000 		.4byte	.LFE67-.LFB67
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 24
+ 1092 0133 3B       		.uleb128 0x3b
+ 1093 0134 0B       		.uleb128 0xb
+ 1094 0135 49       		.uleb128 0x49
+ 1095 0136 13       		.uleb128 0x13
+ 1096 0137 3F       		.uleb128 0x3f
+ 1097 0138 19       		.uleb128 0x19
+ 1098 0139 02       		.uleb128 0x2
+ 1099 013a 18       		.uleb128 0x18
+ 1100 013b 00       		.byte	0
+ 1101 013c 00       		.byte	0
+ 1102 013d 17       		.uleb128 0x17
+ 1103 013e 21       		.uleb128 0x21
+ 1104 013f 00       		.byte	0
+ 1105 0140 49       		.uleb128 0x49
+ 1106 0141 13       		.uleb128 0x13
+ 1107 0142 2F       		.uleb128 0x2f
+ 1108 0143 0B       		.uleb128 0xb
+ 1109 0144 00       		.byte	0
+ 1110 0145 00       		.byte	0
+ 1111 0146 18       		.uleb128 0x18
+ 1112 0147 2E       		.uleb128 0x2e
+ 1113 0148 00       		.byte	0
+ 1114 0149 3F       		.uleb128 0x3f
+ 1115 014a 19       		.uleb128 0x19
+ 1116 014b 3C       		.uleb128 0x3c
+ 1117 014c 19       		.uleb128 0x19
+ 1118 014d 6E       		.uleb128 0x6e
+ 1119 014e 0E       		.uleb128 0xe
+ 1120 014f 03       		.uleb128 0x3
+ 1121 0150 0E       		.uleb128 0xe
+ 1122 0151 3A       		.uleb128 0x3a
+ 1123 0152 0B       		.uleb128 0xb
+ 1124 0153 3B       		.uleb128 0x3b
+ 1125 0154 0B       		.uleb128 0xb
+ 1126 0155 00       		.byte	0
+ 1127 0156 00       		.byte	0
+ 1128 0157 19       		.uleb128 0x19
+ 1129 0158 2E       		.uleb128 0x2e
+ 1130 0159 00       		.byte	0
+ 1131 015a 3F       		.uleb128 0x3f
+ 1132 015b 19       		.uleb128 0x19
+ 1133 015c 3C       		.uleb128 0x3c
+ 1134 015d 19       		.uleb128 0x19
+ 1135 015e 6E       		.uleb128 0x6e
+ 1136 015f 0E       		.uleb128 0xe
+ 1137 0160 03       		.uleb128 0x3
+ 1138 0161 0E       		.uleb128 0xe
+ 1139 0162 3A       		.uleb128 0x3a
+ 1140 0163 0B       		.uleb128 0xb
+ 1141 0164 3B       		.uleb128 0x3b
+ 1142 0165 05       		.uleb128 0x5
+ 1143 0166 00       		.byte	0
+ 1144 0167 00       		.byte	0
+ 1145 0168 00       		.byte	0
+ 1146              		.section	.debug_loc,"",%progbits
+ 1147              	.Ldebug_loc0:
+ 1148              	.LLST0:
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 24
 
 
- 1142 0018 00000000 		.4byte	.LFB66
- 1143 001c 58000000 		.4byte	.LFE66-.LFB66
- 1144 0020 00000000 		.4byte	.LFB65
- 1145 0024 30000000 		.4byte	.LFE65-.LFB65
- 1146 0028 00000000 		.4byte	.LFB64
- 1147 002c 58000000 		.4byte	.LFE64-.LFB64
- 1148 0030 00000000 		.4byte	0
- 1149 0034 00000000 		.4byte	0
- 1150              		.section	.debug_ranges,"",%progbits
- 1151              	.Ldebug_ranges0:
- 1152 0000 00000000 		.4byte	.LFB67
- 1153 0004 28000000 		.4byte	.LFE67
- 1154 0008 00000000 		.4byte	.LFB66
- 1155 000c 58000000 		.4byte	.LFE66
- 1156 0010 00000000 		.4byte	.LFB65
- 1157 0014 30000000 		.4byte	.LFE65
- 1158 0018 00000000 		.4byte	.LFB64
- 1159 001c 58000000 		.4byte	.LFE64
- 1160 0020 00000000 		.4byte	0
- 1161 0024 00000000 		.4byte	0
- 1162              		.section	.debug_line,"",%progbits
- 1163              	.Ldebug_line0:
- 1164 0000 80020000 		.section	.debug_str,"MS",%progbits,1
- 1164      02001C02 
- 1164      00000201 
- 1164      FB0E0D00 
- 1164      01010101 
- 1165              	.LASF27:
- 1166 0000 646D6149 		.ascii	"dmaIndex\000"
- 1166      6E646578 
- 1166      00
- 1167              	.LASF22:
- 1168 0009 76616C75 		.ascii	"value\000"
- 1168      6500
- 1169              	.LASF9:
- 1170 000f 5F5F696E 		.ascii	"__int32_t\000"
- 1170      7433325F 
- 1170      7400
- 1171              	.LASF32:
- 1172 0019 4379446D 		.ascii	"CyDmaTdSetAddress\000"
- 1172      61546453 
- 1172      65744164 
- 1172      64726573 
- 1172      7300
- 1173              	.LASF25:
- 1174 002b 646D6143 		.ascii	"dmaChannel\000"
- 1174      68616E6E 
- 1174      656C00
- 1175              	.LASF37:
- 1176 0036 4932535F 		.ascii	"I2S_3v3_Start\000"
- 1176      3376335F 
- 1176      53746172 
- 1176      7400
- 1177              	.LASF20:
- 1178 0044 696E6974 		.ascii	"initDMA\000"
- 1178      444D4100 
- 1179              	.LASF42:
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 25
+ 1149 0000 14000000 		.4byte	.LVL14
+ 1150 0004 34000000 		.4byte	.LVL18
+ 1151 0008 0100     		.2byte	0x1
+ 1152 000a 54       		.byte	0x54
+ 1153 000b 36000000 		.4byte	.LVL19
+ 1154 000f 4C000000 		.4byte	.LFE64
+ 1155 0013 0100     		.2byte	0x1
+ 1156 0015 54       		.byte	0x54
+ 1157 0016 00000000 		.4byte	0
+ 1158 001a 00000000 		.4byte	0
+ 1159              		.section	.debug_aranges,"",%progbits
+ 1160 0000 34000000 		.4byte	0x34
+ 1161 0004 0200     		.2byte	0x2
+ 1162 0006 00000000 		.4byte	.Ldebug_info0
+ 1163 000a 04       		.byte	0x4
+ 1164 000b 00       		.byte	0
+ 1165 000c 0000     		.2byte	0
+ 1166 000e 0000     		.2byte	0
+ 1167 0010 00000000 		.4byte	.LFB67
+ 1168 0014 14000000 		.4byte	.LFE67-.LFB67
+ 1169 0018 00000000 		.4byte	.LFB66
+ 1170 001c 58000000 		.4byte	.LFE66-.LFB66
+ 1171 0020 00000000 		.4byte	.LFB65
+ 1172 0024 30000000 		.4byte	.LFE65-.LFB65
+ 1173 0028 00000000 		.4byte	.LFB64
+ 1174 002c 4C000000 		.4byte	.LFE64-.LFB64
+ 1175 0030 00000000 		.4byte	0
+ 1176 0034 00000000 		.4byte	0
+ 1177              		.section	.debug_ranges,"",%progbits
+ 1178              	.Ldebug_ranges0:
+ 1179 0000 14000000 		.4byte	.LBB2
+ 1180 0004 34000000 		.4byte	.LBE2
+ 1181 0008 36000000 		.4byte	.LBB3
+ 1182 000c 4C000000 		.4byte	.LBE3
+ 1183 0010 00000000 		.4byte	0
+ 1184 0014 00000000 		.4byte	0
+ 1185 0018 00000000 		.4byte	.LFB67
+ 1186 001c 14000000 		.4byte	.LFE67
+ 1187 0020 00000000 		.4byte	.LFB66
+ 1188 0024 58000000 		.4byte	.LFE66
+ 1189 0028 00000000 		.4byte	.LFB65
+ 1190 002c 30000000 		.4byte	.LFE65
+ 1191 0030 00000000 		.4byte	.LFB64
+ 1192 0034 4C000000 		.4byte	.LFE64
+ 1193 0038 00000000 		.4byte	0
+ 1194 003c 00000000 		.4byte	0
+ 1195              		.section	.debug_line,"",%progbits
+ 1196              	.Ldebug_line0:
+ 1197 0000 15030000 		.section	.debug_str,"MS",%progbits,1
+ 1197      02009E02 
+ 1197      00000201 
+ 1197      FB0E0D00 
+ 1197      01010101 
+ 1198              	.LASF4:
+ 1199 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 1199      6E74385F 
+ 1199      7400
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 25
 
 
- 1180 004c 55534255 		.ascii	"USBUART_PutString\000"
- 1180      4152545F 
- 1180      50757453 
- 1180      7472696E 
- 1180      6700
- 1181              	.LASF46:
- 1182 005e 446D6149 		.ascii	"DmaI2S\000"
- 1182      325300
- 1183              	.LASF36:
- 1184 0065 55534255 		.ascii	"USBUART_GetConfiguration\000"
- 1184      4152545F 
- 1184      47657443 
- 1184      6F6E6669 
- 1184      67757261 
- 1185              	.LASF21:
- 1186 007e 696E6974 		.ascii	"initComponents\000"
- 1186      436F6D70 
- 1186      6F6E656E 
- 1186      747300
- 1187              	.LASF30:
- 1188 008d 4379446D 		.ascii	"CyDmaTdAllocate\000"
- 1188      61546441 
- 1188      6C6C6F63 
- 1188      61746500 
- 1189              	.LASF14:
- 1190 009d 666C6F61 		.ascii	"float\000"
- 1190      7400
- 1191              	.LASF26:
- 1192 00a3 646D6154 		.ascii	"dmaTd\000"
- 1192      6400
- 1193              	.LASF1:
- 1194 00a9 756E7369 		.ascii	"unsigned char\000"
- 1194      676E6564 
- 1194      20636861 
- 1194      7200
- 1195              	.LASF43:
- 1196 00b7 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1196      43313120 
- 1196      352E342E 
- 1196      31203230 
- 1196      31363036 
- 1197 00ea 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1197      20726576 
- 1197      6973696F 
- 1197      6E203233 
- 1197      37373135 
- 1198 011d 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1198      66756E63 
- 1198      74696F6E 
- 1198      2D736563 
- 1198      74696F6E 
- 1199              	.LASF17:
- 1200 0145 72656738 		.ascii	"reg8\000"
- 1200      00
- 1201              	.LASF31:
- 1202 014a 4379446D 		.ascii	"CyDmaTdSetConfiguration\000"
- 1202      61546453 
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 26
-
-
- 1202      6574436F 
- 1202      6E666967 
- 1202      75726174 
- 1203              	.LASF5:
- 1204 0162 6C6F6E67 		.ascii	"long unsigned int\000"
- 1204      20756E73 
- 1204      69676E65 
- 1204      6420696E 
- 1204      7400
- 1205              	.LASF3:
- 1206 0174 73686F72 		.ascii	"short unsigned int\000"
- 1206      7420756E 
- 1206      7369676E 
- 1206      65642069 
- 1206      6E7400
- 1207              	.LASF45:
- 1208 0187 433A5C55 		.ascii	"C:\\Users\\tardi\\Desktop\\ES10-Drowning\\PSoCSampl"
- 1208      73657273 
- 1208      5C746172 
- 1208      64695C44 
- 1208      65736B74 
- 1209 01b5 65725C53 		.ascii	"er\\SamplingCircuit.cydsn\000"
- 1209      616D706C 
- 1209      696E6743 
- 1209      69726375 
- 1209      69742E63 
- 1210              	.LASF23:
- 1211 01ce 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 1211      52784275 
- 1211      66666572 
- 1211      00
- 1212              	.LASF15:
- 1213 01db 646F7562 		.ascii	"double\000"
- 1213      6C6500
- 1214              	.LASF40:
- 1215 01e2 446D6149 		.ascii	"DmaI2S_StartEx\000"
- 1215      32535F53 
- 1215      74617274 
- 1215      457800
- 1216              	.LASF34:
- 1217 01f1 4379446D 		.ascii	"CyDmaChEnable\000"
- 1217      61436845 
- 1217      6E61626C 
- 1217      6500
- 1218              	.LASF12:
- 1219 01ff 75696E74 		.ascii	"uint16\000"
- 1219      313600
+ 1200              	.LASF22:
+ 1201 000a 73697A65 		.ascii	"size_t\000"
+ 1201      5F7400
+ 1202              	.LASF5:
+ 1203 0011 5F5F696E 		.ascii	"__int32_t\000"
+ 1203      7433325F 
+ 1203      7400
+ 1204              	.LASF40:
+ 1205 001b 4379446D 		.ascii	"CyDmaTdSetAddress\000"
+ 1205      61546453 
+ 1205      65744164 
+ 1205      64726573 
+ 1205      7300
+ 1206              	.LASF31:
+ 1207 002d 646D6143 		.ascii	"dmaChannel\000"
+ 1207      68616E6E 
+ 1207      656C00
+ 1208              	.LASF45:
+ 1209 0038 4932535F 		.ascii	"I2S_3v3_Start\000"
+ 1209      3376335F 
+ 1209      53746172 
+ 1209      7400
+ 1210              	.LASF25:
+ 1211 0046 696E6974 		.ascii	"initDMA\000"
+ 1211      444D4100 
+ 1212              	.LASF50:
+ 1213 004e 55534255 		.ascii	"USBUART_PutString\000"
+ 1213      4152545F 
+ 1213      50757453 
+ 1213      7472696E 
+ 1213      6700
+ 1214              	.LASF26:
+ 1215 0060 696E6974 		.ascii	"initComponents\000"
+ 1215      436F6D70 
+ 1215      6F6E656E 
+ 1215      747300
+ 1216              	.LASF54:
+ 1217 006f 446D6149 		.ascii	"DmaI2S\000"
+ 1217      325300
+ 1218              	.LASF44:
+ 1219 0076 55534255 		.ascii	"USBUART_GetConfiguration\000"
+ 1219      4152545F 
+ 1219      47657443 
+ 1219      6F6E6669 
+ 1219      67757261 
  1220              	.LASF13:
- 1221 0206 75696E74 		.ascii	"uint32\000"
- 1221      333200
- 1222              	.LASF47:
- 1223 020d 6D61696E 		.ascii	"main\000"
- 1223      00
- 1224              	.LASF35:
- 1225 0212 55534255 		.ascii	"USBUART_Start\000"
- 1225      4152545F 
- 1225      53746172 
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 27
+ 1221 008f 696E7433 		.ascii	"int32_t\000"
+ 1221      325F7400 
+ 1222              	.LASF38:
+ 1223 0097 4379446D 		.ascii	"CyDmaTdAllocate\000"
+ 1223      61546441 
+ 1223      6C6C6F63 
+ 1223      61746500 
+ 1224              	.LASF7:
+ 1225 00a7 5F5F7569 		.ascii	"__uint32_t\000"
+ 1225      6E743332 
+ 1225      5F7400
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 26
 
 
- 1225      7400
- 1226              	.LASF8:
- 1227 0220 756E7369 		.ascii	"unsigned int\000"
- 1227      676E6564 
- 1227      20696E74 
- 1227      00
- 1228              	.LASF33:
- 1229 022d 4379446D 		.ascii	"CyDmaChSetInitialTd\000"
- 1229      61436853 
- 1229      6574496E 
- 1229      69746961 
- 1229      6C546400 
- 1230              	.LASF7:
- 1231 0241 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1231      206C6F6E 
- 1231      6720756E 
- 1231      7369676E 
- 1231      65642069 
- 1232              	.LASF38:
- 1233 0258 4932535F 		.ascii	"I2S_Start\000"
- 1233      53746172 
- 1233      7400
- 1234              	.LASF10:
- 1235 0262 696E7433 		.ascii	"int32_t\000"
- 1235      325F7400 
- 1236              	.LASF28:
- 1237 026a 63707549 		.ascii	"cpuIndex\000"
- 1237      6E646578 
- 1237      00
- 1238              	.LASF19:
- 1239 0273 73697A65 		.ascii	"sizetype\000"
- 1239      74797065 
- 1239      00
- 1240              	.LASF6:
- 1241 027c 6C6F6E67 		.ascii	"long long int\000"
- 1241      206C6F6E 
- 1241      6720696E 
- 1241      7400
+ 1226              	.LASF18:
+ 1227 00b2 666C6F61 		.ascii	"float\000"
+ 1227      7400
+ 1228              	.LASF27:
+ 1229 00b8 64617461 		.ascii	"data\000"
+ 1229      00
+ 1230              	.LASF33:
+ 1231 00bd 646D6149 		.ascii	"dmaIndex\000"
+ 1231      6E646578 
+ 1231      00
+ 1232              	.LASF32:
+ 1233 00c6 646D6154 		.ascii	"dmaTd\000"
+ 1233      6400
+ 1234              	.LASF1:
+ 1235 00cc 756E7369 		.ascii	"unsigned char\000"
+ 1235      676E6564 
+ 1235      20636861 
+ 1235      7200
+ 1236              	.LASF51:
+ 1237 00da 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1237      43313120 
+ 1237      352E342E 
+ 1237      31203230 
+ 1237      31363036 
+ 1238 010d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1238      20726576 
+ 1238      6973696F 
+ 1238      6E203233 
+ 1238      37373135 
+ 1239 0140 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1239      66756E63 
+ 1239      74696F6E 
+ 1239      2D736563 
+ 1239      74696F6E 
+ 1240              	.LASF21:
+ 1241 0168 72656738 		.ascii	"reg8\000"
+ 1241      00
  1242              	.LASF39:
- 1243 028a 4932535F 		.ascii	"I2S_EnableRx\000"
- 1243      456E6162 
- 1243      6C655278 
- 1243      00
- 1244              	.LASF44:
- 1245 0297 6D61696E 		.ascii	"main.c\000"
- 1245      2E6300
- 1246              	.LASF16:
- 1247 029e 63686172 		.ascii	"char\000"
- 1247      00
- 1248              	.LASF2:
- 1249 02a3 73686F72 		.ascii	"short int\000"
- 1249      7420696E 
- 1249      7400
- 1250              	.LASF11:
- 1251 02ad 75696E74 		.ascii	"uint8\000"
- 1251      3800
- 1252              	.LASF24:
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccgzLPe1.s 			page 28
+ 1243 016d 4379446D 		.ascii	"CyDmaTdSetConfiguration\000"
+ 1243      61546453 
+ 1243      6574436F 
+ 1243      6E666967 
+ 1243      75726174 
+ 1244              	.LASF8:
+ 1245 0185 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1245      20756E73 
+ 1245      69676E65 
+ 1245      6420696E 
+ 1245      7400
+ 1246              	.LASF3:
+ 1247 0197 73686F72 		.ascii	"short unsigned int\000"
+ 1247      7420756E 
+ 1247      7369676E 
+ 1247      65642069 
+ 1247      6E7400
+ 1248              	.LASF14:
+ 1249 01aa 75696E74 		.ascii	"uint32_t\000"
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 27
 
 
- 1253 02b3 736F756E 		.ascii	"soundBuffer_I2S\000"
- 1253      64427566 
- 1253      6665725F 
- 1253      49325300 
- 1254              	.LASF4:
- 1255 02c3 6C6F6E67 		.ascii	"long int\000"
- 1255      20696E74 
- 1255      00
- 1256              	.LASF18:
- 1257 02cc 6C6F6E67 		.ascii	"long double\000"
- 1257      20646F75 
- 1257      626C6500 
- 1258              	.LASF0:
- 1259 02d8 7369676E 		.ascii	"signed char\000"
- 1259      65642063 
- 1259      68617200 
- 1260              	.LASF29:
- 1261 02e4 4932535F 		.ascii	"I2S_DMA_DmaInitialize\000"
- 1261      444D415F 
- 1261      446D6149 
- 1261      6E697469 
- 1261      616C697A 
- 1262              	.LASF41:
- 1263 02fa 73707269 		.ascii	"sprintf\000"
- 1263      6E746600 
- 1264              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1249      33325F74 
+ 1249      00
+ 1250              	.LASF53:
+ 1251 01b3 433A5C55 		.ascii	"C:\\Users\\tardi\\Desktop\\ES10-Drowning\\PSoCSampl"
+ 1251      73657273 
+ 1251      5C746172 
+ 1251      64695C44 
+ 1251      65736B74 
+ 1252 01e1 65725C53 		.ascii	"er\\SamplingCircuit.cydsn\000"
+ 1252      616D706C 
+ 1252      696E6743 
+ 1252      69726375 
+ 1252      69742E63 
+ 1253              	.LASF29:
+ 1254 01fa 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1254      52784275 
+ 1254      66666572 
+ 1254      00
+ 1255              	.LASF19:
+ 1256 0207 646F7562 		.ascii	"double\000"
+ 1256      6C6500
+ 1257              	.LASF48:
+ 1258 020e 446D6149 		.ascii	"DmaI2S_StartEx\000"
+ 1258      32535F53 
+ 1258      74617274 
+ 1258      457800
+ 1259              	.LASF42:
+ 1260 021d 4379446D 		.ascii	"CyDmaChEnable\000"
+ 1260      61436845 
+ 1260      6E61626C 
+ 1260      6500
+ 1261              	.LASF16:
+ 1262 022b 75696E74 		.ascii	"uint16\000"
+ 1262      313600
+ 1263              	.LASF47:
+ 1264 0232 4932535F 		.ascii	"I2S_EnableRx\000"
+ 1264      456E6162 
+ 1264      6C655278 
+ 1264      00
+ 1265              	.LASF17:
+ 1266 023f 75696E74 		.ascii	"uint32\000"
+ 1266      333200
+ 1267              	.LASF55:
+ 1268 0246 6D61696E 		.ascii	"main\000"
+ 1268      00
+ 1269              	.LASF43:
+ 1270 024b 55534255 		.ascii	"USBUART_Start\000"
+ 1270      4152545F 
+ 1270      53746172 
+ 1270      7400
+ 1271              	.LASF11:
+ 1272 0259 756E7369 		.ascii	"unsigned int\000"
+ 1272      676E6564 
+ 1272      20696E74 
+ 1272      00
+ 1273              	.LASF41:
+ 1274 0266 4379446D 		.ascii	"CyDmaChSetInitialTd\000"
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 28
+
+
+ 1274      61436853 
+ 1274      6574496E 
+ 1274      69746961 
+ 1274      6C546400 
+ 1275              	.LASF10:
+ 1276 027a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1276      206C6F6E 
+ 1276      6720756E 
+ 1276      7369676E 
+ 1276      65642069 
+ 1277              	.LASF46:
+ 1278 0291 4932535F 		.ascii	"I2S_Start\000"
+ 1278      53746172 
+ 1278      7400
+ 1279              	.LASF23:
+ 1280 029b 6C6F6E67 		.ascii	"long double\000"
+ 1280      20646F75 
+ 1280      626C6500 
+ 1281              	.LASF34:
+ 1282 02a7 63707549 		.ascii	"cpuIndex\000"
+ 1282      6E646578 
+ 1282      00
+ 1283              	.LASF12:
+ 1284 02b0 75696E74 		.ascii	"uint8_t\000"
+ 1284      385F7400 
+ 1285              	.LASF9:
+ 1286 02b8 6C6F6E67 		.ascii	"long long int\000"
+ 1286      206C6F6E 
+ 1286      6720696E 
+ 1286      7400
+ 1287              	.LASF24:
+ 1288 02c6 73697A65 		.ascii	"sizetype\000"
+ 1288      74797065 
+ 1288      00
+ 1289              	.LASF52:
+ 1290 02cf 6D61696E 		.ascii	"main.c\000"
+ 1290      2E6300
+ 1291              	.LASF20:
+ 1292 02d6 63686172 		.ascii	"char\000"
+ 1292      00
+ 1293              	.LASF2:
+ 1294 02db 73686F72 		.ascii	"short int\000"
+ 1294      7420696E 
+ 1294      7400
+ 1295              	.LASF15:
+ 1296 02e5 75696E74 		.ascii	"uint8\000"
+ 1296      3800
+ 1297              	.LASF28:
+ 1298 02eb 6E756D5F 		.ascii	"num_values\000"
+ 1298      76616C75 
+ 1298      657300
+ 1299              	.LASF30:
+ 1300 02f6 736F756E 		.ascii	"soundBuffer_I2S\000"
+ 1300      64427566 
+ 1300      6665725F 
+ 1300      49325300 
+ 1301              	.LASF6:
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHaymnJ.s 			page 29
+
+
+ 1302 0306 6C6F6E67 		.ascii	"long int\000"
+ 1302      20696E74 
+ 1302      00
+ 1303              	.LASF35:
+ 1304 030f 6865785F 		.ascii	"hex_string\000"
+ 1304      73747269 
+ 1304      6E6700
+ 1305              	.LASF0:
+ 1306 031a 7369676E 		.ascii	"signed char\000"
+ 1306      65642063 
+ 1306      68617200 
+ 1307              	.LASF36:
+ 1308 0326 6E65776C 		.ascii	"newline\000"
+ 1308      696E6500 
+ 1309              	.LASF37:
+ 1310 032e 4932535F 		.ascii	"I2S_DMA_DmaInitialize\000"
+ 1310      444D415F 
+ 1310      446D6149 
+ 1310      6E697469 
+ 1310      616C697A 
+ 1311              	.LASF49:
+ 1312 0344 73707269 		.ascii	"sprintf\000"
+ 1312      6E746600 
+ 1313              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

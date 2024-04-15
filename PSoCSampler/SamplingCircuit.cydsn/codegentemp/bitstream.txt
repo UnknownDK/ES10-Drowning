@@ -1,6 +1,6 @@
 ===========Generating Bitstream===========
 # IDMUX (count=6)
-00000000: 01 00 00 00 00 00
+00000000: 02 00 00 00 00 00
 # PHUB_CFGMEM0 (count=4)
 00000006: 00 00 00 00
 # IOPORT_0 (count=7)
@@ -63,7 +63,7 @@
 # IDMUX_IRQ (count=8)
 000000f0: a9 00 00 00 00 00 00 00
 # CYDEV_CLKDIST_DCFG0_CFG0 (count=3)
-000000f8: 01 00 18
+000000f8: 03 00 18
 # CYDEV_SLOWCLK_ILO_CR0 (count=1)
 000000fb: 06
 # CYDEV_FASTCLK_IMO_CR (count=1)
