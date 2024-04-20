@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSoCSampler">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSoCSampler\SamplingCircuit\SamplingCircuit.cydwr\System">
 <ExpandedNodeIds>
 <v>PSoCSampler</v>
 <v>PSoCSampler\SamplingCircuit</v>
@@ -78,7 +78,10 @@
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_2.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_3.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cs.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
@@ -91,28 +94,19 @@
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_3v3.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_3v3_PM.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_dma.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_PM.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_3v3.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_audio.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_boot.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_cdc.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_cls.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_descr.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_Dm.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_Dp.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_drv.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_episr.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_hid.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_midi.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_msc.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_pm.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_std.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_vnd.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\MISO_1.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\MOSI_1.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\SCLK_1.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIM.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIM_INT.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIM_PM.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_BOOT.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_INT.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_PM.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.elf</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.hex</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.map</v>
@@ -128,7 +122,10 @@
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_2.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_3.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cs.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
@@ -141,26 +138,23 @@
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_3v3.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_3v3_PM.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_dma.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_PM.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_3v3.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_audio.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_boot.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_cdc.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_cls.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_descr.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_Dm.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_Dp.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_drv.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_episr.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_hid.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_midi.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_msc.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_pm.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\MISO_1.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\MOSI_1.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\SCLK_1.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIM.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIM_INT.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIM_PM.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_BOOT.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_INT.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_PM.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.elf</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.hex</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.map</v>
+<v>PSoCSampler\SamplingCircuit\SamplingCircuit.gpdsc</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -176,16 +170,15 @@
 <v>PSoCSampler\SamplingCircuit\CY8C58LP Family Datasheet</v>
 <v>PSoCSampler\SamplingCircuit\System Reference Guides</v>
 <v>PSoCSampler\SamplingCircuit\System Reference Guides\cy_boot_v6_0</v>
-<v>PSoCSampler\SamplingCircuit\cy_clock_v2_20.pdf</v>
+<v>PSoCSampler\SamplingCircuit\cy_clock_v2_20</v>
+<v>PSoCSampler\SamplingCircuit\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
 <v>PSoCSampler\SamplingCircuit\cy_dma_v1_70.pdf</v>
 <v>PSoCSampler\SamplingCircuit\cy_isr_v1_70.pdf</v>
 <v>PSoCSampler\SamplingCircuit\cy_pins_v2_20</v>
 <v>PSoCSampler\SamplingCircuit\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
-<v>PSoCSampler\SamplingCircuit\cy_vref_v1_70</v>
-<v>PSoCSampler\SamplingCircuit\cy_vref_v1_70\cy_vref_v1_70.pdf</v>
 <v>PSoCSampler\SamplingCircuit\I2S_v2_70.pdf</v>
-<v>PSoCSampler\SamplingCircuit\PGA_v2_0.pdf</v>
-<v>PSoCSampler\SamplingCircuit\USBFS_v3_20.pdf</v>
+<v>PSoCSampler\SamplingCircuit\SPI_Master_v2_50.pdf</v>
+<v>PSoCSampler\SamplingCircuit\UART_v2_50.pdf</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>PSoCSampler</v>
@@ -194,16 +187,15 @@
 <v>PSoCSampler\SamplingCircuit\CY8C58LP Family Datasheet</v>
 <v>PSoCSampler\SamplingCircuit\System Reference Guides</v>
 <v>PSoCSampler\SamplingCircuit\System Reference Guides\cy_boot_v6_0</v>
-<v>PSoCSampler\SamplingCircuit\cy_clock_v2_20.pdf</v>
+<v>PSoCSampler\SamplingCircuit\cy_clock_v2_20</v>
+<v>PSoCSampler\SamplingCircuit\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
 <v>PSoCSampler\SamplingCircuit\cy_dma_v1_70.pdf</v>
 <v>PSoCSampler\SamplingCircuit\cy_isr_v1_70.pdf</v>
 <v>PSoCSampler\SamplingCircuit\cy_pins_v2_20</v>
 <v>PSoCSampler\SamplingCircuit\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
-<v>PSoCSampler\SamplingCircuit\cy_vref_v1_70</v>
-<v>PSoCSampler\SamplingCircuit\cy_vref_v1_70\cy_vref_v1_70.pdf</v>
 <v>PSoCSampler\SamplingCircuit\I2S_v2_70.pdf</v>
-<v>PSoCSampler\SamplingCircuit\PGA_v2_0.pdf</v>
-<v>PSoCSampler\SamplingCircuit\USBFS_v3_20.pdf</v>
+<v>PSoCSampler\SamplingCircuit\SPI_Master_v2_50.pdf</v>
+<v>PSoCSampler\SamplingCircuit\UART_v2_50.pdf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
