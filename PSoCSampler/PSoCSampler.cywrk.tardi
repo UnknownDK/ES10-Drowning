@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSoCSampler\SamplingCircuit\SamplingCircuit.cydwr\System">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
 <ExpandedNodeIds>
 <v>PSoCSampler</v>
 <v>PSoCSampler\SamplingCircuit</v>
@@ -77,8 +77,6 @@
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_2.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_3.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cs.lst</v>
@@ -92,10 +90,39 @@
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_dma.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_PM.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_eight.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_five.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_four.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_one.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_seven.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_six.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_three.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_two.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_Clock.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_eight_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_five_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_four_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_one_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_seven_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_six_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_three_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_two_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Seight.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Seight_PM.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Sfive.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Sfive_PM.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Sfour.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Sfour_PM.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Sone.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Sone_PM.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Sseven.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Sseven_PM.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Ssix.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Ssix_PM.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Sthree.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Sthree_PM.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Stwo.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Stwo_PM.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\MISO_1.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\MOSI_1.lst</v>
@@ -103,10 +130,6 @@
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIM.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIM_INT.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIM_PM.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_BOOT.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_INT.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_PM.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.elf</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.hex</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.map</v>
@@ -121,8 +144,6 @@
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_2.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_3.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cs.lst</v>
@@ -136,25 +157,27 @@
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
 <v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_dma.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_PM.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\MISO_1.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\MOSI_1.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\SCLK_1.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIM.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIM_INT.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIM_PM.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_BOOT.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_INT.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_PM.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.elf</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.hex</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.map</v>
-<v>PSoCSampler\SamplingCircuit\SamplingCircuit.gpdsc</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_eight.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_five.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_four.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_one.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_seven.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_six.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_three.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_two.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_Clock.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_eight_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_five_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_four_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_one_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_seven_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_six_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_three_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_two_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Seight.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Seight_PM.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Sfive.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Sfive_PM.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -172,13 +195,15 @@
 <v>PSoCSampler\SamplingCircuit\System Reference Guides\cy_boot_v6_0</v>
 <v>PSoCSampler\SamplingCircuit\cy_clock_v2_20</v>
 <v>PSoCSampler\SamplingCircuit\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
-<v>PSoCSampler\SamplingCircuit\cy_dma_v1_70.pdf</v>
-<v>PSoCSampler\SamplingCircuit\cy_isr_v1_70.pdf</v>
+<v>PSoCSampler\SamplingCircuit\cy_dma_v1_70</v>
+<v>PSoCSampler\SamplingCircuit\cy_dma_v1_70\cy_dma_v1_70.pdf</v>
+<v>PSoCSampler\SamplingCircuit\cy_isr_v1_70</v>
+<v>PSoCSampler\SamplingCircuit\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
 <v>PSoCSampler\SamplingCircuit\cy_pins_v2_20</v>
 <v>PSoCSampler\SamplingCircuit\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
-<v>PSoCSampler\SamplingCircuit\I2S_v2_70.pdf</v>
+<v>PSoCSampler\SamplingCircuit\I2S_v2_70</v>
+<v>PSoCSampler\SamplingCircuit\I2S_v2_70\I2S_v2_70.pdf</v>
 <v>PSoCSampler\SamplingCircuit\SPI_Master_v2_50.pdf</v>
-<v>PSoCSampler\SamplingCircuit\UART_v2_50.pdf</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>PSoCSampler</v>
@@ -189,13 +214,15 @@
 <v>PSoCSampler\SamplingCircuit\System Reference Guides\cy_boot_v6_0</v>
 <v>PSoCSampler\SamplingCircuit\cy_clock_v2_20</v>
 <v>PSoCSampler\SamplingCircuit\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
-<v>PSoCSampler\SamplingCircuit\cy_dma_v1_70.pdf</v>
-<v>PSoCSampler\SamplingCircuit\cy_isr_v1_70.pdf</v>
+<v>PSoCSampler\SamplingCircuit\cy_dma_v1_70</v>
+<v>PSoCSampler\SamplingCircuit\cy_dma_v1_70\cy_dma_v1_70.pdf</v>
+<v>PSoCSampler\SamplingCircuit\cy_isr_v1_70</v>
+<v>PSoCSampler\SamplingCircuit\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
 <v>PSoCSampler\SamplingCircuit\cy_pins_v2_20</v>
 <v>PSoCSampler\SamplingCircuit\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
-<v>PSoCSampler\SamplingCircuit\I2S_v2_70.pdf</v>
+<v>PSoCSampler\SamplingCircuit\I2S_v2_70</v>
+<v>PSoCSampler\SamplingCircuit\I2S_v2_70\I2S_v2_70.pdf</v>
 <v>PSoCSampler\SamplingCircuit\SPI_Master_v2_50.pdf</v>
-<v>PSoCSampler\SamplingCircuit\UART_v2_50.pdf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
@@ -205,8 +232,8 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
-<name v=".\SamplingCircuit.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\SamplingCircuit.cydsn\SamplingCircuit.cydwr" />
+<name v=".\SamplingCircuit.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\SamplingCircuit.cydsn\main.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
@@ -215,7 +242,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="781, 571" SelectedTabbedMdiWindow="e828a457-bdb0-4d67-950f-baeb8e50977a"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="b76e0848-ca35-4eae-8338-00706e134da4" /><DocumentWindow Key="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\TopDesign\TopDesign.cysch" Guid="a9649a8c-c953-4b07-822e-64c804c38f51" /><DocumentWindow Key="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\SamplingCircuit.cydwr" Guid="e4898fb9-789d-4d36-af31-aad211756cf0" /><DocumentWindow Key="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\main.c" Guid="e828a457-bdb0-4d67-950f-baeb8e50977a" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="848, 571" SelectedTabbedMdiWindow="a9649a8c-c953-4b07-822e-64c804c38f51"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="b76e0848-ca35-4eae-8338-00706e134da4" /><DocumentWindow Key="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\SamplingCircuit.cydwr" Guid="e4898fb9-789d-4d36-af31-aad211756cf0" /><DocumentWindow Key="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\TopDesign\TopDesign.cysch" Guid="a9649a8c-c953-4b07-822e-64c804c38f51" /><DocumentWindow Key="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\main.c" Guid="e828a457-bdb0-4d67-950f-baeb8e50977a" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

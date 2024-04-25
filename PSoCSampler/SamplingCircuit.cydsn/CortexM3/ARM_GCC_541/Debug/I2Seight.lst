@@ -1,0 +1,1575 @@
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"I2Seight.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.I2Seight_Enable,"ax",%progbits
+  20              		.align	2
+  21              		.global	I2Seight_Enable
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	I2Seight_Enable, %function
+  25              	I2Seight_Enable:
+  26              	.LFB0:
+  27              		.file 1 "Generated_Source\\PSoC5\\I2Seight.c"
+   1:Generated_Source\PSoC5/I2Seight.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/I2Seight.c **** * File Name: I2Seight.c
+   3:Generated_Source\PSoC5/I2Seight.c **** * Version 2.70
+   4:Generated_Source\PSoC5/I2Seight.c **** *
+   5:Generated_Source\PSoC5/I2Seight.c **** * Description:
+   6:Generated_Source\PSoC5/I2Seight.c **** *  This file contains the setup, control and status commands for the I2S
+   7:Generated_Source\PSoC5/I2Seight.c **** *  component.
+   8:Generated_Source\PSoC5/I2Seight.c **** *
+   9:Generated_Source\PSoC5/I2Seight.c **** * Note:
+  10:Generated_Source\PSoC5/I2Seight.c **** *
+  11:Generated_Source\PSoC5/I2Seight.c **** ********************************************************************************
+  12:Generated_Source\PSoC5/I2Seight.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC5/I2Seight.c **** * You may use this file only in accordance with the license, terms, conditions,
+  14:Generated_Source\PSoC5/I2Seight.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  15:Generated_Source\PSoC5/I2Seight.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC5/I2Seight.c **** *******************************************************************************/
+  17:Generated_Source\PSoC5/I2Seight.c **** 
+  18:Generated_Source\PSoC5/I2Seight.c **** #include "CyLib.h"
+  19:Generated_Source\PSoC5/I2Seight.c **** #include "I2Seight.h"
+  20:Generated_Source\PSoC5/I2Seight.c **** 
+  21:Generated_Source\PSoC5/I2Seight.c **** uint8 I2Seight_initVar = 0u;
+  22:Generated_Source\PSoC5/I2Seight.c **** 
+  23:Generated_Source\PSoC5/I2Seight.c **** 
+  24:Generated_Source\PSoC5/I2Seight.c **** /*******************************************************************************
+  25:Generated_Source\PSoC5/I2Seight.c **** * Function Name: I2Seight_Enable
+  26:Generated_Source\PSoC5/I2Seight.c **** ********************************************************************************
+  27:Generated_Source\PSoC5/I2Seight.c **** *
+  28:Generated_Source\PSoC5/I2Seight.c **** * Summary:
+  29:Generated_Source\PSoC5/I2Seight.c **** *  Enables I2S interface. Starts the generation of the sck and ws outputs.
+  30:Generated_Source\PSoC5/I2Seight.c **** *  The Tx and Rx directions remain disabled. It is not necessary to call
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 2
+
+
+  31:Generated_Source\PSoC5/I2Seight.c **** *  I2S_Enable() because the I2S_Start() routine calls this function, which is
+  32:Generated_Source\PSoC5/I2Seight.c **** *  the preferred method to begin component operation.
+  33:Generated_Source\PSoC5/I2Seight.c **** *
+  34:Generated_Source\PSoC5/I2Seight.c **** * Parameters:
+  35:Generated_Source\PSoC5/I2Seight.c **** *  None.
+  36:Generated_Source\PSoC5/I2Seight.c **** *
+  37:Generated_Source\PSoC5/I2Seight.c **** * Return:
+  38:Generated_Source\PSoC5/I2Seight.c **** *  None.
+  39:Generated_Source\PSoC5/I2Seight.c **** *
+  40:Generated_Source\PSoC5/I2Seight.c **** *******************************************************************************/
+  41:Generated_Source\PSoC5/I2Seight.c **** void I2Seight_Enable(void) 
+  42:Generated_Source\PSoC5/I2Seight.c **** {
+  28              		.loc 1 42 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  43:Generated_Source\PSoC5/I2Seight.c ****     uint8 enableInterrupts;
+  44:Generated_Source\PSoC5/I2Seight.c **** 
+  45:Generated_Source\PSoC5/I2Seight.c ****     enableInterrupts = CyEnterCriticalSection();
+  36              		.loc 1 45 0
+  37 0002 FFF7FEFF 		bl	CyEnterCriticalSection
+  38              	.LVL0:
+  46:Generated_Source\PSoC5/I2Seight.c ****     I2Seight_AUX_CONTROL_REG |= I2Seight_CNT_START;
+  39              		.loc 1 46 0
+  40 0006 064A     		ldr	r2, .L3
+  41 0008 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  42 000a 43F02003 		orr	r3, r3, #32
+  43 000e 1370     		strb	r3, [r2]
+  47:Generated_Source\PSoC5/I2Seight.c ****     CyExitCriticalSection(enableInterrupts);
+  44              		.loc 1 47 0
+  45 0010 FFF7FEFF 		bl	CyExitCriticalSection
+  46              	.LVL1:
+  48:Generated_Source\PSoC5/I2Seight.c **** 
+  49:Generated_Source\PSoC5/I2Seight.c ****     I2Seight_CONTROL_REG |= I2Seight_EN;
+  47              		.loc 1 49 0
+  48 0014 034A     		ldr	r2, .L3+4
+  49 0016 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  50 0018 43F00403 		orr	r3, r3, #4
+  51 001c 1370     		strb	r3, [r2]
+  52 001e 08BD     		pop	{r3, pc}
+  53              	.L4:
+  54              		.align	2
+  55              	.L3:
+  56 0020 97640040 		.word	1073767575
+  57 0024 7A640040 		.word	1073767546
+  58              		.cfi_endproc
+  59              	.LFE0:
+  60              		.size	I2Seight_Enable, .-I2Seight_Enable
+  61              		.section	.text.I2Seight_Init,"ax",%progbits
+  62              		.align	2
+  63              		.global	I2Seight_Init
+  64              		.thumb
+  65              		.thumb_func
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 3
+
+
+  66              		.type	I2Seight_Init, %function
+  67              	I2Seight_Init:
+  68              	.LFB1:
+  50:Generated_Source\PSoC5/I2Seight.c **** }
+  51:Generated_Source\PSoC5/I2Seight.c **** 
+  52:Generated_Source\PSoC5/I2Seight.c **** 
+  53:Generated_Source\PSoC5/I2Seight.c **** /*******************************************************************************
+  54:Generated_Source\PSoC5/I2Seight.c **** * Function Name: I2Seight_Init
+  55:Generated_Source\PSoC5/I2Seight.c **** ********************************************************************************
+  56:Generated_Source\PSoC5/I2Seight.c **** *
+  57:Generated_Source\PSoC5/I2Seight.c **** * Summary:
+  58:Generated_Source\PSoC5/I2Seight.c **** *  Initializes or restores default I2S configuration provided with customizer.
+  59:Generated_Source\PSoC5/I2Seight.c **** *  It is not necessary to call I2S_Init() because the I2S_Start() routine calls
+  60:Generated_Source\PSoC5/I2Seight.c **** *  this function, which is the preferred method to begin component operation.
+  61:Generated_Source\PSoC5/I2Seight.c **** *
+  62:Generated_Source\PSoC5/I2Seight.c **** * Parameters:
+  63:Generated_Source\PSoC5/I2Seight.c **** *  None.
+  64:Generated_Source\PSoC5/I2Seight.c **** *
+  65:Generated_Source\PSoC5/I2Seight.c **** * Return:
+  66:Generated_Source\PSoC5/I2Seight.c **** *  None.
+  67:Generated_Source\PSoC5/I2Seight.c **** *
+  68:Generated_Source\PSoC5/I2Seight.c **** *******************************************************************************/
+  69:Generated_Source\PSoC5/I2Seight.c **** void I2Seight_Init(void) 
+  70:Generated_Source\PSoC5/I2Seight.c **** {
+  69              		.loc 1 70 0
+  70              		.cfi_startproc
+  71              		@ args = 0, pretend = 0, frame = 0
+  72              		@ frame_needed = 0, uses_anonymous_args = 0
+  73              		@ link register save eliminated.
+  71:Generated_Source\PSoC5/I2Seight.c ****     #if (I2Seight_CLIP_DETECT_ENABLE)
+  72:Generated_Source\PSoC5/I2Seight.c ****         static const uint8 CYCODE I2Seight_posThresholds[] = {0u};
+  73:Generated_Source\PSoC5/I2Seight.c ****         static const int8  CYCODE I2Seight_negThresholds[] = {-1};
+  74:Generated_Source\PSoC5/I2Seight.c ****     #endif /* I2Seight_CLIP_DETECT_ENABLE */
+  75:Generated_Source\PSoC5/I2Seight.c **** 
+  76:Generated_Source\PSoC5/I2Seight.c ****     #if (I2Seight_DYNAMIC_BIT_RESOLUTION)
+  77:Generated_Source\PSoC5/I2Seight.c ****         (void)I2Seight_SetDataBits(I2Seight_DATA_BITS);
+  78:Generated_Source\PSoC5/I2Seight.c ****     #endif /* I2Seight_DYNAMIC_BIT_RESOLUTION */
+  79:Generated_Source\PSoC5/I2Seight.c **** 
+  80:Generated_Source\PSoC5/I2Seight.c ****     /* Initialize Tx interrupt source selected in customizer */
+  81:Generated_Source\PSoC5/I2Seight.c ****     #if (I2Seight_TX_DIRECTION_ENABLE)
+  82:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_SET_TX_INT_MASK(CH0, I2Seight_TX_INT_SOURCE);
+  83:Generated_Source\PSoC5/I2Seight.c ****         #if (I2Seight_TX_STEREO_1_PRESENT)
+  84:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_SET_TX_INT_MASK(CH1, I2Seight_TX_INT_SOURCE);
+  85:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_TX_STEREO_1_PRESENT */
+  86:Generated_Source\PSoC5/I2Seight.c ****         #if (I2Seight_TX_STEREO_2_PRESENT)
+  87:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_SET_TX_INT_MASK(CH2, I2Seight_TX_INT_SOURCE);
+  88:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_TX_STEREO_2_PRESENT */
+  89:Generated_Source\PSoC5/I2Seight.c ****         #if (I2Seight_TX_STEREO_3_PRESENT)
+  90:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_SET_TX_INT_MASK(CH3, I2Seight_TX_INT_SOURCE);
+  91:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_TX_STEREO_3_PRESENT */
+  92:Generated_Source\PSoC5/I2Seight.c ****         #if (I2Seight_TX_STEREO_4_PRESENT)
+  93:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_SET_TX_INT_MASK(CH4, I2Seight_TX_INT_SOURCE);
+  94:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_TX_STEREO_4_PRESENT */
+  95:Generated_Source\PSoC5/I2Seight.c ****     #endif /* (I2Seight_TX_DIRECTION_ENABLE) */
+  96:Generated_Source\PSoC5/I2Seight.c ****     
+  97:Generated_Source\PSoC5/I2Seight.c ****     /* Initialize Rx interrupt source and clipping thresholds selected in customizer */
+  98:Generated_Source\PSoC5/I2Seight.c ****     #if (I2Seight_RX_DIRECTION_ENABLE)
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 4
+
+
+  99:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_SET_RX_INT_MASK(CH0, I2Seight_RX_INT_SOURCE);
+  74              		.loc 1 99 0
+  75 0000 044B     		ldr	r3, .L6
+  76 0002 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+  77 0004 02F0F802 		and	r2, r2, #248
+  78 0008 1A70     		strb	r2, [r3]
+  79 000a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+  80 000c D2B2     		uxtb	r2, r2
+  81 000e 1A70     		strb	r2, [r3]
+  82 0010 7047     		bx	lr
+  83              	.L7:
+  84 0012 00BF     		.align	2
+  85              	.L6:
+  86 0014 86640040 		.word	1073767558
+  87              		.cfi_endproc
+  88              	.LFE1:
+  89              		.size	I2Seight_Init, .-I2Seight_Init
+  90              		.section	.text.I2Seight_Start,"ax",%progbits
+  91              		.align	2
+  92              		.global	I2Seight_Start
+  93              		.thumb
+  94              		.thumb_func
+  95              		.type	I2Seight_Start, %function
+  96              	I2Seight_Start:
+  97              	.LFB2:
+ 100:Generated_Source\PSoC5/I2Seight.c ****         #if (I2Seight_CLIP_DETECT_ENABLE)
+ 101:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_SET_POS_THRESHOLD(CH0, I2Seight_posThresholds[I2Seight_STEREO_0]);
+ 102:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_SET_NEG_THRESHOLD(CH0, I2Seight_negThresholds[I2Seight_STEREO_0]);
+ 103:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_CLIP_DETECT_ENABLE */
+ 104:Generated_Source\PSoC5/I2Seight.c ****         #if (I2Seight_RX_STEREO_1_PRESENT)
+ 105:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_SET_RX_INT_MASK(CH1, I2Seight_RX_INT_SOURCE);
+ 106:Generated_Source\PSoC5/I2Seight.c ****             #if (I2Seight_CLIP_DETECT_ENABLE)
+ 107:Generated_Source\PSoC5/I2Seight.c ****                 I2Seight_SET_POS_THRESHOLD(CH1, I2Seight_posThresholds[I2Seight_STEREO_1]);
+ 108:Generated_Source\PSoC5/I2Seight.c ****                 I2Seight_SET_NEG_THRESHOLD(CH1, I2Seight_negThresholds[I2Seight_STEREO_1]);
+ 109:Generated_Source\PSoC5/I2Seight.c ****             #endif /* I2Seight_CLIP_DETECT_ENABLE */
+ 110:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_RX_STEREO_1_PRESENT */
+ 111:Generated_Source\PSoC5/I2Seight.c ****         #if (I2Seight_RX_STEREO_2_PRESENT)
+ 112:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_SET_RX_INT_MASK(CH2, I2Seight_RX_INT_SOURCE);
+ 113:Generated_Source\PSoC5/I2Seight.c ****             #if (I2Seight_CLIP_DETECT_ENABLE)
+ 114:Generated_Source\PSoC5/I2Seight.c ****                 I2Seight_SET_POS_THRESHOLD(CH2, I2Seight_posThresholds[I2Seight_STEREO_2]);
+ 115:Generated_Source\PSoC5/I2Seight.c ****                 I2Seight_SET_NEG_THRESHOLD(CH2, I2Seight_negThresholds[I2Seight_STEREO_2]);
+ 116:Generated_Source\PSoC5/I2Seight.c ****             #endif /* I2Seight_CLIP_DETECT_ENABLE */
+ 117:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_RX_STEREO_2_PRESENT */
+ 118:Generated_Source\PSoC5/I2Seight.c ****         #if (I2Seight_RX_STEREO_3_PRESENT)
+ 119:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_SET_RX_INT_MASK(CH3, I2Seight_RX_INT_SOURCE);
+ 120:Generated_Source\PSoC5/I2Seight.c ****             #if (I2Seight_CLIP_DETECT_ENABLE)
+ 121:Generated_Source\PSoC5/I2Seight.c ****                 I2Seight_SET_POS_THRESHOLD(CH3, I2Seight_posThresholds[I2Seight_STEREO_3]);
+ 122:Generated_Source\PSoC5/I2Seight.c ****                 I2Seight_SET_NEG_THRESHOLD(CH3, I2Seight_negThresholds[I2Seight_STEREO_3]);
+ 123:Generated_Source\PSoC5/I2Seight.c ****             #endif /* I2Seight_CLIP_DETECT_ENABLE */
+ 124:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_RX_STEREO_3_PRESENT */
+ 125:Generated_Source\PSoC5/I2Seight.c ****         #if (I2Seight_RX_STEREO_4_PRESENT)
+ 126:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_SET_RX_INT_MASK(CH4, I2Seight_RX_INT_SOURCE);
+ 127:Generated_Source\PSoC5/I2Seight.c ****             #if (I2Seight_CLIP_DETECT_ENABLE)
+ 128:Generated_Source\PSoC5/I2Seight.c ****                 I2Seight_SET_POS_THRESHOLD(CH4, I2Seight_posThresholds[I2Seight_STEREO_4]);
+ 129:Generated_Source\PSoC5/I2Seight.c ****                 I2Seight_SET_NEG_THRESHOLD(CH4, I2Seight_negThresholds[I2Seight_STEREO_4]);
+ 130:Generated_Source\PSoC5/I2Seight.c ****             #endif /* I2Seight_CLIP_DETECT_ENABLE */
+ 131:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_RX_STEREO_4_PRESENT */
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 5
+
+
+ 132:Generated_Source\PSoC5/I2Seight.c ****     #endif /* (I2Seight_RX_DIRECTION_ENABLE) */
+ 133:Generated_Source\PSoC5/I2Seight.c **** }
+ 134:Generated_Source\PSoC5/I2Seight.c **** 
+ 135:Generated_Source\PSoC5/I2Seight.c **** 
+ 136:Generated_Source\PSoC5/I2Seight.c **** /*******************************************************************************
+ 137:Generated_Source\PSoC5/I2Seight.c **** * Function Name: I2Seight_Start
+ 138:Generated_Source\PSoC5/I2Seight.c **** ********************************************************************************
+ 139:Generated_Source\PSoC5/I2Seight.c **** *
+ 140:Generated_Source\PSoC5/I2Seight.c **** * Summary:
+ 141:Generated_Source\PSoC5/I2Seight.c **** *  Starts the I2S interface. Starts the generation of the sck and ws outputs.
+ 142:Generated_Source\PSoC5/I2Seight.c **** *  The Tx and Rx directions remain disabled.
+ 143:Generated_Source\PSoC5/I2Seight.c **** *
+ 144:Generated_Source\PSoC5/I2Seight.c **** * Parameters:
+ 145:Generated_Source\PSoC5/I2Seight.c **** *  None.
+ 146:Generated_Source\PSoC5/I2Seight.c **** *
+ 147:Generated_Source\PSoC5/I2Seight.c **** * Return:
+ 148:Generated_Source\PSoC5/I2Seight.c **** *  None.
+ 149:Generated_Source\PSoC5/I2Seight.c **** *
+ 150:Generated_Source\PSoC5/I2Seight.c **** * Global Variables:
+ 151:Generated_Source\PSoC5/I2Seight.c **** *  I2Seight_initVar - used to check initial configuration, modified on
+ 152:Generated_Source\PSoC5/I2Seight.c **** *  first function call.
+ 153:Generated_Source\PSoC5/I2Seight.c **** *
+ 154:Generated_Source\PSoC5/I2Seight.c **** * Reentrant:
+ 155:Generated_Source\PSoC5/I2Seight.c **** *  No.
+ 156:Generated_Source\PSoC5/I2Seight.c **** *
+ 157:Generated_Source\PSoC5/I2Seight.c **** *******************************************************************************/
+ 158:Generated_Source\PSoC5/I2Seight.c **** void I2Seight_Start(void) 
+ 159:Generated_Source\PSoC5/I2Seight.c **** {
+  98              		.loc 1 159 0
+  99              		.cfi_startproc
+ 100              		@ args = 0, pretend = 0, frame = 0
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102 0000 08B5     		push	{r3, lr}
+ 103              		.cfi_def_cfa_offset 8
+ 104              		.cfi_offset 3, -8
+ 105              		.cfi_offset 14, -4
+ 160:Generated_Source\PSoC5/I2Seight.c ****     if(0u == I2Seight_initVar)
+ 106              		.loc 1 160 0
+ 107 0002 054B     		ldr	r3, .L11
+ 108 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 109 0006 23B9     		cbnz	r3, .L9
+ 161:Generated_Source\PSoC5/I2Seight.c ****     {
+ 162:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_Init();
+ 110              		.loc 1 162 0
+ 111 0008 FFF7FEFF 		bl	I2Seight_Init
+ 112              	.LVL2:
+ 163:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_initVar = 1u;
+ 113              		.loc 1 163 0
+ 114 000c 0122     		movs	r2, #1
+ 115 000e 024B     		ldr	r3, .L11
+ 116 0010 1A70     		strb	r2, [r3]
+ 117              	.L9:
+ 164:Generated_Source\PSoC5/I2Seight.c ****     }
+ 165:Generated_Source\PSoC5/I2Seight.c **** 
+ 166:Generated_Source\PSoC5/I2Seight.c ****     I2Seight_Enable();
+ 118              		.loc 1 166 0
+ 119 0012 FFF7FEFF 		bl	I2Seight_Enable
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 6
+
+
+ 120              	.LVL3:
+ 121 0016 08BD     		pop	{r3, pc}
+ 122              	.L12:
+ 123              		.align	2
+ 124              	.L11:
+ 125 0018 00000000 		.word	.LANCHOR0
+ 126              		.cfi_endproc
+ 127              	.LFE2:
+ 128              		.size	I2Seight_Start, .-I2Seight_Start
+ 129              		.section	.text.I2Seight_EnableRx,"ax",%progbits
+ 130              		.align	2
+ 131              		.global	I2Seight_EnableRx
+ 132              		.thumb
+ 133              		.thumb_func
+ 134              		.type	I2Seight_EnableRx, %function
+ 135              	I2Seight_EnableRx:
+ 136              	.LFB4:
+ 167:Generated_Source\PSoC5/I2Seight.c **** }
+ 168:Generated_Source\PSoC5/I2Seight.c **** 
+ 169:Generated_Source\PSoC5/I2Seight.c **** 
+ 170:Generated_Source\PSoC5/I2Seight.c **** /*******************************************************************************
+ 171:Generated_Source\PSoC5/I2Seight.c **** * Function Name: I2Seight_Stop
+ 172:Generated_Source\PSoC5/I2Seight.c **** ********************************************************************************
+ 173:Generated_Source\PSoC5/I2Seight.c **** *
+ 174:Generated_Source\PSoC5/I2Seight.c **** * Summary:
+ 175:Generated_Source\PSoC5/I2Seight.c **** *  Disables the I2S interface. The sck and ws outputs are set to 0. The Tx and
+ 176:Generated_Source\PSoC5/I2Seight.c **** *  Rx directions are disabled and their FIFOs are cleared.
+ 177:Generated_Source\PSoC5/I2Seight.c **** *
+ 178:Generated_Source\PSoC5/I2Seight.c **** * Parameters:
+ 179:Generated_Source\PSoC5/I2Seight.c **** *  None.
+ 180:Generated_Source\PSoC5/I2Seight.c **** *
+ 181:Generated_Source\PSoC5/I2Seight.c **** * Return:
+ 182:Generated_Source\PSoC5/I2Seight.c **** *  None.
+ 183:Generated_Source\PSoC5/I2Seight.c **** *
+ 184:Generated_Source\PSoC5/I2Seight.c **** *******************************************************************************/
+ 185:Generated_Source\PSoC5/I2Seight.c **** void I2Seight_Stop(void) 
+ 186:Generated_Source\PSoC5/I2Seight.c **** {
+ 187:Generated_Source\PSoC5/I2Seight.c ****     uint8 enableInterrupts;
+ 188:Generated_Source\PSoC5/I2Seight.c **** 
+ 189:Generated_Source\PSoC5/I2Seight.c ****     I2Seight_CONTROL_REG &= (uint8)~I2Seight_EN;
+ 190:Generated_Source\PSoC5/I2Seight.c **** 
+ 191:Generated_Source\PSoC5/I2Seight.c ****     enableInterrupts = CyEnterCriticalSection();
+ 192:Generated_Source\PSoC5/I2Seight.c ****     I2Seight_AUX_CONTROL_REG &= (uint8)~I2Seight_CNT_START;
+ 193:Generated_Source\PSoC5/I2Seight.c ****     CyExitCriticalSection(enableInterrupts);
+ 194:Generated_Source\PSoC5/I2Seight.c **** 
+ 195:Generated_Source\PSoC5/I2Seight.c ****     /* Clear counter value to force reload when component is enabled */
+ 196:Generated_Source\PSoC5/I2Seight.c ****     I2Seight_CNT_COUNT_REG = 0u;
+ 197:Generated_Source\PSoC5/I2Seight.c **** 
+ 198:Generated_Source\PSoC5/I2Seight.c ****     #if (I2Seight_TX_DIRECTION_ENABLE)
+ 199:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_DisableTx();
+ 200:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_ClearTxFIFO();
+ 201:Generated_Source\PSoC5/I2Seight.c ****     #endif /* (I2Seight_TX_DIRECTION_ENABLE) */
+ 202:Generated_Source\PSoC5/I2Seight.c ****     
+ 203:Generated_Source\PSoC5/I2Seight.c ****     #if (I2Seight_RX_DIRECTION_ENABLE)
+ 204:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_DisableRx();
+ 205:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_ClearRxFIFO();
+ 206:Generated_Source\PSoC5/I2Seight.c ****     #endif /* (I2Seight_RX_DIRECTION_ENABLE) */
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 7
+
+
+ 207:Generated_Source\PSoC5/I2Seight.c **** }
+ 208:Generated_Source\PSoC5/I2Seight.c **** 
+ 209:Generated_Source\PSoC5/I2Seight.c **** #if (I2Seight_DYNAMIC_BIT_RESOLUTION)
+ 210:Generated_Source\PSoC5/I2Seight.c ****     /*******************************************************************************
+ 211:Generated_Source\PSoC5/I2Seight.c ****     * Function Name: I2Seight_SetDataBits
+ 212:Generated_Source\PSoC5/I2Seight.c ****     ********************************************************************************
+ 213:Generated_Source\PSoC5/I2Seight.c ****     *
+ 214:Generated_Source\PSoC5/I2Seight.c ****     * Summary:
+ 215:Generated_Source\PSoC5/I2Seight.c ****     *  Sets the number of data bits for each sample. The component must be stopped
+ 216:Generated_Source\PSoC5/I2Seight.c ****     *  before calling this API.
+ 217:Generated_Source\PSoC5/I2Seight.c ****     *
+ 218:Generated_Source\PSoC5/I2Seight.c ****     * Parameters:
+ 219:Generated_Source\PSoC5/I2Seight.c ****     *  dataBits: the number of data bits for each sample. Valid values - 8/16/24/32.
+ 220:Generated_Source\PSoC5/I2Seight.c ****     *  If Tx or Rx byte swapping is enabled, valid values are 16 and 24.
+ 221:Generated_Source\PSoC5/I2Seight.c ****     *
+ 222:Generated_Source\PSoC5/I2Seight.c ****     * Return:
+ 223:Generated_Source\PSoC5/I2Seight.c ****     *  CYRET_SUCCESS  : Operation is successful
+ 224:Generated_Source\PSoC5/I2Seight.c ****     *  CYRET_BAD_PARAM: Invalid parameter value
+ 225:Generated_Source\PSoC5/I2Seight.c ****     *
+ 226:Generated_Source\PSoC5/I2Seight.c ****     * Side effects:
+ 227:Generated_Source\PSoC5/I2Seight.c ****     *  Calling this API while the component is operating may cause unexpected
+ 228:Generated_Source\PSoC5/I2Seight.c ****     *  behavior.
+ 229:Generated_Source\PSoC5/I2Seight.c ****     *
+ 230:Generated_Source\PSoC5/I2Seight.c ****     *******************************************************************************/
+ 231:Generated_Source\PSoC5/I2Seight.c ****     cystatus I2Seight_SetDataBits(uint8 dataBits)   
+ 232:Generated_Source\PSoC5/I2Seight.c ****     {
+ 233:Generated_Source\PSoC5/I2Seight.c ****         cystatus status;
+ 234:Generated_Source\PSoC5/I2Seight.c **** 
+ 235:Generated_Source\PSoC5/I2Seight.c ****         CYASSERT((dataBits >= I2Seight_MIN_DATA_BITS) && (dataBits <= I2Seight_MAX_DATA_BITS));
+ 236:Generated_Source\PSoC5/I2Seight.c **** 
+ 237:Generated_Source\PSoC5/I2Seight.c ****         status = CYRET_SUCCESS;
+ 238:Generated_Source\PSoC5/I2Seight.c ****         /* The component must be stopped prior calling this API. Therefore
+ 239:Generated_Source\PSoC5/I2Seight.c ****         * all the control bits except the bits modified are zeros.
+ 240:Generated_Source\PSoC5/I2Seight.c ****         */
+ 241:Generated_Source\PSoC5/I2Seight.c ****         switch(dataBits)
+ 242:Generated_Source\PSoC5/I2Seight.c ****         {
+ 243:Generated_Source\PSoC5/I2Seight.c ****         case I2Seight_8BIT_DATA:
+ 244:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_CONTROL_REG = I2Seight_8BIT_MODE;
+ 245:Generated_Source\PSoC5/I2Seight.c ****             break;
+ 246:Generated_Source\PSoC5/I2Seight.c ****         case I2Seight_16BIT_DATA:
+ 247:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_CONTROL_REG = I2Seight_16BIT_MODE;
+ 248:Generated_Source\PSoC5/I2Seight.c ****             break;
+ 249:Generated_Source\PSoC5/I2Seight.c ****         case I2Seight_24BIT_DATA:
+ 250:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_CONTROL_REG = I2Seight_24BIT_MODE;
+ 251:Generated_Source\PSoC5/I2Seight.c ****             break;
+ 252:Generated_Source\PSoC5/I2Seight.c ****         case I2Seight_32BIT_DATA:
+ 253:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_CONTROL_REG = I2Seight_32BIT_MODE;
+ 254:Generated_Source\PSoC5/I2Seight.c ****             break;
+ 255:Generated_Source\PSoC5/I2Seight.c ****         default: status = CYRET_BAD_PARAM;
+ 256:Generated_Source\PSoC5/I2Seight.c ****             break;
+ 257:Generated_Source\PSoC5/I2Seight.c ****         }
+ 258:Generated_Source\PSoC5/I2Seight.c **** 
+ 259:Generated_Source\PSoC5/I2Seight.c ****         return (status);
+ 260:Generated_Source\PSoC5/I2Seight.c ****     }
+ 261:Generated_Source\PSoC5/I2Seight.c **** 
+ 262:Generated_Source\PSoC5/I2Seight.c **** #endif /* I2Seight_DYNAMIC_BIT_RESOLUTION */
+ 263:Generated_Source\PSoC5/I2Seight.c **** 
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 8
+
+
+ 264:Generated_Source\PSoC5/I2Seight.c **** #if(I2Seight_TX_DIRECTION_ENABLE)
+ 265:Generated_Source\PSoC5/I2Seight.c ****     /*******************************************************************************
+ 266:Generated_Source\PSoC5/I2Seight.c ****     * Function Name: I2Seight_EnableTx
+ 267:Generated_Source\PSoC5/I2Seight.c ****     ********************************************************************************
+ 268:Generated_Source\PSoC5/I2Seight.c ****     *
+ 269:Generated_Source\PSoC5/I2Seight.c ****     * Summary:
+ 270:Generated_Source\PSoC5/I2Seight.c ****     *  Enables the Tx direction of the I2S interface.  At the next word
+ 271:Generated_Source\PSoC5/I2Seight.c ****     *  select falling edge transmission will begin.
+ 272:Generated_Source\PSoC5/I2Seight.c ****     *
+ 273:Generated_Source\PSoC5/I2Seight.c ****     * Parameters:
+ 274:Generated_Source\PSoC5/I2Seight.c ****     *  None.
+ 275:Generated_Source\PSoC5/I2Seight.c ****     *
+ 276:Generated_Source\PSoC5/I2Seight.c ****     * Return:
+ 277:Generated_Source\PSoC5/I2Seight.c ****     *  None.
+ 278:Generated_Source\PSoC5/I2Seight.c ****     *
+ 279:Generated_Source\PSoC5/I2Seight.c ****     *******************************************************************************/
+ 280:Generated_Source\PSoC5/I2Seight.c ****     void I2Seight_EnableTx(void) 
+ 281:Generated_Source\PSoC5/I2Seight.c ****     {
+ 282:Generated_Source\PSoC5/I2Seight.c ****         uint8 enableInterrupts;
+ 283:Generated_Source\PSoC5/I2Seight.c **** 
+ 284:Generated_Source\PSoC5/I2Seight.c ****         enableInterrupts = CyEnterCriticalSection();
+ 285:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_TX_STS0_1_ACTL_REG |= I2Seight_INT_EN;
+ 286:Generated_Source\PSoC5/I2Seight.c ****         #ifdef I2Seight_TX_STS2_3_ACTL_REG
+ 287:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_TX_STS2_3_ACTL_REG |= I2Seight_INT_EN;
+ 288:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_TX_STS2_3_ACTL_REG */
+ 289:Generated_Source\PSoC5/I2Seight.c ****         #ifdef I2Seight_TX_STS4_ACTL_REG
+ 290:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_TX_STS4_ACTL_REG |= I2Seight_INT_EN;
+ 291:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_TX_STS4_ACTL_REG */
+ 292:Generated_Source\PSoC5/I2Seight.c ****         CyExitCriticalSection(enableInterrupts);
+ 293:Generated_Source\PSoC5/I2Seight.c ****         
+ 294:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_CONTROL_REG |= I2Seight_TX_EN;
+ 295:Generated_Source\PSoC5/I2Seight.c ****     }
+ 296:Generated_Source\PSoC5/I2Seight.c **** 
+ 297:Generated_Source\PSoC5/I2Seight.c **** 
+ 298:Generated_Source\PSoC5/I2Seight.c ****     /*******************************************************************************
+ 299:Generated_Source\PSoC5/I2Seight.c ****     * Function Name: I2Seight_DisableTx
+ 300:Generated_Source\PSoC5/I2Seight.c ****     ********************************************************************************
+ 301:Generated_Source\PSoC5/I2Seight.c ****     *
+ 302:Generated_Source\PSoC5/I2Seight.c ****     * Summary:
+ 303:Generated_Source\PSoC5/I2Seight.c ****     *  Disables the Tx direction of the I2S interface.  At the next word
+ 304:Generated_Source\PSoC5/I2Seight.c ****     *  select falling edge transmission of data will stop and a constant 0 value
+ 305:Generated_Source\PSoC5/I2Seight.c ****     *  will be transmitted.
+ 306:Generated_Source\PSoC5/I2Seight.c ****     *
+ 307:Generated_Source\PSoC5/I2Seight.c ****     * Parameters:
+ 308:Generated_Source\PSoC5/I2Seight.c ****     *  None.
+ 309:Generated_Source\PSoC5/I2Seight.c ****     *
+ 310:Generated_Source\PSoC5/I2Seight.c ****     * Return:
+ 311:Generated_Source\PSoC5/I2Seight.c ****     *  None.
+ 312:Generated_Source\PSoC5/I2Seight.c ****     *
+ 313:Generated_Source\PSoC5/I2Seight.c ****     *******************************************************************************/
+ 314:Generated_Source\PSoC5/I2Seight.c ****     void I2Seight_DisableTx(void) 
+ 315:Generated_Source\PSoC5/I2Seight.c ****     {
+ 316:Generated_Source\PSoC5/I2Seight.c ****         uint8 enableInterrupts;
+ 317:Generated_Source\PSoC5/I2Seight.c **** 
+ 318:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_CONTROL_REG &= (uint8)~I2Seight_TX_EN;
+ 319:Generated_Source\PSoC5/I2Seight.c **** 
+ 320:Generated_Source\PSoC5/I2Seight.c ****         enableInterrupts = CyEnterCriticalSection();
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 9
+
+
+ 321:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_TX_STS0_1_ACTL_REG &= (uint8)~I2Seight_INT_EN;
+ 322:Generated_Source\PSoC5/I2Seight.c ****         #ifdef I2Seight_TX_STS2_3_ACTL_REG
+ 323:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_TX_STS2_3_ACTL_REG &= (uint8)~I2Seight_INT_EN;
+ 324:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_TX_STS2_3_ACTL_REG */
+ 325:Generated_Source\PSoC5/I2Seight.c ****         #ifdef I2Seight_TX_STS4_ACTL_REG
+ 326:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_TX_STS4_ACTL_REG &= (uint8)~I2Seight_INT_EN;
+ 327:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_TX_STS4_ACTL_REG */
+ 328:Generated_Source\PSoC5/I2Seight.c ****         CyExitCriticalSection(enableInterrupts);
+ 329:Generated_Source\PSoC5/I2Seight.c ****     }
+ 330:Generated_Source\PSoC5/I2Seight.c **** 
+ 331:Generated_Source\PSoC5/I2Seight.c **** 
+ 332:Generated_Source\PSoC5/I2Seight.c ****     /*******************************************************************************
+ 333:Generated_Source\PSoC5/I2Seight.c ****     * Function Name: I2Seight_ClearTxFIFO
+ 334:Generated_Source\PSoC5/I2Seight.c ****     ********************************************************************************
+ 335:Generated_Source\PSoC5/I2Seight.c ****     *
+ 336:Generated_Source\PSoC5/I2Seight.c ****     * Summary:
+ 337:Generated_Source\PSoC5/I2Seight.c ****     *  Clears out the FIFOs for all Tx channels. Any data present in the FIFO will
+ 338:Generated_Source\PSoC5/I2Seight.c ****     *  not be sent. This call should be made only when the Tx direction is disabled.
+ 339:Generated_Source\PSoC5/I2Seight.c ****     *
+ 340:Generated_Source\PSoC5/I2Seight.c ****     * Parameters:
+ 341:Generated_Source\PSoC5/I2Seight.c ****     *  None.
+ 342:Generated_Source\PSoC5/I2Seight.c ****     *
+ 343:Generated_Source\PSoC5/I2Seight.c ****     * Return:
+ 344:Generated_Source\PSoC5/I2Seight.c ****     *  None.
+ 345:Generated_Source\PSoC5/I2Seight.c ****     *
+ 346:Generated_Source\PSoC5/I2Seight.c ****     *******************************************************************************/
+ 347:Generated_Source\PSoC5/I2Seight.c ****     void I2Seight_ClearTxFIFO(void) 
+ 348:Generated_Source\PSoC5/I2Seight.c ****     {
+ 349:Generated_Source\PSoC5/I2Seight.c ****         uint8 enableInterrupts;
+ 350:Generated_Source\PSoC5/I2Seight.c **** 
+ 351:Generated_Source\PSoC5/I2Seight.c ****         enableInterrupts = CyEnterCriticalSection();
+ 352:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_CLEAR_TX_FIFO(CH0);
+ 353:Generated_Source\PSoC5/I2Seight.c ****         #if (I2Seight_TX_STEREO_1_PRESENT)
+ 354:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_CLEAR_TX_FIFO(CH1);
+ 355:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_TX_STEREO_1_PRESENT */
+ 356:Generated_Source\PSoC5/I2Seight.c ****         #if (I2Seight_TX_STEREO_2_PRESENT)
+ 357:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_CLEAR_TX_FIFO(CH2);
+ 358:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_TX_STEREO_2_PRESENT */
+ 359:Generated_Source\PSoC5/I2Seight.c ****         #if (I2Seight_TX_STEREO_3_PRESENT)
+ 360:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_CLEAR_TX_FIFO(CH3);
+ 361:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_TX_STEREO_3_PRESENT */
+ 362:Generated_Source\PSoC5/I2Seight.c ****         #if (I2Seight_TX_STEREO_4_PRESENT)
+ 363:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_CLEAR_TX_FIFO(CH4);
+ 364:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_TX_STEREO_4_PRESENT */
+ 365:Generated_Source\PSoC5/I2Seight.c ****         CyExitCriticalSection(enableInterrupts);
+ 366:Generated_Source\PSoC5/I2Seight.c ****     }
+ 367:Generated_Source\PSoC5/I2Seight.c **** 
+ 368:Generated_Source\PSoC5/I2Seight.c **** #endif /* (I2Seight_TX_DIRECTION_ENABLE) */
+ 369:Generated_Source\PSoC5/I2Seight.c **** 
+ 370:Generated_Source\PSoC5/I2Seight.c **** 
+ 371:Generated_Source\PSoC5/I2Seight.c **** #if(I2Seight_RX_DIRECTION_ENABLE)
+ 372:Generated_Source\PSoC5/I2Seight.c ****     /*******************************************************************************
+ 373:Generated_Source\PSoC5/I2Seight.c ****     * Function Name: I2Seight_EnableRx
+ 374:Generated_Source\PSoC5/I2Seight.c ****     ********************************************************************************
+ 375:Generated_Source\PSoC5/I2Seight.c ****     *
+ 376:Generated_Source\PSoC5/I2Seight.c ****     * Summary:
+ 377:Generated_Source\PSoC5/I2Seight.c ****     *  Enables the Rx direction of the I2S interface.  At the next word
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 10
+
+
+ 378:Generated_Source\PSoC5/I2Seight.c ****     *  select falling edge reception of data will begin.
+ 379:Generated_Source\PSoC5/I2Seight.c ****     *
+ 380:Generated_Source\PSoC5/I2Seight.c ****     * Parameters:
+ 381:Generated_Source\PSoC5/I2Seight.c ****     *  None.
+ 382:Generated_Source\PSoC5/I2Seight.c ****     *
+ 383:Generated_Source\PSoC5/I2Seight.c ****     * Return:
+ 384:Generated_Source\PSoC5/I2Seight.c ****     *  None.
+ 385:Generated_Source\PSoC5/I2Seight.c ****     *
+ 386:Generated_Source\PSoC5/I2Seight.c ****     *******************************************************************************/
+ 387:Generated_Source\PSoC5/I2Seight.c ****     void I2Seight_EnableRx(void) 
+ 388:Generated_Source\PSoC5/I2Seight.c ****     {
+ 137              		.loc 1 388 0
+ 138              		.cfi_startproc
+ 139              		@ args = 0, pretend = 0, frame = 0
+ 140              		@ frame_needed = 0, uses_anonymous_args = 0
+ 141 0000 08B5     		push	{r3, lr}
+ 142              		.cfi_def_cfa_offset 8
+ 143              		.cfi_offset 3, -8
+ 144              		.cfi_offset 14, -4
+ 389:Generated_Source\PSoC5/I2Seight.c ****         uint8 enableInterrupts;
+ 390:Generated_Source\PSoC5/I2Seight.c **** 
+ 391:Generated_Source\PSoC5/I2Seight.c ****         enableInterrupts = CyEnterCriticalSection();
+ 145              		.loc 1 391 0
+ 146 0002 FFF7FEFF 		bl	CyEnterCriticalSection
+ 147              	.LVL4:
+ 392:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_RX_STS0_1_ACTL_REG |= I2Seight_INT_EN;
+ 148              		.loc 1 392 0
+ 149 0006 064A     		ldr	r2, .L15
+ 150 0008 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 151 000a 43F01003 		orr	r3, r3, #16
+ 152 000e 1370     		strb	r3, [r2]
+ 393:Generated_Source\PSoC5/I2Seight.c ****         #ifdef I2Seight_RX_STS2_3_ACTL_REG
+ 394:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_RX_STS2_3_ACTL_REG |= I2Seight_INT_EN;
+ 395:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_RX_STS2_3_ACTL_REG */
+ 396:Generated_Source\PSoC5/I2Seight.c ****         #ifdef I2Seight_RX_STS4_ACTL_REG
+ 397:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_RX_STS4_ACTL_REG |= I2Seight_INT_EN;
+ 398:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_RX_STS4_ACTL_REG */
+ 399:Generated_Source\PSoC5/I2Seight.c ****         CyExitCriticalSection(enableInterrupts);
+ 153              		.loc 1 399 0
+ 154 0010 FFF7FEFF 		bl	CyExitCriticalSection
+ 155              	.LVL5:
+ 400:Generated_Source\PSoC5/I2Seight.c ****         
+ 401:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_CONTROL_REG |= I2Seight_RX_EN;
+ 156              		.loc 1 401 0
+ 157 0014 034A     		ldr	r2, .L15+4
+ 158 0016 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 159 0018 43F00203 		orr	r3, r3, #2
+ 160 001c 1370     		strb	r3, [r2]
+ 161 001e 08BD     		pop	{r3, pc}
+ 162              	.L16:
+ 163              		.align	2
+ 164              	.L15:
+ 165 0020 96640040 		.word	1073767574
+ 166 0024 7A640040 		.word	1073767546
+ 167              		.cfi_endproc
+ 168              	.LFE4:
+ 169              		.size	I2Seight_EnableRx, .-I2Seight_EnableRx
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 11
+
+
+ 170              		.section	.text.I2Seight_DisableRx,"ax",%progbits
+ 171              		.align	2
+ 172              		.global	I2Seight_DisableRx
+ 173              		.thumb
+ 174              		.thumb_func
+ 175              		.type	I2Seight_DisableRx, %function
+ 176              	I2Seight_DisableRx:
+ 177              	.LFB5:
+ 402:Generated_Source\PSoC5/I2Seight.c ****     }
+ 403:Generated_Source\PSoC5/I2Seight.c **** 
+ 404:Generated_Source\PSoC5/I2Seight.c **** 
+ 405:Generated_Source\PSoC5/I2Seight.c ****     /*******************************************************************************
+ 406:Generated_Source\PSoC5/I2Seight.c ****     * Function Name: I2Seight_DisableRx
+ 407:Generated_Source\PSoC5/I2Seight.c ****     ********************************************************************************
+ 408:Generated_Source\PSoC5/I2Seight.c ****     *
+ 409:Generated_Source\PSoC5/I2Seight.c ****     * Summary:
+ 410:Generated_Source\PSoC5/I2Seight.c ****     *  Disables the Rx direction of the I2S interface.
+ 411:Generated_Source\PSoC5/I2Seight.c ****     *
+ 412:Generated_Source\PSoC5/I2Seight.c ****     * Parameters:
+ 413:Generated_Source\PSoC5/I2Seight.c ****     *  None.
+ 414:Generated_Source\PSoC5/I2Seight.c ****     *
+ 415:Generated_Source\PSoC5/I2Seight.c ****     * Return:
+ 416:Generated_Source\PSoC5/I2Seight.c ****     *  None.
+ 417:Generated_Source\PSoC5/I2Seight.c ****     *
+ 418:Generated_Source\PSoC5/I2Seight.c ****     *******************************************************************************/
+ 419:Generated_Source\PSoC5/I2Seight.c ****     void I2Seight_DisableRx(void) 
+ 420:Generated_Source\PSoC5/I2Seight.c ****     {
+ 178              		.loc 1 420 0
+ 179              		.cfi_startproc
+ 180              		@ args = 0, pretend = 0, frame = 0
+ 181              		@ frame_needed = 0, uses_anonymous_args = 0
+ 182 0000 08B5     		push	{r3, lr}
+ 183              		.cfi_def_cfa_offset 8
+ 184              		.cfi_offset 3, -8
+ 185              		.cfi_offset 14, -4
+ 421:Generated_Source\PSoC5/I2Seight.c ****         uint8 enableInterrupts;
+ 422:Generated_Source\PSoC5/I2Seight.c **** 
+ 423:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_CONTROL_REG &= (uint8)~I2Seight_RX_EN;
+ 186              		.loc 1 423 0
+ 187 0002 074A     		ldr	r2, .L19
+ 188 0004 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 189 0006 03F0FD03 		and	r3, r3, #253
+ 190 000a 1370     		strb	r3, [r2]
+ 424:Generated_Source\PSoC5/I2Seight.c **** 
+ 425:Generated_Source\PSoC5/I2Seight.c ****         enableInterrupts = CyEnterCriticalSection();
+ 191              		.loc 1 425 0
+ 192 000c FFF7FEFF 		bl	CyEnterCriticalSection
+ 193              	.LVL6:
+ 426:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_RX_STS0_1_ACTL_REG &= (uint8)~I2Seight_INT_EN;
+ 194              		.loc 1 426 0
+ 195 0010 044A     		ldr	r2, .L19+4
+ 196 0012 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 197 0014 03F0EF03 		and	r3, r3, #239
+ 198 0018 1370     		strb	r3, [r2]
+ 427:Generated_Source\PSoC5/I2Seight.c ****         #ifdef I2Seight_RX_STS2_3_ACTL_REG
+ 428:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_RX_STS2_3_ACTL_REG &= (uint8)~I2Seight_INT_EN;
+ 429:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_RX_STS2_3_ACTL_REG */
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 12
+
+
+ 430:Generated_Source\PSoC5/I2Seight.c ****         #ifdef I2Seight_RX_STS4_ACTL_REG
+ 431:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_RX_STS4_ACTL_REG &= (uint8)~I2Seight_INT_EN;
+ 432:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_RX_STS4_ACTL_REG */
+ 433:Generated_Source\PSoC5/I2Seight.c ****         CyExitCriticalSection(enableInterrupts);
+ 199              		.loc 1 433 0
+ 200 001a FFF7FEFF 		bl	CyExitCriticalSection
+ 201              	.LVL7:
+ 202 001e 08BD     		pop	{r3, pc}
+ 203              	.L20:
+ 204              		.align	2
+ 205              	.L19:
+ 206 0020 7A640040 		.word	1073767546
+ 207 0024 96640040 		.word	1073767574
+ 208              		.cfi_endproc
+ 209              	.LFE5:
+ 210              		.size	I2Seight_DisableRx, .-I2Seight_DisableRx
+ 211              		.section	.text.I2Seight_ClearRxFIFO,"ax",%progbits
+ 212              		.align	2
+ 213              		.global	I2Seight_ClearRxFIFO
+ 214              		.thumb
+ 215              		.thumb_func
+ 216              		.type	I2Seight_ClearRxFIFO, %function
+ 217              	I2Seight_ClearRxFIFO:
+ 218              	.LFB6:
+ 434:Generated_Source\PSoC5/I2Seight.c ****     }
+ 435:Generated_Source\PSoC5/I2Seight.c **** 
+ 436:Generated_Source\PSoC5/I2Seight.c **** 
+ 437:Generated_Source\PSoC5/I2Seight.c ****     /*******************************************************************************
+ 438:Generated_Source\PSoC5/I2Seight.c ****     * Function Name: I2Seight_ClearRxFIFO
+ 439:Generated_Source\PSoC5/I2Seight.c ****     ********************************************************************************
+ 440:Generated_Source\PSoC5/I2Seight.c ****     *
+ 441:Generated_Source\PSoC5/I2Seight.c ****     * Summary:
+ 442:Generated_Source\PSoC5/I2Seight.c ****     *  Clears out the Rx FIFO.  Any data present in the FIFO will be lost.
+ 443:Generated_Source\PSoC5/I2Seight.c ****     *  This call should be made only when the Rx direction is disabled.
+ 444:Generated_Source\PSoC5/I2Seight.c ****     *
+ 445:Generated_Source\PSoC5/I2Seight.c ****     * Parameters:
+ 446:Generated_Source\PSoC5/I2Seight.c ****     *  None.
+ 447:Generated_Source\PSoC5/I2Seight.c ****     *
+ 448:Generated_Source\PSoC5/I2Seight.c ****     * Return:
+ 449:Generated_Source\PSoC5/I2Seight.c ****     *  None.
+ 450:Generated_Source\PSoC5/I2Seight.c ****     *
+ 451:Generated_Source\PSoC5/I2Seight.c ****     *******************************************************************************/
+ 452:Generated_Source\PSoC5/I2Seight.c ****     void I2Seight_ClearRxFIFO(void) 
+ 453:Generated_Source\PSoC5/I2Seight.c ****     {
+ 219              		.loc 1 453 0
+ 220              		.cfi_startproc
+ 221              		@ args = 0, pretend = 0, frame = 0
+ 222              		@ frame_needed = 0, uses_anonymous_args = 0
+ 223 0000 08B5     		push	{r3, lr}
+ 224              		.cfi_def_cfa_offset 8
+ 225              		.cfi_offset 3, -8
+ 226              		.cfi_offset 14, -4
+ 454:Generated_Source\PSoC5/I2Seight.c ****         uint8 enableInterrupts;
+ 455:Generated_Source\PSoC5/I2Seight.c **** 
+ 456:Generated_Source\PSoC5/I2Seight.c ****         enableInterrupts = CyEnterCriticalSection();
+ 227              		.loc 1 456 0
+ 228 0002 FFF7FEFF 		bl	CyEnterCriticalSection
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 13
+
+
+ 229              	.LVL8:
+ 457:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_CLEAR_RX_FIFO(CH0);
+ 230              		.loc 1 457 0
+ 231 0006 064B     		ldr	r3, .L23
+ 232 0008 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 233 000a 42F00302 		orr	r2, r2, #3
+ 234 000e 1A70     		strb	r2, [r3]
+ 235 0010 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 236 0012 02F0FC02 		and	r2, r2, #252
+ 237 0016 1A70     		strb	r2, [r3]
+ 458:Generated_Source\PSoC5/I2Seight.c ****         #if (I2Seight_RX_STEREO_1_PRESENT)
+ 459:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_CLEAR_RX_FIFO(CH1);
+ 460:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_RX_STEREO_1_PRESENT */
+ 461:Generated_Source\PSoC5/I2Seight.c ****         #if (I2Seight_RX_STEREO_2_PRESENT)
+ 462:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_CLEAR_RX_FIFO(CH2);
+ 463:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_RX_STEREO_2_PRESENT */
+ 464:Generated_Source\PSoC5/I2Seight.c ****         #if (I2Seight_RX_STEREO_3_PRESENT)
+ 465:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_CLEAR_RX_FIFO(CH3);
+ 466:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_RX_STEREO_3_PRESENT */
+ 467:Generated_Source\PSoC5/I2Seight.c ****         #if (I2Seight_RX_STEREO_4_PRESENT)
+ 468:Generated_Source\PSoC5/I2Seight.c ****             I2Seight_CLEAR_RX_FIFO(CH4);
+ 469:Generated_Source\PSoC5/I2Seight.c ****         #endif /* I2Seight_RX_STEREO_4_PRESENT */
+ 470:Generated_Source\PSoC5/I2Seight.c ****         CyExitCriticalSection(enableInterrupts);
+ 238              		.loc 1 470 0
+ 239 0018 FFF7FEFF 		bl	CyExitCriticalSection
+ 240              	.LVL9:
+ 241 001c 08BD     		pop	{r3, pc}
+ 242              	.L24:
+ 243 001e 00BF     		.align	2
+ 244              	.L23:
+ 245 0020 96640040 		.word	1073767574
+ 246              		.cfi_endproc
+ 247              	.LFE6:
+ 248              		.size	I2Seight_ClearRxFIFO, .-I2Seight_ClearRxFIFO
+ 249              		.section	.text.I2Seight_Stop,"ax",%progbits
+ 250              		.align	2
+ 251              		.global	I2Seight_Stop
+ 252              		.thumb
+ 253              		.thumb_func
+ 254              		.type	I2Seight_Stop, %function
+ 255              	I2Seight_Stop:
+ 256              	.LFB3:
+ 186:Generated_Source\PSoC5/I2Seight.c ****     uint8 enableInterrupts;
+ 257              		.loc 1 186 0
+ 258              		.cfi_startproc
+ 259              		@ args = 0, pretend = 0, frame = 0
+ 260              		@ frame_needed = 0, uses_anonymous_args = 0
+ 261 0000 08B5     		push	{r3, lr}
+ 262              		.cfi_def_cfa_offset 8
+ 263              		.cfi_offset 3, -8
+ 264              		.cfi_offset 14, -4
+ 189:Generated_Source\PSoC5/I2Seight.c **** 
+ 265              		.loc 1 189 0
+ 266 0002 0B4A     		ldr	r2, .L27
+ 267 0004 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 268 0006 03F0FB03 		and	r3, r3, #251
+ 269 000a 1370     		strb	r3, [r2]
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 14
+
+
+ 191:Generated_Source\PSoC5/I2Seight.c ****     I2Seight_AUX_CONTROL_REG &= (uint8)~I2Seight_CNT_START;
+ 270              		.loc 1 191 0
+ 271 000c FFF7FEFF 		bl	CyEnterCriticalSection
+ 272              	.LVL10:
+ 192:Generated_Source\PSoC5/I2Seight.c ****     CyExitCriticalSection(enableInterrupts);
+ 273              		.loc 1 192 0
+ 274 0010 084A     		ldr	r2, .L27+4
+ 275 0012 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 276 0014 03F0DF03 		and	r3, r3, #223
+ 277 0018 1370     		strb	r3, [r2]
+ 193:Generated_Source\PSoC5/I2Seight.c **** 
+ 278              		.loc 1 193 0
+ 279 001a FFF7FEFF 		bl	CyExitCriticalSection
+ 280              	.LVL11:
+ 196:Generated_Source\PSoC5/I2Seight.c **** 
+ 281              		.loc 1 196 0
+ 282 001e 0022     		movs	r2, #0
+ 283 0020 054B     		ldr	r3, .L27+8
+ 284 0022 1A70     		strb	r2, [r3]
+ 204:Generated_Source\PSoC5/I2Seight.c ****         I2Seight_ClearRxFIFO();
+ 285              		.loc 1 204 0
+ 286 0024 FFF7FEFF 		bl	I2Seight_DisableRx
+ 287              	.LVL12:
+ 205:Generated_Source\PSoC5/I2Seight.c ****     #endif /* (I2Seight_RX_DIRECTION_ENABLE) */
+ 288              		.loc 1 205 0
+ 289 0028 FFF7FEFF 		bl	I2Seight_ClearRxFIFO
+ 290              	.LVL13:
+ 291 002c 08BD     		pop	{r3, pc}
+ 292              	.L28:
+ 293 002e 00BF     		.align	2
+ 294              	.L27:
+ 295 0030 7A640040 		.word	1073767546
+ 296 0034 97640040 		.word	1073767575
+ 297 0038 77640040 		.word	1073767543
+ 298              		.cfi_endproc
+ 299              	.LFE3:
+ 300              		.size	I2Seight_Stop, .-I2Seight_Stop
+ 301              		.global	I2Seight_initVar
+ 302              		.bss
+ 303              		.set	.LANCHOR0,. + 0
+ 304              		.type	I2Seight_initVar, %object
+ 305              		.size	I2Seight_initVar, 1
+ 306              	I2Seight_initVar:
+ 307 0000 00       		.space	1
+ 308              		.text
+ 309              	.Letext0:
+ 310              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 311              		.file 3 "Generated_Source\\PSoC5\\CyLib.h"
+ 312              		.section	.debug_info,"",%progbits
+ 313              	.Ldebug_info0:
+ 314 0000 33020000 		.4byte	0x233
+ 315 0004 0400     		.2byte	0x4
+ 316 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 317 000a 04       		.byte	0x4
+ 318 000b 01       		.uleb128 0x1
+ 319 000c 6E000000 		.4byte	.LASF25
+ 320 0010 0C       		.byte	0xc
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 15
+
+
+ 321 0011 21000000 		.4byte	.LASF26
+ 322 0015 2E010000 		.4byte	.LASF27
+ 323 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 324 001d 00000000 		.4byte	0
+ 325 0021 00000000 		.4byte	.Ldebug_line0
+ 326 0025 02       		.uleb128 0x2
+ 327 0026 04       		.byte	0x4
+ 328 0027 05       		.byte	0x5
+ 329 0028 696E7400 		.ascii	"int\000"
+ 330 002c 03       		.uleb128 0x3
+ 331 002d 04       		.byte	0x4
+ 332 002e 07       		.byte	0x7
+ 333 002f A4010000 		.4byte	.LASF0
+ 334 0033 03       		.uleb128 0x3
+ 335 0034 08       		.byte	0x8
+ 336 0035 05       		.byte	0x5
+ 337 0036 03020000 		.4byte	.LASF1
+ 338 003a 03       		.uleb128 0x3
+ 339 003b 08       		.byte	0x8
+ 340 003c 04       		.byte	0x4
+ 341 003d 4A020000 		.4byte	.LASF2
+ 342 0041 03       		.uleb128 0x3
+ 343 0042 01       		.byte	0x1
+ 344 0043 06       		.byte	0x6
+ 345 0044 56020000 		.4byte	.LASF3
+ 346 0048 03       		.uleb128 0x3
+ 347 0049 01       		.byte	0x1
+ 348 004a 08       		.byte	0x8
+ 349 004b 60000000 		.4byte	.LASF4
+ 350 004f 03       		.uleb128 0x3
+ 351 0050 02       		.byte	0x2
+ 352 0051 05       		.byte	0x5
+ 353 0052 37020000 		.4byte	.LASF5
+ 354 0056 03       		.uleb128 0x3
+ 355 0057 02       		.byte	0x2
+ 356 0058 07       		.byte	0x7
+ 357 0059 0E000000 		.4byte	.LASF6
+ 358 005d 03       		.uleb128 0x3
+ 359 005e 04       		.byte	0x4
+ 360 005f 05       		.byte	0x5
+ 361 0060 41020000 		.4byte	.LASF7
+ 362 0064 03       		.uleb128 0x3
+ 363 0065 04       		.byte	0x4
+ 364 0066 07       		.byte	0x7
+ 365 0067 16010000 		.4byte	.LASF8
+ 366 006b 03       		.uleb128 0x3
+ 367 006c 08       		.byte	0x8
+ 368 006d 07       		.byte	0x7
+ 369 006e 49000000 		.4byte	.LASF9
+ 370 0072 03       		.uleb128 0x3
+ 371 0073 04       		.byte	0x4
+ 372 0074 07       		.byte	0x7
+ 373 0075 FA010000 		.4byte	.LASF10
+ 374 0079 03       		.uleb128 0x3
+ 375 007a 01       		.byte	0x1
+ 376 007b 08       		.byte	0x8
+ 377 007c 11020000 		.4byte	.LASF11
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 16
+
+
+ 378 0080 04       		.uleb128 0x4
+ 379 0081 28010000 		.4byte	.LASF14
+ 380 0085 02       		.byte	0x2
+ 381 0086 E801     		.2byte	0x1e8
+ 382 0088 48000000 		.4byte	0x48
+ 383 008c 03       		.uleb128 0x3
+ 384 008d 04       		.byte	0x4
+ 385 008e 04       		.byte	0x4
+ 386 008f 43000000 		.4byte	.LASF12
+ 387 0093 03       		.uleb128 0x3
+ 388 0094 08       		.byte	0x8
+ 389 0095 04       		.byte	0x4
+ 390 0096 86010000 		.4byte	.LASF13
+ 391 009a 04       		.uleb128 0x4
+ 392 009b FC000000 		.4byte	.LASF15
+ 393 009f 02       		.byte	0x2
+ 394 00a0 9202     		.2byte	0x292
+ 395 00a2 A6000000 		.4byte	0xa6
+ 396 00a6 05       		.uleb128 0x5
+ 397 00a7 80000000 		.4byte	0x80
+ 398 00ab 06       		.uleb128 0x6
+ 399 00ac 16020000 		.4byte	.LASF16
+ 400 00b0 01       		.byte	0x1
+ 401 00b1 29       		.byte	0x29
+ 402 00b2 00000000 		.4byte	.LFB0
+ 403 00b6 28000000 		.4byte	.LFE0-.LFB0
+ 404 00ba 01       		.uleb128 0x1
+ 405 00bb 9C       		.byte	0x9c
+ 406 00bc E2000000 		.4byte	0xe2
+ 407 00c0 07       		.uleb128 0x7
+ 408 00c1 75010000 		.4byte	.LASF19
+ 409 00c5 01       		.byte	0x1
+ 410 00c6 2B       		.byte	0x2b
+ 411 00c7 80000000 		.4byte	0x80
+ 412 00cb 00000000 		.4byte	.LLST0
+ 413 00cf 08       		.uleb128 0x8
+ 414 00d0 06000000 		.4byte	.LVL0
+ 415 00d4 20020000 		.4byte	0x220
+ 416 00d8 08       		.uleb128 0x8
+ 417 00d9 14000000 		.4byte	.LVL1
+ 418 00dd 2B020000 		.4byte	0x22b
+ 419 00e1 00       		.byte	0
+ 420 00e2 09       		.uleb128 0x9
+ 421 00e3 EC010000 		.4byte	.LASF28
+ 422 00e7 01       		.byte	0x1
+ 423 00e8 45       		.byte	0x45
+ 424 00e9 00000000 		.4byte	.LFB1
+ 425 00ed 18000000 		.4byte	.LFE1-.LFB1
+ 426 00f1 01       		.uleb128 0x1
+ 427 00f2 9C       		.byte	0x9c
+ 428 00f3 06       		.uleb128 0x6
+ 429 00f4 62020000 		.4byte	.LASF17
+ 430 00f8 01       		.byte	0x1
+ 431 00f9 9E       		.byte	0x9e
+ 432 00fa 00000000 		.4byte	.LFB2
+ 433 00fe 1C000000 		.4byte	.LFE2-.LFB2
+ 434 0102 01       		.uleb128 0x1
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 17
+
+
+ 435 0103 9C       		.byte	0x9c
+ 436 0104 1B010000 		.4byte	0x11b
+ 437 0108 08       		.uleb128 0x8
+ 438 0109 0C000000 		.4byte	.LVL2
+ 439 010d E2000000 		.4byte	0xe2
+ 440 0111 08       		.uleb128 0x8
+ 441 0112 16000000 		.4byte	.LVL3
+ 442 0116 AB000000 		.4byte	0xab
+ 443 011a 00       		.byte	0
+ 444 011b 0A       		.uleb128 0xa
+ 445 011c DA010000 		.4byte	.LASF18
+ 446 0120 01       		.byte	0x1
+ 447 0121 8301     		.2byte	0x183
+ 448 0123 00000000 		.4byte	.LFB4
+ 449 0127 28000000 		.4byte	.LFE4-.LFB4
+ 450 012b 01       		.uleb128 0x1
+ 451 012c 9C       		.byte	0x9c
+ 452 012d 54010000 		.4byte	0x154
+ 453 0131 0B       		.uleb128 0xb
+ 454 0132 75010000 		.4byte	.LASF19
+ 455 0136 01       		.byte	0x1
+ 456 0137 8501     		.2byte	0x185
+ 457 0139 80000000 		.4byte	0x80
+ 458 013d 13000000 		.4byte	.LLST1
+ 459 0141 08       		.uleb128 0x8
+ 460 0142 06000000 		.4byte	.LVL4
+ 461 0146 20020000 		.4byte	0x220
+ 462 014a 08       		.uleb128 0x8
+ 463 014b 14000000 		.4byte	.LVL5
+ 464 014f 2B020000 		.4byte	0x22b
+ 465 0153 00       		.byte	0
+ 466 0154 0A       		.uleb128 0xa
+ 467 0155 B1010000 		.4byte	.LASF20
+ 468 0159 01       		.byte	0x1
+ 469 015a A301     		.2byte	0x1a3
+ 470 015c 00000000 		.4byte	.LFB5
+ 471 0160 28000000 		.4byte	.LFE5-.LFB5
+ 472 0164 01       		.uleb128 0x1
+ 473 0165 9C       		.byte	0x9c
+ 474 0166 8D010000 		.4byte	0x18d
+ 475 016a 0B       		.uleb128 0xb
+ 476 016b 75010000 		.4byte	.LASF19
+ 477 016f 01       		.byte	0x1
+ 478 0170 A501     		.2byte	0x1a5
+ 479 0172 80000000 		.4byte	0x80
+ 480 0176 26000000 		.4byte	.LLST2
+ 481 017a 08       		.uleb128 0x8
+ 482 017b 10000000 		.4byte	.LVL6
+ 483 017f 20020000 		.4byte	0x220
+ 484 0183 08       		.uleb128 0x8
+ 485 0184 1E000000 		.4byte	.LVL7
+ 486 0188 2B020000 		.4byte	0x22b
+ 487 018c 00       		.byte	0
+ 488 018d 0A       		.uleb128 0xa
+ 489 018e 01010000 		.4byte	.LASF21
+ 490 0192 01       		.byte	0x1
+ 491 0193 C401     		.2byte	0x1c4
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 18
+
+
+ 492 0195 00000000 		.4byte	.LFB6
+ 493 0199 24000000 		.4byte	.LFE6-.LFB6
+ 494 019d 01       		.uleb128 0x1
+ 495 019e 9C       		.byte	0x9c
+ 496 019f C6010000 		.4byte	0x1c6
+ 497 01a3 0B       		.uleb128 0xb
+ 498 01a4 75010000 		.4byte	.LASF19
+ 499 01a8 01       		.byte	0x1
+ 500 01a9 C601     		.2byte	0x1c6
+ 501 01ab 80000000 		.4byte	0x80
+ 502 01af 39000000 		.4byte	.LLST3
+ 503 01b3 08       		.uleb128 0x8
+ 504 01b4 06000000 		.4byte	.LVL8
+ 505 01b8 20020000 		.4byte	0x220
+ 506 01bc 08       		.uleb128 0x8
+ 507 01bd 1C000000 		.4byte	.LVL9
+ 508 01c1 2B020000 		.4byte	0x22b
+ 509 01c5 00       		.byte	0
+ 510 01c6 06       		.uleb128 0x6
+ 511 01c7 00000000 		.4byte	.LASF22
+ 512 01cb 01       		.byte	0x1
+ 513 01cc B9       		.byte	0xb9
+ 514 01cd 00000000 		.4byte	.LFB3
+ 515 01d1 3C000000 		.4byte	.LFE3-.LFB3
+ 516 01d5 01       		.uleb128 0x1
+ 517 01d6 9C       		.byte	0x9c
+ 518 01d7 0F020000 		.4byte	0x20f
+ 519 01db 07       		.uleb128 0x7
+ 520 01dc 75010000 		.4byte	.LASF19
+ 521 01e0 01       		.byte	0x1
+ 522 01e1 BB       		.byte	0xbb
+ 523 01e2 80000000 		.4byte	0x80
+ 524 01e6 4C000000 		.4byte	.LLST4
+ 525 01ea 08       		.uleb128 0x8
+ 526 01eb 10000000 		.4byte	.LVL10
+ 527 01ef 20020000 		.4byte	0x220
+ 528 01f3 08       		.uleb128 0x8
+ 529 01f4 1E000000 		.4byte	.LVL11
+ 530 01f8 2B020000 		.4byte	0x22b
+ 531 01fc 08       		.uleb128 0x8
+ 532 01fd 28000000 		.4byte	.LVL12
+ 533 0201 54010000 		.4byte	0x154
+ 534 0205 08       		.uleb128 0x8
+ 535 0206 2C000000 		.4byte	.LVL13
+ 536 020a 8D010000 		.4byte	0x18d
+ 537 020e 00       		.byte	0
+ 538 020f 0C       		.uleb128 0xc
+ 539 0210 26020000 		.4byte	.LASF29
+ 540 0214 01       		.byte	0x1
+ 541 0215 15       		.byte	0x15
+ 542 0216 80000000 		.4byte	0x80
+ 543 021a 05       		.uleb128 0x5
+ 544 021b 03       		.byte	0x3
+ 545 021c 00000000 		.4byte	I2Seight_initVar
+ 546 0220 0D       		.uleb128 0xd
+ 547 0221 8D010000 		.4byte	.LASF23
+ 548 0225 8D010000 		.4byte	.LASF23
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 19
+
+
+ 549 0229 03       		.byte	0x3
+ 550 022a 7D       		.byte	0x7d
+ 551 022b 0D       		.uleb128 0xd
+ 552 022c C4010000 		.4byte	.LASF24
+ 553 0230 C4010000 		.4byte	.LASF24
+ 554 0234 03       		.byte	0x3
+ 555 0235 7E       		.byte	0x7e
+ 556 0236 00       		.byte	0
+ 557              		.section	.debug_abbrev,"",%progbits
+ 558              	.Ldebug_abbrev0:
+ 559 0000 01       		.uleb128 0x1
+ 560 0001 11       		.uleb128 0x11
+ 561 0002 01       		.byte	0x1
+ 562 0003 25       		.uleb128 0x25
+ 563 0004 0E       		.uleb128 0xe
+ 564 0005 13       		.uleb128 0x13
+ 565 0006 0B       		.uleb128 0xb
+ 566 0007 03       		.uleb128 0x3
+ 567 0008 0E       		.uleb128 0xe
+ 568 0009 1B       		.uleb128 0x1b
+ 569 000a 0E       		.uleb128 0xe
+ 570 000b 55       		.uleb128 0x55
+ 571 000c 17       		.uleb128 0x17
+ 572 000d 11       		.uleb128 0x11
+ 573 000e 01       		.uleb128 0x1
+ 574 000f 10       		.uleb128 0x10
+ 575 0010 17       		.uleb128 0x17
+ 576 0011 00       		.byte	0
+ 577 0012 00       		.byte	0
+ 578 0013 02       		.uleb128 0x2
+ 579 0014 24       		.uleb128 0x24
+ 580 0015 00       		.byte	0
+ 581 0016 0B       		.uleb128 0xb
+ 582 0017 0B       		.uleb128 0xb
+ 583 0018 3E       		.uleb128 0x3e
+ 584 0019 0B       		.uleb128 0xb
+ 585 001a 03       		.uleb128 0x3
+ 586 001b 08       		.uleb128 0x8
+ 587 001c 00       		.byte	0
+ 588 001d 00       		.byte	0
+ 589 001e 03       		.uleb128 0x3
+ 590 001f 24       		.uleb128 0x24
+ 591 0020 00       		.byte	0
+ 592 0021 0B       		.uleb128 0xb
+ 593 0022 0B       		.uleb128 0xb
+ 594 0023 3E       		.uleb128 0x3e
+ 595 0024 0B       		.uleb128 0xb
+ 596 0025 03       		.uleb128 0x3
+ 597 0026 0E       		.uleb128 0xe
+ 598 0027 00       		.byte	0
+ 599 0028 00       		.byte	0
+ 600 0029 04       		.uleb128 0x4
+ 601 002a 16       		.uleb128 0x16
+ 602 002b 00       		.byte	0
+ 603 002c 03       		.uleb128 0x3
+ 604 002d 0E       		.uleb128 0xe
+ 605 002e 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 20
+
+
+ 606 002f 0B       		.uleb128 0xb
+ 607 0030 3B       		.uleb128 0x3b
+ 608 0031 05       		.uleb128 0x5
+ 609 0032 49       		.uleb128 0x49
+ 610 0033 13       		.uleb128 0x13
+ 611 0034 00       		.byte	0
+ 612 0035 00       		.byte	0
+ 613 0036 05       		.uleb128 0x5
+ 614 0037 35       		.uleb128 0x35
+ 615 0038 00       		.byte	0
+ 616 0039 49       		.uleb128 0x49
+ 617 003a 13       		.uleb128 0x13
+ 618 003b 00       		.byte	0
+ 619 003c 00       		.byte	0
+ 620 003d 06       		.uleb128 0x6
+ 621 003e 2E       		.uleb128 0x2e
+ 622 003f 01       		.byte	0x1
+ 623 0040 3F       		.uleb128 0x3f
+ 624 0041 19       		.uleb128 0x19
+ 625 0042 03       		.uleb128 0x3
+ 626 0043 0E       		.uleb128 0xe
+ 627 0044 3A       		.uleb128 0x3a
+ 628 0045 0B       		.uleb128 0xb
+ 629 0046 3B       		.uleb128 0x3b
+ 630 0047 0B       		.uleb128 0xb
+ 631 0048 27       		.uleb128 0x27
+ 632 0049 19       		.uleb128 0x19
+ 633 004a 11       		.uleb128 0x11
+ 634 004b 01       		.uleb128 0x1
+ 635 004c 12       		.uleb128 0x12
+ 636 004d 06       		.uleb128 0x6
+ 637 004e 40       		.uleb128 0x40
+ 638 004f 18       		.uleb128 0x18
+ 639 0050 9742     		.uleb128 0x2117
+ 640 0052 19       		.uleb128 0x19
+ 641 0053 01       		.uleb128 0x1
+ 642 0054 13       		.uleb128 0x13
+ 643 0055 00       		.byte	0
+ 644 0056 00       		.byte	0
+ 645 0057 07       		.uleb128 0x7
+ 646 0058 34       		.uleb128 0x34
+ 647 0059 00       		.byte	0
+ 648 005a 03       		.uleb128 0x3
+ 649 005b 0E       		.uleb128 0xe
+ 650 005c 3A       		.uleb128 0x3a
+ 651 005d 0B       		.uleb128 0xb
+ 652 005e 3B       		.uleb128 0x3b
+ 653 005f 0B       		.uleb128 0xb
+ 654 0060 49       		.uleb128 0x49
+ 655 0061 13       		.uleb128 0x13
+ 656 0062 02       		.uleb128 0x2
+ 657 0063 17       		.uleb128 0x17
+ 658 0064 00       		.byte	0
+ 659 0065 00       		.byte	0
+ 660 0066 08       		.uleb128 0x8
+ 661 0067 898201   		.uleb128 0x4109
+ 662 006a 00       		.byte	0
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 21
+
+
+ 663 006b 11       		.uleb128 0x11
+ 664 006c 01       		.uleb128 0x1
+ 665 006d 31       		.uleb128 0x31
+ 666 006e 13       		.uleb128 0x13
+ 667 006f 00       		.byte	0
+ 668 0070 00       		.byte	0
+ 669 0071 09       		.uleb128 0x9
+ 670 0072 2E       		.uleb128 0x2e
+ 671 0073 00       		.byte	0
+ 672 0074 3F       		.uleb128 0x3f
+ 673 0075 19       		.uleb128 0x19
+ 674 0076 03       		.uleb128 0x3
+ 675 0077 0E       		.uleb128 0xe
+ 676 0078 3A       		.uleb128 0x3a
+ 677 0079 0B       		.uleb128 0xb
+ 678 007a 3B       		.uleb128 0x3b
+ 679 007b 0B       		.uleb128 0xb
+ 680 007c 27       		.uleb128 0x27
+ 681 007d 19       		.uleb128 0x19
+ 682 007e 11       		.uleb128 0x11
+ 683 007f 01       		.uleb128 0x1
+ 684 0080 12       		.uleb128 0x12
+ 685 0081 06       		.uleb128 0x6
+ 686 0082 40       		.uleb128 0x40
+ 687 0083 18       		.uleb128 0x18
+ 688 0084 9742     		.uleb128 0x2117
+ 689 0086 19       		.uleb128 0x19
+ 690 0087 00       		.byte	0
+ 691 0088 00       		.byte	0
+ 692 0089 0A       		.uleb128 0xa
+ 693 008a 2E       		.uleb128 0x2e
+ 694 008b 01       		.byte	0x1
+ 695 008c 3F       		.uleb128 0x3f
+ 696 008d 19       		.uleb128 0x19
+ 697 008e 03       		.uleb128 0x3
+ 698 008f 0E       		.uleb128 0xe
+ 699 0090 3A       		.uleb128 0x3a
+ 700 0091 0B       		.uleb128 0xb
+ 701 0092 3B       		.uleb128 0x3b
+ 702 0093 05       		.uleb128 0x5
+ 703 0094 27       		.uleb128 0x27
+ 704 0095 19       		.uleb128 0x19
+ 705 0096 11       		.uleb128 0x11
+ 706 0097 01       		.uleb128 0x1
+ 707 0098 12       		.uleb128 0x12
+ 708 0099 06       		.uleb128 0x6
+ 709 009a 40       		.uleb128 0x40
+ 710 009b 18       		.uleb128 0x18
+ 711 009c 9742     		.uleb128 0x2117
+ 712 009e 19       		.uleb128 0x19
+ 713 009f 01       		.uleb128 0x1
+ 714 00a0 13       		.uleb128 0x13
+ 715 00a1 00       		.byte	0
+ 716 00a2 00       		.byte	0
+ 717 00a3 0B       		.uleb128 0xb
+ 718 00a4 34       		.uleb128 0x34
+ 719 00a5 00       		.byte	0
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 22
+
+
+ 720 00a6 03       		.uleb128 0x3
+ 721 00a7 0E       		.uleb128 0xe
+ 722 00a8 3A       		.uleb128 0x3a
+ 723 00a9 0B       		.uleb128 0xb
+ 724 00aa 3B       		.uleb128 0x3b
+ 725 00ab 05       		.uleb128 0x5
+ 726 00ac 49       		.uleb128 0x49
+ 727 00ad 13       		.uleb128 0x13
+ 728 00ae 02       		.uleb128 0x2
+ 729 00af 17       		.uleb128 0x17
+ 730 00b0 00       		.byte	0
+ 731 00b1 00       		.byte	0
+ 732 00b2 0C       		.uleb128 0xc
+ 733 00b3 34       		.uleb128 0x34
+ 734 00b4 00       		.byte	0
+ 735 00b5 03       		.uleb128 0x3
+ 736 00b6 0E       		.uleb128 0xe
+ 737 00b7 3A       		.uleb128 0x3a
+ 738 00b8 0B       		.uleb128 0xb
+ 739 00b9 3B       		.uleb128 0x3b
+ 740 00ba 0B       		.uleb128 0xb
+ 741 00bb 49       		.uleb128 0x49
+ 742 00bc 13       		.uleb128 0x13
+ 743 00bd 3F       		.uleb128 0x3f
+ 744 00be 19       		.uleb128 0x19
+ 745 00bf 02       		.uleb128 0x2
+ 746 00c0 18       		.uleb128 0x18
+ 747 00c1 00       		.byte	0
+ 748 00c2 00       		.byte	0
+ 749 00c3 0D       		.uleb128 0xd
+ 750 00c4 2E       		.uleb128 0x2e
+ 751 00c5 00       		.byte	0
+ 752 00c6 3F       		.uleb128 0x3f
+ 753 00c7 19       		.uleb128 0x19
+ 754 00c8 3C       		.uleb128 0x3c
+ 755 00c9 19       		.uleb128 0x19
+ 756 00ca 6E       		.uleb128 0x6e
+ 757 00cb 0E       		.uleb128 0xe
+ 758 00cc 03       		.uleb128 0x3
+ 759 00cd 0E       		.uleb128 0xe
+ 760 00ce 3A       		.uleb128 0x3a
+ 761 00cf 0B       		.uleb128 0xb
+ 762 00d0 3B       		.uleb128 0x3b
+ 763 00d1 0B       		.uleb128 0xb
+ 764 00d2 00       		.byte	0
+ 765 00d3 00       		.byte	0
+ 766 00d4 00       		.byte	0
+ 767              		.section	.debug_loc,"",%progbits
+ 768              	.Ldebug_loc0:
+ 769              	.LLST0:
+ 770 0000 06000000 		.4byte	.LVL0
+ 771 0004 13000000 		.4byte	.LVL1-1
+ 772 0008 0100     		.2byte	0x1
+ 773 000a 50       		.byte	0x50
+ 774 000b 00000000 		.4byte	0
+ 775 000f 00000000 		.4byte	0
+ 776              	.LLST1:
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 23
+
+
+ 777 0013 06000000 		.4byte	.LVL4
+ 778 0017 13000000 		.4byte	.LVL5-1
+ 779 001b 0100     		.2byte	0x1
+ 780 001d 50       		.byte	0x50
+ 781 001e 00000000 		.4byte	0
+ 782 0022 00000000 		.4byte	0
+ 783              	.LLST2:
+ 784 0026 10000000 		.4byte	.LVL6
+ 785 002a 1D000000 		.4byte	.LVL7-1
+ 786 002e 0100     		.2byte	0x1
+ 787 0030 50       		.byte	0x50
+ 788 0031 00000000 		.4byte	0
+ 789 0035 00000000 		.4byte	0
+ 790              	.LLST3:
+ 791 0039 06000000 		.4byte	.LVL8
+ 792 003d 1B000000 		.4byte	.LVL9-1
+ 793 0041 0100     		.2byte	0x1
+ 794 0043 50       		.byte	0x50
+ 795 0044 00000000 		.4byte	0
+ 796 0048 00000000 		.4byte	0
+ 797              	.LLST4:
+ 798 004c 10000000 		.4byte	.LVL10
+ 799 0050 1D000000 		.4byte	.LVL11-1
+ 800 0054 0100     		.2byte	0x1
+ 801 0056 50       		.byte	0x50
+ 802 0057 00000000 		.4byte	0
+ 803 005b 00000000 		.4byte	0
+ 804              		.section	.debug_aranges,"",%progbits
+ 805 0000 4C000000 		.4byte	0x4c
+ 806 0004 0200     		.2byte	0x2
+ 807 0006 00000000 		.4byte	.Ldebug_info0
+ 808 000a 04       		.byte	0x4
+ 809 000b 00       		.byte	0
+ 810 000c 0000     		.2byte	0
+ 811 000e 0000     		.2byte	0
+ 812 0010 00000000 		.4byte	.LFB0
+ 813 0014 28000000 		.4byte	.LFE0-.LFB0
+ 814 0018 00000000 		.4byte	.LFB1
+ 815 001c 18000000 		.4byte	.LFE1-.LFB1
+ 816 0020 00000000 		.4byte	.LFB2
+ 817 0024 1C000000 		.4byte	.LFE2-.LFB2
+ 818 0028 00000000 		.4byte	.LFB4
+ 819 002c 28000000 		.4byte	.LFE4-.LFB4
+ 820 0030 00000000 		.4byte	.LFB5
+ 821 0034 28000000 		.4byte	.LFE5-.LFB5
+ 822 0038 00000000 		.4byte	.LFB6
+ 823 003c 24000000 		.4byte	.LFE6-.LFB6
+ 824 0040 00000000 		.4byte	.LFB3
+ 825 0044 3C000000 		.4byte	.LFE3-.LFB3
+ 826 0048 00000000 		.4byte	0
+ 827 004c 00000000 		.4byte	0
+ 828              		.section	.debug_ranges,"",%progbits
+ 829              	.Ldebug_ranges0:
+ 830 0000 00000000 		.4byte	.LFB0
+ 831 0004 28000000 		.4byte	.LFE0
+ 832 0008 00000000 		.4byte	.LFB1
+ 833 000c 18000000 		.4byte	.LFE1
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 24
+
+
+ 834 0010 00000000 		.4byte	.LFB2
+ 835 0014 1C000000 		.4byte	.LFE2
+ 836 0018 00000000 		.4byte	.LFB4
+ 837 001c 28000000 		.4byte	.LFE4
+ 838 0020 00000000 		.4byte	.LFB5
+ 839 0024 28000000 		.4byte	.LFE5
+ 840 0028 00000000 		.4byte	.LFB6
+ 841 002c 24000000 		.4byte	.LFE6
+ 842 0030 00000000 		.4byte	.LFB3
+ 843 0034 3C000000 		.4byte	.LFE3
+ 844 0038 00000000 		.4byte	0
+ 845 003c 00000000 		.4byte	0
+ 846              		.section	.debug_line,"",%progbits
+ 847              	.Ldebug_line0:
+ 848 0000 E4000000 		.section	.debug_str,"MS",%progbits,1
+ 848      02005000 
+ 848      00000201 
+ 848      FB0E0D00 
+ 848      01010101 
+ 849              	.LASF22:
+ 850 0000 49325365 		.ascii	"I2Seight_Stop\000"
+ 850      69676874 
+ 850      5F53746F 
+ 850      7000
+ 851              	.LASF6:
+ 852 000e 73686F72 		.ascii	"short unsigned int\000"
+ 852      7420756E 
+ 852      7369676E 
+ 852      65642069 
+ 852      6E7400
+ 853              	.LASF26:
+ 854 0021 47656E65 		.ascii	"Generated_Source\\PSoC5\\I2Seight.c\000"
+ 854      72617465 
+ 854      645F536F 
+ 854      75726365 
+ 854      5C50536F 
+ 855              	.LASF12:
+ 856 0043 666C6F61 		.ascii	"float\000"
+ 856      7400
+ 857              	.LASF9:
+ 858 0049 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 858      206C6F6E 
+ 858      6720756E 
+ 858      7369676E 
+ 858      65642069 
+ 859              	.LASF4:
+ 860 0060 756E7369 		.ascii	"unsigned char\000"
+ 860      676E6564 
+ 860      20636861 
+ 860      7200
+ 861              	.LASF25:
+ 862 006e 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 862      43313120 
+ 862      352E342E 
+ 862      31203230 
+ 862      31363036 
+ 863 00a1 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 25
+
+
+ 863      20726576 
+ 863      6973696F 
+ 863      6E203233 
+ 863      37373135 
+ 864 00d4 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 864      66756E63 
+ 864      74696F6E 
+ 864      2D736563 
+ 864      74696F6E 
+ 865              	.LASF15:
+ 866 00fc 72656738 		.ascii	"reg8\000"
+ 866      00
+ 867              	.LASF21:
+ 868 0101 49325365 		.ascii	"I2Seight_ClearRxFIFO\000"
+ 868      69676874 
+ 868      5F436C65 
+ 868      61725278 
+ 868      4649464F 
+ 869              	.LASF8:
+ 870 0116 6C6F6E67 		.ascii	"long unsigned int\000"
+ 870      20756E73 
+ 870      69676E65 
+ 870      6420696E 
+ 870      7400
+ 871              	.LASF14:
+ 872 0128 75696E74 		.ascii	"uint8\000"
+ 872      3800
+ 873              	.LASF27:
+ 874 012e 433A5C55 		.ascii	"C:\\Users\\tardi\\Desktop\\ES10-Drowning\\PSoCSampl"
+ 874      73657273 
+ 874      5C746172 
+ 874      64695C44 
+ 874      65736B74 
+ 875 015c 65725C53 		.ascii	"er\\SamplingCircuit.cydsn\000"
+ 875      616D706C 
+ 875      696E6743 
+ 875      69726375 
+ 875      69742E63 
+ 876              	.LASF19:
+ 877 0175 656E6162 		.ascii	"enableInterrupts\000"
+ 877      6C65496E 
+ 877      74657272 
+ 877      75707473 
+ 877      00
+ 878              	.LASF13:
+ 879 0186 646F7562 		.ascii	"double\000"
+ 879      6C6500
+ 880              	.LASF23:
+ 881 018d 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 881      74657243 
+ 881      72697469 
+ 881      63616C53 
+ 881      65637469 
+ 882              	.LASF0:
+ 883 01a4 756E7369 		.ascii	"unsigned int\000"
+ 883      676E6564 
+ 883      20696E74 
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 26
+
+
+ 883      00
+ 884              	.LASF20:
+ 885 01b1 49325365 		.ascii	"I2Seight_DisableRx\000"
+ 885      69676874 
+ 885      5F446973 
+ 885      61626C65 
+ 885      527800
+ 886              	.LASF24:
+ 887 01c4 43794578 		.ascii	"CyExitCriticalSection\000"
+ 887      69744372 
+ 887      69746963 
+ 887      616C5365 
+ 887      6374696F 
+ 888              	.LASF18:
+ 889 01da 49325365 		.ascii	"I2Seight_EnableRx\000"
+ 889      69676874 
+ 889      5F456E61 
+ 889      626C6552 
+ 889      7800
+ 890              	.LASF28:
+ 891 01ec 49325365 		.ascii	"I2Seight_Init\000"
+ 891      69676874 
+ 891      5F496E69 
+ 891      7400
+ 892              	.LASF10:
+ 893 01fa 73697A65 		.ascii	"sizetype\000"
+ 893      74797065 
+ 893      00
+ 894              	.LASF1:
+ 895 0203 6C6F6E67 		.ascii	"long long int\000"
+ 895      206C6F6E 
+ 895      6720696E 
+ 895      7400
+ 896              	.LASF11:
+ 897 0211 63686172 		.ascii	"char\000"
+ 897      00
+ 898              	.LASF16:
+ 899 0216 49325365 		.ascii	"I2Seight_Enable\000"
+ 899      69676874 
+ 899      5F456E61 
+ 899      626C6500 
+ 900              	.LASF29:
+ 901 0226 49325365 		.ascii	"I2Seight_initVar\000"
+ 901      69676874 
+ 901      5F696E69 
+ 901      74566172 
+ 901      00
+ 902              	.LASF5:
+ 903 0237 73686F72 		.ascii	"short int\000"
+ 903      7420696E 
+ 903      7400
+ 904              	.LASF7:
+ 905 0241 6C6F6E67 		.ascii	"long int\000"
+ 905      20696E74 
+ 905      00
+ 906              	.LASF2:
+ 907 024a 6C6F6E67 		.ascii	"long double\000"
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\cceg951a.s 			page 27
+
+
+ 907      20646F75 
+ 907      626C6500 
+ 908              	.LASF3:
+ 909 0256 7369676E 		.ascii	"signed char\000"
+ 909      65642063 
+ 909      68617200 
+ 910              	.LASF17:
+ 911 0262 49325365 		.ascii	"I2Seight_Start\000"
+ 911      69676874 
+ 911      5F537461 
+ 911      727400
+ 912              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

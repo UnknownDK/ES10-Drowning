@@ -1,5 +1,5 @@
 # SamplingCircuit
-# 2024-04-20 09:10:15Z
+# 2024-04-25 05:29:41Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -8,76 +8,169 @@ dont_use_io iocell 1 1
 # IO_3@[IOP=(1)][IoId=(3)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 3
 set_location "ClockBlock" clockblockcell -1 -1 0
-set_io "I2S_SDI(0)" iocell 12 4
-set_io "Tx_1(0)" iocell 15 1
-set_io "Rx_1(0)" iocell 15 2
-set_io "I2S_CLK(0)" iocell 12 2
-set_io "I2S_CLK(1)" iocell 12 3
+set_io "I2S_SDI_three(0)" iocell 1 5
+set_io "I2S_three_ws(0)" iocell 1 4
 set_io "cs(0)" iocell 2 2
 set_io "MOSI_1(0)" iocell 2 1
 set_io "MISO_1(0)" iocell 2 3
 set_io "SCLK_1(0)" iocell 2 0
-set_location "\I2S:bI2S:rx_overflow_0\" 3 2 0 1
-set_location "Net_509" 3 1 1 3
-set_location "\UART:BUART:counter_load_not\" 2 3 1 1
-set_location "\UART:BUART:tx_status_0\" 2 5 0 1
-set_location "\UART:BUART:tx_status_2\" 2 4 1 2
-set_location "\UART:BUART:rx_counter_load\" 2 1 1 3
-set_location "\UART:BUART:rx_postpoll\" 2 2 0 2
-set_location "\UART:BUART:rx_status_4\" 2 2 1 2
-set_location "\UART:BUART:rx_status_5\" 2 2 1 3
-set_location "\SPIM:BSPIM:load_rx_data\" 3 4 1 3
-set_location "\SPIM:BSPIM:tx_status_0\" 3 4 1 2
-set_location "\SPIM:BSPIM:tx_status_4\" 3 2 1 0
-set_location "\SPIM:BSPIM:rx_status_6\" 3 3 0 0
-set_location "\I2S:bI2S:CtlReg\" 3 2 6
-set_location "\I2S:bI2S:BitCounter\" 3 5 7
-set_location "\I2S:bI2S:Rx:STS[0]:Sts\" 3 2 4
-set_location "\I2S:bI2S:Rx:CH[0]:dpRx:u0\" 3 2 2
-set_location "I2S_DMA" drqcell -1 -1 0
-set_location "\UART:TXInternalInterrupt\" interrupt -1 -1 1
-set_location "\UART:BUART:sTX:TxShifter:u0\" 2 4 2
-set_location "\UART:BUART:sTX:sCLOCK:TxBitClkGen\" 2 3 2
-set_location "\UART:BUART:sTX:TxSts\" 2 4 4
-set_location "\UART:BUART:sRX:RxShifter:u0\" 2 2 2
-set_location "\UART:BUART:sRX:RxBitCounter\" 2 1 7
-set_location "\UART:BUART:sRX:RxSts\" 3 1 4
-set_location "DmaI2S" interrupt -1 -1 0
-set_location "\SPIM:BSPIM:BitCounter\" 3 4 7
-set_location "\SPIM:BSPIM:TxStsReg\" 3 3 4
-set_location "\SPIM:BSPIM:RxStsReg\" 2 2 4
-set_location "\SPIM:BSPIM:sR8:Dp:u0\" 3 3 2
-set_location "\I2S:bI2S:reset\" 3 4 0 1
-set_location "Net_74" 3 5 1 2
-set_location "\I2S:bI2S:rx_f0_load\" 2 5 1 1
-set_location "\I2S:bI2S:rx_state_2\" 3 5 1 1
-set_location "\I2S:bI2S:rx_state_1\" 2 5 1 0
-set_location "\I2S:bI2S:rx_state_0\" 3 5 1 0
-set_location "\I2S:bI2S:rx_overflow_sticky\" 3 2 0 0
-set_location "\I2S:bI2S:rxenable\" 3 5 0 3
-set_location "\I2S:bI2S:rx_data_in_0\" 3 1 0 1
-set_location "\UART:BUART:txn\" 2 4 1 0
-set_location "\UART:BUART:tx_state_1\" 2 3 1 2
-set_location "\UART:BUART:tx_state_0\" 2 5 0 0
-set_location "\UART:BUART:tx_state_2\" 2 3 1 0
-set_location "\UART:BUART:tx_bitclk\" 2 5 0 3
-set_location "\UART:BUART:tx_ctrl_mark_last\" 2 2 1 0
-set_location "\UART:BUART:rx_state_0\" 2 1 0 2
-set_location "\UART:BUART:rx_load_fifo\" 2 1 1 2
-set_location "\UART:BUART:rx_state_3\" 2 1 0 1
-set_location "\UART:BUART:rx_state_2\" 2 1 0 0
-set_location "\UART:BUART:rx_bitclk_enable\" 2 1 1 0
-set_location "\UART:BUART:rx_state_stop1_reg\" 2 2 0 1
-set_location "\UART:BUART:pollcount_1\" 3 1 1 2
-set_location "\UART:BUART:pollcount_0\" 3 1 1 1
-set_location "\UART:BUART:rx_status_3\" 2 2 0 0
-set_location "\UART:BUART:rx_last\" 2 2 0 3
-set_location "Net_268" 2 3 0 2
-set_location "Net_263" 2 4 0 0
-set_location "Net_23" 3 4 1 1
-set_location "\SPIM:BSPIM:state_2\" 3 3 1 0
-set_location "\SPIM:BSPIM:state_1\" 3 3 1 1
-set_location "\SPIM:BSPIM:state_0\" 3 2 1 3
-set_location "\SPIM:BSPIM:load_cond\" 3 3 0 1
-set_location "\SPIM:BSPIM:ld_ident\" 3 3 1 2
-set_location "\SPIM:BSPIM:cnt_enable\" 2 4 0 2
+set_io "I2S_two_ws(0)" iocell 3 1
+set_io "I2S_SDI_one(0)" iocell 12 1
+set_io "I2S_one(0)" iocell 12 2
+set_io "I2S_one(1)" iocell 12 3
+set_io "I2S_SDI_two(0)" iocell 3 0
+set_io "I2S_four_ws(0)" iocell 15 0
+set_io "I2S_SDI_four(0)" iocell 15 1
+set_io "I2S_SDI_six(0)" iocell 12 6
+set_io "I2S_six_ws(0)" iocell 12 7
+set_io "I2S_five_ws(0)" iocell 3 5
+set_io "I2S_seven_ws(0)" iocell 0 1
+set_io "I2S_eight_ws(0)" iocell 15 2
+set_io "I2S_SDI_five(0)" iocell 3 6
+set_io "I2S_SDI_seven(0)" iocell 15 3
+set_io "I2S_SDI_eight(0)" iocell 3 3
+set_location "\I2Sthree:bI2S:rx_overflow_0\" 3 5 1 3
+set_location "\SPIM:BSPIM:load_rx_data\" 0 1 0 1
+set_location "\SPIM:BSPIM:tx_status_0\" 0 1 0 2
+set_location "\SPIM:BSPIM:tx_status_4\" 0 1 0 3
+set_location "\SPIM:BSPIM:rx_status_6\" 0 2 0 2
+set_location "\I2Sone:bI2S:rx_overflow_0\" 0 3 1 1
+set_location "\I2Stwo:bI2S:rx_overflow_0\" 3 3 1 0
+set_location "\I2Sfour:bI2S:rx_overflow_0\" 2 0 0 2
+set_location "\I2Ssix:bI2S:rx_overflow_0\" 1 1 0 1
+set_location "\I2Sfive:bI2S:rx_overflow_0\" 2 0 0 3
+set_location "\I2Sseven:bI2S:rx_overflow_0\" 2 4 0 0
+set_location "\I2Seight:bI2S:rx_overflow_0\" 3 3 1 3
+set_location "DmaI2S_three" interrupt -1 -1 6
+set_location "I2S_DMA_three" drqcell -1 -1 6
+set_location "\I2Sthree:bI2S:CtlReg\" 2 5 6
+set_location "\I2Sthree:bI2S:BitCounter\" 3 5 7
+set_location "\I2Sthree:bI2S:Rx:STS[0]:Sts\" 2 5 4
+set_location "\I2Sthree:bI2S:Rx:CH[0]:dpRx:u0\" 2 5 2
+set_location "\SPIM:BSPIM:BitCounter\" 0 1 7
+set_location "\SPIM:BSPIM:TxStsReg\" 1 1 4
+set_location "\SPIM:BSPIM:RxStsReg\" 0 2 4
+set_location "\SPIM:BSPIM:sR8:Dp:u0\" 0 1 2
+set_location "I2S_DMA_one" drqcell -1 -1 3
+set_location "\I2Sone:bI2S:CtlReg\" 0 0 6
+set_location "\I2Sone:bI2S:BitCounter\" 1 3 7
+set_location "\I2Sone:bI2S:Rx:STS[0]:Sts\" 0 3 4
+set_location "\I2Sone:bI2S:Rx:CH[0]:dpRx:u0\" 1 3 2
+set_location "DmaI2S_one" interrupt -1 -1 3
+set_location "DmaI2S_two" interrupt -1 -1 7
+set_location "I2S_DMA_two" drqcell -1 -1 7
+set_location "\I2Stwo:bI2S:CtlReg\" 3 3 6
+set_location "\I2Stwo:bI2S:BitCounter\" 3 4 7
+set_location "\I2Stwo:bI2S:Rx:STS[0]:Sts\" 3 3 4
+set_location "\I2Stwo:bI2S:Rx:CH[0]:dpRx:u0\" 3 4 2
+set_location "\I2Sfour:bI2S:CtlReg\" 2 1 6
+set_location "\I2Sfour:bI2S:BitCounter\" 3 1 7
+set_location "\I2Sfour:bI2S:Rx:STS[0]:Sts\" 3 0 4
+set_location "\I2Sfour:bI2S:Rx:CH[0]:dpRx:u0\" 2 1 2
+set_location "I2S_DMA_four" drqcell -1 -1 2
+set_location "DmaI2S_four" interrupt -1 -1 2
+set_location "\I2Ssix:bI2S:CtlReg\" 1 0 6
+set_location "\I2Ssix:bI2S:BitCounter\" 1 2 7
+set_location "\I2Ssix:bI2S:Rx:STS[0]:Sts\" 1 0 4
+set_location "\I2Ssix:bI2S:Rx:CH[0]:dpRx:u0\" 1 0 2
+set_location "I2S_DMA_six" drqcell -1 -1 5
+set_location "DmaI2S_six" interrupt -1 -1 5
+set_location "\I2Sfive:bI2S:CtlReg\" 3 0 6
+set_location "\I2Sfive:bI2S:BitCounter\" 2 0 7
+set_location "\I2Sfive:bI2S:Rx:STS[0]:Sts\" 0 0 4
+set_location "\I2Sfive:bI2S:Rx:CH[0]:dpRx:u0\" 2 0 2
+set_location "I2S_DMA_five" drqcell -1 -1 1
+set_location "DmaI2S_five" interrupt -1 -1 1
+set_location "\I2Sseven:bI2S:CtlReg\" 2 4 6
+set_location "\I2Sseven:bI2S:BitCounter\" 2 3 7
+set_location "\I2Sseven:bI2S:Rx:STS[0]:Sts\" 2 1 4
+set_location "\I2Sseven:bI2S:Rx:CH[0]:dpRx:u0\" 2 3 2
+set_location "I2S_DMA_seven" drqcell -1 -1 4
+set_location "DmaI2S_seven" interrupt -1 -1 4
+set_location "\I2Seight:bI2S:CtlReg\" 0 3 6
+set_location "\I2Seight:bI2S:BitCounter\" 2 2 7
+set_location "\I2Seight:bI2S:Rx:STS[0]:Sts\" 3 2 4
+set_location "\I2Seight:bI2S:Rx:CH[0]:dpRx:u0\" 3 2 2
+set_location "I2S_DMA_eight" drqcell -1 -1 0
+set_location "DmaI2S_eight" interrupt -1 -1 0
+set_location "Net_268" 0 3 0 0
+set_location "\I2Sthree:bI2S:reset\" 2 5 1 1
+set_location "Net_625" 2 5 1 2
+set_location "\I2Sthree:bI2S:rx_f0_load\" 2 5 0 2
+set_location "\I2Sthree:bI2S:rx_state_2\" 2 5 0 1
+set_location "\I2Sthree:bI2S:rx_state_1\" 2 5 0 0
+set_location "\I2Sthree:bI2S:rx_state_0\" 2 5 1 0
+set_location "\I2Sthree:bI2S:rx_overflow_sticky\" 3 5 1 0
+set_location "\I2Sthree:bI2S:rxenable\" 3 5 0 0
+set_location "\I2Sthree:bI2S:rx_data_in_0\" 0 2 1 2
+set_location "Net_263" 0 0 1 1
+set_location "Net_23" 0 1 0 0
+set_location "\SPIM:BSPIM:state_2\" 0 1 1 1
+set_location "\SPIM:BSPIM:state_1\" 0 1 1 0
+set_location "\SPIM:BSPIM:state_0\" 0 1 1 2
+set_location "\SPIM:BSPIM:load_cond\" 0 2 0 0
+set_location "\SPIM:BSPIM:ld_ident\" 0 2 0 1
+set_location "\SPIM:BSPIM:cnt_enable\" 0 0 1 0
+set_location "\I2Sone:bI2S:reset\" 1 3 1 2
+set_location "Net_739" 1 3 1 1
+set_location "\I2Sone:bI2S:rx_f0_load\" 1 3 0 2
+set_location "\I2Sone:bI2S:rx_state_2\" 1 3 0 1
+set_location "\I2Sone:bI2S:rx_state_1\" 1 3 0 0
+set_location "\I2Sone:bI2S:rx_state_0\" 1 3 1 0
+set_location "\I2Sone:bI2S:rx_overflow_sticky\" 0 3 1 0
+set_location "\I2Sone:bI2S:rxenable\" 1 2 1 0
+set_location "\I2Sone:bI2S:rx_data_in_0\" 1 1 1 2
+set_location "\I2Stwo:bI2S:reset\" 3 4 0 3
+set_location "Net_74" 3 4 1 1
+set_location "\I2Stwo:bI2S:rx_f0_load\" 3 4 0 2
+set_location "\I2Stwo:bI2S:rx_state_2\" 3 4 0 1
+set_location "\I2Stwo:bI2S:rx_state_1\" 3 4 0 0
+set_location "\I2Stwo:bI2S:rx_state_0\" 3 4 1 0
+set_location "\I2Stwo:bI2S:rx_overflow_sticky\" 3 3 1 1
+set_location "\I2Stwo:bI2S:rxenable\" 2 4 1 0
+set_location "\I2Stwo:bI2S:rx_data_in_0\" 3 3 0 3
+set_location "\I2Sfour:bI2S:reset\" 2 1 1 2
+set_location "Net_668" 2 1 1 1
+set_location "\I2Sfour:bI2S:rx_f0_load\" 2 1 0 1
+set_location "\I2Sfour:bI2S:rx_state_2\" 2 1 1 3
+set_location "\I2Sfour:bI2S:rx_state_1\" 2 1 1 0
+set_location "\I2Sfour:bI2S:rx_state_0\" 2 1 0 0
+set_location "\I2Sfour:bI2S:rx_overflow_sticky\" 2 0 0 0
+set_location "\I2Sfour:bI2S:rxenable\" 3 1 0 0
+set_location "\I2Sfour:bI2S:rx_data_in_0\" 3 1 1 1
+set_location "\I2Ssix:bI2S:reset\" 1 0 1 2
+set_location "Net_683" 1 0 1 1
+set_location "\I2Ssix:bI2S:rx_f0_load\" 1 0 0 2
+set_location "\I2Ssix:bI2S:rx_state_2\" 1 0 0 1
+set_location "\I2Ssix:bI2S:rx_state_1\" 1 0 0 0
+set_location "\I2Ssix:bI2S:rx_state_0\" 1 0 1 0
+set_location "\I2Ssix:bI2S:rx_overflow_sticky\" 1 1 0 2
+set_location "\I2Ssix:bI2S:rxenable\" 1 2 0 0
+set_location "\I2Ssix:bI2S:rx_data_in_0\" 0 2 1 3
+set_location "\I2Sfive:bI2S:reset\" 3 0 1 2
+set_location "Net_697" 3 0 1 1
+set_location "\I2Sfive:bI2S:rx_f0_load\" 3 0 0 2
+set_location "\I2Sfive:bI2S:rx_state_2\" 3 0 0 1
+set_location "\I2Sfive:bI2S:rx_state_1\" 3 0 0 0
+set_location "\I2Sfive:bI2S:rx_state_0\" 3 0 1 0
+set_location "\I2Sfive:bI2S:rx_overflow_sticky\" 2 0 0 1
+set_location "\I2Sfive:bI2S:rxenable\" 2 0 1 0
+set_location "\I2Sfive:bI2S:rx_data_in_0\" 0 0 0 3
+set_location "\I2Sseven:bI2S:reset\" 2 4 0 3
+set_location "Net_711" 2 3 1 1
+set_location "\I2Sseven:bI2S:rx_f0_load\" 2 3 0 2
+set_location "\I2Sseven:bI2S:rx_state_2\" 2 3 0 1
+set_location "\I2Sseven:bI2S:rx_state_1\" 2 3 0 0
+set_location "\I2Sseven:bI2S:rx_state_0\" 2 3 1 0
+set_location "\I2Sseven:bI2S:rx_overflow_sticky\" 2 4 0 2
+set_location "\I2Sseven:bI2S:rxenable\" 2 2 0 0
+set_location "\I2Sseven:bI2S:rx_data_in_0\" 3 1 1 3
+set_location "\I2Seight:bI2S:reset\" 2 3 1 2
+set_location "Net_725" 3 2 1 1
+set_location "\I2Seight:bI2S:rx_f0_load\" 3 2 0 2
+set_location "\I2Seight:bI2S:rx_state_2\" 3 2 0 1
+set_location "\I2Seight:bI2S:rx_state_1\" 3 2 0 0
+set_location "\I2Seight:bI2S:rx_state_0\" 3 2 1 0
+set_location "\I2Seight:bI2S:rx_overflow_sticky\" 3 3 1 2
+set_location "\I2Seight:bI2S:rxenable\" 2 2 1 0
+set_location "\I2Seight:bI2S:rx_data_in_0\" 3 3 0 1

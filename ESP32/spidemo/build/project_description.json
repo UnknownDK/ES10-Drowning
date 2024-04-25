@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "spidemo",
-    "project_version":    "1cb763a-dirty",
+    "project_version":    "5703dce-dirty",
     "project_path":       "C:/Users/tardi/Desktop/ES10-Drowning/ESP32/spidemo",
     "idf_path":           "C:/Users/tardi/esp/v5.2.1/esp-idf",
     "build_dir":          "C:/Users/tardi/Desktop/ES10-Drowning/ESP32/spidemo/build",
@@ -17,7 +17,7 @@
     "min_rev":            "0",
     "max_rev":            "99",
     "phy_data_partition": "",
-    "monitor_baud" :      "115200",
+    "monitor_baud" :      "3000000",
     "monitor_toolprefix": "xtensa-esp32s3-elf-",
     "c_compiler":         "C:/Users/tardi/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc.exe",
     "config_environment" : {

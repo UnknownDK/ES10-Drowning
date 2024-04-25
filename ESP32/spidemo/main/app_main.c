@@ -38,10 +38,10 @@ sending a transaction. As soon as the transaction is done, the line gets set low
 
 
 #define GPIO_HANDSHAKE      2
-#define GPIO_MOSI           11 // P0[0]
-#define GPIO_MISO           13 // P0[1]
-#define GPIO_SCLK           10  // P0[2]
-#define GPIO_CS             12  // P0[3]
+#define GPIO_MOSI           11 // P2[1]
+#define GPIO_MISO           13 // P2[3]
+#define GPIO_SCLK           10  // P2[0]
+#define GPIO_CS             12  // P2[2]
 
 //Called after a transaction is queued and ready for pickup by master. We use this to set the handshake line high.
 void my_post_setup_cb(spi_slave_transaction_t *trans)
@@ -98,20 +98,20 @@ void app_main(void)
     ret = spi_slave_initialize(RCV_HOST, &buscfg, &slvcfg, SPI_DMA_CH_AUTO);
     assert(ret == ESP_OK);
 
-    WORD_ALIGNED_ATTR char sendbuf[129] = "";
-    WORD_ALIGNED_ATTR char recvbuf[129] = "";
-    memset(recvbuf, 0, 33);
+    //WORD_ALIGNED_ATTR uint8_t sendbuf[1024];
+    WORD_ALIGNED_ATTR uint8_t recvbuf[512];
+    //memset(recvbuf, 0, 33);
     spi_slave_transaction_t t;
     memset(&t, 0, sizeof(t));
 
     while (1) {
         //Clear receive buffer, set send buffer to something sane
-        memset(recvbuf, 0xA5, 129);
-        sprintf(sendbuf, "This is the receiver, sending data for transmission number %04d.", n);
+        memset(recvbuf, 0xA, 512);
+        //sprintf(sendbuf, "This is the receiver, sending data for transmission number %04d.", n);
 
         //Set up a transaction of 128 bytes to send/receive
-        t.length = 128 * 8;
-        t.tx_buffer = sendbuf;
+        t.length = 512 * 8;
+        t.tx_buffer = NULL;
         t.rx_buffer = recvbuf;
         /* This call enables the SPI slave interface to send/receive to the sendbuf and recvbuf. The transaction is
         initialized by the SPI master, however, so it will not actually happen until the master starts a hardware transaction
@@ -124,9 +124,19 @@ void app_main(void)
         //spi_slave_transmit does not return until the master has done a transmission, so by here we have sent our data and
         //received data from the master. Print it.
         //printf("Received: %s\n", recvbuf);
-        printf("%02x ", recvbuf[0]);
-        printf("%02x \n", recvbuf[1]);
+        for (int i = 0; i < 32; i++) {
+            printf("%02x", recvbuf[i]);
+        }
+        printf("\n");
+        //printf("First byte: %02x ", recvbuf[0]);
+        //printf("Last byte: %02x ", recvbuf[127]);
+        //printf("Transaction length (in bytes, should be 1024): %d\n", t.trans_len);
         n++;
+
+        /*
+            Try to move this logic into ISR.
+        */
+
     }
 
 }

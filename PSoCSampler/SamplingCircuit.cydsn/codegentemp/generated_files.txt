@@ -18,24 +18,17 @@
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\cyfitteriar.inc" value="HEADER;;;;;" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\cyfitter.h" value="HEADER;;;;;" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\cydisabledsheets.h" value="HEADER;;;;;" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S.c" value="SOURCE_C;CortexM3;;;;I2S" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S.h" value="HEADER;;;;;I2S" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_PM.c" value="SOURCE_C;CortexM3;;;;I2S" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_PVT.h" value="HEADER;;;;;I2S" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\Clock_1.c" value="SOURCE_C;CortexM3;;;;Clock_1" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\Clock_1.h" value="HEADER;;;;;Clock_1" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_dma.c" value="SOURCE_C;CortexM3;;;;I2S_DMA" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_dma.h" value="HEADER;;;;;I2S_DMA" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\UART.c" value="SOURCE_C;CortexM3;;;;UART" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\UART.h" value="HEADER;;;;;UART" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\UART_PM.c" value="SOURCE_C;CortexM3;;;;UART" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\UART_INT.c" value="SOURCE_C;CortexM3;;;;UART" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\UART_BOOT.c" value="SOURCE_C;CortexM3;;;;UART" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_three.c" value="SOURCE_C;CortexM3;;;;DmaI2S_three" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_three.h" value="HEADER;;;;;DmaI2S_three" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_three_dma.c" value="SOURCE_C;CortexM3;;;;I2S_DMA_three" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_three_dma.h" value="HEADER;;;;;I2S_DMA_three" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\cs_aliases.h" value="HEADER;;;;;cs" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\cs.c" value="SOURCE_C;CortexM3;;;;cs" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\cs.h" value="HEADER;;;;;cs" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S.c" value="SOURCE_C;CortexM3;;;;DmaI2S" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S.h" value="HEADER;;;;;DmaI2S" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sthree.c" value="SOURCE_C;CortexM3;;;;I2Sthree" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sthree.h" value="HEADER;;;;;I2Sthree" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sthree_PM.c" value="SOURCE_C;CortexM3;;;;I2Sthree" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sthree_PVT.h" value="HEADER;;;;;I2Sthree" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\MOSI_1_aliases.h" value="HEADER;;;;;MOSI_1" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\MOSI_1.c" value="SOURCE_C;CortexM3;;;;MOSI_1" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\MOSI_1.h" value="HEADER;;;;;MOSI_1" />
@@ -50,10 +43,66 @@
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\SPIM_PM.c" value="SOURCE_C;CortexM3;;;;SPIM" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\SPIM_INT.c" value="SOURCE_C;CortexM3;;;;SPIM" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\SPIM_PVT.h" value="HEADER;;;;;SPIM" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\Clock_2.c" value="SOURCE_C;CortexM3;;;;Clock_2" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\Clock_2.h" value="HEADER;;;;;Clock_2" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\Clock_3.c" value="SOURCE_C;CortexM3;;;;Clock_3" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\Clock_3.h" value="HEADER;;;;;Clock_3" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_one_dma.c" value="SOURCE_C;CortexM3;;;;I2S_DMA_one" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_one_dma.h" value="HEADER;;;;;I2S_DMA_one" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sone.c" value="SOURCE_C;CortexM3;;;;I2Sone" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sone.h" value="HEADER;;;;;I2Sone" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sone_PM.c" value="SOURCE_C;CortexM3;;;;I2Sone" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sone_PVT.h" value="HEADER;;;;;I2Sone" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_one.c" value="SOURCE_C;CortexM3;;;;DmaI2S_one" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_one.h" value="HEADER;;;;;DmaI2S_one" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_Clock.c" value="SOURCE_C;CortexM3;;;;I2S_Clock" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_Clock.h" value="HEADER;;;;;I2S_Clock" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_two.c" value="SOURCE_C;CortexM3;;;;DmaI2S_two" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_two.h" value="HEADER;;;;;DmaI2S_two" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_two_dma.c" value="SOURCE_C;CortexM3;;;;I2S_DMA_two" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_two_dma.h" value="HEADER;;;;;I2S_DMA_two" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Stwo.c" value="SOURCE_C;CortexM3;;;;I2Stwo" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Stwo.h" value="HEADER;;;;;I2Stwo" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Stwo_PM.c" value="SOURCE_C;CortexM3;;;;I2Stwo" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Stwo_PVT.h" value="HEADER;;;;;I2Stwo" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sfour.c" value="SOURCE_C;CortexM3;;;;I2Sfour" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sfour.h" value="HEADER;;;;;I2Sfour" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sfour_PM.c" value="SOURCE_C;CortexM3;;;;I2Sfour" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sfour_PVT.h" value="HEADER;;;;;I2Sfour" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_four_dma.c" value="SOURCE_C;CortexM3;;;;I2S_DMA_four" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_four_dma.h" value="HEADER;;;;;I2S_DMA_four" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_four.c" value="SOURCE_C;CortexM3;;;;DmaI2S_four" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_four.h" value="HEADER;;;;;DmaI2S_four" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Ssix.c" value="SOURCE_C;CortexM3;;;;I2Ssix" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Ssix.h" value="HEADER;;;;;I2Ssix" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Ssix_PM.c" value="SOURCE_C;CortexM3;;;;I2Ssix" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Ssix_PVT.h" value="HEADER;;;;;I2Ssix" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_six_dma.c" value="SOURCE_C;CortexM3;;;;I2S_DMA_six" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_six_dma.h" value="HEADER;;;;;I2S_DMA_six" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_six.c" value="SOURCE_C;CortexM3;;;;DmaI2S_six" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_six.h" value="HEADER;;;;;DmaI2S_six" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sfive.c" value="SOURCE_C;CortexM3;;;;I2Sfive" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sfive.h" value="HEADER;;;;;I2Sfive" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sfive_PM.c" value="SOURCE_C;CortexM3;;;;I2Sfive" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sfive_PVT.h" value="HEADER;;;;;I2Sfive" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_five_dma.c" value="SOURCE_C;CortexM3;;;;I2S_DMA_five" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_five_dma.h" value="HEADER;;;;;I2S_DMA_five" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_five.c" value="SOURCE_C;CortexM3;;;;DmaI2S_five" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_five.h" value="HEADER;;;;;DmaI2S_five" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sseven.c" value="SOURCE_C;CortexM3;;;;I2Sseven" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sseven.h" value="HEADER;;;;;I2Sseven" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sseven_PM.c" value="SOURCE_C;CortexM3;;;;I2Sseven" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Sseven_PVT.h" value="HEADER;;;;;I2Sseven" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_seven_dma.c" value="SOURCE_C;CortexM3;;;;I2S_DMA_seven" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_seven_dma.h" value="HEADER;;;;;I2S_DMA_seven" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_seven.c" value="SOURCE_C;CortexM3;;;;DmaI2S_seven" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_seven.h" value="HEADER;;;;;DmaI2S_seven" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Seight.c" value="SOURCE_C;CortexM3;;;;I2Seight" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Seight.h" value="HEADER;;;;;I2Seight" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Seight_PM.c" value="SOURCE_C;CortexM3;;;;I2Seight" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Seight_PVT.h" value="HEADER;;;;;I2Seight" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_eight_dma.c" value="SOURCE_C;CortexM3;;;;I2S_DMA_eight" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_eight_dma.h" value="HEADER;;;;;I2S_DMA_eight" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_eight.c" value="SOURCE_C;CortexM3;;;;DmaI2S_eight" />
+  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_eight.h" value="HEADER;;;;;DmaI2S_eight" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\cm3gcc.ld" value="LINKER_SCRIPT;;;b98f980c-3bd1-4fc7-a887-c56a20a46fdd;;cy_boot" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\Cm3RealView.scat" value="LINKER_SCRIPT;;;fdb8e1ae-f83a-46cf-9446-1d703716f38a;;cy_boot" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\Cm3Start.c" value="SOURCE_C;CortexM3;;;;cy_boot" />

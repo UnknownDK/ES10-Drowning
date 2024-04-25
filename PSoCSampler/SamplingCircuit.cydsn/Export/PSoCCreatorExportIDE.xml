@@ -58,10 +58,6 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cyfitteriar.inc</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cyfitter.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cydisabledsheets.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_1.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_1.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_dma.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_dma.h</File>
           <File BuildType="BUILD" Toolchain="ARM GCC Generic">Generated_Source\PSoC5\cm3gcc.ld</File>
           <File BuildType="BUILD" Toolchain="ARM MDK Generic">Generated_Source\PSoC5\Cm3RealView.scat</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Cm3Start.c</File>
@@ -95,12 +91,6 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareimport.ld</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareexport.ld</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareimport.scat</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_PVT.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SPIM.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SPIM.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SPIM_PM.c</File>
@@ -118,15 +108,74 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cs_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cs.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cs.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_INT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_BOOT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_2.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_2.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_3.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_3.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Stwo.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Stwo.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Stwo_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Stwo_PVT.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_three.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_three.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_three_dma.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_three_dma.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sthree.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sthree.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sthree_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sthree_PVT.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_one_dma.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_one_dma.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sone.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sone.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sone_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sone_PVT.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_one.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_one.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_Clock.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_Clock.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_two.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_two.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_two_dma.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_two_dma.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sfour.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sfour.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sfour_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sfour_PVT.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_four_dma.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_four_dma.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_four.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_four.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Ssix.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Ssix.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Ssix_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Ssix_PVT.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_six_dma.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_six_dma.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_six.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_six.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sfive.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sfive.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sfive_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sfive_PVT.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_five_dma.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_five_dma.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_five.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_five.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sseven.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sseven.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sseven_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Sseven_PVT.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_seven_dma.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_seven_dma.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_seven.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_seven.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Seight.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Seight.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Seight_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Seight_PVT.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_eight_dma.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_eight_dma.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_eight.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_eight.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\Export\ARM_GCC_Generic">
