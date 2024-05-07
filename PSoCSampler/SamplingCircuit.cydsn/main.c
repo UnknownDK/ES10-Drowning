@@ -31,13 +31,9 @@ uint8_t I2S_buf_four[BUFFER_SIZE];
 uint8_t I2S_buf_five[BUFFER_SIZE];
 uint8_t I2S_buf_six[BUFFER_SIZE];
 uint8_t I2S_buf_seven[BUFFER_SIZE];
-uint8_t I2S_buf_eight[BUFFER_SIZE];
 
-uint8_t soundBuffer_I2S_copy[BUFFER_SIZE];
-uint8_t interBuffer[BUFFER_SIZE / 2];
-uint8_t bruh[128];
-uint8_t uppit = 0;
-// DMA Configuration Variables
+
+// DMA Configuration Variables  
 uint8 i2sChannelOne;
 uint8 i2sChannelTwo;
 uint8 i2sChannelThree;
@@ -45,7 +41,7 @@ uint8 i2sChannelFour;
 uint8 i2sChannelFive;
 uint8 i2sChannelSix;
 uint8 i2sChannelSeven;
-uint8 i2sChannelEight;
+uint8 spiChannel;
 
 uint8 dmaTdi2sOne;
 uint8 dmaTdi2sTwo;
@@ -54,18 +50,41 @@ uint8 dmaTdi2sFour;
 uint8 dmaTdi2sFive;
 uint8 dmaTdi2sSix;
 uint8 dmaTdi2sSeven;
-uint8 dmaTdi2sEight;
 
 
 
-volatile uint16 dmaIndexOne = 0;
-volatile uint16 dmaIndexTwo = 0;
-volatile uint16 dmaIndexThree = 0;
-volatile uint16 dmaIndexFour = 0;
-volatile uint16 dmaIndexFive = 0;
-volatile uint16 dmaIndexSix = 0;
-volatile uint16 dmaIndexSeven = 0;
-volatile uint16 dmaIndexEight = 0;
+
+/* DMA Configuration for DMA_TX */
+#define DMA_TX_BYTES_PER_BURST      (1u)
+#define DMA_TX_REQUEST_PER_BURST    (1u)
+#define DMA_TX_SRC_BASE             (CYDEV_SRAM_BASE)
+#define DMA_TX_DST_BASE             (CYDEV_PERIPH_BASE)
+
+#define START_DELAY 0
+
+
+void DmaTxConfiguration();
+
+/* Variable declarations for DMA_TX*/
+uint8 txChannel;
+uint8 txTD;
+
+/* Variable declarations for InterruptControl Td*/
+uint8_t InterruptControlTD;
+uint8 InterruptControl; //this variable stores a copy of the SPI_TX_STATUS_MASK_REG with the SPI_INT_ON_TX_EMPTY bit cleared
+
+uint8_t dataBuffer[3584]; //init the data buffer with some values here
+uint16_t dataIdx;
+
+volatile uint8 transFlag = 0;
+
+volatile uint8 dmaIndexOne = 0;
+volatile uint8 dmaIndexTwo = 0;
+volatile uint8 dmaIndexThree = 0;
+volatile uint8 dmaIndexFour = 0;
+volatile uint8 dmaIndexFive = 0;
+volatile uint8 dmaIndexSix = 0;
+volatile uint8 dmaIndexSeven = 0;
 
 uint16 cpuIndex = 0;
 
@@ -79,10 +98,20 @@ CY_ISR_PROTO(DmaI2S_four);
 CY_ISR_PROTO(DmaI2S_five);
 CY_ISR_PROTO(DmaI2S_six);
 CY_ISR_PROTO(DmaI2S_seven);
-CY_ISR_PROTO(DmaI2S_eight);
 
 
 char hex_string[13];
+
+void moveBytes(uint8 *src, uint8 *dest, uint16 size) {
+    uint8 *srcPtr = src;
+    uint8 *destPtr = dest;
+    
+    for (int i = 0; i < size; i += 4) {
+        *(destPtr++) = *(srcPtr++);
+        *(destPtr++) = *(srcPtr++);
+        srcPtr += 2; // Skip two bytes
+    }
+}
 
 
 int main(void)
@@ -93,61 +122,54 @@ int main(void)
 
     initComponents();
 
-
     
     for(;;)
     {
+       if (dmaIndexOne != 0){
+            moveBytes(&I2S_buf_one[0], &dataBuffer[0], 1024);
+            transFlag++;
+            dmaIndexOne = 0;
+        }
+       if (dmaIndexTwo != 0){
+            moveBytes(&I2S_buf_two[0], &dataBuffer[512], 1024);
+            transFlag++;
+            dmaIndexTwo = 0;
+        }
+        /*
+       if (dmaIndexThree != 0){
+            moveBytes(&I2S_buf_three[0], &dataBuffer[1024], 1024);
+            transFlag++;
+            dmaIndexThree = 0;
+        } */
         
+       if (dmaIndexFour != 0){
+            moveBytes(&I2S_buf_four[0], &dataBuffer[1536], 1024);
+            transFlag++;
+            dmaIndexFour = 0;
+        } /*
+       if (dmaIndexFive != 0){
+            moveBytes(&I2S_buf_five[0], &dataBuffer[2048], 1024);
+            transFlag++;
+            dmaIndexFive = 0;
+        }
+       if (dmaIndexSix != 0){
+            moveBytes(&I2S_buf_six[0], &dataBuffer[2560], 1024);
+            transFlag++;
+            dmaIndexSix = 0;
+        }
+       if (dmaIndexSeven != 0){
+            moveBytes(&I2S_buf_seven[0], &dataBuffer[3072], 1024);
+            transFlag++;
+            dmaIndexSeven = 0;
+        }*/
         
                 // Wait for DMA transfer completion
-        if (dmaIndexOne != 0 && dmaIndexThree != 0) {
-            SPIM_ClearTxBuffer();
-            for(int i=0;i<1024;i=i+4){
-                SPIM_WriteTxData(I2S_buf_one[i]);
-                SPIM_WriteTxData(I2S_buf_one[i+1]);
-                SPIM_WriteTxData(I2S_buf_three[i]);
-                SPIM_WriteTxData(I2S_buf_three[i+1]);
-            }
-            
-            //for(int i=0;i<BUFFER_SIZE/2;i++){
-            //    SPIM_WriteTxData(soundBuffer_I2S[i] << 8 | soundBuffer_I2S[i+1]);
-                //interBuffer[i] = soundBuffer_I2S[i*2];
-            //}
-            
-            
-            //UART_PutArray(soundBuffer_I2S, 1024);
-            //SPIM_WriteTxData(0x23);
-            //CyDelay(1000);
-            //for (int i=0;i<128;i++){
-            //    bruh[i] = uppit;
-            //}
-            dmaIndexOne = 0;
-            dmaIndexTwo = 0;
-            dmaIndexThree = 0;
-            dmaIndexFour = 0;
-            dmaIndexFive = 0;
-            dmaIndexSix = 0;
-            dmaIndexSeven = 0;
-            dmaIndexEight = 0;
+        //if (dmaIndexOne != 0 && dmaIndexTwo != 0 && dmaIndexThree != 0 && dmaIndexFour != 0 && dmaIndexFive != 0 && dmaIndexSix !=0 && dmaIndexSeven != 0) {
+        if (transFlag > 2){
+            SPIM_TX_STATUS_MASK_REG|=(SPIM_INT_ON_TX_EMPTY);          //start new transfer
+            transFlag = 0;
         }
         
-        // Process data and transfer to SPI
-
-            /*
-            if (dmaIndex > 0) {
-                uint32_t* data = (uint32_t*)soundBuffer_I2S;
-                size_t num_values = BUFFER_SIZE / sizeof(uint32_t);
-                for (size_t i = 0; i < num_values; i++) {
-                    sprintf(hex_string, "%08X\r\n", data[i]);
-                    USBUART_PutString(hex_string);
-                    dmaIndex = 0;
-                }
-            }*/
-            
-            //CyDelay(1000);
-            //sprintf(hex_string, "%08lX\r\n", dmaIndex);
-            //    USBUART_PutString(hex_string);
-            //   dmaIndex = 0;
 
     }
 
@@ -170,38 +192,60 @@ void initComponents() {
     initDMA();
     
     /* Start I2S */
-    I2Sone_Start();    
+    I2Sone_Start();   
+    CyDelay(START_DELAY);
     I2Stwo_Start();
+    CyDelay(START_DELAY);
     I2Sthree_Start();
+    CyDelay(START_DELAY);
     I2Sfour_Start();
+    CyDelay(START_DELAY);
     I2Sfive_Start();
+    CyDelay(START_DELAY);
     I2Ssix_Start();
+    CyDelay(START_DELAY);
     I2Sseven_Start();
-    I2Seight_Start();
+    CyDelay(START_DELAY);
     
     I2Sone_EnableRx();
+    CyDelay(START_DELAY);
     I2Stwo_EnableRx();
+    CyDelay(START_DELAY);
     I2Sthree_EnableRx();
+    CyDelay(START_DELAY);
     I2Sfour_EnableRx();
+    CyDelay(START_DELAY);
     I2Sfive_EnableRx();
+    CyDelay(START_DELAY);
     I2Ssix_EnableRx();
+    CyDelay(START_DELAY);
     I2Sseven_EnableRx();
-    I2Seight_EnableRx();
+    CyDelay(START_DELAY);
     
     SPIM_Start();
-   
-    SPIM_ClearTxBuffer();
     SPIM_ClearFIFO();
-    //UART_Start();
+    /* Disable the TX interrupt of SPIM */
+    SPIM_TX_STATUS_MASK_REG&=(~SPIM_INT_ON_TX_EMPTY);
+       
+    /* Take a copy of SPIM_TX_STATUS_MASK_REG which will be used to disable the TX interrupt using DMA */
+    InterruptControl=SPIM_TX_STATUS_MASK_REG;
+
+    DmaTxConfiguration();
     
+    CyDelay(START_DELAY);
     DmaI2S_one_StartEx(&DmaI2S_one);
+    CyDelay(START_DELAY);
     DmaI2S_two_StartEx(&DmaI2S_two);
+    CyDelay(START_DELAY);
     DmaI2S_three_StartEx(&DmaI2S_three);
+    CyDelay(START_DELAY);
     DmaI2S_four_StartEx(&DmaI2S_four);
+    CyDelay(START_DELAY);
     DmaI2S_five_StartEx(&DmaI2S_five);
+    CyDelay(START_DELAY);
     DmaI2S_six_StartEx(&DmaI2S_six);
+    CyDelay(START_DELAY);
     DmaI2S_seven_StartEx(&DmaI2S_seven);
-    DmaI2S_eight_StartEx(&DmaI2S_eight);
     
     
     
@@ -209,6 +253,43 @@ void initComponents() {
 
 }
 
+
+void DmaTxConfiguration()
+{
+ /* Init DMA, 1 byte bursts, each burst requires a request */
+    txChannel = DMA_TX_DmaInitialize(DMA_TX_BYTES_PER_BURST, DMA_TX_REQUEST_PER_BURST, HI16(((uint32)&dataBuffer[0])), HI16(((uint32)SPIM_TXDATA_PTR)));
+   
+    //Allocate TD to transfer x bytes
+    txTD = CyDmaTdAllocate();
+   
+    //Allocate TD to disable the SPI Master TX interrupt
+    InterruptControlTD = CyDmaTdAllocate();
+   
+    /* txTD = From the memory to the SPIM */
+    CyDmaTdSetAddress(txTD, LO16(((uint32)&dataBuffer[0])), LO16(((uint32) SPIM_TXDATA_PTR)));
+   
+    /* Set the source address as variable 'InterruptControl' which stores the value 0 to disable the SPI_INT_ON_TX_EMPTY
+	* and the destination is Control_Reg_SPIM_ctrl_reg__CONTROL_REG */
+    CyDmaTdSetAddress(InterruptControlTD, (uint16)((uint32)&InterruptControl), (uint16)((uint32)&SPIM_TX_STATUS_MASK_REG));
+   
+    /* Set TD_tx transfer count as "burstLength" to transfer the data packet
+    * Next Td as InterruptControlTD, and auto increment source address after each transaction .*/
+    CyDmaTdSetConfiguration(txTD,3584,InterruptControlTD, TD_INC_SRC_ADR );
+   
+    /* Set InterruptControlTD with transfer count 1, next TD as txTD
+    * Also enable the Terminal Output . This can be used to monitor whether transfer is complete */
+	CyDmaTdSetConfiguration(InterruptControlTD,1,txTD, 0 );
+   
+    /* ************ Terminate the chain of TDs; this clears any pending request to the DMA************** */
+    CyDmaChSetRequest(txChannel, CPU_TERM_CHAIN);
+    CyDmaChEnable(txChannel,1);
+   
+    /* Set TD_tx as the initial TD associated with channel_tx */
+    CyDmaChSetInitialTd(txChannel, txTD); 
+   
+    /* Enable the DMA channel - channel_tx */
+    CyDmaChEnable(txChannel,1);
+} 
 
 void initDMA(void) {
     /* Step 1: DMA Initialization */
@@ -226,8 +307,7 @@ void initDMA(void) {
                                    HI16(CYDEV_PERIPH_BASE), HI16(CYDEV_SRAM_BASE));
     i2sChannelSeven = I2S_DMA_seven_DmaInitialize(DMA_BYTES_PER_BURST, DMA_REQUEST_PER_BURST, 
                                    HI16(CYDEV_PERIPH_BASE), HI16(CYDEV_SRAM_BASE));
-    i2sChannelEight = I2S_DMA_eight_DmaInitialize(DMA_BYTES_PER_BURST, DMA_REQUEST_PER_BURST, 
-                                   HI16(CYDEV_PERIPH_BASE), HI16(CYDEV_SRAM_BASE));
+   
     /* Step 2: Allocate TD */
     dmaTdi2sOne = CyDmaTdAllocate();
     dmaTdi2sTwo = CyDmaTdAllocate();
@@ -236,7 +316,6 @@ void initDMA(void) {
     dmaTdi2sFive = CyDmaTdAllocate();
     dmaTdi2sSix = CyDmaTdAllocate();
     dmaTdi2sSeven = CyDmaTdAllocate();
-    dmaTdi2sEight = CyDmaTdAllocate();
 
 
     // Det her virkede! men ændrede det for at se hvad DMA Wizard kunne
@@ -255,8 +334,6 @@ void initDMA(void) {
                             CY_DMA_TD_INC_DST_ADR | I2S_DMA_six__TD_TERMOUT_EN);
     CyDmaTdSetConfiguration(dmaTdi2sSeven, BUFFER_SIZE, dmaTdi2sSeven, 
                             CY_DMA_TD_INC_DST_ADR | I2S_DMA_seven__TD_TERMOUT_EN);
-    CyDmaTdSetConfiguration(dmaTdi2sEight, BUFFER_SIZE, dmaTdi2sEight, 
-                            CY_DMA_TD_INC_DST_ADR | I2S_DMA_eight__TD_TERMOUT_EN);
     
     /* Step 4: Set the source and destination addresses */
     CyDmaTdSetAddress(dmaTdi2sOne, LO16((uint32)I2Sone_RX_CH0_F0_PTR), LO16((uint32)I2S_buf_one));
@@ -266,8 +343,7 @@ void initDMA(void) {
     CyDmaTdSetAddress(dmaTdi2sFive, LO16((uint32)I2Sfive_RX_CH0_F0_PTR), LO16((uint32)I2S_buf_five));
     CyDmaTdSetAddress(dmaTdi2sSix, LO16((uint32)I2Ssix_RX_CH0_F0_PTR), LO16((uint32)I2S_buf_six));
     CyDmaTdSetAddress(dmaTdi2sSeven, LO16((uint32)I2Sseven_RX_CH0_F0_PTR), LO16((uint32)I2S_buf_seven));
-    CyDmaTdSetAddress(dmaTdi2sEight, LO16((uint32)I2Seight_RX_CH0_F0_PTR), LO16((uint32)I2S_buf_eight));
-    
+
     
     /* Step 5: Set the initial TD for the channel */
     CyDmaChSetInitialTd(i2sChannelOne, dmaTdi2sOne);
@@ -277,7 +353,6 @@ void initDMA(void) {
     CyDmaChSetInitialTd(i2sChannelFive, dmaTdi2sFive);
     CyDmaChSetInitialTd(i2sChannelSix, dmaTdi2sSix);
     CyDmaChSetInitialTd(i2sChannelSeven, dmaTdi2sSeven);
-    CyDmaChSetInitialTd(i2sChannelEight, dmaTdi2sEight);
     
     /* Step 6: Enable the DMA channel */
     CyDmaChEnable(i2sChannelOne, 1);
@@ -287,42 +362,84 @@ void initDMA(void) {
     CyDmaChEnable(i2sChannelFive, 1);
     CyDmaChEnable(i2sChannelSix, 1);
     CyDmaChEnable(i2sChannelSeven, 1);
-    CyDmaChEnable(i2sChannelEight, 1);
     
     
 }
 
 
-
-
-
 CY_ISR(DmaI2S_one) {
-    dmaIndexOne += 1;
+    //int z = 0;
+    //for(int i=0;i<512;i=i+4){
+    //    dataBuffer[z] = I2S_buf_one[i];
+    //    dataBuffer[z+1] = I2S_buf_one[i+1];
+    //    z = z + 2;
+    //}
+    
+    dmaIndexOne++;
 }
 
 
 CY_ISR(DmaI2S_two) {
-    dmaIndexTwo += 1;
+    /*
+    int z = 256;
+    for(int i=0;i<512;i=i+4){
+        dataBuffer[z] = I2S_buf_two[i];
+        dataBuffer[z+1] = I2S_buf_two[i+1];
+        z = z + 2;
+    }*/
+    dmaIndexTwo++;;
 }
 
 CY_ISR(DmaI2S_three) {
-    dmaIndexThree += 1;
+    /*
+    int z = 512;
+    for(int i=0;i<512;i=i+4){
+        dataBuffer[z] = I2S_buf_three[i];
+        dataBuffer[z+1] = I2S_buf_three[i+1];
+        z = z + 2;
+    }*/
+    dmaIndexThree++;
 }
 
 CY_ISR(DmaI2S_four) {
-    dmaIndexFour += 1;
+    /*
+    int z = 768;
+    for(int i=0;i<512;i=i+4){
+        dataBuffer[z] = I2S_buf_four[i];
+        dataBuffer[z+1] = I2S_buf_four[i+1];
+        z = z + 2;
+    }*/
+    dmaIndexFour++;
 }
 CY_ISR(DmaI2S_five) {
-    dmaIndexFive += 1;
+    /*
+    int z = 1024;
+    for(int i=0;i<512;i=i+4){
+        dataBuffer[z] = I2S_buf_five[i];
+        dataBuffer[z+1] = I2S_buf_five[i+1];
+        z = z + 2;
+    }*/
+    dmaIndexFive++;
 }
 CY_ISR(DmaI2S_six) {
-    dmaIndexSix += 1;
+    /*
+    int z = 1280;
+    for(int i=0;i<512;i=i+4){
+        dataBuffer[z] = I2S_buf_six[i];
+        dataBuffer[z+1] = I2S_buf_six[i+1];
+        z = z + 2;
+    }*/
+    dmaIndexSix++;
 }
 CY_ISR(DmaI2S_seven) {
-    dmaIndexSeven += 1;
-}
-CY_ISR(DmaI2S_eight) {
-    dmaIndexEight += 1;
+    /*
+    int z = 1536;
+    for(int i=0;i<512;i=i+4){
+        dataBuffer[z] = I2S_buf_seven[i];
+        dataBuffer[z+1] = I2S_buf_seven[i+1];
+        z = z + 2;
+    }*/
+    dmaIndexSeven++;
 }
 
 /* [] END OF FILE */

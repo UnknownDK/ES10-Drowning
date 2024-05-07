@@ -1,5 +1,5 @@
 -- Project:   SamplingCircuit
--- Generated: 04/25/2024 07:29:41
+-- Generated: 05/07/2024 17:44:38
 -- PSoC Creator  4.4
 
 ENTITY SamplingCircuit IS
@@ -68,12 +68,12 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     SIGNAL MISO_1(0)__PA : bit;
     SIGNAL MOSI_1(0)__PA : bit;
     SIGNAL Net_23 : bit;
-    ATTRIBUTE placement_force OF Net_23 : SIGNAL IS "U(0,1,A)0";
+    ATTRIBUTE placement_force OF Net_23 : SIGNAL IS "U(0,5,A)3";
     SIGNAL Net_262 : bit;
     SIGNAL Net_263 : bit;
-    ATTRIBUTE placement_force OF Net_263 : SIGNAL IS "U(0,0,B)1";
+    ATTRIBUTE placement_force OF Net_263 : SIGNAL IS "U(0,4,A)3";
     SIGNAL Net_268 : bit;
-    ATTRIBUTE placement_force OF Net_268 : SIGNAL IS "U(0,3,A)0";
+    ATTRIBUTE placement_force OF Net_268 : SIGNAL IS "U(2,5,A)1";
     SIGNAL Net_26_0 : bit;
     SIGNAL Net_27 : bit;
     SIGNAL Net_535 : bit;
@@ -86,18 +86,18 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     SIGNAL Net_616_0 : bit;
     SIGNAL Net_620 : bit;
     SIGNAL Net_625 : bit;
-    ATTRIBUTE placement_force OF Net_625 : SIGNAL IS "U(2,5,B)2";
+    ATTRIBUTE placement_force OF Net_625 : SIGNAL IS "U(0,1,B)1";
     SIGNAL Net_626 : bit;
     SIGNAL Net_639 : bit;
     SIGNAL Net_659_0 : bit;
     SIGNAL Net_663 : bit;
     SIGNAL Net_668 : bit;
-    ATTRIBUTE placement_force OF Net_668 : SIGNAL IS "U(2,1,B)1";
+    ATTRIBUTE placement_force OF Net_668 : SIGNAL IS "U(3,2,B)1";
     SIGNAL Net_669 : bit;
     SIGNAL Net_674_0 : bit;
     SIGNAL Net_678 : bit;
     SIGNAL Net_683 : bit;
-    ATTRIBUTE placement_force OF Net_683 : SIGNAL IS "U(1,0,B)1";
+    ATTRIBUTE placement_force OF Net_683 : SIGNAL IS "U(1,2,A)3";
     SIGNAL Net_684 : bit;
     SIGNAL Net_688_0 : bit;
     SIGNAL Net_692 : bit;
@@ -107,22 +107,24 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     SIGNAL Net_7 : bit;
     SIGNAL Net_702_0 : bit;
     SIGNAL Net_711 : bit;
-    ATTRIBUTE placement_force OF Net_711 : SIGNAL IS "U(2,3,B)1";
+    ATTRIBUTE placement_force OF Net_711 : SIGNAL IS "U(3,5,B)1";
     SIGNAL Net_712 : bit;
     SIGNAL Net_716_0 : bit;
     SIGNAL Net_720 : bit;
     SIGNAL Net_725 : bit;
-    ATTRIBUTE placement_force OF Net_725 : SIGNAL IS "U(3,2,B)1";
+    ATTRIBUTE placement_force OF Net_725 : SIGNAL IS "U(3,3,B)1";
     SIGNAL Net_726 : bit;
     SIGNAL Net_739 : bit;
-    ATTRIBUTE placement_force OF Net_739 : SIGNAL IS "U(1,3,B)1";
+    ATTRIBUTE placement_force OF Net_739 : SIGNAL IS "U(0,3,B)1";
     SIGNAL Net_74 : bit;
-    ATTRIBUTE placement_force OF Net_74 : SIGNAL IS "U(3,4,B)1";
+    ATTRIBUTE placement_force OF Net_74 : SIGNAL IS "U(0,2,A)1";
     SIGNAL Net_742 : bit;
     SIGNAL Net_743 : bit;
     ATTRIBUTE udbclken_assigned OF Net_743 : SIGNAL IS "True";
     ATTRIBUTE global_signal OF Net_743 : SIGNAL IS true;
     SIGNAL Net_743_local : bit;
+    SIGNAL Net_747 : bit;
+    SIGNAL Net_749 : bit;
     SIGNAL SCLK_1(0)__PA : bit;
     SIGNAL \I2Seight:bI2S:count_0\ : bit;
     SIGNAL \I2Seight:bI2S:count_1\ : bit;
@@ -140,25 +142,25 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     SIGNAL \I2Seight:bI2S:ctrl_reg_out_6\ : bit;
     SIGNAL \I2Seight:bI2S:ctrl_reg_out_7\ : bit;
     SIGNAL \I2Seight:bI2S:reset\ : bit;
-    ATTRIBUTE placement_force OF \I2Seight:bI2S:reset\ : SIGNAL IS "U(2,3,B)2";
+    ATTRIBUTE placement_force OF \I2Seight:bI2S:reset\ : SIGNAL IS "U(3,3,B)3";
     SIGNAL \I2Seight:bI2S:rx_data_in_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Seight:bI2S:rx_data_in_0\ : SIGNAL IS "U(3,3,A)1";
+    ATTRIBUTE placement_force OF \I2Seight:bI2S:rx_data_in_0\ : SIGNAL IS "U(3,1,A)1";
     SIGNAL \I2Seight:bI2S:rx_f0_full_0\ : bit;
     SIGNAL \I2Seight:bI2S:rx_f0_load\ : bit;
-    ATTRIBUTE placement_force OF \I2Seight:bI2S:rx_f0_load\ : SIGNAL IS "U(3,2,A)2";
+    ATTRIBUTE placement_force OF \I2Seight:bI2S:rx_f0_load\ : SIGNAL IS "U(2,4,A)2";
     SIGNAL \I2Seight:bI2S:rx_int_out_0\ : bit;
     SIGNAL \I2Seight:bI2S:rx_overflow_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Seight:bI2S:rx_overflow_0\ : SIGNAL IS "U(3,3,B)3";
+    ATTRIBUTE placement_force OF \I2Seight:bI2S:rx_overflow_0\ : SIGNAL IS "U(2,3,A)2";
     SIGNAL \I2Seight:bI2S:rx_overflow_sticky\ : bit;
-    ATTRIBUTE placement_force OF \I2Seight:bI2S:rx_overflow_sticky\ : SIGNAL IS "U(3,3,B)2";
+    ATTRIBUTE placement_force OF \I2Seight:bI2S:rx_overflow_sticky\ : SIGNAL IS "U(2,3,A)1";
     SIGNAL \I2Seight:bI2S:rx_state_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Seight:bI2S:rx_state_0\ : SIGNAL IS "U(3,2,B)0";
+    ATTRIBUTE placement_force OF \I2Seight:bI2S:rx_state_0\ : SIGNAL IS "U(2,4,B)0";
     SIGNAL \I2Seight:bI2S:rx_state_1\ : bit;
-    ATTRIBUTE placement_force OF \I2Seight:bI2S:rx_state_1\ : SIGNAL IS "U(3,2,A)0";
+    ATTRIBUTE placement_force OF \I2Seight:bI2S:rx_state_1\ : SIGNAL IS "U(2,4,A)0";
     SIGNAL \I2Seight:bI2S:rx_state_2\ : bit;
-    ATTRIBUTE placement_force OF \I2Seight:bI2S:rx_state_2\ : SIGNAL IS "U(3,2,A)1";
+    ATTRIBUTE placement_force OF \I2Seight:bI2S:rx_state_2\ : SIGNAL IS "U(2,4,A)1";
     SIGNAL \I2Seight:bI2S:rxenable\ : bit;
-    ATTRIBUTE placement_force OF \I2Seight:bI2S:rxenable\ : SIGNAL IS "U(2,2,B)0";
+    ATTRIBUTE placement_force OF \I2Seight:bI2S:rxenable\ : SIGNAL IS "U(3,4,B)0";
     SIGNAL \I2Sfive:bI2S:count_0\ : bit;
     SIGNAL \I2Sfive:bI2S:count_1\ : bit;
     SIGNAL \I2Sfive:bI2S:count_2\ : bit;
@@ -175,17 +177,17 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     SIGNAL \I2Sfive:bI2S:ctrl_reg_out_6\ : bit;
     SIGNAL \I2Sfive:bI2S:ctrl_reg_out_7\ : bit;
     SIGNAL \I2Sfive:bI2S:reset\ : bit;
-    ATTRIBUTE placement_force OF \I2Sfive:bI2S:reset\ : SIGNAL IS "U(3,0,B)2";
+    ATTRIBUTE placement_force OF \I2Sfive:bI2S:reset\ : SIGNAL IS "U(3,0,A)3";
     SIGNAL \I2Sfive:bI2S:rx_data_in_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Sfive:bI2S:rx_data_in_0\ : SIGNAL IS "U(0,0,A)3";
+    ATTRIBUTE placement_force OF \I2Sfive:bI2S:rx_data_in_0\ : SIGNAL IS "U(2,0,A)2";
     SIGNAL \I2Sfive:bI2S:rx_f0_full_0\ : bit;
     SIGNAL \I2Sfive:bI2S:rx_f0_load\ : bit;
     ATTRIBUTE placement_force OF \I2Sfive:bI2S:rx_f0_load\ : SIGNAL IS "U(3,0,A)2";
     SIGNAL \I2Sfive:bI2S:rx_int_out_0\ : bit;
     SIGNAL \I2Sfive:bI2S:rx_overflow_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Sfive:bI2S:rx_overflow_0\ : SIGNAL IS "U(2,0,A)3";
+    ATTRIBUTE placement_force OF \I2Sfive:bI2S:rx_overflow_0\ : SIGNAL IS "U(3,1,A)2";
     SIGNAL \I2Sfive:bI2S:rx_overflow_sticky\ : bit;
-    ATTRIBUTE placement_force OF \I2Sfive:bI2S:rx_overflow_sticky\ : SIGNAL IS "U(2,0,A)1";
+    ATTRIBUTE placement_force OF \I2Sfive:bI2S:rx_overflow_sticky\ : SIGNAL IS "U(3,1,A)3";
     SIGNAL \I2Sfive:bI2S:rx_state_0\ : bit;
     ATTRIBUTE placement_force OF \I2Sfive:bI2S:rx_state_0\ : SIGNAL IS "U(3,0,B)0";
     SIGNAL \I2Sfive:bI2S:rx_state_1\ : bit;
@@ -193,7 +195,7 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     SIGNAL \I2Sfive:bI2S:rx_state_2\ : bit;
     ATTRIBUTE placement_force OF \I2Sfive:bI2S:rx_state_2\ : SIGNAL IS "U(3,0,A)1";
     SIGNAL \I2Sfive:bI2S:rxenable\ : bit;
-    ATTRIBUTE placement_force OF \I2Sfive:bI2S:rxenable\ : SIGNAL IS "U(2,0,B)0";
+    ATTRIBUTE placement_force OF \I2Sfive:bI2S:rxenable\ : SIGNAL IS "U(3,1,B)1";
     SIGNAL \I2Sfour:bI2S:count_0\ : bit;
     SIGNAL \I2Sfour:bI2S:count_1\ : bit;
     SIGNAL \I2Sfour:bI2S:count_2\ : bit;
@@ -210,25 +212,25 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     SIGNAL \I2Sfour:bI2S:ctrl_reg_out_6\ : bit;
     SIGNAL \I2Sfour:bI2S:ctrl_reg_out_7\ : bit;
     SIGNAL \I2Sfour:bI2S:reset\ : bit;
-    ATTRIBUTE placement_force OF \I2Sfour:bI2S:reset\ : SIGNAL IS "U(2,1,B)2";
+    ATTRIBUTE placement_force OF \I2Sfour:bI2S:reset\ : SIGNAL IS "U(3,2,B)2";
     SIGNAL \I2Sfour:bI2S:rx_data_in_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Sfour:bI2S:rx_data_in_0\ : SIGNAL IS "U(3,1,B)1";
+    ATTRIBUTE placement_force OF \I2Sfour:bI2S:rx_data_in_0\ : SIGNAL IS "U(3,3,B)2";
     SIGNAL \I2Sfour:bI2S:rx_f0_full_0\ : bit;
     SIGNAL \I2Sfour:bI2S:rx_f0_load\ : bit;
-    ATTRIBUTE placement_force OF \I2Sfour:bI2S:rx_f0_load\ : SIGNAL IS "U(2,1,A)1";
+    ATTRIBUTE placement_force OF \I2Sfour:bI2S:rx_f0_load\ : SIGNAL IS "U(3,3,A)2";
     SIGNAL \I2Sfour:bI2S:rx_int_out_0\ : bit;
     SIGNAL \I2Sfour:bI2S:rx_overflow_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Sfour:bI2S:rx_overflow_0\ : SIGNAL IS "U(2,0,A)2";
+    ATTRIBUTE placement_force OF \I2Sfour:bI2S:rx_overflow_0\ : SIGNAL IS "U(2,2,B)2";
     SIGNAL \I2Sfour:bI2S:rx_overflow_sticky\ : bit;
-    ATTRIBUTE placement_force OF \I2Sfour:bI2S:rx_overflow_sticky\ : SIGNAL IS "U(2,0,A)0";
+    ATTRIBUTE placement_force OF \I2Sfour:bI2S:rx_overflow_sticky\ : SIGNAL IS "U(2,2,B)3";
     SIGNAL \I2Sfour:bI2S:rx_state_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Sfour:bI2S:rx_state_0\ : SIGNAL IS "U(2,1,A)0";
+    ATTRIBUTE placement_force OF \I2Sfour:bI2S:rx_state_0\ : SIGNAL IS "U(3,2,B)0";
     SIGNAL \I2Sfour:bI2S:rx_state_1\ : bit;
-    ATTRIBUTE placement_force OF \I2Sfour:bI2S:rx_state_1\ : SIGNAL IS "U(2,1,B)0";
+    ATTRIBUTE placement_force OF \I2Sfour:bI2S:rx_state_1\ : SIGNAL IS "U(3,3,A)0";
     SIGNAL \I2Sfour:bI2S:rx_state_2\ : bit;
-    ATTRIBUTE placement_force OF \I2Sfour:bI2S:rx_state_2\ : SIGNAL IS "U(2,1,B)3";
+    ATTRIBUTE placement_force OF \I2Sfour:bI2S:rx_state_2\ : SIGNAL IS "U(3,3,A)1";
     SIGNAL \I2Sfour:bI2S:rxenable\ : bit;
-    ATTRIBUTE placement_force OF \I2Sfour:bI2S:rxenable\ : SIGNAL IS "U(3,1,A)0";
+    ATTRIBUTE placement_force OF \I2Sfour:bI2S:rxenable\ : SIGNAL IS "U(3,2,A)1";
     SIGNAL \I2Sone:bI2S:count_1\ : bit;
     SIGNAL \I2Sone:bI2S:count_2\ : bit;
     SIGNAL \I2Sone:bI2S:count_3\ : bit;
@@ -244,25 +246,25 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     SIGNAL \I2Sone:bI2S:ctrl_reg_out_6\ : bit;
     SIGNAL \I2Sone:bI2S:ctrl_reg_out_7\ : bit;
     SIGNAL \I2Sone:bI2S:reset\ : bit;
-    ATTRIBUTE placement_force OF \I2Sone:bI2S:reset\ : SIGNAL IS "U(1,3,B)2";
+    ATTRIBUTE placement_force OF \I2Sone:bI2S:reset\ : SIGNAL IS "U(0,3,B)3";
     SIGNAL \I2Sone:bI2S:rx_data_in_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Sone:bI2S:rx_data_in_0\ : SIGNAL IS "U(1,1,B)2";
+    ATTRIBUTE placement_force OF \I2Sone:bI2S:rx_data_in_0\ : SIGNAL IS "U(1,3,A)2";
     SIGNAL \I2Sone:bI2S:rx_f0_full_0\ : bit;
     SIGNAL \I2Sone:bI2S:rx_f0_load\ : bit;
-    ATTRIBUTE placement_force OF \I2Sone:bI2S:rx_f0_load\ : SIGNAL IS "U(1,3,A)2";
+    ATTRIBUTE placement_force OF \I2Sone:bI2S:rx_f0_load\ : SIGNAL IS "U(0,3,A)2";
     SIGNAL \I2Sone:bI2S:rx_int_out_0\ : bit;
     SIGNAL \I2Sone:bI2S:rx_overflow_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Sone:bI2S:rx_overflow_0\ : SIGNAL IS "U(0,3,B)1";
+    ATTRIBUTE placement_force OF \I2Sone:bI2S:rx_overflow_0\ : SIGNAL IS "U(0,1,A)2";
     SIGNAL \I2Sone:bI2S:rx_overflow_sticky\ : bit;
-    ATTRIBUTE placement_force OF \I2Sone:bI2S:rx_overflow_sticky\ : SIGNAL IS "U(0,3,B)0";
+    ATTRIBUTE placement_force OF \I2Sone:bI2S:rx_overflow_sticky\ : SIGNAL IS "U(0,1,A)0";
     SIGNAL \I2Sone:bI2S:rx_state_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Sone:bI2S:rx_state_0\ : SIGNAL IS "U(1,3,B)0";
+    ATTRIBUTE placement_force OF \I2Sone:bI2S:rx_state_0\ : SIGNAL IS "U(0,3,B)0";
     SIGNAL \I2Sone:bI2S:rx_state_1\ : bit;
-    ATTRIBUTE placement_force OF \I2Sone:bI2S:rx_state_1\ : SIGNAL IS "U(1,3,A)0";
+    ATTRIBUTE placement_force OF \I2Sone:bI2S:rx_state_1\ : SIGNAL IS "U(0,3,A)0";
     SIGNAL \I2Sone:bI2S:rx_state_2\ : bit;
-    ATTRIBUTE placement_force OF \I2Sone:bI2S:rx_state_2\ : SIGNAL IS "U(1,3,A)1";
+    ATTRIBUTE placement_force OF \I2Sone:bI2S:rx_state_2\ : SIGNAL IS "U(0,3,A)1";
     SIGNAL \I2Sone:bI2S:rxenable\ : bit;
-    ATTRIBUTE placement_force OF \I2Sone:bI2S:rxenable\ : SIGNAL IS "U(1,2,B)0";
+    ATTRIBUTE placement_force OF \I2Sone:bI2S:rxenable\ : SIGNAL IS "U(0,5,B)0";
     SIGNAL \I2Sseven:bI2S:count_0\ : bit;
     SIGNAL \I2Sseven:bI2S:count_1\ : bit;
     SIGNAL \I2Sseven:bI2S:count_2\ : bit;
@@ -279,25 +281,25 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     SIGNAL \I2Sseven:bI2S:ctrl_reg_out_6\ : bit;
     SIGNAL \I2Sseven:bI2S:ctrl_reg_out_7\ : bit;
     SIGNAL \I2Sseven:bI2S:reset\ : bit;
-    ATTRIBUTE placement_force OF \I2Sseven:bI2S:reset\ : SIGNAL IS "U(2,4,A)3";
+    ATTRIBUTE placement_force OF \I2Sseven:bI2S:reset\ : SIGNAL IS "U(3,5,B)2";
     SIGNAL \I2Sseven:bI2S:rx_data_in_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Sseven:bI2S:rx_data_in_0\ : SIGNAL IS "U(3,1,B)3";
+    ATTRIBUTE placement_force OF \I2Sseven:bI2S:rx_data_in_0\ : SIGNAL IS "U(3,3,B)0";
     SIGNAL \I2Sseven:bI2S:rx_f0_full_0\ : bit;
     SIGNAL \I2Sseven:bI2S:rx_f0_load\ : bit;
-    ATTRIBUTE placement_force OF \I2Sseven:bI2S:rx_f0_load\ : SIGNAL IS "U(2,3,A)2";
+    ATTRIBUTE placement_force OF \I2Sseven:bI2S:rx_f0_load\ : SIGNAL IS "U(3,5,A)2";
     SIGNAL \I2Sseven:bI2S:rx_int_out_0\ : bit;
     SIGNAL \I2Sseven:bI2S:rx_overflow_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Sseven:bI2S:rx_overflow_0\ : SIGNAL IS "U(2,4,A)0";
+    ATTRIBUTE placement_force OF \I2Sseven:bI2S:rx_overflow_0\ : SIGNAL IS "U(1,2,B)1";
     SIGNAL \I2Sseven:bI2S:rx_overflow_sticky\ : bit;
-    ATTRIBUTE placement_force OF \I2Sseven:bI2S:rx_overflow_sticky\ : SIGNAL IS "U(2,4,A)2";
+    ATTRIBUTE placement_force OF \I2Sseven:bI2S:rx_overflow_sticky\ : SIGNAL IS "U(1,2,B)3";
     SIGNAL \I2Sseven:bI2S:rx_state_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Sseven:bI2S:rx_state_0\ : SIGNAL IS "U(2,3,B)0";
+    ATTRIBUTE placement_force OF \I2Sseven:bI2S:rx_state_0\ : SIGNAL IS "U(3,5,B)0";
     SIGNAL \I2Sseven:bI2S:rx_state_1\ : bit;
-    ATTRIBUTE placement_force OF \I2Sseven:bI2S:rx_state_1\ : SIGNAL IS "U(2,3,A)0";
+    ATTRIBUTE placement_force OF \I2Sseven:bI2S:rx_state_1\ : SIGNAL IS "U(3,5,A)0";
     SIGNAL \I2Sseven:bI2S:rx_state_2\ : bit;
-    ATTRIBUTE placement_force OF \I2Sseven:bI2S:rx_state_2\ : SIGNAL IS "U(2,3,A)1";
+    ATTRIBUTE placement_force OF \I2Sseven:bI2S:rx_state_2\ : SIGNAL IS "U(3,5,A)1";
     SIGNAL \I2Sseven:bI2S:rxenable\ : bit;
-    ATTRIBUTE placement_force OF \I2Sseven:bI2S:rxenable\ : SIGNAL IS "U(2,2,A)0";
+    ATTRIBUTE placement_force OF \I2Sseven:bI2S:rxenable\ : SIGNAL IS "U(2,5,B)1";
     SIGNAL \I2Ssix:bI2S:count_0\ : bit;
     SIGNAL \I2Ssix:bI2S:count_1\ : bit;
     SIGNAL \I2Ssix:bI2S:count_2\ : bit;
@@ -314,25 +316,25 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     SIGNAL \I2Ssix:bI2S:ctrl_reg_out_6\ : bit;
     SIGNAL \I2Ssix:bI2S:ctrl_reg_out_7\ : bit;
     SIGNAL \I2Ssix:bI2S:reset\ : bit;
-    ATTRIBUTE placement_force OF \I2Ssix:bI2S:reset\ : SIGNAL IS "U(1,0,B)2";
+    ATTRIBUTE placement_force OF \I2Ssix:bI2S:reset\ : SIGNAL IS "U(1,2,A)1";
     SIGNAL \I2Ssix:bI2S:rx_data_in_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Ssix:bI2S:rx_data_in_0\ : SIGNAL IS "U(0,2,B)3";
+    ATTRIBUTE placement_force OF \I2Ssix:bI2S:rx_data_in_0\ : SIGNAL IS "U(2,0,B)0";
     SIGNAL \I2Ssix:bI2S:rx_f0_full_0\ : bit;
     SIGNAL \I2Ssix:bI2S:rx_f0_load\ : bit;
-    ATTRIBUTE placement_force OF \I2Ssix:bI2S:rx_f0_load\ : SIGNAL IS "U(1,0,A)2";
+    ATTRIBUTE placement_force OF \I2Ssix:bI2S:rx_f0_load\ : SIGNAL IS "U(2,1,A)2";
     SIGNAL \I2Ssix:bI2S:rx_int_out_0\ : bit;
     SIGNAL \I2Ssix:bI2S:rx_overflow_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Ssix:bI2S:rx_overflow_0\ : SIGNAL IS "U(1,1,A)1";
+    ATTRIBUTE placement_force OF \I2Ssix:bI2S:rx_overflow_0\ : SIGNAL IS "U(2,3,B)3";
     SIGNAL \I2Ssix:bI2S:rx_overflow_sticky\ : bit;
-    ATTRIBUTE placement_force OF \I2Ssix:bI2S:rx_overflow_sticky\ : SIGNAL IS "U(1,1,A)2";
+    ATTRIBUTE placement_force OF \I2Ssix:bI2S:rx_overflow_sticky\ : SIGNAL IS "U(2,3,B)0";
     SIGNAL \I2Ssix:bI2S:rx_state_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Ssix:bI2S:rx_state_0\ : SIGNAL IS "U(1,0,B)0";
+    ATTRIBUTE placement_force OF \I2Ssix:bI2S:rx_state_0\ : SIGNAL IS "U(2,1,B)0";
     SIGNAL \I2Ssix:bI2S:rx_state_1\ : bit;
-    ATTRIBUTE placement_force OF \I2Ssix:bI2S:rx_state_1\ : SIGNAL IS "U(1,0,A)0";
+    ATTRIBUTE placement_force OF \I2Ssix:bI2S:rx_state_1\ : SIGNAL IS "U(2,1,A)0";
     SIGNAL \I2Ssix:bI2S:rx_state_2\ : bit;
-    ATTRIBUTE placement_force OF \I2Ssix:bI2S:rx_state_2\ : SIGNAL IS "U(1,0,A)1";
+    ATTRIBUTE placement_force OF \I2Ssix:bI2S:rx_state_2\ : SIGNAL IS "U(2,1,A)1";
     SIGNAL \I2Ssix:bI2S:rxenable\ : bit;
-    ATTRIBUTE placement_force OF \I2Ssix:bI2S:rxenable\ : SIGNAL IS "U(1,2,A)0";
+    ATTRIBUTE placement_force OF \I2Ssix:bI2S:rxenable\ : SIGNAL IS "U(2,2,A)0";
     SIGNAL \I2Sthree:bI2S:count_0\ : bit;
     SIGNAL \I2Sthree:bI2S:count_1\ : bit;
     SIGNAL \I2Sthree:bI2S:count_2\ : bit;
@@ -349,25 +351,25 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     SIGNAL \I2Sthree:bI2S:ctrl_reg_out_6\ : bit;
     SIGNAL \I2Sthree:bI2S:ctrl_reg_out_7\ : bit;
     SIGNAL \I2Sthree:bI2S:reset\ : bit;
-    ATTRIBUTE placement_force OF \I2Sthree:bI2S:reset\ : SIGNAL IS "U(2,5,B)1";
+    ATTRIBUTE placement_force OF \I2Sthree:bI2S:reset\ : SIGNAL IS "U(0,1,A)3";
     SIGNAL \I2Sthree:bI2S:rx_data_in_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Sthree:bI2S:rx_data_in_0\ : SIGNAL IS "U(0,2,B)2";
+    ATTRIBUTE placement_force OF \I2Sthree:bI2S:rx_data_in_0\ : SIGNAL IS "U(1,1,A)0";
     SIGNAL \I2Sthree:bI2S:rx_f0_full_0\ : bit;
     SIGNAL \I2Sthree:bI2S:rx_f0_load\ : bit;
-    ATTRIBUTE placement_force OF \I2Sthree:bI2S:rx_f0_load\ : SIGNAL IS "U(2,5,A)2";
+    ATTRIBUTE placement_force OF \I2Sthree:bI2S:rx_f0_load\ : SIGNAL IS "U(1,0,A)2";
     SIGNAL \I2Sthree:bI2S:rx_int_out_0\ : bit;
     SIGNAL \I2Sthree:bI2S:rx_overflow_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Sthree:bI2S:rx_overflow_0\ : SIGNAL IS "U(3,5,B)3";
+    ATTRIBUTE placement_force OF \I2Sthree:bI2S:rx_overflow_0\ : SIGNAL IS "U(1,1,A)1";
     SIGNAL \I2Sthree:bI2S:rx_overflow_sticky\ : bit;
-    ATTRIBUTE placement_force OF \I2Sthree:bI2S:rx_overflow_sticky\ : SIGNAL IS "U(3,5,B)0";
+    ATTRIBUTE placement_force OF \I2Sthree:bI2S:rx_overflow_sticky\ : SIGNAL IS "U(1,1,A)3";
     SIGNAL \I2Sthree:bI2S:rx_state_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Sthree:bI2S:rx_state_0\ : SIGNAL IS "U(2,5,B)0";
+    ATTRIBUTE placement_force OF \I2Sthree:bI2S:rx_state_0\ : SIGNAL IS "U(1,0,B)0";
     SIGNAL \I2Sthree:bI2S:rx_state_1\ : bit;
-    ATTRIBUTE placement_force OF \I2Sthree:bI2S:rx_state_1\ : SIGNAL IS "U(2,5,A)0";
+    ATTRIBUTE placement_force OF \I2Sthree:bI2S:rx_state_1\ : SIGNAL IS "U(1,0,A)0";
     SIGNAL \I2Sthree:bI2S:rx_state_2\ : bit;
-    ATTRIBUTE placement_force OF \I2Sthree:bI2S:rx_state_2\ : SIGNAL IS "U(2,5,A)1";
+    ATTRIBUTE placement_force OF \I2Sthree:bI2S:rx_state_2\ : SIGNAL IS "U(1,0,A)1";
     SIGNAL \I2Sthree:bI2S:rxenable\ : bit;
-    ATTRIBUTE placement_force OF \I2Sthree:bI2S:rxenable\ : SIGNAL IS "U(3,5,A)0";
+    ATTRIBUTE placement_force OF \I2Sthree:bI2S:rxenable\ : SIGNAL IS "U(1,1,B)0";
     SIGNAL \I2Stwo:bI2S:count_0\ : bit;
     SIGNAL \I2Stwo:bI2S:count_1\ : bit;
     SIGNAL \I2Stwo:bI2S:count_2\ : bit;
@@ -384,27 +386,27 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     SIGNAL \I2Stwo:bI2S:ctrl_reg_out_6\ : bit;
     SIGNAL \I2Stwo:bI2S:ctrl_reg_out_7\ : bit;
     SIGNAL \I2Stwo:bI2S:reset\ : bit;
-    ATTRIBUTE placement_force OF \I2Stwo:bI2S:reset\ : SIGNAL IS "U(3,4,A)3";
+    ATTRIBUTE placement_force OF \I2Stwo:bI2S:reset\ : SIGNAL IS "U(0,2,A)3";
     SIGNAL \I2Stwo:bI2S:rx_data_in_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Stwo:bI2S:rx_data_in_0\ : SIGNAL IS "U(3,3,A)3";
+    ATTRIBUTE placement_force OF \I2Stwo:bI2S:rx_data_in_0\ : SIGNAL IS "U(0,1,A)1";
     SIGNAL \I2Stwo:bI2S:rx_f0_full_0\ : bit;
     SIGNAL \I2Stwo:bI2S:rx_f0_load\ : bit;
-    ATTRIBUTE placement_force OF \I2Stwo:bI2S:rx_f0_load\ : SIGNAL IS "U(3,4,A)2";
+    ATTRIBUTE placement_force OF \I2Stwo:bI2S:rx_f0_load\ : SIGNAL IS "U(0,2,B)2";
     SIGNAL \I2Stwo:bI2S:rx_int_out_0\ : bit;
     SIGNAL \I2Stwo:bI2S:rx_overflow_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Stwo:bI2S:rx_overflow_0\ : SIGNAL IS "U(3,3,B)0";
+    ATTRIBUTE placement_force OF \I2Stwo:bI2S:rx_overflow_0\ : SIGNAL IS "U(0,1,B)2";
     SIGNAL \I2Stwo:bI2S:rx_overflow_sticky\ : bit;
-    ATTRIBUTE placement_force OF \I2Stwo:bI2S:rx_overflow_sticky\ : SIGNAL IS "U(3,3,B)1";
+    ATTRIBUTE placement_force OF \I2Stwo:bI2S:rx_overflow_sticky\ : SIGNAL IS "U(0,1,B)0";
     SIGNAL \I2Stwo:bI2S:rx_state_0\ : bit;
-    ATTRIBUTE placement_force OF \I2Stwo:bI2S:rx_state_0\ : SIGNAL IS "U(3,4,B)0";
+    ATTRIBUTE placement_force OF \I2Stwo:bI2S:rx_state_0\ : SIGNAL IS "U(0,2,A)0";
     SIGNAL \I2Stwo:bI2S:rx_state_1\ : bit;
-    ATTRIBUTE placement_force OF \I2Stwo:bI2S:rx_state_1\ : SIGNAL IS "U(3,4,A)0";
+    ATTRIBUTE placement_force OF \I2Stwo:bI2S:rx_state_1\ : SIGNAL IS "U(0,2,B)0";
     SIGNAL \I2Stwo:bI2S:rx_state_2\ : bit;
-    ATTRIBUTE placement_force OF \I2Stwo:bI2S:rx_state_2\ : SIGNAL IS "U(3,4,A)1";
+    ATTRIBUTE placement_force OF \I2Stwo:bI2S:rx_state_2\ : SIGNAL IS "U(0,2,B)1";
     SIGNAL \I2Stwo:bI2S:rxenable\ : bit;
-    ATTRIBUTE placement_force OF \I2Stwo:bI2S:rxenable\ : SIGNAL IS "U(2,4,B)0";
+    ATTRIBUTE placement_force OF \I2Stwo:bI2S:rxenable\ : SIGNAL IS "U(0,0,B)0";
     SIGNAL \SPIM:BSPIM:cnt_enable\ : bit;
-    ATTRIBUTE placement_force OF \SPIM:BSPIM:cnt_enable\ : SIGNAL IS "U(0,0,B)0";
+    ATTRIBUTE placement_force OF \SPIM:BSPIM:cnt_enable\ : SIGNAL IS "U(0,4,A)1";
     SIGNAL \SPIM:BSPIM:cnt_tc\ : bit;
     SIGNAL \SPIM:BSPIM:count_0\ : bit;
     SIGNAL \SPIM:BSPIM:count_1\ : bit;
@@ -414,28 +416,38 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     SIGNAL \SPIM:BSPIM:count_5\ : bit;
     SIGNAL \SPIM:BSPIM:count_6\ : bit;
     SIGNAL \SPIM:BSPIM:ld_ident\ : bit;
-    ATTRIBUTE placement_force OF \SPIM:BSPIM:ld_ident\ : SIGNAL IS "U(0,2,A)1";
+    ATTRIBUTE placement_force OF \SPIM:BSPIM:ld_ident\ : SIGNAL IS "U(1,3,B)2";
     SIGNAL \SPIM:BSPIM:load_cond\ : bit;
-    ATTRIBUTE placement_force OF \SPIM:BSPIM:load_cond\ : SIGNAL IS "U(0,2,A)0";
+    ATTRIBUTE placement_force OF \SPIM:BSPIM:load_cond\ : SIGNAL IS "U(1,5,B)1";
     SIGNAL \SPIM:BSPIM:load_rx_data\ : bit;
-    ATTRIBUTE placement_force OF \SPIM:BSPIM:load_rx_data\ : SIGNAL IS "U(0,1,A)1";
+    ATTRIBUTE placement_force OF \SPIM:BSPIM:load_rx_data\ : SIGNAL IS "U(1,4,A)2";
     SIGNAL \SPIM:BSPIM:mosi_from_dp\ : bit;
+    SIGNAL \SPIM:BSPIM:mosi_from_dp_reg\ : bit;
+    ATTRIBUTE placement_force OF \SPIM:BSPIM:mosi_from_dp_reg\ : SIGNAL IS "U(0,5,A)2";
+    SIGNAL \SPIM:BSPIM:mosi_hs_reg\ : bit;
+    ATTRIBUTE placement_force OF \SPIM:BSPIM:mosi_hs_reg\ : SIGNAL IS "U(0,5,A)0";
+    SIGNAL \SPIM:BSPIM:mosi_pre_reg\ : bit;
+    ATTRIBUTE placement_force OF \SPIM:BSPIM:mosi_pre_reg\ : SIGNAL IS "U(0,4,A)2";
+    SIGNAL \SPIM:BSPIM:mosi_pre_reg_split\ : bit;
+    ATTRIBUTE placement_force OF \SPIM:BSPIM:mosi_pre_reg_split\ : SIGNAL IS "U(1,4,B)0";
+    SIGNAL \SPIM:BSPIM:mosi_pre_reg_split_1\ : bit;
+    ATTRIBUTE placement_force OF \SPIM:BSPIM:mosi_pre_reg_split_1\ : SIGNAL IS "U(1,4,A)0";
     SIGNAL \SPIM:BSPIM:rx_status_4\ : bit;
     SIGNAL \SPIM:BSPIM:rx_status_5\ : bit;
     SIGNAL \SPIM:BSPIM:rx_status_6\ : bit;
-    ATTRIBUTE placement_force OF \SPIM:BSPIM:rx_status_6\ : SIGNAL IS "U(0,2,A)2";
+    ATTRIBUTE placement_force OF \SPIM:BSPIM:rx_status_6\ : SIGNAL IS "U(1,4,A)1";
     SIGNAL \SPIM:BSPIM:state_0\ : bit;
-    ATTRIBUTE placement_force OF \SPIM:BSPIM:state_0\ : SIGNAL IS "U(0,1,B)2";
+    ATTRIBUTE placement_force OF \SPIM:BSPIM:state_0\ : SIGNAL IS "U(1,3,B)1";
     SIGNAL \SPIM:BSPIM:state_1\ : bit;
-    ATTRIBUTE placement_force OF \SPIM:BSPIM:state_1\ : SIGNAL IS "U(0,1,B)0";
+    ATTRIBUTE placement_force OF \SPIM:BSPIM:state_1\ : SIGNAL IS "U(1,5,B)0";
     SIGNAL \SPIM:BSPIM:state_2\ : bit;
-    ATTRIBUTE placement_force OF \SPIM:BSPIM:state_2\ : SIGNAL IS "U(0,1,B)1";
+    ATTRIBUTE placement_force OF \SPIM:BSPIM:state_2\ : SIGNAL IS "U(1,3,B)0";
     SIGNAL \SPIM:BSPIM:tx_status_0\ : bit;
-    ATTRIBUTE placement_force OF \SPIM:BSPIM:tx_status_0\ : SIGNAL IS "U(0,1,A)2";
+    ATTRIBUTE placement_force OF \SPIM:BSPIM:tx_status_0\ : SIGNAL IS "U(1,5,B)2";
     SIGNAL \SPIM:BSPIM:tx_status_1\ : bit;
     SIGNAL \SPIM:BSPIM:tx_status_2\ : bit;
     SIGNAL \SPIM:BSPIM:tx_status_4\ : bit;
-    ATTRIBUTE placement_force OF \SPIM:BSPIM:tx_status_4\ : SIGNAL IS "U(0,1,A)3";
+    ATTRIBUTE placement_force OF \SPIM:BSPIM:tx_status_4\ : SIGNAL IS "U(1,5,B)3";
     SIGNAL __ONE__ : bit;
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
@@ -445,6 +457,8 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     ATTRIBUTE POWER OF tmpOE__I2S_SDI_three_net_0 : SIGNAL IS true;
     SIGNAL zero : bit;
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:mosi_pre_reg_split\ : LABEL IS "macrocell1";
+    ATTRIBUTE Location OF \SPIM:BSPIM:mosi_pre_reg_split\ : LABEL IS "U(1,4)";
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
     ATTRIBUTE lib_model OF I2S_SDI_three(0) : LABEL IS "iocell1";
     ATTRIBUTE Location OF I2S_SDI_three(0) : LABEL IS "P1[5]";
@@ -488,279 +502,289 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     ATTRIBUTE Location OF I2S_SDI_seven(0) : LABEL IS "P15[3]";
     ATTRIBUTE lib_model OF I2S_SDI_eight(0) : LABEL IS "iocell21";
     ATTRIBUTE Location OF I2S_SDI_eight(0) : LABEL IS "P3[3]";
-    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_overflow_0\ : LABEL IS "macrocell1";
-    ATTRIBUTE Location OF \I2Sthree:bI2S:rx_overflow_0\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:load_rx_data\ : LABEL IS "macrocell2";
-    ATTRIBUTE Location OF \SPIM:BSPIM:load_rx_data\ : LABEL IS "U(0,1)";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:tx_status_0\ : LABEL IS "macrocell3";
-    ATTRIBUTE Location OF \SPIM:BSPIM:tx_status_0\ : LABEL IS "U(0,1)";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:tx_status_4\ : LABEL IS "macrocell4";
-    ATTRIBUTE Location OF \SPIM:BSPIM:tx_status_4\ : LABEL IS "U(0,1)";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:rx_status_6\ : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF \SPIM:BSPIM:rx_status_6\ : LABEL IS "U(0,2)";
-    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_overflow_0\ : LABEL IS "macrocell6";
-    ATTRIBUTE Location OF \I2Sone:bI2S:rx_overflow_0\ : LABEL IS "U(0,3)";
-    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_overflow_0\ : LABEL IS "macrocell7";
-    ATTRIBUTE Location OF \I2Stwo:bI2S:rx_overflow_0\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_overflow_0\ : LABEL IS "macrocell8";
-    ATTRIBUTE Location OF \I2Sfour:bI2S:rx_overflow_0\ : LABEL IS "U(2,0)";
-    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_overflow_0\ : LABEL IS "macrocell9";
-    ATTRIBUTE Location OF \I2Ssix:bI2S:rx_overflow_0\ : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_overflow_0\ : LABEL IS "macrocell10";
-    ATTRIBUTE Location OF \I2Sfive:bI2S:rx_overflow_0\ : LABEL IS "U(2,0)";
-    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_overflow_0\ : LABEL IS "macrocell11";
-    ATTRIBUTE Location OF \I2Sseven:bI2S:rx_overflow_0\ : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_overflow_0\ : LABEL IS "macrocell12";
-    ATTRIBUTE Location OF \I2Seight:bI2S:rx_overflow_0\ : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_overflow_0\ : LABEL IS "macrocell2";
+    ATTRIBUTE Location OF \I2Sthree:bI2S:rx_overflow_0\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:load_rx_data\ : LABEL IS "macrocell3";
+    ATTRIBUTE Location OF \SPIM:BSPIM:load_rx_data\ : LABEL IS "U(1,4)";
+    ATTRIBUTE lib_model OF Net_23 : LABEL IS "macrocell4";
+    ATTRIBUTE Location OF Net_23 : LABEL IS "U(0,5)";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:tx_status_0\ : LABEL IS "macrocell5";
+    ATTRIBUTE Location OF \SPIM:BSPIM:tx_status_0\ : LABEL IS "U(1,5)";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:tx_status_4\ : LABEL IS "macrocell6";
+    ATTRIBUTE Location OF \SPIM:BSPIM:tx_status_4\ : LABEL IS "U(1,5)";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:rx_status_6\ : LABEL IS "macrocell7";
+    ATTRIBUTE Location OF \SPIM:BSPIM:rx_status_6\ : LABEL IS "U(1,4)";
+    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_overflow_0\ : LABEL IS "macrocell8";
+    ATTRIBUTE Location OF \I2Sone:bI2S:rx_overflow_0\ : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_overflow_0\ : LABEL IS "macrocell9";
+    ATTRIBUTE Location OF \I2Stwo:bI2S:rx_overflow_0\ : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_overflow_0\ : LABEL IS "macrocell10";
+    ATTRIBUTE Location OF \I2Sfour:bI2S:rx_overflow_0\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_overflow_0\ : LABEL IS "macrocell11";
+    ATTRIBUTE Location OF \I2Ssix:bI2S:rx_overflow_0\ : LABEL IS "U(2,3)";
+    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_overflow_0\ : LABEL IS "macrocell12";
+    ATTRIBUTE Location OF \I2Sfive:bI2S:rx_overflow_0\ : LABEL IS "U(3,1)";
+    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_overflow_0\ : LABEL IS "macrocell13";
+    ATTRIBUTE Location OF \I2Sseven:bI2S:rx_overflow_0\ : LABEL IS "U(1,2)";
+    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_overflow_0\ : LABEL IS "macrocell14";
+    ATTRIBUTE Location OF \I2Seight:bI2S:rx_overflow_0\ : LABEL IS "U(2,3)";
     ATTRIBUTE Location OF DmaI2S_three : LABEL IS "[IntrContainer=(0)][IntrId=(6)]";
     ATTRIBUTE lib_model OF I2S_DMA_three : LABEL IS "drqcell1";
     ATTRIBUTE Location OF I2S_DMA_three : LABEL IS "[DrqContainer=(0)][DrqId=(6)]";
     ATTRIBUTE lib_model OF \I2Sthree:bI2S:CtlReg\ : LABEL IS "controlcell1";
-    ATTRIBUTE Location OF \I2Sthree:bI2S:CtlReg\ : LABEL IS "U(2,5)";
-    ATTRIBUTE Location OF \I2Sthree:bI2S:BitCounter\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \I2Sthree:bI2S:CtlReg\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \I2Sthree:bI2S:BitCounter\ : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \I2Sthree:bI2S:Rx:STS[0]:Sts\ : LABEL IS "statusicell1";
-    ATTRIBUTE Location OF \I2Sthree:bI2S:Rx:STS[0]:Sts\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \I2Sthree:bI2S:Rx:STS[0]:Sts\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \I2Sthree:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE Location OF \I2Sthree:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "U(2,5)";
-    ATTRIBUTE Location OF \SPIM:BSPIM:BitCounter\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \I2Sthree:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \SPIM:BSPIM:BitCounter\ : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF \SPIM:BSPIM:TxStsReg\ : LABEL IS "statusicell2";
-    ATTRIBUTE Location OF \SPIM:BSPIM:TxStsReg\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \SPIM:BSPIM:TxStsReg\ : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF \SPIM:BSPIM:RxStsReg\ : LABEL IS "statusicell3";
-    ATTRIBUTE Location OF \SPIM:BSPIM:RxStsReg\ : LABEL IS "U(0,2)";
+    ATTRIBUTE Location OF \SPIM:BSPIM:RxStsReg\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \SPIM:BSPIM:sR8:Dp:u0\ : LABEL IS "datapathcell2";
-    ATTRIBUTE Location OF \SPIM:BSPIM:sR8:Dp:u0\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \SPIM:BSPIM:sR8:Dp:u0\ : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF I2S_DMA_one : LABEL IS "drqcell2";
     ATTRIBUTE Location OF I2S_DMA_one : LABEL IS "[DrqContainer=(0)][DrqId=(3)]";
     ATTRIBUTE lib_model OF \I2Sone:bI2S:CtlReg\ : LABEL IS "controlcell2";
-    ATTRIBUTE Location OF \I2Sone:bI2S:CtlReg\ : LABEL IS "U(0,0)";
-    ATTRIBUTE Location OF \I2Sone:bI2S:BitCounter\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \I2Sone:bI2S:CtlReg\ : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF \I2Sone:bI2S:BitCounter\ : LABEL IS "U(0,5)";
     ATTRIBUTE lib_model OF \I2Sone:bI2S:Rx:STS[0]:Sts\ : LABEL IS "statusicell4";
-    ATTRIBUTE Location OF \I2Sone:bI2S:Rx:STS[0]:Sts\ : LABEL IS "U(0,3)";
+    ATTRIBUTE Location OF \I2Sone:bI2S:Rx:STS[0]:Sts\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \I2Sone:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "datapathcell3";
-    ATTRIBUTE Location OF \I2Sone:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \I2Sone:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "U(0,3)";
     ATTRIBUTE Location OF DmaI2S_one : LABEL IS "[IntrContainer=(0)][IntrId=(3)]";
     ATTRIBUTE Location OF DmaI2S_two : LABEL IS "[IntrContainer=(0)][IntrId=(7)]";
     ATTRIBUTE lib_model OF I2S_DMA_two : LABEL IS "drqcell3";
     ATTRIBUTE Location OF I2S_DMA_two : LABEL IS "[DrqContainer=(0)][DrqId=(7)]";
     ATTRIBUTE lib_model OF \I2Stwo:bI2S:CtlReg\ : LABEL IS "controlcell3";
-    ATTRIBUTE Location OF \I2Stwo:bI2S:CtlReg\ : LABEL IS "U(3,3)";
-    ATTRIBUTE Location OF \I2Stwo:bI2S:BitCounter\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \I2Stwo:bI2S:CtlReg\ : LABEL IS "U(0,2)";
+    ATTRIBUTE Location OF \I2Stwo:bI2S:BitCounter\ : LABEL IS "U(0,0)";
     ATTRIBUTE lib_model OF \I2Stwo:bI2S:Rx:STS[0]:Sts\ : LABEL IS "statusicell5";
-    ATTRIBUTE Location OF \I2Stwo:bI2S:Rx:STS[0]:Sts\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \I2Stwo:bI2S:Rx:STS[0]:Sts\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \I2Stwo:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "datapathcell4";
-    ATTRIBUTE Location OF \I2Stwo:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \I2Stwo:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \I2Sfour:bI2S:CtlReg\ : LABEL IS "controlcell4";
-    ATTRIBUTE Location OF \I2Sfour:bI2S:CtlReg\ : LABEL IS "U(2,1)";
-    ATTRIBUTE Location OF \I2Sfour:bI2S:BitCounter\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \I2Sfour:bI2S:CtlReg\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \I2Sfour:bI2S:BitCounter\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \I2Sfour:bI2S:Rx:STS[0]:Sts\ : LABEL IS "statusicell6";
-    ATTRIBUTE Location OF \I2Sfour:bI2S:Rx:STS[0]:Sts\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \I2Sfour:bI2S:Rx:STS[0]:Sts\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \I2Sfour:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "datapathcell5";
-    ATTRIBUTE Location OF \I2Sfour:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \I2Sfour:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF I2S_DMA_four : LABEL IS "drqcell4";
     ATTRIBUTE Location OF I2S_DMA_four : LABEL IS "[DrqContainer=(0)][DrqId=(2)]";
     ATTRIBUTE Location OF DmaI2S_four : LABEL IS "[IntrContainer=(0)][IntrId=(2)]";
     ATTRIBUTE lib_model OF \I2Ssix:bI2S:CtlReg\ : LABEL IS "controlcell5";
-    ATTRIBUTE Location OF \I2Ssix:bI2S:CtlReg\ : LABEL IS "U(1,0)";
-    ATTRIBUTE Location OF \I2Ssix:bI2S:BitCounter\ : LABEL IS "U(1,2)";
+    ATTRIBUTE Location OF \I2Ssix:bI2S:CtlReg\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \I2Ssix:bI2S:BitCounter\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \I2Ssix:bI2S:Rx:STS[0]:Sts\ : LABEL IS "statusicell7";
-    ATTRIBUTE Location OF \I2Ssix:bI2S:Rx:STS[0]:Sts\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \I2Ssix:bI2S:Rx:STS[0]:Sts\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \I2Ssix:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "datapathcell6";
-    ATTRIBUTE Location OF \I2Ssix:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \I2Ssix:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF I2S_DMA_six : LABEL IS "drqcell5";
     ATTRIBUTE Location OF I2S_DMA_six : LABEL IS "[DrqContainer=(0)][DrqId=(5)]";
     ATTRIBUTE Location OF DmaI2S_six : LABEL IS "[IntrContainer=(0)][IntrId=(5)]";
     ATTRIBUTE lib_model OF \I2Sfive:bI2S:CtlReg\ : LABEL IS "controlcell6";
-    ATTRIBUTE Location OF \I2Sfive:bI2S:CtlReg\ : LABEL IS "U(3,0)";
-    ATTRIBUTE Location OF \I2Sfive:bI2S:BitCounter\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \I2Sfive:bI2S:CtlReg\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \I2Sfive:bI2S:BitCounter\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \I2Sfive:bI2S:Rx:STS[0]:Sts\ : LABEL IS "statusicell8";
-    ATTRIBUTE Location OF \I2Sfive:bI2S:Rx:STS[0]:Sts\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \I2Sfive:bI2S:Rx:STS[0]:Sts\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \I2Sfive:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "datapathcell7";
-    ATTRIBUTE Location OF \I2Sfive:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \I2Sfive:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF I2S_DMA_five : LABEL IS "drqcell6";
     ATTRIBUTE Location OF I2S_DMA_five : LABEL IS "[DrqContainer=(0)][DrqId=(1)]";
     ATTRIBUTE Location OF DmaI2S_five : LABEL IS "[IntrContainer=(0)][IntrId=(1)]";
     ATTRIBUTE lib_model OF \I2Sseven:bI2S:CtlReg\ : LABEL IS "controlcell7";
-    ATTRIBUTE Location OF \I2Sseven:bI2S:CtlReg\ : LABEL IS "U(2,4)";
-    ATTRIBUTE Location OF \I2Sseven:bI2S:BitCounter\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \I2Sseven:bI2S:CtlReg\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \I2Sseven:bI2S:BitCounter\ : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \I2Sseven:bI2S:Rx:STS[0]:Sts\ : LABEL IS "statusicell9";
-    ATTRIBUTE Location OF \I2Sseven:bI2S:Rx:STS[0]:Sts\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \I2Sseven:bI2S:Rx:STS[0]:Sts\ : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF \I2Sseven:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "datapathcell8";
-    ATTRIBUTE Location OF \I2Sseven:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \I2Sseven:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF I2S_DMA_seven : LABEL IS "drqcell7";
     ATTRIBUTE Location OF I2S_DMA_seven : LABEL IS "[DrqContainer=(0)][DrqId=(4)]";
     ATTRIBUTE Location OF DmaI2S_seven : LABEL IS "[IntrContainer=(0)][IntrId=(4)]";
     ATTRIBUTE lib_model OF \I2Seight:bI2S:CtlReg\ : LABEL IS "controlcell8";
-    ATTRIBUTE Location OF \I2Seight:bI2S:CtlReg\ : LABEL IS "U(0,3)";
-    ATTRIBUTE Location OF \I2Seight:bI2S:BitCounter\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \I2Seight:bI2S:CtlReg\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \I2Seight:bI2S:BitCounter\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \I2Seight:bI2S:Rx:STS[0]:Sts\ : LABEL IS "statusicell10";
-    ATTRIBUTE Location OF \I2Seight:bI2S:Rx:STS[0]:Sts\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \I2Seight:bI2S:Rx:STS[0]:Sts\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \I2Seight:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "datapathcell9";
-    ATTRIBUTE Location OF \I2Seight:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \I2Seight:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF I2S_DMA_eight : LABEL IS "drqcell8";
     ATTRIBUTE Location OF I2S_DMA_eight : LABEL IS "[DrqContainer=(0)][DrqId=(0)]";
     ATTRIBUTE Location OF DmaI2S_eight : LABEL IS "[IntrContainer=(0)][IntrId=(0)]";
-    ATTRIBUTE lib_model OF Net_268 : LABEL IS "macrocell13";
-    ATTRIBUTE Location OF Net_268 : LABEL IS "U(0,3)";
-    ATTRIBUTE lib_model OF \I2Sthree:bI2S:reset\ : LABEL IS "macrocell14";
-    ATTRIBUTE Location OF \I2Sthree:bI2S:reset\ : LABEL IS "U(2,5)";
-    ATTRIBUTE lib_model OF Net_625 : LABEL IS "macrocell15";
-    ATTRIBUTE Location OF Net_625 : LABEL IS "U(2,5)";
-    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_f0_load\ : LABEL IS "macrocell16";
-    ATTRIBUTE Location OF \I2Sthree:bI2S:rx_f0_load\ : LABEL IS "U(2,5)";
-    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_state_2\ : LABEL IS "macrocell17";
-    ATTRIBUTE Location OF \I2Sthree:bI2S:rx_state_2\ : LABEL IS "U(2,5)";
-    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_state_1\ : LABEL IS "macrocell18";
-    ATTRIBUTE Location OF \I2Sthree:bI2S:rx_state_1\ : LABEL IS "U(2,5)";
-    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_state_0\ : LABEL IS "macrocell19";
-    ATTRIBUTE Location OF \I2Sthree:bI2S:rx_state_0\ : LABEL IS "U(2,5)";
-    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell20";
-    ATTRIBUTE Location OF \I2Sthree:bI2S:rx_overflow_sticky\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rxenable\ : LABEL IS "macrocell21";
-    ATTRIBUTE Location OF \I2Sthree:bI2S:rxenable\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_data_in_0\ : LABEL IS "macrocell22";
-    ATTRIBUTE Location OF \I2Sthree:bI2S:rx_data_in_0\ : LABEL IS "U(0,2)";
-    ATTRIBUTE lib_model OF Net_263 : LABEL IS "macrocell23";
-    ATTRIBUTE Location OF Net_263 : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF Net_23 : LABEL IS "macrocell24";
-    ATTRIBUTE Location OF Net_23 : LABEL IS "U(0,1)";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:state_2\ : LABEL IS "macrocell25";
-    ATTRIBUTE Location OF \SPIM:BSPIM:state_2\ : LABEL IS "U(0,1)";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:state_1\ : LABEL IS "macrocell26";
-    ATTRIBUTE Location OF \SPIM:BSPIM:state_1\ : LABEL IS "U(0,1)";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:state_0\ : LABEL IS "macrocell27";
-    ATTRIBUTE Location OF \SPIM:BSPIM:state_0\ : LABEL IS "U(0,1)";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:load_cond\ : LABEL IS "macrocell28";
-    ATTRIBUTE Location OF \SPIM:BSPIM:load_cond\ : LABEL IS "U(0,2)";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:ld_ident\ : LABEL IS "macrocell29";
-    ATTRIBUTE Location OF \SPIM:BSPIM:ld_ident\ : LABEL IS "U(0,2)";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:cnt_enable\ : LABEL IS "macrocell30";
-    ATTRIBUTE Location OF \SPIM:BSPIM:cnt_enable\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \I2Sone:bI2S:reset\ : LABEL IS "macrocell31";
-    ATTRIBUTE Location OF \I2Sone:bI2S:reset\ : LABEL IS "U(1,3)";
-    ATTRIBUTE lib_model OF Net_739 : LABEL IS "macrocell32";
-    ATTRIBUTE Location OF Net_739 : LABEL IS "U(1,3)";
-    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_f0_load\ : LABEL IS "macrocell33";
-    ATTRIBUTE Location OF \I2Sone:bI2S:rx_f0_load\ : LABEL IS "U(1,3)";
-    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_state_2\ : LABEL IS "macrocell34";
-    ATTRIBUTE Location OF \I2Sone:bI2S:rx_state_2\ : LABEL IS "U(1,3)";
-    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_state_1\ : LABEL IS "macrocell35";
-    ATTRIBUTE Location OF \I2Sone:bI2S:rx_state_1\ : LABEL IS "U(1,3)";
-    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_state_0\ : LABEL IS "macrocell36";
-    ATTRIBUTE Location OF \I2Sone:bI2S:rx_state_0\ : LABEL IS "U(1,3)";
-    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell37";
-    ATTRIBUTE Location OF \I2Sone:bI2S:rx_overflow_sticky\ : LABEL IS "U(0,3)";
-    ATTRIBUTE lib_model OF \I2Sone:bI2S:rxenable\ : LABEL IS "macrocell38";
-    ATTRIBUTE Location OF \I2Sone:bI2S:rxenable\ : LABEL IS "U(1,2)";
-    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_data_in_0\ : LABEL IS "macrocell39";
-    ATTRIBUTE Location OF \I2Sone:bI2S:rx_data_in_0\ : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF \I2Stwo:bI2S:reset\ : LABEL IS "macrocell40";
-    ATTRIBUTE Location OF \I2Stwo:bI2S:reset\ : LABEL IS "U(3,4)";
-    ATTRIBUTE lib_model OF Net_74 : LABEL IS "macrocell41";
-    ATTRIBUTE Location OF Net_74 : LABEL IS "U(3,4)";
-    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_f0_load\ : LABEL IS "macrocell42";
-    ATTRIBUTE Location OF \I2Stwo:bI2S:rx_f0_load\ : LABEL IS "U(3,4)";
-    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_state_2\ : LABEL IS "macrocell43";
-    ATTRIBUTE Location OF \I2Stwo:bI2S:rx_state_2\ : LABEL IS "U(3,4)";
-    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_state_1\ : LABEL IS "macrocell44";
-    ATTRIBUTE Location OF \I2Stwo:bI2S:rx_state_1\ : LABEL IS "U(3,4)";
-    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_state_0\ : LABEL IS "macrocell45";
-    ATTRIBUTE Location OF \I2Stwo:bI2S:rx_state_0\ : LABEL IS "U(3,4)";
-    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell46";
-    ATTRIBUTE Location OF \I2Stwo:bI2S:rx_overflow_sticky\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rxenable\ : LABEL IS "macrocell47";
-    ATTRIBUTE Location OF \I2Stwo:bI2S:rxenable\ : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_data_in_0\ : LABEL IS "macrocell48";
-    ATTRIBUTE Location OF \I2Stwo:bI2S:rx_data_in_0\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \I2Sfour:bI2S:reset\ : LABEL IS "macrocell49";
-    ATTRIBUTE Location OF \I2Sfour:bI2S:reset\ : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF Net_668 : LABEL IS "macrocell50";
-    ATTRIBUTE Location OF Net_668 : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_f0_load\ : LABEL IS "macrocell51";
-    ATTRIBUTE Location OF \I2Sfour:bI2S:rx_f0_load\ : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_state_2\ : LABEL IS "macrocell52";
-    ATTRIBUTE Location OF \I2Sfour:bI2S:rx_state_2\ : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_state_1\ : LABEL IS "macrocell53";
-    ATTRIBUTE Location OF \I2Sfour:bI2S:rx_state_1\ : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_state_0\ : LABEL IS "macrocell54";
-    ATTRIBUTE Location OF \I2Sfour:bI2S:rx_state_0\ : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell55";
-    ATTRIBUTE Location OF \I2Sfour:bI2S:rx_overflow_sticky\ : LABEL IS "U(2,0)";
-    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rxenable\ : LABEL IS "macrocell56";
-    ATTRIBUTE Location OF \I2Sfour:bI2S:rxenable\ : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_data_in_0\ : LABEL IS "macrocell57";
-    ATTRIBUTE Location OF \I2Sfour:bI2S:rx_data_in_0\ : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF \I2Ssix:bI2S:reset\ : LABEL IS "macrocell58";
-    ATTRIBUTE Location OF \I2Ssix:bI2S:reset\ : LABEL IS "U(1,0)";
-    ATTRIBUTE lib_model OF Net_683 : LABEL IS "macrocell59";
-    ATTRIBUTE Location OF Net_683 : LABEL IS "U(1,0)";
-    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_f0_load\ : LABEL IS "macrocell60";
-    ATTRIBUTE Location OF \I2Ssix:bI2S:rx_f0_load\ : LABEL IS "U(1,0)";
-    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_state_2\ : LABEL IS "macrocell61";
-    ATTRIBUTE Location OF \I2Ssix:bI2S:rx_state_2\ : LABEL IS "U(1,0)";
-    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_state_1\ : LABEL IS "macrocell62";
-    ATTRIBUTE Location OF \I2Ssix:bI2S:rx_state_1\ : LABEL IS "U(1,0)";
-    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_state_0\ : LABEL IS "macrocell63";
-    ATTRIBUTE Location OF \I2Ssix:bI2S:rx_state_0\ : LABEL IS "U(1,0)";
-    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell64";
-    ATTRIBUTE Location OF \I2Ssix:bI2S:rx_overflow_sticky\ : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rxenable\ : LABEL IS "macrocell65";
-    ATTRIBUTE Location OF \I2Ssix:bI2S:rxenable\ : LABEL IS "U(1,2)";
-    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_data_in_0\ : LABEL IS "macrocell66";
-    ATTRIBUTE Location OF \I2Ssix:bI2S:rx_data_in_0\ : LABEL IS "U(0,2)";
-    ATTRIBUTE lib_model OF \I2Sfive:bI2S:reset\ : LABEL IS "macrocell67";
+    ATTRIBUTE lib_model OF DMA_TX : LABEL IS "drqcell9";
+    ATTRIBUTE Location OF DMA_TX : LABEL IS "[DrqContainer=(0)][DrqId=(8)]";
+    ATTRIBUTE lib_model OF Net_268 : LABEL IS "macrocell15";
+    ATTRIBUTE Location OF Net_268 : LABEL IS "U(2,5)";
+    ATTRIBUTE lib_model OF \I2Sthree:bI2S:reset\ : LABEL IS "macrocell16";
+    ATTRIBUTE Location OF \I2Sthree:bI2S:reset\ : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF Net_625 : LABEL IS "macrocell17";
+    ATTRIBUTE Location OF Net_625 : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_f0_load\ : LABEL IS "macrocell18";
+    ATTRIBUTE Location OF \I2Sthree:bI2S:rx_f0_load\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_state_2\ : LABEL IS "macrocell19";
+    ATTRIBUTE Location OF \I2Sthree:bI2S:rx_state_2\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_state_1\ : LABEL IS "macrocell20";
+    ATTRIBUTE Location OF \I2Sthree:bI2S:rx_state_1\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_state_0\ : LABEL IS "macrocell21";
+    ATTRIBUTE Location OF \I2Sthree:bI2S:rx_state_0\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell22";
+    ATTRIBUTE Location OF \I2Sthree:bI2S:rx_overflow_sticky\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rxenable\ : LABEL IS "macrocell23";
+    ATTRIBUTE Location OF \I2Sthree:bI2S:rxenable\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_data_in_0\ : LABEL IS "macrocell24";
+    ATTRIBUTE Location OF \I2Sthree:bI2S:rx_data_in_0\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF Net_263 : LABEL IS "macrocell25";
+    ATTRIBUTE Location OF Net_263 : LABEL IS "U(0,4)";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:state_2\ : LABEL IS "macrocell26";
+    ATTRIBUTE Location OF \SPIM:BSPIM:state_2\ : LABEL IS "U(1,3)";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:state_1\ : LABEL IS "macrocell27";
+    ATTRIBUTE Location OF \SPIM:BSPIM:state_1\ : LABEL IS "U(1,5)";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:state_0\ : LABEL IS "macrocell28";
+    ATTRIBUTE Location OF \SPIM:BSPIM:state_0\ : LABEL IS "U(1,3)";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:mosi_hs_reg\ : LABEL IS "macrocell29";
+    ATTRIBUTE Location OF \SPIM:BSPIM:mosi_hs_reg\ : LABEL IS "U(0,5)";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:mosi_pre_reg\ : LABEL IS "macrocell30";
+    ATTRIBUTE Location OF \SPIM:BSPIM:mosi_pre_reg\ : LABEL IS "U(0,4)";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:load_cond\ : LABEL IS "macrocell31";
+    ATTRIBUTE Location OF \SPIM:BSPIM:load_cond\ : LABEL IS "U(1,5)";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:mosi_from_dp_reg\ : LABEL IS "macrocell32";
+    ATTRIBUTE Location OF \SPIM:BSPIM:mosi_from_dp_reg\ : LABEL IS "U(0,5)";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:ld_ident\ : LABEL IS "macrocell33";
+    ATTRIBUTE Location OF \SPIM:BSPIM:ld_ident\ : LABEL IS "U(1,3)";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:cnt_enable\ : LABEL IS "macrocell34";
+    ATTRIBUTE Location OF \SPIM:BSPIM:cnt_enable\ : LABEL IS "U(0,4)";
+    ATTRIBUTE lib_model OF \I2Sone:bI2S:reset\ : LABEL IS "macrocell35";
+    ATTRIBUTE Location OF \I2Sone:bI2S:reset\ : LABEL IS "U(0,3)";
+    ATTRIBUTE lib_model OF Net_739 : LABEL IS "macrocell36";
+    ATTRIBUTE Location OF Net_739 : LABEL IS "U(0,3)";
+    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_f0_load\ : LABEL IS "macrocell37";
+    ATTRIBUTE Location OF \I2Sone:bI2S:rx_f0_load\ : LABEL IS "U(0,3)";
+    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_state_2\ : LABEL IS "macrocell38";
+    ATTRIBUTE Location OF \I2Sone:bI2S:rx_state_2\ : LABEL IS "U(0,3)";
+    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_state_1\ : LABEL IS "macrocell39";
+    ATTRIBUTE Location OF \I2Sone:bI2S:rx_state_1\ : LABEL IS "U(0,3)";
+    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_state_0\ : LABEL IS "macrocell40";
+    ATTRIBUTE Location OF \I2Sone:bI2S:rx_state_0\ : LABEL IS "U(0,3)";
+    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell41";
+    ATTRIBUTE Location OF \I2Sone:bI2S:rx_overflow_sticky\ : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF \I2Sone:bI2S:rxenable\ : LABEL IS "macrocell42";
+    ATTRIBUTE Location OF \I2Sone:bI2S:rxenable\ : LABEL IS "U(0,5)";
+    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_data_in_0\ : LABEL IS "macrocell43";
+    ATTRIBUTE Location OF \I2Sone:bI2S:rx_data_in_0\ : LABEL IS "U(1,3)";
+    ATTRIBUTE lib_model OF \I2Stwo:bI2S:reset\ : LABEL IS "macrocell44";
+    ATTRIBUTE Location OF \I2Stwo:bI2S:reset\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF Net_74 : LABEL IS "macrocell45";
+    ATTRIBUTE Location OF Net_74 : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_f0_load\ : LABEL IS "macrocell46";
+    ATTRIBUTE Location OF \I2Stwo:bI2S:rx_f0_load\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_state_2\ : LABEL IS "macrocell47";
+    ATTRIBUTE Location OF \I2Stwo:bI2S:rx_state_2\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_state_1\ : LABEL IS "macrocell48";
+    ATTRIBUTE Location OF \I2Stwo:bI2S:rx_state_1\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_state_0\ : LABEL IS "macrocell49";
+    ATTRIBUTE Location OF \I2Stwo:bI2S:rx_state_0\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell50";
+    ATTRIBUTE Location OF \I2Stwo:bI2S:rx_overflow_sticky\ : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rxenable\ : LABEL IS "macrocell51";
+    ATTRIBUTE Location OF \I2Stwo:bI2S:rxenable\ : LABEL IS "U(0,0)";
+    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_data_in_0\ : LABEL IS "macrocell52";
+    ATTRIBUTE Location OF \I2Stwo:bI2S:rx_data_in_0\ : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF \I2Sfour:bI2S:reset\ : LABEL IS "macrocell53";
+    ATTRIBUTE Location OF \I2Sfour:bI2S:reset\ : LABEL IS "U(3,2)";
+    ATTRIBUTE lib_model OF Net_668 : LABEL IS "macrocell54";
+    ATTRIBUTE Location OF Net_668 : LABEL IS "U(3,2)";
+    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_f0_load\ : LABEL IS "macrocell55";
+    ATTRIBUTE Location OF \I2Sfour:bI2S:rx_f0_load\ : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_state_2\ : LABEL IS "macrocell56";
+    ATTRIBUTE Location OF \I2Sfour:bI2S:rx_state_2\ : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_state_1\ : LABEL IS "macrocell57";
+    ATTRIBUTE Location OF \I2Sfour:bI2S:rx_state_1\ : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_state_0\ : LABEL IS "macrocell58";
+    ATTRIBUTE Location OF \I2Sfour:bI2S:rx_state_0\ : LABEL IS "U(3,2)";
+    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell59";
+    ATTRIBUTE Location OF \I2Sfour:bI2S:rx_overflow_sticky\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rxenable\ : LABEL IS "macrocell60";
+    ATTRIBUTE Location OF \I2Sfour:bI2S:rxenable\ : LABEL IS "U(3,2)";
+    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_data_in_0\ : LABEL IS "macrocell61";
+    ATTRIBUTE Location OF \I2Sfour:bI2S:rx_data_in_0\ : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF \I2Ssix:bI2S:reset\ : LABEL IS "macrocell62";
+    ATTRIBUTE Location OF \I2Ssix:bI2S:reset\ : LABEL IS "U(1,2)";
+    ATTRIBUTE lib_model OF Net_683 : LABEL IS "macrocell63";
+    ATTRIBUTE Location OF Net_683 : LABEL IS "U(1,2)";
+    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_f0_load\ : LABEL IS "macrocell64";
+    ATTRIBUTE Location OF \I2Ssix:bI2S:rx_f0_load\ : LABEL IS "U(2,1)";
+    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_state_2\ : LABEL IS "macrocell65";
+    ATTRIBUTE Location OF \I2Ssix:bI2S:rx_state_2\ : LABEL IS "U(2,1)";
+    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_state_1\ : LABEL IS "macrocell66";
+    ATTRIBUTE Location OF \I2Ssix:bI2S:rx_state_1\ : LABEL IS "U(2,1)";
+    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_state_0\ : LABEL IS "macrocell67";
+    ATTRIBUTE Location OF \I2Ssix:bI2S:rx_state_0\ : LABEL IS "U(2,1)";
+    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell68";
+    ATTRIBUTE Location OF \I2Ssix:bI2S:rx_overflow_sticky\ : LABEL IS "U(2,3)";
+    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rxenable\ : LABEL IS "macrocell69";
+    ATTRIBUTE Location OF \I2Ssix:bI2S:rxenable\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_data_in_0\ : LABEL IS "macrocell70";
+    ATTRIBUTE Location OF \I2Ssix:bI2S:rx_data_in_0\ : LABEL IS "U(2,0)";
+    ATTRIBUTE lib_model OF \I2Sfive:bI2S:reset\ : LABEL IS "macrocell71";
     ATTRIBUTE Location OF \I2Sfive:bI2S:reset\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF Net_697 : LABEL IS "macrocell68";
+    ATTRIBUTE lib_model OF Net_697 : LABEL IS "macrocell72";
     ATTRIBUTE Location OF Net_697 : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_f0_load\ : LABEL IS "macrocell69";
+    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_f0_load\ : LABEL IS "macrocell73";
     ATTRIBUTE Location OF \I2Sfive:bI2S:rx_f0_load\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_state_2\ : LABEL IS "macrocell70";
+    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_state_2\ : LABEL IS "macrocell74";
     ATTRIBUTE Location OF \I2Sfive:bI2S:rx_state_2\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_state_1\ : LABEL IS "macrocell71";
+    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_state_1\ : LABEL IS "macrocell75";
     ATTRIBUTE Location OF \I2Sfive:bI2S:rx_state_1\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_state_0\ : LABEL IS "macrocell72";
+    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_state_0\ : LABEL IS "macrocell76";
     ATTRIBUTE Location OF \I2Sfive:bI2S:rx_state_0\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell73";
-    ATTRIBUTE Location OF \I2Sfive:bI2S:rx_overflow_sticky\ : LABEL IS "U(2,0)";
-    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rxenable\ : LABEL IS "macrocell74";
-    ATTRIBUTE Location OF \I2Sfive:bI2S:rxenable\ : LABEL IS "U(2,0)";
-    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_data_in_0\ : LABEL IS "macrocell75";
-    ATTRIBUTE Location OF \I2Sfive:bI2S:rx_data_in_0\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \I2Sseven:bI2S:reset\ : LABEL IS "macrocell76";
-    ATTRIBUTE Location OF \I2Sseven:bI2S:reset\ : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF Net_711 : LABEL IS "macrocell77";
-    ATTRIBUTE Location OF Net_711 : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_f0_load\ : LABEL IS "macrocell78";
-    ATTRIBUTE Location OF \I2Sseven:bI2S:rx_f0_load\ : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_state_2\ : LABEL IS "macrocell79";
-    ATTRIBUTE Location OF \I2Sseven:bI2S:rx_state_2\ : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_state_1\ : LABEL IS "macrocell80";
-    ATTRIBUTE Location OF \I2Sseven:bI2S:rx_state_1\ : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_state_0\ : LABEL IS "macrocell81";
-    ATTRIBUTE Location OF \I2Sseven:bI2S:rx_state_0\ : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell82";
-    ATTRIBUTE Location OF \I2Sseven:bI2S:rx_overflow_sticky\ : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rxenable\ : LABEL IS "macrocell83";
-    ATTRIBUTE Location OF \I2Sseven:bI2S:rxenable\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_data_in_0\ : LABEL IS "macrocell84";
-    ATTRIBUTE Location OF \I2Sseven:bI2S:rx_data_in_0\ : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF \I2Seight:bI2S:reset\ : LABEL IS "macrocell85";
-    ATTRIBUTE Location OF \I2Seight:bI2S:reset\ : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF Net_725 : LABEL IS "macrocell86";
-    ATTRIBUTE Location OF Net_725 : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_f0_load\ : LABEL IS "macrocell87";
-    ATTRIBUTE Location OF \I2Seight:bI2S:rx_f0_load\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_state_2\ : LABEL IS "macrocell88";
-    ATTRIBUTE Location OF \I2Seight:bI2S:rx_state_2\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_state_1\ : LABEL IS "macrocell89";
-    ATTRIBUTE Location OF \I2Seight:bI2S:rx_state_1\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_state_0\ : LABEL IS "macrocell90";
-    ATTRIBUTE Location OF \I2Seight:bI2S:rx_state_0\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell91";
-    ATTRIBUTE Location OF \I2Seight:bI2S:rx_overflow_sticky\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \I2Seight:bI2S:rxenable\ : LABEL IS "macrocell92";
-    ATTRIBUTE Location OF \I2Seight:bI2S:rxenable\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_data_in_0\ : LABEL IS "macrocell93";
-    ATTRIBUTE Location OF \I2Seight:bI2S:rx_data_in_0\ : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell77";
+    ATTRIBUTE Location OF \I2Sfive:bI2S:rx_overflow_sticky\ : LABEL IS "U(3,1)";
+    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rxenable\ : LABEL IS "macrocell78";
+    ATTRIBUTE Location OF \I2Sfive:bI2S:rxenable\ : LABEL IS "U(3,1)";
+    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_data_in_0\ : LABEL IS "macrocell79";
+    ATTRIBUTE Location OF \I2Sfive:bI2S:rx_data_in_0\ : LABEL IS "U(2,0)";
+    ATTRIBUTE lib_model OF \I2Sseven:bI2S:reset\ : LABEL IS "macrocell80";
+    ATTRIBUTE Location OF \I2Sseven:bI2S:reset\ : LABEL IS "U(3,5)";
+    ATTRIBUTE lib_model OF Net_711 : LABEL IS "macrocell81";
+    ATTRIBUTE Location OF Net_711 : LABEL IS "U(3,5)";
+    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_f0_load\ : LABEL IS "macrocell82";
+    ATTRIBUTE Location OF \I2Sseven:bI2S:rx_f0_load\ : LABEL IS "U(3,5)";
+    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_state_2\ : LABEL IS "macrocell83";
+    ATTRIBUTE Location OF \I2Sseven:bI2S:rx_state_2\ : LABEL IS "U(3,5)";
+    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_state_1\ : LABEL IS "macrocell84";
+    ATTRIBUTE Location OF \I2Sseven:bI2S:rx_state_1\ : LABEL IS "U(3,5)";
+    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_state_0\ : LABEL IS "macrocell85";
+    ATTRIBUTE Location OF \I2Sseven:bI2S:rx_state_0\ : LABEL IS "U(3,5)";
+    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell86";
+    ATTRIBUTE Location OF \I2Sseven:bI2S:rx_overflow_sticky\ : LABEL IS "U(1,2)";
+    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rxenable\ : LABEL IS "macrocell87";
+    ATTRIBUTE Location OF \I2Sseven:bI2S:rxenable\ : LABEL IS "U(2,5)";
+    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_data_in_0\ : LABEL IS "macrocell88";
+    ATTRIBUTE Location OF \I2Sseven:bI2S:rx_data_in_0\ : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF \I2Seight:bI2S:reset\ : LABEL IS "macrocell89";
+    ATTRIBUTE Location OF \I2Seight:bI2S:reset\ : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF Net_725 : LABEL IS "macrocell90";
+    ATTRIBUTE Location OF Net_725 : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_f0_load\ : LABEL IS "macrocell91";
+    ATTRIBUTE Location OF \I2Seight:bI2S:rx_f0_load\ : LABEL IS "U(2,4)";
+    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_state_2\ : LABEL IS "macrocell92";
+    ATTRIBUTE Location OF \I2Seight:bI2S:rx_state_2\ : LABEL IS "U(2,4)";
+    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_state_1\ : LABEL IS "macrocell93";
+    ATTRIBUTE Location OF \I2Seight:bI2S:rx_state_1\ : LABEL IS "U(2,4)";
+    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_state_0\ : LABEL IS "macrocell94";
+    ATTRIBUTE Location OF \I2Seight:bI2S:rx_state_0\ : LABEL IS "U(2,4)";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:mosi_pre_reg_split_1\ : LABEL IS "macrocell95";
+    ATTRIBUTE Location OF \SPIM:BSPIM:mosi_pre_reg_split_1\ : LABEL IS "U(1,4)";
+    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell96";
+    ATTRIBUTE Location OF \I2Seight:bI2S:rx_overflow_sticky\ : LABEL IS "U(2,3)";
+    ATTRIBUTE lib_model OF \I2Seight:bI2S:rxenable\ : LABEL IS "macrocell97";
+    ATTRIBUTE Location OF \I2Seight:bI2S:rxenable\ : LABEL IS "U(3,4)";
+    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_data_in_0\ : LABEL IS "macrocell98";
+    ATTRIBUTE Location OF \I2Seight:bI2S:rx_data_in_0\ : LABEL IS "U(3,1)";
     COMPONENT clockblockcell
         PORT (
             dclk_0 : OUT std_ulogic;
@@ -1072,6 +1096,25 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
             clk_en : IN std_ulogic);
     END COMPONENT;
 BEGIN
+
+    \SPIM:BSPIM:mosi_pre_reg_split\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1 * !main_2 * main_3 * main_4) + (!main_0 * main_1 * !main_2 * main_3 * main_5) + (!main_0 * main_1 * !main_2 * main_3 * main_6) + (!main_0 * main_1 * !main_2 * main_3 * main_7) + (!main_0 * main_1 * !main_2 * main_3 * !main_8) + (main_0 * main_1 * !main_2 * main_9) + (main_1 * !main_2 * !main_4 * !main_5 * !main_6 * !main_7 * main_8 * main_9) + (main_1 * main_2 * main_3 * !main_4 * !main_5 * !main_6 * !main_7 * !main_8 * !main_10)",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => \SPIM:BSPIM:mosi_pre_reg_split\,
+            main_0 => \SPIM:BSPIM:state_2\,
+            main_1 => \SPIM:BSPIM:state_1\,
+            main_2 => \SPIM:BSPIM:state_0\,
+            main_3 => \SPIM:BSPIM:mosi_from_dp\,
+            main_4 => \SPIM:BSPIM:count_4\,
+            main_5 => \SPIM:BSPIM:count_3\,
+            main_6 => \SPIM:BSPIM:count_2\,
+            main_7 => \SPIM:BSPIM:count_1\,
+            main_8 => \SPIM:BSPIM:count_0\,
+            main_9 => \SPIM:BSPIM:mosi_pre_reg\,
+            main_10 => \SPIM:BSPIM:ld_ident\);
 
     ClockBlock:clockblockcell
         PORT MAP(
@@ -2968,6 +3011,19 @@ BEGIN
             main_3 => \SPIM:BSPIM:count_1\,
             main_4 => \SPIM:BSPIM:count_0\);
 
+    Net_23:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1 * main_4) + (!main_0 * main_2 * main_4) + (!main_0 * !main_3 * main_4)",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_23,
+            main_0 => Net_268,
+            main_1 => \SPIM:BSPIM:state_2\,
+            main_2 => \SPIM:BSPIM:state_1\,
+            main_3 => \SPIM:BSPIM:state_0\,
+            main_4 => \SPIM:BSPIM:mosi_hs_reg\);
+
     \SPIM:BSPIM:tx_status_0\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2)",
@@ -3228,7 +3284,8 @@ BEGIN
             status_3 => \SPIM:BSPIM:load_rx_data\,
             status_2 => \SPIM:BSPIM:tx_status_2\,
             status_1 => \SPIM:BSPIM:tx_status_1\,
-            status_0 => \SPIM:BSPIM:tx_status_0\);
+            status_0 => \SPIM:BSPIM:tx_status_0\,
+            interrupt => Net_747);
 
     \SPIM:BSPIM:RxStsReg\:statusicell
         GENERIC MAP(
@@ -4107,9 +4164,19 @@ BEGIN
             interrupt => Net_726,
             clock => ClockBlock_BUS_CLK);
 
+    DMA_TX:drqcell
+        GENERIC MAP(
+            drq_type => "10",
+            num_tds => 0)
+        PORT MAP(
+            dmareq => Net_747,
+            termin => '0',
+            termout => Net_749,
+            clock => ClockBlock_BUS_CLK);
+
     Net_268:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2) + (!main_0 * main_1 * !main_2 * !main_3) + (!main_0 * main_2 * main_3) + (!main_1 * !main_2 * main_3)",
+            eqn_main => "(!main_0 * main_1 * !main_3) + (!main_0 * main_2) + (!main_1 * !main_2 * main_3)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
@@ -4261,7 +4328,7 @@ BEGIN
 
     Net_263:macrocell
         GENERIC MAP(
-            eqn_main => "(main_0 * main_2 * main_3) + (!main_1 * main_2 * main_3)",
+            eqn_main => "(main_0 * main_1 * main_2) + (main_1 * !main_3) + (main_2 * !main_3)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
@@ -4273,30 +4340,9 @@ BEGIN
             main_2 => \SPIM:BSPIM:state_1\,
             main_3 => \SPIM:BSPIM:state_0\);
 
-    Net_23:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_3) + (!main_1 * !main_2 * !main_3) + (!main_1 * !main_3 * !main_5 * !main_6 * !main_7 * main_8 * !main_9 * !main_10) + (main_1 * !main_2 * main_3) + (main_1 * main_2 * !main_3) + (main_1 * !main_4) + (!main_3 * !main_4)",
-            regmode => 1,
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => Net_23,
-            clock_0 => Net_535,
-            main_0 => Net_23,
-            main_1 => \SPIM:BSPIM:state_2\,
-            main_2 => \SPIM:BSPIM:state_1\,
-            main_3 => \SPIM:BSPIM:state_0\,
-            main_4 => \SPIM:BSPIM:mosi_from_dp\,
-            main_5 => \SPIM:BSPIM:count_4\,
-            main_6 => \SPIM:BSPIM:count_3\,
-            main_7 => \SPIM:BSPIM:count_2\,
-            main_8 => \SPIM:BSPIM:count_1\,
-            main_9 => \SPIM:BSPIM:count_0\,
-            main_10 => \SPIM:BSPIM:ld_ident\);
-
     \SPIM:BSPIM:state_2\:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2) + (!main_0 * main_1 * !main_2 * !main_3 * !main_4 * !main_5 * main_6 * !main_7 * !main_9) + (!main_0 * main_2 * !main_3 * !main_4 * main_5 * !main_6 * main_7 * !main_8)",
+            eqn_main => "(!main_0 * !main_1 * main_2) + (main_0 * main_1 * main_2) + (main_1 * main_2 * !main_3 * !main_4 * !main_5 * main_6 * !main_7 * !main_9) + (main_1 * main_2 * !main_3 * !main_4 * main_5 * main_6 * !main_7 * !main_8)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
@@ -4316,8 +4362,8 @@ BEGIN
 
     \SPIM:BSPIM:state_1\:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2) + (!main_0 * main_2 * !main_3 * !main_4 * main_5 * !main_6 * main_7 * !main_8) + (main_0 * !main_2) + (main_1 * !main_2 * !main_3 * !main_4 * !main_5 * main_6 * !main_7 * !main_9)",
-            regmode => 2,
+            eqn_main => "(!main_0 * !main_1 * !main_2) + (!main_0 * main_1 * main_2 * !main_3 * !main_4 * !main_5 * main_6 * !main_7 * !main_9) + (!main_0 * main_1 * main_2 * !main_3 * !main_4 * main_5 * main_6 * !main_7 * !main_8) + (main_0 * !main_1 * main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -4336,7 +4382,7 @@ BEGIN
 
     \SPIM:BSPIM:state_0\:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * main_1) + (main_0 * !main_1) + (!main_1 * !main_2 * !main_3)",
+            eqn_main => "(!main_0 * !main_1 * main_2) + (!main_0 * !main_1 * main_8) + (!main_0 * main_2 * !main_3 * !main_4 * !main_5 * main_6 * !main_7 * !main_9)",
             regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
@@ -4346,7 +4392,41 @@ BEGIN
             main_0 => \SPIM:BSPIM:state_2\,
             main_1 => \SPIM:BSPIM:state_1\,
             main_2 => \SPIM:BSPIM:state_0\,
-            main_3 => \SPIM:BSPIM:tx_status_1\);
+            main_3 => \SPIM:BSPIM:count_4\,
+            main_4 => \SPIM:BSPIM:count_3\,
+            main_5 => \SPIM:BSPIM:count_2\,
+            main_6 => \SPIM:BSPIM:count_1\,
+            main_7 => \SPIM:BSPIM:count_0\,
+            main_8 => \SPIM:BSPIM:tx_status_1\,
+            main_9 => \SPIM:BSPIM:ld_ident\);
+
+    \SPIM:BSPIM:mosi_hs_reg\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1 * main_2 * main_5) + (main_0 * main_1 * main_2 * main_3) + (!main_1 * main_4) + (!main_2 * main_4)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \SPIM:BSPIM:mosi_hs_reg\,
+            clock_0 => Net_535,
+            main_0 => \SPIM:BSPIM:state_2\,
+            main_1 => \SPIM:BSPIM:state_1\,
+            main_2 => \SPIM:BSPIM:state_0\,
+            main_3 => \SPIM:BSPIM:mosi_from_dp\,
+            main_4 => \SPIM:BSPIM:mosi_hs_reg\,
+            main_5 => \SPIM:BSPIM:mosi_from_dp_reg\);
+
+    \SPIM:BSPIM:mosi_pre_reg\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \SPIM:BSPIM:mosi_pre_reg\,
+            clock_0 => Net_535,
+            main_0 => \SPIM:BSPIM:mosi_pre_reg_split\,
+            main_1 => \SPIM:BSPIM:mosi_pre_reg_split_1\);
 
     \SPIM:BSPIM:load_cond\:macrocell
         GENERIC MAP(
@@ -4367,9 +4447,20 @@ BEGIN
             main_7 => \SPIM:BSPIM:count_0\,
             main_8 => \SPIM:BSPIM:load_cond\);
 
+    \SPIM:BSPIM:mosi_from_dp_reg\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \SPIM:BSPIM:mosi_from_dp_reg\,
+            clock_0 => Net_535,
+            main_0 => \SPIM:BSPIM:mosi_from_dp\);
+
     \SPIM:BSPIM:ld_ident\:macrocell
         GENERIC MAP(
-            eqn_main => "(main_0 * !main_1 * !main_2 * !main_8) + (main_0 * main_1 * !main_2 * main_8) + (main_1 * !main_2 * !main_3 * !main_4 * !main_5 * main_6 * !main_7 * main_8)",
+            eqn_main => "(!main_0 * main_1 * !main_2 * !main_3 * !main_4 * !main_5 * !main_6 * main_7 * main_8) + (main_0 * !main_1 * !main_2 * !main_8)",
             regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
@@ -4388,7 +4479,7 @@ BEGIN
 
     \SPIM:BSPIM:cnt_enable\:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * !main_2 * main_3) + (!main_0 * main_1 * main_2 * !main_3) + (main_0 * !main_1 * main_2 * main_3) + (main_0 * main_1 * !main_2 * main_3)",
+            eqn_main => "(!main_0 * !main_1 * !main_2 * main_3) + (main_0 * !main_1 * main_2 * main_3) + (main_0 * main_1 * !main_2 * !main_3)",
             regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
@@ -5317,6 +5408,24 @@ BEGIN
             main_7 => \I2Seight:bI2S:rx_state_1\,
             main_8 => \I2Seight:bI2S:rx_state_0\,
             main_9 => \I2Seight:bI2S:rxenable\);
+
+    \SPIM:BSPIM:mosi_pre_reg_split_1\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1 * !main_4 * !main_5 * !main_6 * !main_7 * !main_9) + (!main_0 * !main_2) + (!main_0 * !main_8) + (main_0 * !main_1 * main_2) + (main_0 * !main_3) + (main_1 * !main_2)",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => \SPIM:BSPIM:mosi_pre_reg_split_1\,
+            main_0 => \SPIM:BSPIM:state_2\,
+            main_1 => \SPIM:BSPIM:state_1\,
+            main_2 => \SPIM:BSPIM:state_0\,
+            main_3 => \SPIM:BSPIM:mosi_from_dp\,
+            main_4 => \SPIM:BSPIM:count_4\,
+            main_5 => \SPIM:BSPIM:count_3\,
+            main_6 => \SPIM:BSPIM:count_2\,
+            main_7 => \SPIM:BSPIM:count_0\,
+            main_8 => \SPIM:BSPIM:mosi_pre_reg\,
+            main_9 => \SPIM:BSPIM:ld_ident\);
 
     \I2Seight:bI2S:rx_overflow_sticky\:macrocell
         GENERIC MAP(

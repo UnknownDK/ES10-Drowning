@@ -176,6 +176,8 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_eight_dma.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_eight.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_eight.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DMA_TX_dma.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DMA_TX_dma.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\Export\ARM_GCC_Generic">

@@ -135,7 +135,7 @@ extern uint8 SPIM_initVar;
 ***************************************/
 
 #define SPIM_INT_ON_SPI_DONE    ((uint8) (0u   << SPIM_STS_SPI_DONE_SHIFT))
-#define SPIM_INT_ON_TX_EMPTY    ((uint8) (0u   << SPIM_STS_TX_FIFO_EMPTY_SHIFT))
+#define SPIM_INT_ON_TX_EMPTY    ((uint8) (1u   << SPIM_STS_TX_FIFO_EMPTY_SHIFT))
 #define SPIM_INT_ON_TX_NOT_FULL ((uint8) (0u << \
                                                                            SPIM_STS_TX_FIFO_NOT_FULL_SHIFT))
 #define SPIM_INT_ON_BYTE_COMP   ((uint8) (0u  << SPIM_STS_BYTE_COMPLETE_SHIFT))

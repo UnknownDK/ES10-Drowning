@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
   28:Generated_Source\PSoC5/I2Sthree.c **** * Summary:
   29:Generated_Source\PSoC5/I2Sthree.c **** *  Enables I2S interface. Starts the generation of the sck and ws outputs.
   30:Generated_Source\PSoC5/I2Sthree.c **** *  The Tx and Rx directions remain disabled. It is not necessary to call
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 2
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 2
 
 
   31:Generated_Source\PSoC5/I2Sthree.c **** *  I2S_Enable() because the I2S_Start() routine calls this function, which is
@@ -108,8 +108,8 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
   53              	.L4:
   54              		.align	2
   55              	.L3:
-  56 0020 91640040 		.word	1073767569
-  57 0024 70640040 		.word	1073767536
+  56 0020 99650040 		.word	1073767833
+  57 0024 78650040 		.word	1073767800
   58              		.cfi_endproc
   59              	.LFE0:
   60              		.size	I2Sthree_Enable, .-I2Sthree_Enable
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
   63              		.global	I2Sthree_Init
   64              		.thumb
   65              		.thumb_func
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 3
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 3
 
 
   66              		.type	I2Sthree_Init, %function
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
   96:Generated_Source\PSoC5/I2Sthree.c ****     
   97:Generated_Source\PSoC5/I2Sthree.c ****     /* Initialize Rx interrupt source and clipping thresholds selected in customizer */
   98:Generated_Source\PSoC5/I2Sthree.c ****     #if (I2Sthree_RX_DIRECTION_ENABLE)
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 4
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 4
 
 
   99:Generated_Source\PSoC5/I2Sthree.c ****         I2Sthree_SET_RX_INT_MASK(CH0, I2Sthree_RX_INT_SOURCE);
@@ -194,7 +194,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
   83              	.L7:
   84 0012 00BF     		.align	2
   85              	.L6:
-  86 0014 80640040 		.word	1073767552
+  86 0014 8B650040 		.word	1073767819
   87              		.cfi_endproc
   88              	.LFE1:
   89              		.size	I2Sthree_Init, .-I2Sthree_Init
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  129:Generated_Source\PSoC5/I2Sthree.c ****                 I2Sthree_SET_NEG_THRESHOLD(CH4, I2Sthree_negThresholds[I2Sthree_STEREO_4]);
  130:Generated_Source\PSoC5/I2Sthree.c ****             #endif /* I2Sthree_CLIP_DETECT_ENABLE */
  131:Generated_Source\PSoC5/I2Sthree.c ****         #endif /* I2Sthree_RX_STEREO_4_PRESENT */
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 5
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 5
 
 
  132:Generated_Source\PSoC5/I2Sthree.c ****     #endif /* (I2Sthree_RX_DIRECTION_ENABLE) */
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  166:Generated_Source\PSoC5/I2Sthree.c ****     I2Sthree_Enable();
  118              		.loc 1 166 0
  119 0012 FFF7FEFF 		bl	I2Sthree_Enable
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 6
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 6
 
 
  120              	.LVL3:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  204:Generated_Source\PSoC5/I2Sthree.c ****         I2Sthree_DisableRx();
  205:Generated_Source\PSoC5/I2Sthree.c ****         I2Sthree_ClearRxFIFO();
  206:Generated_Source\PSoC5/I2Sthree.c ****     #endif /* (I2Sthree_RX_DIRECTION_ENABLE) */
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 7
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 7
 
 
  207:Generated_Source\PSoC5/I2Sthree.c **** }
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  261:Generated_Source\PSoC5/I2Sthree.c **** 
  262:Generated_Source\PSoC5/I2Sthree.c **** #endif /* I2Sthree_DYNAMIC_BIT_RESOLUTION */
  263:Generated_Source\PSoC5/I2Sthree.c **** 
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 8
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 8
 
 
  264:Generated_Source\PSoC5/I2Sthree.c **** #if(I2Sthree_TX_DIRECTION_ENABLE)
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  318:Generated_Source\PSoC5/I2Sthree.c ****         I2Sthree_CONTROL_REG &= (uint8)~I2Sthree_TX_EN;
  319:Generated_Source\PSoC5/I2Sthree.c **** 
  320:Generated_Source\PSoC5/I2Sthree.c ****         enableInterrupts = CyEnterCriticalSection();
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 9
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 9
 
 
  321:Generated_Source\PSoC5/I2Sthree.c ****         I2Sthree_TX_STS0_1_ACTL_REG &= (uint8)~I2Sthree_INT_EN;
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  375:Generated_Source\PSoC5/I2Sthree.c ****     *
  376:Generated_Source\PSoC5/I2Sthree.c ****     * Summary:
  377:Generated_Source\PSoC5/I2Sthree.c ****     *  Enables the Rx direction of the I2S interface.  At the next word
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 10
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 10
 
 
  378:Generated_Source\PSoC5/I2Sthree.c ****     *  select falling edge reception of data will begin.
@@ -593,12 +593,12 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  162              	.L16:
  163              		.align	2
  164              	.L15:
- 165 0020 90640040 		.word	1073767568
- 166 0024 70640040 		.word	1073767536
+ 165 0020 9B650040 		.word	1073767835
+ 166 0024 78650040 		.word	1073767800
  167              		.cfi_endproc
  168              	.LFE4:
  169              		.size	I2Sthree_EnableRx, .-I2Sthree_EnableRx
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 11
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 11
 
 
  170              		.section	.text.I2Sthree_DisableRx,"ax",%progbits
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  427:Generated_Source\PSoC5/I2Sthree.c ****         #ifdef I2Sthree_RX_STS2_3_ACTL_REG
  428:Generated_Source\PSoC5/I2Sthree.c ****             I2Sthree_RX_STS2_3_ACTL_REG &= (uint8)~I2Sthree_INT_EN;
  429:Generated_Source\PSoC5/I2Sthree.c ****         #endif /* I2Sthree_RX_STS2_3_ACTL_REG */
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 12
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 12
 
 
  430:Generated_Source\PSoC5/I2Sthree.c ****         #ifdef I2Sthree_RX_STS4_ACTL_REG
@@ -672,8 +672,8 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  203              	.L20:
  204              		.align	2
  205              	.L19:
- 206 0020 70640040 		.word	1073767536
- 207 0024 90640040 		.word	1073767568
+ 206 0020 78650040 		.word	1073767800
+ 207 0024 9B650040 		.word	1073767835
  208              		.cfi_endproc
  209              	.LFE5:
  210              		.size	I2Sthree_DisableRx, .-I2Sthree_DisableRx
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  456:Generated_Source\PSoC5/I2Sthree.c ****         enableInterrupts = CyEnterCriticalSection();
  227              		.loc 1 456 0
  228 0002 FFF7FEFF 		bl	CyEnterCriticalSection
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 13
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 13
 
 
  229              	.LVL8:
@@ -751,7 +751,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  242              	.L24:
  243 001e 00BF     		.align	2
  244              	.L23:
- 245 0020 90640040 		.word	1073767568
+ 245 0020 9B650040 		.word	1073767835
  246              		.cfi_endproc
  247              	.LFE6:
  248              		.size	I2Sthree_ClearRxFIFO, .-I2Sthree_ClearRxFIFO
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  267 0004 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  268 0006 03F0FB03 		and	r3, r3, #251
  269 000a 1370     		strb	r3, [r2]
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 14
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 14
 
 
  191:Generated_Source\PSoC5/I2Sthree.c ****     I2Sthree_AUX_CONTROL_REG &= (uint8)~I2Sthree_CNT_START;
@@ -812,9 +812,9 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  292              	.L28:
  293 002e 00BF     		.align	2
  294              	.L27:
- 295 0030 70640040 		.word	1073767536
- 296 0034 91640040 		.word	1073767569
- 297 0038 71640040 		.word	1073767537
+ 295 0030 78650040 		.word	1073767800
+ 296 0034 99650040 		.word	1073767833
+ 297 0038 79650040 		.word	1073767801
  298              		.cfi_endproc
  299              	.LFE3:
  300              		.size	I2Sthree_Stop, .-I2Sthree_Stop
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  318 000b 01       		.uleb128 0x1
  319 000c 7D000000 		.4byte	.LASF25
  320 0010 0C       		.byte	0xc
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 15
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 15
 
 
  321 0011 00000000 		.4byte	.LASF26
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  375 007a 01       		.byte	0x1
  376 007b 08       		.byte	0x8
  377 007c 42020000 		.4byte	.LASF11
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 16
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 16
 
 
  378 0080 04       		.uleb128 0x4
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  432 00fa 00000000 		.4byte	.LFB2
  433 00fe 1C000000 		.4byte	.LFE2-.LFB2
  434 0102 01       		.uleb128 0x1
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 17
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 17
 
 
  435 0103 9C       		.byte	0x9c
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  489 018e 80010000 		.4byte	.LASF21
  490 0192 01       		.byte	0x1
  491 0193 C401     		.2byte	0x1c4
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 18
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 18
 
 
  492 0195 00000000 		.4byte	.LFB6
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  546 0220 0D       		.uleb128 0xd
  547 0221 AA010000 		.4byte	.LASF23
  548 0225 AA010000 		.4byte	.LASF23
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 19
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 19
 
 
  549 0229 03       		.byte	0x3
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  603 002c 03       		.uleb128 0x3
  604 002d 0E       		.uleb128 0xe
  605 002e 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 20
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 20
 
 
  606 002f 0B       		.uleb128 0xb
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  660 0066 08       		.uleb128 0x8
  661 0067 898201   		.uleb128 0x4109
  662 006a 00       		.byte	0
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 21
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 21
 
 
  663 006b 11       		.uleb128 0x11
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  717 00a3 0B       		.uleb128 0xb
  718 00a4 34       		.uleb128 0x34
  719 00a5 00       		.byte	0
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 22
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 22
 
 
  720 00a6 03       		.uleb128 0x3
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  774 000b 00000000 		.4byte	0
  775 000f 00000000 		.4byte	0
  776              	.LLST1:
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 23
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 23
 
 
  777 0013 06000000 		.4byte	.LVL4
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  831 0004 28000000 		.4byte	.LFE0
  832 0008 00000000 		.4byte	.LFB1
  833 000c 18000000 		.4byte	.LFE1
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 24
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 24
 
 
  834 0010 00000000 		.4byte	.LFB2
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  862      7200
  863              	.LASF25:
  864 007d 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 25
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 25
 
 
  864      43313120 
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  883      68726565 
  883      5F53746F 
  883      7000
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 26
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 26
 
 
  884              	.LASF23:
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 1
  906              	.LASF2:
  907 0247 6C6F6E67 		.ascii	"long double\000"
  907      20646F75 
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccHsNqdd.s 			page 27
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccYf9tld.s 			page 27
 
 
  907      626C6500 

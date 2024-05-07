@@ -1,5 +1,5 @@
 -- Project:   SamplingCircuit
--- Generated: 04/25/2024 07:29:39
+-- Generated: 05/07/2024 17:44:37
 -- PSoC Creator  4.4
 
 ENTITY SamplingCircuit IS
@@ -112,6 +112,8 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     ATTRIBUTE udbclken_assigned OF Net_743 : SIGNAL IS "True";
     ATTRIBUTE global_signal OF Net_743 : SIGNAL IS true;
     SIGNAL Net_743_local : bit;
+    SIGNAL Net_747 : bit;
+    SIGNAL Net_749 : bit;
     SIGNAL SCLK_1(0)__PA : bit;
     SIGNAL \I2Seight:bI2S:count_0\ : bit;
     SIGNAL \I2Seight:bI2S:count_1\ : bit;
@@ -333,6 +335,11 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     SIGNAL \SPIM:BSPIM:load_cond\ : bit;
     SIGNAL \SPIM:BSPIM:load_rx_data\ : bit;
     SIGNAL \SPIM:BSPIM:mosi_from_dp\ : bit;
+    SIGNAL \SPIM:BSPIM:mosi_from_dp_reg\ : bit;
+    SIGNAL \SPIM:BSPIM:mosi_hs_reg\ : bit;
+    SIGNAL \SPIM:BSPIM:mosi_pre_reg\ : bit;
+    SIGNAL \SPIM:BSPIM:mosi_pre_reg_split\ : bit;
+    SIGNAL \SPIM:BSPIM:mosi_pre_reg_split_1\ : bit;
     SIGNAL \SPIM:BSPIM:rx_status_4\ : bit;
     SIGNAL \SPIM:BSPIM:rx_status_5\ : bit;
     SIGNAL \SPIM:BSPIM:rx_status_6\ : bit;
@@ -352,6 +359,7 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     ATTRIBUTE POWER OF tmpOE__I2S_SDI_three_net_0 : SIGNAL IS true;
     SIGNAL zero : bit;
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:mosi_pre_reg_split\ : LABEL IS "macrocell1";
     ATTRIBUTE lib_model OF I2S_SDI_three(0) : LABEL IS "iocell1";
     ATTRIBUTE Location OF I2S_SDI_three(0) : LABEL IS "P1[5]";
     ATTRIBUTE lib_model OF I2S_three_ws(0) : LABEL IS "iocell2";
@@ -394,18 +402,19 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     ATTRIBUTE Location OF I2S_SDI_seven(0) : LABEL IS "P15[3]";
     ATTRIBUTE lib_model OF I2S_SDI_eight(0) : LABEL IS "iocell21";
     ATTRIBUTE Location OF I2S_SDI_eight(0) : LABEL IS "P3[3]";
-    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_overflow_0\ : LABEL IS "macrocell1";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:load_rx_data\ : LABEL IS "macrocell2";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:tx_status_0\ : LABEL IS "macrocell3";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:tx_status_4\ : LABEL IS "macrocell4";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:rx_status_6\ : LABEL IS "macrocell5";
-    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_overflow_0\ : LABEL IS "macrocell6";
-    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_overflow_0\ : LABEL IS "macrocell7";
-    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_overflow_0\ : LABEL IS "macrocell8";
-    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_overflow_0\ : LABEL IS "macrocell9";
-    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_overflow_0\ : LABEL IS "macrocell10";
-    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_overflow_0\ : LABEL IS "macrocell11";
-    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_overflow_0\ : LABEL IS "macrocell12";
+    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_overflow_0\ : LABEL IS "macrocell2";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:load_rx_data\ : LABEL IS "macrocell3";
+    ATTRIBUTE lib_model OF Net_23 : LABEL IS "macrocell4";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:tx_status_0\ : LABEL IS "macrocell5";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:tx_status_4\ : LABEL IS "macrocell6";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:rx_status_6\ : LABEL IS "macrocell7";
+    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_overflow_0\ : LABEL IS "macrocell8";
+    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_overflow_0\ : LABEL IS "macrocell9";
+    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_overflow_0\ : LABEL IS "macrocell10";
+    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_overflow_0\ : LABEL IS "macrocell11";
+    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_overflow_0\ : LABEL IS "macrocell12";
+    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_overflow_0\ : LABEL IS "macrocell13";
+    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_overflow_0\ : LABEL IS "macrocell14";
     ATTRIBUTE lib_model OF I2S_DMA_three : LABEL IS "drqcell1";
     ATTRIBUTE lib_model OF \I2Sthree:bI2S:CtlReg\ : LABEL IS "controlcell1";
     ATTRIBUTE lib_model OF \I2Sthree:bI2S:Rx:STS[0]:Sts\ : LABEL IS "statusicell1";
@@ -441,87 +450,91 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     ATTRIBUTE lib_model OF \I2Seight:bI2S:Rx:STS[0]:Sts\ : LABEL IS "statusicell10";
     ATTRIBUTE lib_model OF \I2Seight:bI2S:Rx:CH[0]:dpRx:u0\ : LABEL IS "datapathcell9";
     ATTRIBUTE lib_model OF I2S_DMA_eight : LABEL IS "drqcell8";
-    ATTRIBUTE lib_model OF Net_268 : LABEL IS "macrocell13";
-    ATTRIBUTE lib_model OF \I2Sthree:bI2S:reset\ : LABEL IS "macrocell14";
-    ATTRIBUTE lib_model OF Net_625 : LABEL IS "macrocell15";
-    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_f0_load\ : LABEL IS "macrocell16";
-    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_state_2\ : LABEL IS "macrocell17";
-    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_state_1\ : LABEL IS "macrocell18";
-    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_state_0\ : LABEL IS "macrocell19";
-    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell20";
-    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rxenable\ : LABEL IS "macrocell21";
-    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_data_in_0\ : LABEL IS "macrocell22";
-    ATTRIBUTE lib_model OF Net_263 : LABEL IS "macrocell23";
-    ATTRIBUTE lib_model OF Net_23 : LABEL IS "macrocell24";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:state_2\ : LABEL IS "macrocell25";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:state_1\ : LABEL IS "macrocell26";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:state_0\ : LABEL IS "macrocell27";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:load_cond\ : LABEL IS "macrocell28";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:ld_ident\ : LABEL IS "macrocell29";
-    ATTRIBUTE lib_model OF \SPIM:BSPIM:cnt_enable\ : LABEL IS "macrocell30";
-    ATTRIBUTE lib_model OF \I2Sone:bI2S:reset\ : LABEL IS "macrocell31";
-    ATTRIBUTE lib_model OF Net_739 : LABEL IS "macrocell32";
-    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_f0_load\ : LABEL IS "macrocell33";
-    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_state_2\ : LABEL IS "macrocell34";
-    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_state_1\ : LABEL IS "macrocell35";
-    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_state_0\ : LABEL IS "macrocell36";
-    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell37";
-    ATTRIBUTE lib_model OF \I2Sone:bI2S:rxenable\ : LABEL IS "macrocell38";
-    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_data_in_0\ : LABEL IS "macrocell39";
-    ATTRIBUTE lib_model OF \I2Stwo:bI2S:reset\ : LABEL IS "macrocell40";
-    ATTRIBUTE lib_model OF Net_74 : LABEL IS "macrocell41";
-    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_f0_load\ : LABEL IS "macrocell42";
-    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_state_2\ : LABEL IS "macrocell43";
-    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_state_1\ : LABEL IS "macrocell44";
-    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_state_0\ : LABEL IS "macrocell45";
-    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell46";
-    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rxenable\ : LABEL IS "macrocell47";
-    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_data_in_0\ : LABEL IS "macrocell48";
-    ATTRIBUTE lib_model OF \I2Sfour:bI2S:reset\ : LABEL IS "macrocell49";
-    ATTRIBUTE lib_model OF Net_668 : LABEL IS "macrocell50";
-    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_f0_load\ : LABEL IS "macrocell51";
-    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_state_2\ : LABEL IS "macrocell52";
-    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_state_1\ : LABEL IS "macrocell53";
-    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_state_0\ : LABEL IS "macrocell54";
-    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell55";
-    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rxenable\ : LABEL IS "macrocell56";
-    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_data_in_0\ : LABEL IS "macrocell57";
-    ATTRIBUTE lib_model OF \I2Ssix:bI2S:reset\ : LABEL IS "macrocell58";
-    ATTRIBUTE lib_model OF Net_683 : LABEL IS "macrocell59";
-    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_f0_load\ : LABEL IS "macrocell60";
-    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_state_2\ : LABEL IS "macrocell61";
-    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_state_1\ : LABEL IS "macrocell62";
-    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_state_0\ : LABEL IS "macrocell63";
-    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell64";
-    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rxenable\ : LABEL IS "macrocell65";
-    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_data_in_0\ : LABEL IS "macrocell66";
-    ATTRIBUTE lib_model OF \I2Sfive:bI2S:reset\ : LABEL IS "macrocell67";
-    ATTRIBUTE lib_model OF Net_697 : LABEL IS "macrocell68";
-    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_f0_load\ : LABEL IS "macrocell69";
-    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_state_2\ : LABEL IS "macrocell70";
-    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_state_1\ : LABEL IS "macrocell71";
-    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_state_0\ : LABEL IS "macrocell72";
-    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell73";
-    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rxenable\ : LABEL IS "macrocell74";
-    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_data_in_0\ : LABEL IS "macrocell75";
-    ATTRIBUTE lib_model OF \I2Sseven:bI2S:reset\ : LABEL IS "macrocell76";
-    ATTRIBUTE lib_model OF Net_711 : LABEL IS "macrocell77";
-    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_f0_load\ : LABEL IS "macrocell78";
-    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_state_2\ : LABEL IS "macrocell79";
-    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_state_1\ : LABEL IS "macrocell80";
-    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_state_0\ : LABEL IS "macrocell81";
-    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell82";
-    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rxenable\ : LABEL IS "macrocell83";
-    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_data_in_0\ : LABEL IS "macrocell84";
-    ATTRIBUTE lib_model OF \I2Seight:bI2S:reset\ : LABEL IS "macrocell85";
-    ATTRIBUTE lib_model OF Net_725 : LABEL IS "macrocell86";
-    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_f0_load\ : LABEL IS "macrocell87";
-    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_state_2\ : LABEL IS "macrocell88";
-    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_state_1\ : LABEL IS "macrocell89";
-    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_state_0\ : LABEL IS "macrocell90";
-    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell91";
-    ATTRIBUTE lib_model OF \I2Seight:bI2S:rxenable\ : LABEL IS "macrocell92";
-    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_data_in_0\ : LABEL IS "macrocell93";
+    ATTRIBUTE lib_model OF DMA_TX : LABEL IS "drqcell9";
+    ATTRIBUTE lib_model OF Net_268 : LABEL IS "macrocell15";
+    ATTRIBUTE lib_model OF \I2Sthree:bI2S:reset\ : LABEL IS "macrocell16";
+    ATTRIBUTE lib_model OF Net_625 : LABEL IS "macrocell17";
+    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_f0_load\ : LABEL IS "macrocell18";
+    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_state_2\ : LABEL IS "macrocell19";
+    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_state_1\ : LABEL IS "macrocell20";
+    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_state_0\ : LABEL IS "macrocell21";
+    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell22";
+    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rxenable\ : LABEL IS "macrocell23";
+    ATTRIBUTE lib_model OF \I2Sthree:bI2S:rx_data_in_0\ : LABEL IS "macrocell24";
+    ATTRIBUTE lib_model OF Net_263 : LABEL IS "macrocell25";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:state_2\ : LABEL IS "macrocell26";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:state_1\ : LABEL IS "macrocell27";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:state_0\ : LABEL IS "macrocell28";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:mosi_hs_reg\ : LABEL IS "macrocell29";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:mosi_pre_reg\ : LABEL IS "macrocell30";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:load_cond\ : LABEL IS "macrocell31";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:mosi_from_dp_reg\ : LABEL IS "macrocell32";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:ld_ident\ : LABEL IS "macrocell33";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:cnt_enable\ : LABEL IS "macrocell34";
+    ATTRIBUTE lib_model OF \I2Sone:bI2S:reset\ : LABEL IS "macrocell35";
+    ATTRIBUTE lib_model OF Net_739 : LABEL IS "macrocell36";
+    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_f0_load\ : LABEL IS "macrocell37";
+    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_state_2\ : LABEL IS "macrocell38";
+    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_state_1\ : LABEL IS "macrocell39";
+    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_state_0\ : LABEL IS "macrocell40";
+    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell41";
+    ATTRIBUTE lib_model OF \I2Sone:bI2S:rxenable\ : LABEL IS "macrocell42";
+    ATTRIBUTE lib_model OF \I2Sone:bI2S:rx_data_in_0\ : LABEL IS "macrocell43";
+    ATTRIBUTE lib_model OF \I2Stwo:bI2S:reset\ : LABEL IS "macrocell44";
+    ATTRIBUTE lib_model OF Net_74 : LABEL IS "macrocell45";
+    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_f0_load\ : LABEL IS "macrocell46";
+    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_state_2\ : LABEL IS "macrocell47";
+    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_state_1\ : LABEL IS "macrocell48";
+    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_state_0\ : LABEL IS "macrocell49";
+    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell50";
+    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rxenable\ : LABEL IS "macrocell51";
+    ATTRIBUTE lib_model OF \I2Stwo:bI2S:rx_data_in_0\ : LABEL IS "macrocell52";
+    ATTRIBUTE lib_model OF \I2Sfour:bI2S:reset\ : LABEL IS "macrocell53";
+    ATTRIBUTE lib_model OF Net_668 : LABEL IS "macrocell54";
+    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_f0_load\ : LABEL IS "macrocell55";
+    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_state_2\ : LABEL IS "macrocell56";
+    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_state_1\ : LABEL IS "macrocell57";
+    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_state_0\ : LABEL IS "macrocell58";
+    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell59";
+    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rxenable\ : LABEL IS "macrocell60";
+    ATTRIBUTE lib_model OF \I2Sfour:bI2S:rx_data_in_0\ : LABEL IS "macrocell61";
+    ATTRIBUTE lib_model OF \I2Ssix:bI2S:reset\ : LABEL IS "macrocell62";
+    ATTRIBUTE lib_model OF Net_683 : LABEL IS "macrocell63";
+    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_f0_load\ : LABEL IS "macrocell64";
+    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_state_2\ : LABEL IS "macrocell65";
+    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_state_1\ : LABEL IS "macrocell66";
+    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_state_0\ : LABEL IS "macrocell67";
+    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell68";
+    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rxenable\ : LABEL IS "macrocell69";
+    ATTRIBUTE lib_model OF \I2Ssix:bI2S:rx_data_in_0\ : LABEL IS "macrocell70";
+    ATTRIBUTE lib_model OF \I2Sfive:bI2S:reset\ : LABEL IS "macrocell71";
+    ATTRIBUTE lib_model OF Net_697 : LABEL IS "macrocell72";
+    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_f0_load\ : LABEL IS "macrocell73";
+    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_state_2\ : LABEL IS "macrocell74";
+    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_state_1\ : LABEL IS "macrocell75";
+    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_state_0\ : LABEL IS "macrocell76";
+    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell77";
+    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rxenable\ : LABEL IS "macrocell78";
+    ATTRIBUTE lib_model OF \I2Sfive:bI2S:rx_data_in_0\ : LABEL IS "macrocell79";
+    ATTRIBUTE lib_model OF \I2Sseven:bI2S:reset\ : LABEL IS "macrocell80";
+    ATTRIBUTE lib_model OF Net_711 : LABEL IS "macrocell81";
+    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_f0_load\ : LABEL IS "macrocell82";
+    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_state_2\ : LABEL IS "macrocell83";
+    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_state_1\ : LABEL IS "macrocell84";
+    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_state_0\ : LABEL IS "macrocell85";
+    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell86";
+    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rxenable\ : LABEL IS "macrocell87";
+    ATTRIBUTE lib_model OF \I2Sseven:bI2S:rx_data_in_0\ : LABEL IS "macrocell88";
+    ATTRIBUTE lib_model OF \I2Seight:bI2S:reset\ : LABEL IS "macrocell89";
+    ATTRIBUTE lib_model OF Net_725 : LABEL IS "macrocell90";
+    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_f0_load\ : LABEL IS "macrocell91";
+    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_state_2\ : LABEL IS "macrocell92";
+    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_state_1\ : LABEL IS "macrocell93";
+    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_state_0\ : LABEL IS "macrocell94";
+    ATTRIBUTE lib_model OF \SPIM:BSPIM:mosi_pre_reg_split_1\ : LABEL IS "macrocell95";
+    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_overflow_sticky\ : LABEL IS "macrocell96";
+    ATTRIBUTE lib_model OF \I2Seight:bI2S:rxenable\ : LABEL IS "macrocell97";
+    ATTRIBUTE lib_model OF \I2Seight:bI2S:rx_data_in_0\ : LABEL IS "macrocell98";
     COMPONENT clockblockcell
         PORT (
             dclk_0 : OUT std_ulogic;
@@ -855,6 +868,25 @@ ARCHITECTURE __DEFAULT__ OF SamplingCircuit IS
     ATTRIBUTE udb_clken OF statusicell : COMPONENT IS "clk_en";
     ATTRIBUTE udb_reset OF statusicell : COMPONENT IS "reset";
 BEGIN
+
+    \SPIM:BSPIM:mosi_pre_reg_split\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1 * !main_2 * main_3 * main_4) + (!main_0 * main_1 * !main_2 * main_3 * main_5) + (!main_0 * main_1 * !main_2 * main_3 * main_6) + (!main_0 * main_1 * !main_2 * main_3 * main_7) + (!main_0 * main_1 * !main_2 * main_3 * !main_8) + (main_0 * main_1 * !main_2 * main_9) + (main_1 * !main_2 * !main_4 * !main_5 * !main_6 * !main_7 * main_8 * main_9) + (main_1 * main_2 * main_3 * !main_4 * !main_5 * !main_6 * !main_7 * !main_8 * !main_10)",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => \SPIM:BSPIM:mosi_pre_reg_split\,
+            main_0 => \SPIM:BSPIM:state_2\,
+            main_1 => \SPIM:BSPIM:state_1\,
+            main_2 => \SPIM:BSPIM:state_0\,
+            main_3 => \SPIM:BSPIM:mosi_from_dp\,
+            main_4 => \SPIM:BSPIM:count_4\,
+            main_5 => \SPIM:BSPIM:count_3\,
+            main_6 => \SPIM:BSPIM:count_2\,
+            main_7 => \SPIM:BSPIM:count_1\,
+            main_8 => \SPIM:BSPIM:count_0\,
+            main_9 => \SPIM:BSPIM:mosi_pre_reg\,
+            main_10 => \SPIM:BSPIM:ld_ident\);
 
     ClockBlock:clockblockcell
         PORT MAP(
@@ -2751,6 +2783,19 @@ BEGIN
             main_3 => \SPIM:BSPIM:count_1\,
             main_4 => \SPIM:BSPIM:count_0\);
 
+    Net_23:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1 * main_4) + (!main_0 * main_2 * main_4) + (!main_0 * !main_3 * main_4)",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_23,
+            main_0 => Net_268,
+            main_1 => \SPIM:BSPIM:state_2\,
+            main_2 => \SPIM:BSPIM:state_1\,
+            main_3 => \SPIM:BSPIM:state_0\,
+            main_4 => \SPIM:BSPIM:mosi_hs_reg\);
+
     \SPIM:BSPIM:tx_status_0\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2)",
@@ -3011,7 +3056,8 @@ BEGIN
             status_3 => \SPIM:BSPIM:load_rx_data\,
             status_2 => \SPIM:BSPIM:tx_status_2\,
             status_1 => \SPIM:BSPIM:tx_status_1\,
-            status_0 => \SPIM:BSPIM:tx_status_0\);
+            status_0 => \SPIM:BSPIM:tx_status_0\,
+            interrupt => Net_747);
 
     \SPIM:BSPIM:RxStsReg\:statusicell
         GENERIC MAP(
@@ -3890,9 +3936,19 @@ BEGIN
             interrupt => Net_726,
             clock => ClockBlock_BUS_CLK);
 
+    DMA_TX:drqcell
+        GENERIC MAP(
+            drq_type => "10",
+            num_tds => 0)
+        PORT MAP(
+            dmareq => Net_747,
+            termin => '0',
+            termout => Net_749,
+            clock => ClockBlock_BUS_CLK);
+
     Net_268:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2) + (!main_0 * main_1 * !main_2 * !main_3) + (!main_0 * main_2 * main_3) + (!main_1 * !main_2 * main_3)",
+            eqn_main => "(!main_0 * main_1 * !main_3) + (!main_0 * main_2) + (!main_1 * !main_2 * main_3)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
@@ -4044,7 +4100,7 @@ BEGIN
 
     Net_263:macrocell
         GENERIC MAP(
-            eqn_main => "(main_0 * main_2 * main_3) + (!main_1 * main_2 * main_3)",
+            eqn_main => "(main_0 * main_1 * main_2) + (main_1 * !main_3) + (main_2 * !main_3)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
@@ -4056,30 +4112,9 @@ BEGIN
             main_2 => \SPIM:BSPIM:state_1\,
             main_3 => \SPIM:BSPIM:state_0\);
 
-    Net_23:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_3) + (!main_1 * !main_2 * !main_3) + (!main_1 * !main_3 * !main_5 * !main_6 * !main_7 * main_8 * !main_9 * !main_10) + (main_1 * !main_2 * main_3) + (main_1 * main_2 * !main_3) + (main_1 * !main_4) + (!main_3 * !main_4)",
-            regmode => 1,
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => Net_23,
-            clock_0 => Net_535,
-            main_0 => Net_23,
-            main_1 => \SPIM:BSPIM:state_2\,
-            main_2 => \SPIM:BSPIM:state_1\,
-            main_3 => \SPIM:BSPIM:state_0\,
-            main_4 => \SPIM:BSPIM:mosi_from_dp\,
-            main_5 => \SPIM:BSPIM:count_4\,
-            main_6 => \SPIM:BSPIM:count_3\,
-            main_7 => \SPIM:BSPIM:count_2\,
-            main_8 => \SPIM:BSPIM:count_1\,
-            main_9 => \SPIM:BSPIM:count_0\,
-            main_10 => \SPIM:BSPIM:ld_ident\);
-
     \SPIM:BSPIM:state_2\:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2) + (!main_0 * main_1 * !main_2 * !main_3 * !main_4 * !main_5 * main_6 * !main_7 * !main_9) + (!main_0 * main_2 * !main_3 * !main_4 * main_5 * !main_6 * main_7 * !main_8)",
+            eqn_main => "(!main_0 * !main_1 * main_2) + (main_0 * main_1 * main_2) + (main_1 * main_2 * !main_3 * !main_4 * !main_5 * main_6 * !main_7 * !main_9) + (main_1 * main_2 * !main_3 * !main_4 * main_5 * main_6 * !main_7 * !main_8)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
@@ -4099,8 +4134,8 @@ BEGIN
 
     \SPIM:BSPIM:state_1\:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2) + (!main_0 * main_2 * !main_3 * !main_4 * main_5 * !main_6 * main_7 * !main_8) + (main_0 * !main_2) + (main_1 * !main_2 * !main_3 * !main_4 * !main_5 * main_6 * !main_7 * !main_9)",
-            regmode => 2,
+            eqn_main => "(!main_0 * !main_1 * !main_2) + (!main_0 * main_1 * main_2 * !main_3 * !main_4 * !main_5 * main_6 * !main_7 * !main_9) + (!main_0 * main_1 * main_2 * !main_3 * !main_4 * main_5 * main_6 * !main_7 * !main_8) + (main_0 * !main_1 * main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -4119,7 +4154,7 @@ BEGIN
 
     \SPIM:BSPIM:state_0\:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * main_1) + (main_0 * !main_1) + (!main_1 * !main_2 * !main_3)",
+            eqn_main => "(!main_0 * !main_1 * main_2) + (!main_0 * !main_1 * main_8) + (!main_0 * main_2 * !main_3 * !main_4 * !main_5 * main_6 * !main_7 * !main_9)",
             regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
@@ -4129,7 +4164,41 @@ BEGIN
             main_0 => \SPIM:BSPIM:state_2\,
             main_1 => \SPIM:BSPIM:state_1\,
             main_2 => \SPIM:BSPIM:state_0\,
-            main_3 => \SPIM:BSPIM:tx_status_1\);
+            main_3 => \SPIM:BSPIM:count_4\,
+            main_4 => \SPIM:BSPIM:count_3\,
+            main_5 => \SPIM:BSPIM:count_2\,
+            main_6 => \SPIM:BSPIM:count_1\,
+            main_7 => \SPIM:BSPIM:count_0\,
+            main_8 => \SPIM:BSPIM:tx_status_1\,
+            main_9 => \SPIM:BSPIM:ld_ident\);
+
+    \SPIM:BSPIM:mosi_hs_reg\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1 * main_2 * main_5) + (main_0 * main_1 * main_2 * main_3) + (!main_1 * main_4) + (!main_2 * main_4)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \SPIM:BSPIM:mosi_hs_reg\,
+            clock_0 => Net_535,
+            main_0 => \SPIM:BSPIM:state_2\,
+            main_1 => \SPIM:BSPIM:state_1\,
+            main_2 => \SPIM:BSPIM:state_0\,
+            main_3 => \SPIM:BSPIM:mosi_from_dp\,
+            main_4 => \SPIM:BSPIM:mosi_hs_reg\,
+            main_5 => \SPIM:BSPIM:mosi_from_dp_reg\);
+
+    \SPIM:BSPIM:mosi_pre_reg\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \SPIM:BSPIM:mosi_pre_reg\,
+            clock_0 => Net_535,
+            main_0 => \SPIM:BSPIM:mosi_pre_reg_split\,
+            main_1 => \SPIM:BSPIM:mosi_pre_reg_split_1\);
 
     \SPIM:BSPIM:load_cond\:macrocell
         GENERIC MAP(
@@ -4150,9 +4219,20 @@ BEGIN
             main_7 => \SPIM:BSPIM:count_0\,
             main_8 => \SPIM:BSPIM:load_cond\);
 
+    \SPIM:BSPIM:mosi_from_dp_reg\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            regmode => 1,
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \SPIM:BSPIM:mosi_from_dp_reg\,
+            clock_0 => Net_535,
+            main_0 => \SPIM:BSPIM:mosi_from_dp\);
+
     \SPIM:BSPIM:ld_ident\:macrocell
         GENERIC MAP(
-            eqn_main => "(main_0 * !main_1 * !main_2 * !main_8) + (main_0 * main_1 * !main_2 * main_8) + (main_1 * !main_2 * !main_3 * !main_4 * !main_5 * main_6 * !main_7 * main_8)",
+            eqn_main => "(!main_0 * main_1 * !main_2 * !main_3 * !main_4 * !main_5 * !main_6 * main_7 * main_8) + (main_0 * !main_1 * !main_2 * !main_8)",
             regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
@@ -4171,7 +4251,7 @@ BEGIN
 
     \SPIM:BSPIM:cnt_enable\:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * !main_2 * main_3) + (!main_0 * main_1 * main_2 * !main_3) + (main_0 * !main_1 * main_2 * main_3) + (main_0 * main_1 * !main_2 * main_3)",
+            eqn_main => "(!main_0 * !main_1 * !main_2 * main_3) + (main_0 * !main_1 * main_2 * main_3) + (main_0 * main_1 * !main_2 * !main_3)",
             regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
@@ -5100,6 +5180,24 @@ BEGIN
             main_7 => \I2Seight:bI2S:rx_state_1\,
             main_8 => \I2Seight:bI2S:rx_state_0\,
             main_9 => \I2Seight:bI2S:rxenable\);
+
+    \SPIM:BSPIM:mosi_pre_reg_split_1\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1 * !main_4 * !main_5 * !main_6 * !main_7 * !main_9) + (!main_0 * !main_2) + (!main_0 * !main_8) + (main_0 * !main_1 * main_2) + (main_0 * !main_3) + (main_1 * !main_2)",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => \SPIM:BSPIM:mosi_pre_reg_split_1\,
+            main_0 => \SPIM:BSPIM:state_2\,
+            main_1 => \SPIM:BSPIM:state_1\,
+            main_2 => \SPIM:BSPIM:state_0\,
+            main_3 => \SPIM:BSPIM:mosi_from_dp\,
+            main_4 => \SPIM:BSPIM:count_4\,
+            main_5 => \SPIM:BSPIM:count_3\,
+            main_6 => \SPIM:BSPIM:count_2\,
+            main_7 => \SPIM:BSPIM:count_0\,
+            main_8 => \SPIM:BSPIM:mosi_pre_reg\,
+            main_9 => \SPIM:BSPIM:ld_ident\);
 
     \I2Seight:bI2S:rx_overflow_sticky\:macrocell
         GENERIC MAP(

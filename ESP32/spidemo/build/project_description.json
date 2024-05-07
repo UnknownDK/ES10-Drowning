@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "spidemo",
-    "project_version":    "5703dce-dirty",
+    "project_version":    "c0a6159-dirty",
     "project_path":       "C:/Users/tardi/Desktop/ES10-Drowning/ESP32/spidemo",
     "idf_path":           "C:/Users/tardi/esp/v5.2.1/esp-idf",
     "build_dir":          "C:/Users/tardi/Desktop/ES10-Drowning/ESP32/spidemo/build",

@@ -63,6 +63,7 @@
 #include "I2Seight_PVT.h"
 #include "I2S_DMA_eight_dma.h"
 #include "DmaI2S_eight.h"
+#include "DMA_TX_dma.h"
 #include "core_cm3_psoc5.h"
 #include "CyDmac.h"
 #include "CyFlash.h"

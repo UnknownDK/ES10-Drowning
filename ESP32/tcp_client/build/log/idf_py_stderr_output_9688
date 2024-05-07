@@ -1,0 +1,30 @@
+CMake Error:
+  Running
+
+   'C:/Users/tardi/.espressif/tools/ninja/1.11.1/ninja.exe' '-C' 'C:/Users/tardi/Desktop/ES10-Drowning/ESP32/tcp_client/build/CMakeFiles/CMakeTmp' '-t' 'recompact'
+
+  failed with:
+
+   ninja: error: failed recompaction: Permission denied
+
+
+
+CMake Error:
+  Running
+
+   'C:/Users/tardi/.espressif/tools/ninja/1.11.1/ninja.exe' '-C' 'C:/Users/tardi/Desktop/ES10-Drowning/ESP32/tcp_client/build/CMakeFiles/CMakeTmp' '-t' 'restat' 'build.ninja'
+
+  failed with:
+
+   ninja: error: failed recompaction: Permission denied
+
+
+
+CMake Error at C:/Users/tardi/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/Internal/CheckSourceCompiles.cmake:95 (try_compile):
+  Failed to generate test project build system.
+Call Stack (most recent call first):
+  C:/Users/tardi/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)
+  C:/Users/tardi/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)
+  C:/Users/tardi/esp/v5.2.1/esp-idf/components/mbedtls/mbedtls/CMakeLists.txt:200 (CHECK_C_COMPILER_FLAG)
+
+
