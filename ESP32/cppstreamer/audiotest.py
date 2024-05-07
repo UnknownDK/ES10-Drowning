@@ -30,7 +30,7 @@ with open("received_data.txt", "rb") as file:
 
                 # Process the chunk of bytes
                 # For example, you can print the chunk in hexadecimal format
-                yee[i].append(chunk.hex())
+                yee[i].append(chunk[:2].hex())
                 q += 1
         
         # If no more bytes are read, break out of the outer loop
@@ -65,7 +65,7 @@ for z in range(numMic):
     # Set the parameters for the WAV file
     output_file.setnchannels(1)  # Mono
     output_file.setsampwidth(2)  # 16-bit
-    output_file.setframerate(48000)  # 48 kHz
+    output_file.setframerate(42000)  # 48 kHz
 
     # Convert the array to bytes
     byte_array = array.array('h', converted[z]).tobytes()

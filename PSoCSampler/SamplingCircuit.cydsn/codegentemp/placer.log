@@ -6,7 +6,7 @@
 
 #Build Date:         Sep  9 2019 11:47:43
 
-#File Generated:     May 7 2024 17:44:37
+#File Generated:     May 7 2024 18:36:49
 
 #Purpose:            
 
@@ -86,7 +86,7 @@ Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  48.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  48.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  48.0 MHz
-Clock: I2S_Clock            | Frequency:  52.3 MHz | Target:   6.0 MHz
+Clock: I2S_Clock            | Frequency:  52.3 MHz | Target:   5.3 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -105,12 +105,12 @@ Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  48.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  48.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  48.0 MHz
-Clock: I2S_Clock            | Frequency:  48.2 MHz | Target:   6.0 MHz
+Clock: I2S_Clock            | Frequency:  48.2 MHz | Target:   5.3 MHz
 
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 0.7 (sec)
+D2088: Phase 7, elapsed time : 0.9 (sec)
 
 Final Design Statistics
     Number of Combinational MCs 	:	15
@@ -147,7 +147,7 @@ Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  48.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  48.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  48.0 MHz
-Clock: I2S_Clock            | Frequency:  58.2 MHz | Target:   6.6 MHz
+Clock: I2S_Clock            | Frequency:  51.4 MHz | Target:   5.8 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -158,5 +158,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 1.2 sec.
+I2076: Total run-time: 1.4 sec.
 

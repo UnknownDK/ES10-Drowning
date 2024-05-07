@@ -1,4 +1,10 @@
-C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/CortexM3/ARM_GCC_541/Debug/cyfitter_cfg.o : C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/CyFlash.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/CyLib.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/CySpc.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cyPm.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cydevice.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cydevice_trm.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cyfitter.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cyfitter_cfg.c C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cyfitter_cfg.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cytypes.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/cyapicallbacks.h 
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/CortexM3/ARM_GCC_541/Debug/main.o : C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/CYDMAC.H C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/CYFITTER.H C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/Clock_3.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/CyDmac.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/CyFlash.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/CyLib.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/CySpc.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/DMA_TX_dma.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/DmaI2S_eight.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/DmaI2S_five.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/DmaI2S_four.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/DmaI2S_one.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/DmaI2S_seven.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/DmaI2S_six.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/DmaI2S_three.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/DmaI2S_two.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2S_Clock.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2S_DMA_eight_dma.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2S_DMA_five_dma.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2S_DMA_four_dma.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2S_DMA_one_dma.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2S_DMA_seven_dma.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2S_DMA_six_dma.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2S_DMA_three_dma.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2S_DMA_two_dma.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Seight.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Seight_PVT.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sfive.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sfive_PVT.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sfour.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sfour_PVT.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sone.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sone_PVT.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sseven.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sseven_PVT.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Ssix.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Ssix_PVT.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sthree.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sthree_PVT.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Stwo.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Stwo_PVT.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/MISO_1.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/MISO_1_aliases.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/MOSI_1.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/MOSI_1_aliases.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/SCLK_1.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/SCLK_1_aliases.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/SPIM.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/SPIM_IntClock.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/SPIM_PVT.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cmsis_armcc.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cmsis_compiler.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cmsis_gcc.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/core_cm3.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/core_cm3_psoc5.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cs.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cs_aliases.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cyPm.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cy_em_eeprom.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cydevice.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cydevice_trm.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cydisabledsheets.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cyfitter.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cyfitter_cfg.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cypins.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cytypes.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/project.h C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/main.c 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/CYDMAC.H : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/CYFITTER.H : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/Clock_3.h : 
 
 C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/CyFlash.h : 
 
@@ -6,19 +12,123 @@ C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated
 
 C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/CySpc.h : 
 
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/DMA_TX_dma.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/DmaI2S_eight.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/DmaI2S_five.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/DmaI2S_four.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/DmaI2S_one.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/DmaI2S_seven.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/DmaI2S_six.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/DmaI2S_three.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/DmaI2S_two.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2S_Clock.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2S_DMA_eight_dma.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2S_DMA_five_dma.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2S_DMA_four_dma.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2S_DMA_one_dma.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2S_DMA_seven_dma.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2S_DMA_six_dma.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2S_DMA_three_dma.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2S_DMA_two_dma.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Seight.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Seight_PVT.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sfive.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sfive_PVT.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sfour.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sfour_PVT.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sone.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sone_PVT.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sseven.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sseven_PVT.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Ssix.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Ssix_PVT.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sthree.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Sthree_PVT.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Stwo.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/I2Stwo_PVT.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/MISO_1.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/MISO_1_aliases.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/MOSI_1.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/MOSI_1_aliases.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/SCLK_1.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/SCLK_1_aliases.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/SPIM.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/SPIM_IntClock.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/SPIM_PVT.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cmsis_armcc.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cmsis_compiler.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cmsis_gcc.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/core_cm3.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/core_cm3_psoc5.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cs.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cs_aliases.h : 
+
 C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cyPm.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cy_em_eeprom.h : 
 
 C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cydevice.h : 
 
 C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cydevice_trm.h : 
 
-C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cyfitter.h : 
-
-C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cyfitter_cfg.c : 
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cydisabledsheets.h : 
 
 C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cyfitter_cfg.h : 
 
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cypins.h : 
+
 C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/cytypes.h : 
 
-C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/cyapicallbacks.h : 
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/Generated_Source/PSoC5/project.h : 
+
+C:/Users/tardi/Desktop/ES10-Drowning/PSoCSampler/SamplingCircuit.cydsn/main.c : 
 

@@ -164,6 +164,44 @@
 <VisibleNodeIds>
 <v>PSoCSampler</v>
 <v>PSoCSampler\SamplingCircuit</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_3.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cs.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DMA_TX_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_eight.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_five.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_four.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_one.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_seven.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_six.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_three.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_two.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_Clock.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_eight_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_five_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_four_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_one_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_seven_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_six_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_three_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_two_dma.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Seight.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Seight_PM.lst</v>
+<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Sfive.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>

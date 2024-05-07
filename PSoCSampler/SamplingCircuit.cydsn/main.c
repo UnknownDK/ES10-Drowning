@@ -24,13 +24,14 @@
 #define BUFFER_SIZE 1024
 
 
-uint8_t I2S_buf_one[BUFFER_SIZE];
-uint8_t I2S_buf_two[BUFFER_SIZE];
-uint8_t I2S_buf_three[BUFFER_SIZE];
-uint8_t I2S_buf_four[BUFFER_SIZE];
-uint8_t I2S_buf_five[BUFFER_SIZE];
-uint8_t I2S_buf_six[BUFFER_SIZE];
-uint8_t I2S_buf_seven[BUFFER_SIZE];
+uint8_t I2S_buf_one[BUFFER_SIZE*2];
+uint8_t I2S_buf_two[BUFFER_SIZE*2];
+uint8_t I2S_buf_three[BUFFER_SIZE*2];
+uint8_t I2S_buf_four[BUFFER_SIZE*2];
+uint8_t I2S_buf_five[BUFFER_SIZE*2];
+uint8_t I2S_buf_six[BUFFER_SIZE*2];
+uint8_t I2S_buf_seven[BUFFER_SIZE*2];
+
 
 
 // DMA Configuration Variables  
@@ -60,7 +61,7 @@ uint8 dmaTdi2sSeven;
 #define DMA_TX_SRC_BASE             (CYDEV_SRAM_BASE)
 #define DMA_TX_DST_BASE             (CYDEV_PERIPH_BASE)
 
-#define START_DELAY 0
+#define START_DELAY 2 // 2
 
 
 void DmaTxConfiguration();
@@ -86,6 +87,18 @@ volatile uint8 dmaIndexFive = 0;
 volatile uint8 dmaIndexSix = 0;
 volatile uint8 dmaIndexSeven = 0;
 
+uint8 circFlagOne = 0;
+uint8 circFlagTwo = 0;
+uint8 circFlagThree = 0;
+uint8 circFlagFour = 0;
+uint8 circFlagFive = 0;
+uint8 circFlagSix = 0;
+uint8 circFlagSeven = 0;
+
+uint8 moveFlag = 0;
+uint8 circFlag = 1;
+
+
 uint16 cpuIndex = 0;
 
 void initComponents(void);
@@ -102,7 +115,7 @@ CY_ISR_PROTO(DmaI2S_seven);
 
 char hex_string[13];
 
-void moveBytes(uint8 *src, uint8 *dest, uint16 size) {
+void moveBytes(uint8 *dest, uint8 *src, uint16 size) {
     uint8 *srcPtr = src;
     uint8 *destPtr = dest;
     
@@ -126,47 +139,64 @@ int main(void)
     for(;;)
     {
        if (dmaIndexOne != 0){
-            moveBytes(&I2S_buf_one[0], &dataBuffer[0], 1024);
+            CyDmaTdSetAddress(dmaTdi2sOne, LO16((uint32)I2Sone_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_one[1024*circFlag]));
+            moveBytes(&dataBuffer[0], &I2S_buf_one[1024*moveFlag], 1024);
             transFlag++;
+            circFlagOne = (circFlagOne == 0) ? 1 : 0;
+            
             dmaIndexOne = 0;
         }
        if (dmaIndexTwo != 0){
-            moveBytes(&I2S_buf_two[0], &dataBuffer[512], 1024);
+            CyDmaTdSetAddress(dmaTdi2sTwo, LO16((uint32)I2Stwo_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_two[1024*circFlag]));
+            moveBytes(&dataBuffer[512], &I2S_buf_two[1024*moveFlag], 1024);
             transFlag++;
+            circFlagTwo = (circFlagTwo == 0) ? 1 : 0;
             dmaIndexTwo = 0;
         }
-        /*
+        
        if (dmaIndexThree != 0){
-            moveBytes(&I2S_buf_three[0], &dataBuffer[1024], 1024);
+            CyDmaTdSetAddress(dmaTdi2sThree, LO16((uint32)I2Sthree_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_three[1024*circFlag]));
+            moveBytes(&dataBuffer[1024], &I2S_buf_three[1024*moveFlag], 1024);
             transFlag++;
-            dmaIndexThree = 0;
-        } */
+            circFlagThree = (circFlagThree == 0) ? 1 : 0;
+             dmaIndexThree = 0;
+        }
         
        if (dmaIndexFour != 0){
-            moveBytes(&I2S_buf_four[0], &dataBuffer[1536], 1024);
+            CyDmaTdSetAddress(dmaTdi2sFour, LO16((uint32)I2Sfour_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_four[1024*circFlag]));
+            moveBytes(&dataBuffer[1536], &I2S_buf_four[1024*moveFlag], 1024);
             transFlag++;
+            circFlagFour = (circFlagFour == 0) ? 1 : 0;
             dmaIndexFour = 0;
-        } /*
+        }
        if (dmaIndexFive != 0){
-            moveBytes(&I2S_buf_five[0], &dataBuffer[2048], 1024);
+            CyDmaTdSetAddress(dmaTdi2sFive, LO16((uint32)I2Sfive_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_five[1024*circFlag]));
+            moveBytes(&dataBuffer[2048], &I2S_buf_five[1024*moveFlag], 1024);
             transFlag++;
+            circFlagFive = (circFlagFive == 0) ? 1 : 0;
             dmaIndexFive = 0;
         }
        if (dmaIndexSix != 0){
-            moveBytes(&I2S_buf_six[0], &dataBuffer[2560], 1024);
+            CyDmaTdSetAddress(dmaTdi2sSix, LO16((uint32)I2Ssix_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_six[1024*circFlag]));
+            moveBytes(&dataBuffer[2560], &I2S_buf_six[1024*moveFlag], 1024);
             transFlag++;
+            circFlagSix = (circFlagSix == 0) ? 1 : 0;
             dmaIndexSix = 0;
         }
        if (dmaIndexSeven != 0){
-            moveBytes(&I2S_buf_seven[0], &dataBuffer[3072], 1024);
+            CyDmaTdSetAddress(dmaTdi2sSeven, LO16((uint32)I2Sseven_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_seven[1024*circFlag]));
+            moveBytes(&dataBuffer[3072], &I2S_buf_seven[1024*moveFlag], 1024);
             transFlag++;
+            circFlagSeven = (circFlagSeven == 0) ? 1 : 0;
             dmaIndexSeven = 0;
-        }*/
+        }
         
                 // Wait for DMA transfer completion
         //if (dmaIndexOne != 0 && dmaIndexTwo != 0 && dmaIndexThree != 0 && dmaIndexFour != 0 && dmaIndexFive != 0 && dmaIndexSix !=0 && dmaIndexSeven != 0) {
-        if (transFlag > 2){
+        if (transFlag > 6){
             SPIM_TX_STATUS_MASK_REG|=(SPIM_INT_ON_TX_EMPTY);          //start new transfer
+            circFlag = (circFlag == 0) ? 1 : 0;
+            moveFlag = (moveFlag == 0) ? 1 : 0;
             transFlag = 0;
         }
         
