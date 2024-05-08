@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSoCSampler\SamplingCircuit\SamplingCircuit.cydwr\Clocks">
 <ExpandedNodeIds>
 <v>PSoCSampler</v>
 <v>PSoCSampler\SamplingCircuit</v>
@@ -35,48 +35,7 @@
 <v>PSoCSampler\SamplingCircuit\Generated_Source</v>
 <v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5</v>
 </ExpandedNodeIds>
-<VisibleNodeIds>
-<v>PSoCSampler</v>
-<v>PSoCSampler\SamplingCircuit</v>
-<v>PSoCSampler\SamplingCircuit\TopDesign</v>
-<v>PSoCSampler\SamplingCircuit\SamplingCircuit.cydwr</v>
-<v>PSoCSampler\SamplingCircuit\SamplingCircuit.cydwr\Pins</v>
-<v>PSoCSampler\SamplingCircuit\SamplingCircuit.cydwr\Analog</v>
-<v>PSoCSampler\SamplingCircuit\SamplingCircuit.cydwr\Clocks</v>
-<v>PSoCSampler\SamplingCircuit\SamplingCircuit.cydwr\Interrupts</v>
-<v>PSoCSampler\SamplingCircuit\SamplingCircuit.cydwr\DMA</v>
-<v>PSoCSampler\SamplingCircuit\SamplingCircuit.cydwr\System</v>
-<v>PSoCSampler\SamplingCircuit\SamplingCircuit.cydwr\Directives</v>
-<v>PSoCSampler\SamplingCircuit\SamplingCircuit.cydwr\Flash Security</v>
-<v>PSoCSampler\SamplingCircuit\SamplingCircuit.cydwr\EEPROM</v>
-<v>PSoCSampler\SamplingCircuit\Header Files</v>
-<v>PSoCSampler\SamplingCircuit\Header Files\cyapicallbacks.h</v>
-<v>PSoCSampler\SamplingCircuit\Source Files</v>
-<v>PSoCSampler\SamplingCircuit\Source Files\main.c</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\Clock_3</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\cs</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\cy_boot</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\DMA_TX</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\DmaI2S_eight</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\DmaI2S_five</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\DmaI2S_four</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\DmaI2S_one</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\DmaI2S_seven</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\DmaI2S_six</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\DmaI2S_three</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\DmaI2S_two</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\Em_EEPROM_Dynamic</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\I2S_Clock</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\I2S_DMA_eight</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\I2S_DMA_five</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\I2S_DMA_four</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\I2S_DMA_one</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\I2S_DMA_seven</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\I2S_DMA_six</v>
-<v>PSoCSampler\SamplingCircuit\Generated_Source\PSoC5\I2S_DMA_three</v>
-</VisibleNodeIds>
+<VisibleNodeIds />
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
 <ExpandedNodeIds>
@@ -85,12 +44,7 @@
 <v>PSoCSampler\SamplingCircuit\TopDesign</v>
 <v>PSoCSampler\SamplingCircuit\TopDesign\TopDesign.cysch</v>
 </ExpandedNodeIds>
-<VisibleNodeIds>
-<v>PSoCSampler</v>
-<v>PSoCSampler\SamplingCircuit</v>
-<v>PSoCSampler\SamplingCircuit\TopDesign</v>
-<v>PSoCSampler\SamplingCircuit\TopDesign\TopDesign.cysch</v>
-</VisibleNodeIds>
+<VisibleNodeIds />
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
 <ExpandedNodeIds>
@@ -161,48 +115,7 @@
 <v>PSoCSampler\SamplingCircuit\SamplingCircuit.rpt</v>
 <v>PSoCSampler\SamplingCircuit\SamplingCircuit_timing.html</v>
 </ExpandedNodeIds>
-<VisibleNodeIds>
-<v>PSoCSampler</v>
-<v>PSoCSampler\SamplingCircuit</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_3.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cs.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DMA_TX_dma.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_eight.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_five.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_four.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_one.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_seven.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_six.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_three.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaI2S_two.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_Clock.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_eight_dma.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_five_dma.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_four_dma.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_one_dma.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_seven_dma.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_six_dma.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_three_dma.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2S_DMA_two_dma.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Seight.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Seight_PM.lst</v>
-<v>PSoCSampler\SamplingCircuit\CortexM3\ARM_GCC_541\Debug\Listing Files\I2Sfive.lst</v>
-</VisibleNodeIds>
+<VisibleNodeIds />
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
 <TreeKeysV2>
@@ -229,25 +142,7 @@
 <v>PSoCSampler\SamplingCircuit\I2S_v2_70\I2S_v2_70.pdf</v>
 <v>PSoCSampler\SamplingCircuit\SPI_Master_v2_50.pdf</v>
 </ExpandedNodeIds>
-<VisibleNodeIds>
-<v>PSoCSampler</v>
-<v>PSoCSampler\SamplingCircuit</v>
-<v>PSoCSampler\SamplingCircuit\PSoC 5LP Architecture TRM</v>
-<v>PSoCSampler\SamplingCircuit\CY8C58LP Family Datasheet</v>
-<v>PSoCSampler\SamplingCircuit\System Reference Guides</v>
-<v>PSoCSampler\SamplingCircuit\System Reference Guides\cy_boot_v6_0</v>
-<v>PSoCSampler\SamplingCircuit\cy_clock_v2_20</v>
-<v>PSoCSampler\SamplingCircuit\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
-<v>PSoCSampler\SamplingCircuit\cy_dma_v1_70</v>
-<v>PSoCSampler\SamplingCircuit\cy_dma_v1_70\cy_dma_v1_70.pdf</v>
-<v>PSoCSampler\SamplingCircuit\cy_isr_v1_70</v>
-<v>PSoCSampler\SamplingCircuit\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
-<v>PSoCSampler\SamplingCircuit\cy_pins_v2_20</v>
-<v>PSoCSampler\SamplingCircuit\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
-<v>PSoCSampler\SamplingCircuit\I2S_v2_70</v>
-<v>PSoCSampler\SamplingCircuit\I2S_v2_70\I2S_v2_70.pdf</v>
-<v>PSoCSampler\SamplingCircuit\SPI_Master_v2_50.pdf</v>
-</VisibleNodeIds>
+<VisibleNodeIds />
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
 </CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>

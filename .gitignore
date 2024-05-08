@@ -1,1 +1,15 @@
 /data/
+ESP32/**/build/
+ESP32/**/build_*_*/
+ESP32/**/sdkconfig
+ESP32/**/sdkconfig.old
+ESP32/**/managed_components
+ESP32/**/.vscode
+ESP32/**/.devcontainer
+DAS/build/
+DAS/build_*_*/
+DAS/sdkconfig
+DAS/sdkconfig.old
+DAS/**/managed_components
+DAS/**/.vscode
+DAS/**/.devcontainer
