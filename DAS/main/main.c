@@ -33,11 +33,13 @@ const float sampling_frequency = 48e3;
 #define FIR_BUFF_OUT_LEN_ULA2    (SAMPLES_PER_MIC + FIR2LENGTH)         // Total length of samples
 #define FIR_BUFF_OUT_LEN_ULA3    (SAMPLES_PER_MIC + FIR3LENGTH)         // Total length of samples
 
-const float input_sig_angle = 35;//35 
+//const float input_sig_angle = 40;//35 
+static float input_sig_angle = 0;//35 
 const float MIC_ARRAY[7] = {0.0,    0.3750,    0.4583,    0.5000,    0.5417,    0.6250,    1.0};
 static __attribute__((aligned(16))) float mic_inputs[NUMBER_OF_MICS*SAMPLES_PER_MIC];
+
 void data_feeder(){
-    srand((unsigned int)time(NULL));
+    //srand((unsigned int)time(NULL));
     int random_frequency[SAMPLES_PER_MIC];
     for (int i = 0 ; i < SAMPLES_PER_MIC ; i++) {
         random_frequency[i] = rand() % 24000 + 1;
@@ -45,11 +47,14 @@ void data_feeder(){
     for (int j = 0 ; j < NUMBER_OF_MICS ; j++){
         for (int i = 0 ; i < SAMPLES_PER_MIC ; i++) {
             //mic_inputs[i+j*SAMPLES_PER_MIC] = sinf(2*M_PI*500*(i*1/sampling_frequency + MIC_ARRAY[j]*cosf(input_sig_angle*M_PI/180.0)/speed_of_sound));
-            //mic_inputs[i+j*SAMPLES_PER_MIC] = sinf(2*M_PI*random_frequency[i]*(i*1/sampling_frequency + MIC_ARRAY[j]*cosf(input_sig_angle*M_PI/180.0)/speed_of_sound));
-            //mic_inputs[i+j*SAMPLES_PER_MIC] = sinf(2*M_PI*random_frequency[i]*(1/sampling_frequency + MIC_ARRAY[j]*cosf(input_sig_angle*M_PI/180.0)/speed_of_sound));
-            mic_inputs[i+j*SAMPLES_PER_MIC] = sinf(2*M_PI*100*(i*1/sampling_frequency + MIC_ARRAY[j]*cosf(input_sig_angle*M_PI/180.0)/speed_of_sound));
-        } // mistænker at faseskift er for stort
+            mic_inputs[i+j*SAMPLES_PER_MIC] = sinf(2*M_PI*random_frequency[i]*(i*1/sampling_frequency + MIC_ARRAY[j]*cosf(input_sig_angle*M_PI/180.0)/speed_of_sound));
+            //mic_inputs[i+j*SAMPLES_PER_MIC] = sinf(2*M_PI*3750*(i*1/sampling_frequency + MIC_ARRAY[j]*cosf(input_sig_angle*M_PI/180.0)/speed_of_sound));
+            //mic_inputs[i+j*SAMPLES_PER_MIC] = i + MIC_ARRAY[j]*cosf(input_sig_angle*M_PI/180.0)/speed_of_sound;
+            //printf("Frequency: %d\n", random_frequency[i]);
+        }   
+        //printf("Input time offset, mic %d: %f\n", j, MIC_ARRAY[j]*cosf(input_sig_angle*M_PI/180.0)/speed_of_sound);
     }
+    
 }
 
 static int32_t delay_in_samples_ula1[3];
@@ -65,9 +70,15 @@ void calculate_DAS_delays(){
     float *delay_in_time_ula3 = (float *)malloc( 3 * sizeof(float));
 
     for (int i = 0 ; i < 3 ; i++) {
-        delay_in_time_ula1[i] = sinf((steerAng - 90)*M_PI/180)*spacings_ula1[i]/speed_of_sound;
-        delay_in_time_ula2[i] = sinf((steerAng - 90)*M_PI/180)*spacings_ula2[i]/speed_of_sound;
-        delay_in_time_ula3[i] = sinf((steerAng - 90)*M_PI/180)*spacings_ula3[i]/speed_of_sound;
+        //delay_in_time_ula1[i] = sinf((steerAng - 90)*M_PI/180)*spacings_ula1[i]/speed_of_sound;
+        //delay_in_time_ula2[i] = sinf((steerAng - 90)*M_PI/180)*spacings_ula2[i]/speed_of_sound;
+        //delay_in_time_ula3[i] = sinf((steerAng - 90)*M_PI/180)*spacings_ula3[i]/speed_of_sound;
+        delay_in_time_ula1[i] = -cosf(steerAng*M_PI/180)*spacings_ula1[i]/speed_of_sound;
+        delay_in_time_ula2[i] = -cosf(steerAng*M_PI/180)*spacings_ula2[i]/speed_of_sound;
+        delay_in_time_ula3[i] = -cosf(steerAng*M_PI/180)*spacings_ula3[i]/speed_of_sound;
+        printf("ULA1, mic %d: %f\n", i, delay_in_time_ula1[i]);
+        printf("ULA2, mic %d: %f\n", i, delay_in_time_ula2[i]);
+        printf("ULA3, mic %d: %f\n", i, delay_in_time_ula3[i]);
         // possibility to add fractional delays here
         delay_in_samples_ula1[i] = delay_in_time_ula1[i]*sampling_frequency;
         delay_in_samples_ula2[i] = delay_in_time_ula2[i]*sampling_frequency;
@@ -88,6 +99,7 @@ static __attribute__((aligned(16))) float ula3_output_summed[SAMPLES_PER_MIC];
 void app_main()
 {    
     esp_task_wdt_deinit();
+    srand((unsigned int)time(NULL)); // for random frequency generator
     
     const int32_t fir_len_ula1 = FIR1LENGTH;
     const int32_t fir_len_ula2 = FIR2LENGTH;
@@ -108,24 +120,27 @@ void app_main()
     float *fir_out_ula2 = (float *)malloc( N_buff * sizeof(float));
     dsps_fird_init_f32(&fir_ula2, FIR2WEIGHTS, delay_line_ula2, fir_len_ula2, fir_decim); 
     float *fir_out_ula3 = (float *)malloc( N_buff * sizeof(float));
-    dsps_fird_init_f32(&fir_ula3, FIR3WEIGHTS, delay_line_ula3, fir_len_ula3, fir_decim); //UNDERSØG DELAY LINES!!!!
+    dsps_fird_init_f32(&fir_ula3, FIR3WEIGHTS, delay_line_ula3, fir_len_ula3, fir_decim); 
 
     calculate_DAS_delays();
     int8_t memory_pointer_new = 1; // Designates which buffer the new data is input to
     int8_t memory_pointer_middle = 2; // Designates which buffer should be used in DAS (delayed by 1, such surrounding buffers with old and new data are accesible)
     int8_t memory_pointer_old = 0;
-    int16_t runonlyonce = 0;
-    while(runonlyonce<20){
-        runonlyonce++; 
+    //int16_t runonlyonce = 0;
+    //while(runonlyonce<180){
+    for (int q = 0; q <= 180; q++){
+        //runonlyonce++; 
         // Update mic inputs
         vTaskDelay(pdMS_TO_TICKS(2.66666666));
         // 48000/128 Hz
+        
         data_feeder(); // sets mic_inputs
-
+        input_sig_angle = floor(q);//*0.1
+        //input_sig_angle = 50;
 
         memcpy(&mic_inputs_big[memory_pointer_new*SAMPLES_PER_MIC*NUMBER_OF_MICS], mic_inputs, sizeof(float)*NUMBER_OF_MICS*SAMPLES_PER_MIC);
 
-        if (1 == 1){ 
+        if (1 == 0){ 
             //printf("Mic inputs\n");
             for (int i = 0; i < SAMPLES_PER_MIC; i++) {  
                 for (int j = 0 ; j < NUMBER_OF_MICS ; j++){
@@ -185,7 +200,7 @@ void app_main()
         memory_pointer_new--;
         if (memory_pointer_new > 2){
             memory_pointer_new = 0;
-        }else if (memory_pointer_new < 0){
+        }else if (memory_pointer_new < 0){ // Descending
             memory_pointer_new = 2;
         }
         if (1 == 0){ 
@@ -223,17 +238,21 @@ void app_main()
         if (1 == 0){
             double das_output_mag = 0;
             double sig_input_mag = 0;
-            //for (int i = 0; i < FIR_BUFF_OUT_LEN_ULA1; i++){
-            //    das_output_mag += (pow(fir_out_ula1[i],2) + pow(fir_out_ula2[i],2) + pow(fir_out_ula3[i],2))/3;
-            //}
-            for (int i = 0; i < SAMPLES_PER_MIC; i++){
-                das_output_mag += (pow(ula1_output_summed[i],2) + pow(ula2_output_summed[i],2) + pow(ula3_output_summed[i],2))/3;
-
+            for (int i = 0; i < FIR_BUFF_OUT_LEN_ULA1; i++){
+                das_output_mag += (pow(fir_out_ula1[i],2) + pow(fir_out_ula2[i],2) + pow(fir_out_ula3[i],2))/3;
+                //das_output_mag += pow(fir_out_ula1[i] + fir_out_ula2[i] + fir_out_ula3[i],2)/3;
             }
+            //for (int i = 0; i < SAMPLES_PER_MIC; i++){
+            //    das_output_mag += (pow(ula1_output_summed[i],2) + pow(ula2_output_summed[i],2) + pow(ula3_output_summed[i],2))/3;
+            //}
             for (int i = 0; i < NUMBER_OF_MICS*SAMPLES_PER_MIC; i++){
                 sig_input_mag += pow(mic_inputs[i],2)/NUMBER_OF_MICS;
+                
             }
-            printf("magratio: %f\n", das_output_mag/sig_input_mag);
+            //printf("input mag: %f\n", sig_input_mag);
+            //printf("output mag: %f\n", das_output_mag);
+            //printf("magratio: %f\n", das_output_mag/sig_input_mag);
+             printf("%f, %f\n", input_sig_angle, das_output_mag/sig_input_mag);
         }
     }
 }

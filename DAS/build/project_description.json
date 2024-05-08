@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "DAS",
-    "project_version":    "7d79aa8-dirty",
+    "project_version":    "e2586d7-dirty",
     "project_path":       "/home/jonas/gitten/ES10-Drowning/DAS",
     "idf_path":           "/home/jonas/esp/v5.2.1/esp-idf",
     "build_dir":          "/home/jonas/gitten/ES10-Drowning/DAS/build",
