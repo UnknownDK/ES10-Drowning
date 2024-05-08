@@ -16,6 +16,7 @@
 #include <freertos/semphr.h>
 #include "esp_task_wdt.h"
 #include "freertos/queue.h"
+#include "constants.h"
 
 #include "esp_log.h"
 #include "driver/spi_slave.h"
@@ -26,7 +27,7 @@
 
 #include <esp_task_wdt.h>
 #include "offloading.h"
-#include "FIRWeights.h"
+#include "DAS.h"
 #include <math.h>
 #include <esp_dsp.h>
 #include <time.h>
@@ -40,6 +41,8 @@
 #define GPIO_SCLK           10  // P2[0]
 #define GPIO_CS             12  // P2[2]
 
+QueueHandle_t dasQueue;
+QueueHandle_t wifiQueue;
 
 int64_t timer = 0;
 int64_t bytecount = 0;
@@ -66,7 +69,7 @@ void my_post_trans_cb(spi_slave_transaction_t *trans)
 
     BaseType_t xHigherPriorityTaskWoken = pdFALSE;
     // Prepare data_to_send
-    xQueueSendFromISR(xQueue, &sendbuf, &xHigherPriorityTaskWoken);
+    xQueueSendFromISR(dasQueue, &sendbuf, &xHigherPriorityTaskWoken);
     if(xHigherPriorityTaskWoken) {
         portYIELD_FROM_ISR();
     }
@@ -84,9 +87,11 @@ void app_main(void)
     wifi_init_sta();
 
 
-    xQueue = xQueueCreate(10, 3584);
+    dasQueue = xQueueCreate(10, 3584);
+    wifiQueue = xQueueCreate(10, 3584);
 
     xTaskCreatePinnedToCore(&socket_task, "socket_task", 8192, NULL, 5, NULL, 1);
+    xTaskCreatePinnedToCore(&das_task, "das_task", 16384, NULL, 1, NULL, 1);
     //xTaskCreatePinnedToCore(&spi_task, "spi_task", 4096, NULL, 1, NULL, 1);
 
     timer = esp_timer_get_time();

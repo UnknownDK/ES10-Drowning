@@ -1,5 +1,5 @@
 #ifndef FIRWEIGHTS_H
-#define FIRWEIGHTS
+#define FIRWEIGHTS_H
 
 #define FIR1LENGTH 101
 #define FIR2LENGTH 101

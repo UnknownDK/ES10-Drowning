@@ -2,13 +2,13 @@
 
 #include "esp_wifi.h"
 #include "freertos/event_groups.h"
-#include "freertos/queue.h"
+
 #include <sys/socket.h>
 #include <netdb.h>            // struct addrinfo
 #include <arpa/inet.h>
-#include "freertos/event_groups.h"
 #include "esp_log.h"
 #include "nvs_flash.h"
+#include "constants.h"
 
 #define EXAMPLE_ESP_WIFI_SSID      "Kelvin"
 #define EXAMPLE_ESP_WIFI_PASS      "Celsius16"
@@ -20,7 +20,7 @@
 
 // FreeRTOS event group to signal when we are connected
 EventGroupHandle_t s_wifi_event_group;
-QueueHandle_t xQueue;
+
 
 static int s_retry_num = 0;
 
@@ -149,7 +149,7 @@ void socket_task(void *pvParameters) {
 
     uint8_t received_data[3584];
     while(1) {
-        if(xQueueReceive(xQueue, &received_data, portMAX_DELAY) == pdPASS) {
+        if(xQueueReceive(wifiQueue, &received_data, portMAX_DELAY) == pdPASS) {
             err = send(sock, received_data, 3584, 0);
 
             if (err < 0) {

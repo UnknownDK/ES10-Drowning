@@ -2,7 +2,7 @@
 #define OFFLOADING_H
 
 extern EventGroupHandle_t s_wifi_event_group;
-extern QueueHandle_t xQueue;
+
 
 // Function prototypes
 void wifi_init_sta(void);
