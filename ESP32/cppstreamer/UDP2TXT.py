@@ -1,11 +1,13 @@
 import socket
 import os
+from datetime import datetime
 
 # Host and port to bind the server to
 HOST = '0.0.0.0'
 PORT = 33333
 CHUNK_SIZE = 3584
-MAX_FILE_SIZE = 2 * 1024 * 1024  # 5 MB
+MAX_FILE_SIZE = 7 * 1024 * 1024
+name = str(datetime.now())
 
 def receive_data_and_save(server_socket):
     total_data = b''
@@ -31,7 +33,7 @@ def receive_data_and_save(server_socket):
         save_to_file(total_data)
 
 def save_to_file(data):
-    with open(f"received_data.txt", "ab") as file:
+    with open("data_{}".format(name), "ab") as file:
         file.write(data)
     print("Data saved to file")
 
