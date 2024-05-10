@@ -6,6 +6,8 @@ ESP32/**/sdkconfig.old
 ESP32/**/managed_components
 ESP32/**/.vscode
 ESP32/**/.devcontainer
+ESP32/**/log.*
+ESP32/cppstreamer/data_*
 DAS/build/
 DAS/build_*_*/
 DAS/sdkconfig

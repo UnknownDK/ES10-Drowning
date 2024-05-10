@@ -204,7 +204,7 @@ void app_main()
             memory_pointer_new = 2;
         }
         if (1 == 0){ 
-            //printf("ulas summed\n");delay_in_samples_ula3
+            //printf("ulas summed\n");
             for (int i = 0; i < SAMPLES_PER_MIC; i++) { 
                 printf("%f, ", ula1_output_summed[i]);
                 printf("%f, ", ula2_output_summed[i]);

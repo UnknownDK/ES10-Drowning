@@ -10,8 +10,8 @@
 #include "nvs_flash.h"
 #include "constants.h"
 
-#define EXAMPLE_ESP_WIFI_SSID      "Kelvin"
-#define EXAMPLE_ESP_WIFI_PASS      "Celsius16"
+#define EXAMPLE_ESP_WIFI_SSID      "DrukneKlo"
+#define EXAMPLE_ESP_WIFI_PASS      "Simonergrim123"
 #define EXAMPLE_ESP_MAXIMUM_RETRY  6
 #define ESP_WIFI_SCAN_AUTH_MODE_THRESHOLD WIFI_AUTH_WPA2_PSK
 
@@ -125,10 +125,10 @@ void wifi_init_sta(void)
     }
 }
 
-
+#define WIFI_SEND_ARRAY_SIZE 256*3 // NUMBER OF INDICES IN ARRAY TO RECEIVE (NOT NUMBER OF BITS) MATCH WITH VAR IN main.c
 void socket_task(void *pvParameters) {
 
-    char host_ip[] = "192.168.23.7";
+    char host_ip[] = "192.168.0.100";
     int addr_family = AF_INET;
     int ip_protocol = IPPROTO_IP;
 
@@ -147,10 +147,12 @@ void socket_task(void *pvParameters) {
         ESP_LOGE(TAG, "Socket unable to connect: errno %d", errno);
     }
 
-    uint8_t received_data[3584];
+
+    float received_data[WIFI_SEND_ARRAY_SIZE]; // 896
     while(1) {
         if(xQueueReceive(wifiQueue, &received_data, portMAX_DELAY) == pdPASS) {
-            err = send(sock, received_data, 3584, 0);
+            err = send(sock, received_data, WIFI_SEND_ARRAY_SIZE*4, 0); //896*4
+            
 
             if (err < 0) {
                 ESP_LOGE(TAG, "Error occurred during sending: errno %d", errno);

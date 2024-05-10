@@ -27,7 +27,7 @@ const float sampling_frequency = 48e3;
 // Emulate packet updates
 // 1024 samples per update divided over 8 mics
 // 128 samples per mic each consisting of 16 bits 
-#define SAMPLES_PER_MIC 128
+#define SAMPLES_PER_MIC 256
 #define NUMBER_OF_MICS 7
 #define FIR_BUFF_OUT_LEN_ULA1    (SAMPLES_PER_MIC + FIR1LENGTH)         // Total length of samples
 #define FIR_BUFF_OUT_LEN_ULA2    (SAMPLES_PER_MIC + FIR2LENGTH)         // Total length of samples
@@ -77,13 +77,14 @@ void calculate_DAS_delays(){
         delay_in_time_ula1[i] = -cosf(steerAng*M_PI/180)*spacings_ula1[i]/speed_of_sound;
         delay_in_time_ula2[i] = -cosf(steerAng*M_PI/180)*spacings_ula2[i]/speed_of_sound;
         delay_in_time_ula3[i] = -cosf(steerAng*M_PI/180)*spacings_ula3[i]/speed_of_sound;
-        printf("ULA1, mic %d: %f\n", i, delay_in_time_ula1[i]);
-        printf("ULA2, mic %d: %f\n", i, delay_in_time_ula2[i]);
-        printf("ULA3, mic %d: %f\n", i, delay_in_time_ula3[i]);
+        //printf("ULA1, mic %d: %f\n", i, delay_in_time_ula1[i]);
+        //printf("ULA2, mic %d: %f\n", i, delay_in_time_ula2[i]);
+        //printf("ULA3, mic %d: %f\n", i, delay_in_time_ula3[i]);
+
         // possibility to add fractional delays here
-        delay_in_samples_ula1[i] = delay_in_time_ula1[i]*sampling_frequency;
-        delay_in_samples_ula2[i] = delay_in_time_ula2[i]*sampling_frequency;
-        delay_in_samples_ula3[i] = delay_in_time_ula3[i]*sampling_frequency;
+        delay_in_samples_ula1[i] = round(delay_in_time_ula1[i]*sampling_frequency);
+        delay_in_samples_ula2[i] = round(delay_in_time_ula2[i]*sampling_frequency);
+        delay_in_samples_ula3[i] = round(delay_in_time_ula3[i]*sampling_frequency);
     }
     free(delay_in_time_ula1);
     free(delay_in_time_ula2);
@@ -98,18 +99,36 @@ static __attribute__((aligned(16))) float ula1_output_summed[SAMPLES_PER_MIC];
 static __attribute__((aligned(16))) float ula2_output_summed[SAMPLES_PER_MIC];
 static __attribute__((aligned(16))) float ula3_output_summed[SAMPLES_PER_MIC];
 
-
+// update DAS
 
 void das_task(void *pvParameters) {
+
+    // setup sager
+    // skal også have en task med at køre calculate_DAS_delays() på ny steerAng
 
     uint8_t received_data[3584];
     while(1) {
         if(xQueueReceive(dasQueue, &received_data, portMAX_DELAY) == pdPASS) {
 
-            printf("Received: %d\n", received_data[0]);
+            //printf("Received: %d\n", received_data[0]);
             /*
             Her skal du lave alt dit gøjl Jonas
             */
+            for (int i = 0; i < 3584/7 - 1; i +=2){
+                int16_t concatenated_data = (received_data[i] << 8) | received_data[i + 1];
+                //printf("sample 1: %x\n", received_data[i]);
+                //printf("sample 2: %x\n", received_data[i+1]);
+                //printf("concatenated dec: %i\n", concatenated_data);
+                //printf("concatenated hex: %x\n", concatenated_data);
+                //mic_inputs[i/2] = (float)concatenated_data / 65535.0f;
+                mic_inputs[i/2] = (float)concatenated_data / (0.5f*65535.0f);
+                //printf("float val: %f\n", mic_inputs[i/2]);
+            }
+
+            //uint16_t bigArray[1792];
+            //bigArray = received_data;
+            //float *bytes = (float *) received_data;
+            //printf("%1.6f", bytes[0]);
 
 
             srand((unsigned int)time(NULL)); // for random frequency generator
@@ -147,7 +166,7 @@ void das_task(void *pvParameters) {
                 //vTaskDelay(pdMS_TO_TICKS(2.66666666));
                 // 48000/128 Hz
                 
-                data_feeder(); // sets mic_inputs
+                //data_feeder(); // sets mic_inputs
                 input_sig_angle = floor(q);//*0.1
                 //input_sig_angle = 50;
 
@@ -239,7 +258,7 @@ void das_task(void *pvParameters) {
                 dsps_fird_f32_ae32(&fir_ula1, ula1_output_summed, fir_out_ula1, N_buff / fir_decim);       // _ae32 for ESP32 optimisation
                 dsps_fird_f32_ae32(&fir_ula2, ula2_output_summed, fir_out_ula2, N_buff / fir_decim);
                 dsps_fird_f32_ae32(&fir_ula3, ula3_output_summed, fir_out_ula3, N_buff / fir_decim);
-                if (1 == 0){ 
+                if (1 == 1){ 
                     //printf("Filter outputs\n");
                     for (int i = 0; i < FIR_BUFF_OUT_LEN_ULA3; i++) { 
                         printf("%f, ", fir_out_ula1[i]);
