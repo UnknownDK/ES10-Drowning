@@ -133,7 +133,6 @@ void socket_task(void *pvParameters) {
     int ip_protocol = IPPROTO_IP;
 
     struct sockaddr_in dest_addr;
-
     inet_pton(AF_INET, host_ip, &dest_addr.sin_addr);
     dest_addr.sin_family = AF_INET;
     dest_addr.sin_port = htons(33333);
