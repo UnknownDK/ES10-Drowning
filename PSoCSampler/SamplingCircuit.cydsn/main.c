@@ -21,7 +21,8 @@
 #define DMA_DST_BASE (CYDEV_SRAM_BASE)
 
 // Assuming a buffer size of 1024 bytes for demonstration
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 512
+#define DATA_SIZE 384 // For now, half of buffer_size
 
 
 uint8_t I2S_buf_one[BUFFER_SIZE*2];
@@ -74,7 +75,7 @@ uint8 txTD;
 uint8_t InterruptControlTD;
 uint8 InterruptControl; //this variable stores a copy of the SPI_TX_STATUS_MASK_REG with the SPI_INT_ON_TX_EMPTY bit cleared
 
-uint8_t dataBuffer[3584]; //init the data buffer with some values here
+uint8_t dataBuffer[DATA_SIZE*7]; //init the data buffer with some values here
 uint16_t dataIdx;
 
 volatile uint8 transFlag = 0;
@@ -122,7 +123,9 @@ void moveBytes(uint8 *dest, uint8 *src, uint16 size) {
     for (int i = 0; i < size; i += 4) {
         *(destPtr++) = *(srcPtr++);
         *(destPtr++) = *(srcPtr++);
-        srcPtr += 2; // Skip two bytes
+        *(destPtr++) = *(srcPtr++);
+        
+        srcPtr += 1; // Skip two bytes
     }
 }
 
@@ -139,53 +142,53 @@ int main(void)
     for(;;)
     {
        if (dmaIndexOne != 0){
-            CyDmaTdSetAddress(dmaTdi2sOne, LO16((uint32)I2Sone_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_one[1024*circFlag]));
-            moveBytes(&dataBuffer[0], &I2S_buf_one[1024*moveFlag], 1024);
+            CyDmaTdSetAddress(dmaTdi2sOne, LO16((uint32)I2Sone_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_one[BUFFER_SIZE*circFlag]));
+            moveBytes(&dataBuffer[0], &I2S_buf_one[BUFFER_SIZE*moveFlag], BUFFER_SIZE);
             transFlag++;
             circFlagOne = (circFlagOne == 0) ? 1 : 0;
             
             dmaIndexOne = 0;
         }
        if (dmaIndexTwo != 0){
-            CyDmaTdSetAddress(dmaTdi2sTwo, LO16((uint32)I2Stwo_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_two[1024*circFlag]));
-            moveBytes(&dataBuffer[512], &I2S_buf_two[1024*moveFlag], 1024);
+            CyDmaTdSetAddress(dmaTdi2sTwo, LO16((uint32)I2Stwo_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_two[BUFFER_SIZE*circFlag]));
+            moveBytes(&dataBuffer[DATA_SIZE], &I2S_buf_two[BUFFER_SIZE*moveFlag], BUFFER_SIZE);
             transFlag++;
             circFlagTwo = (circFlagTwo == 0) ? 1 : 0;
             dmaIndexTwo = 0;
         }
         
        if (dmaIndexThree != 0){
-            CyDmaTdSetAddress(dmaTdi2sThree, LO16((uint32)I2Sthree_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_three[1024*circFlag]));
-            moveBytes(&dataBuffer[1024], &I2S_buf_three[1024*moveFlag], 1024);
+            CyDmaTdSetAddress(dmaTdi2sThree, LO16((uint32)I2Sthree_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_three[BUFFER_SIZE*circFlag]));
+            moveBytes(&dataBuffer[DATA_SIZE*2], &I2S_buf_three[BUFFER_SIZE*moveFlag], BUFFER_SIZE);
             transFlag++;
             circFlagThree = (circFlagThree == 0) ? 1 : 0;
              dmaIndexThree = 0;
         }
         
        if (dmaIndexFour != 0){
-            CyDmaTdSetAddress(dmaTdi2sFour, LO16((uint32)I2Sfour_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_four[1024*circFlag]));
-            moveBytes(&dataBuffer[1536], &I2S_buf_four[1024*moveFlag], 1024);
+            CyDmaTdSetAddress(dmaTdi2sFour, LO16((uint32)I2Sfour_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_four[BUFFER_SIZE*circFlag]));
+            moveBytes(&dataBuffer[DATA_SIZE*3], &I2S_buf_four[BUFFER_SIZE*moveFlag], BUFFER_SIZE);
             transFlag++;
             circFlagFour = (circFlagFour == 0) ? 1 : 0;
             dmaIndexFour = 0;
         }
        if (dmaIndexFive != 0){
-            CyDmaTdSetAddress(dmaTdi2sFive, LO16((uint32)I2Sfive_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_five[1024*circFlag]));
-            moveBytes(&dataBuffer[2048], &I2S_buf_five[1024*moveFlag], 1024);
+            CyDmaTdSetAddress(dmaTdi2sFive, LO16((uint32)I2Sfive_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_five[BUFFER_SIZE*circFlag]));
+            moveBytes(&dataBuffer[DATA_SIZE*4], &I2S_buf_five[BUFFER_SIZE*moveFlag], BUFFER_SIZE);
             transFlag++;
             circFlagFive = (circFlagFive == 0) ? 1 : 0;
             dmaIndexFive = 0;
         }
        if (dmaIndexSix != 0){
-            CyDmaTdSetAddress(dmaTdi2sSix, LO16((uint32)I2Ssix_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_six[1024*circFlag]));
-            moveBytes(&dataBuffer[2560], &I2S_buf_six[1024*moveFlag], 1024);
+            CyDmaTdSetAddress(dmaTdi2sSix, LO16((uint32)I2Ssix_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_six[BUFFER_SIZE*circFlag]));
+            moveBytes(&dataBuffer[DATA_SIZE*5], &I2S_buf_six[BUFFER_SIZE*moveFlag], BUFFER_SIZE);
             transFlag++;
             circFlagSix = (circFlagSix == 0) ? 1 : 0;
             dmaIndexSix = 0;
         }
        if (dmaIndexSeven != 0){
-            CyDmaTdSetAddress(dmaTdi2sSeven, LO16((uint32)I2Sseven_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_seven[1024*circFlag]));
-            moveBytes(&dataBuffer[3072], &I2S_buf_seven[1024*moveFlag], 1024);
+            CyDmaTdSetAddress(dmaTdi2sSeven, LO16((uint32)I2Sseven_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_seven[BUFFER_SIZE*circFlag]));
+            moveBytes(&dataBuffer[DATA_SIZE*6], &I2S_buf_seven[BUFFER_SIZE*moveFlag], BUFFER_SIZE);
             transFlag++;
             circFlagSeven = (circFlagSeven == 0) ? 1 : 0;
             dmaIndexSeven = 0;
@@ -193,7 +196,7 @@ int main(void)
         
                 // Wait for DMA transfer completion
         //if (dmaIndexOne != 0 && dmaIndexTwo != 0 && dmaIndexThree != 0 && dmaIndexFour != 0 && dmaIndexFive != 0 && dmaIndexSix !=0 && dmaIndexSeven != 0) {
-        if (transFlag > 6){
+        if (transFlag > 5){
             SPIM_TX_STATUS_MASK_REG|=(SPIM_INT_ON_TX_EMPTY);          //start new transfer
             circFlag = (circFlag == 0) ? 1 : 0;
             moveFlag = (moveFlag == 0) ? 1 : 0;
@@ -304,7 +307,7 @@ void DmaTxConfiguration()
    
     /* Set TD_tx transfer count as "burstLength" to transfer the data packet
     * Next Td as InterruptControlTD, and auto increment source address after each transaction .*/
-    CyDmaTdSetConfiguration(txTD,3584,InterruptControlTD, TD_INC_SRC_ADR );
+    CyDmaTdSetConfiguration(txTD,DATA_SIZE*7,InterruptControlTD, TD_INC_SRC_ADR );
    
     /* Set InterruptControlTD with transfer count 1, next TD as txTD
     * Also enable the Terminal Output . This can be used to monitor whether transfer is complete */
