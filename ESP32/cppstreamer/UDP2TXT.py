@@ -5,8 +5,8 @@ from datetime import datetime
 # Host and port to bind the server to
 HOST = '0.0.0.0'
 PORT = 33333
-CHUNK_SIZE = 3584
-MAX_FILE_SIZE = 1 * 1024 * 1024
+CHUNK_SIZE = 8*128*4
+MAX_FILE_SIZE = 10 * 1024 * 1024
 name = str(datetime.now())
 
 def receive_data_and_save(server_socket):
