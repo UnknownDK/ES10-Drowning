@@ -125,7 +125,7 @@ void wifi_init_sta(void)
     }
 }
 
-#define WIFI_SEND_ARRAY_SIZE 128*8 // NUMBER OF INDICES IN ARRAY TO RECEIVE (NOT NUMBER OF BITS) MATCH WITH VAR IN main.c
+#define WIFI_SEND_ARRAY_SIZE 190*8 // NUMBER OF INDICES IN ARRAY TO RECEIVE (NOT NUMBER OF BITS) MATCH WITH VAR IN main.c
 void socket_task(void *pvParameters) {
 
     char host_ip[] = "192.168.1.101";
@@ -147,7 +147,7 @@ void socket_task(void *pvParameters) {
     }
 
 
-    float received_data[WIFI_SEND_ARRAY_SIZE]; 
+    uint8_t received_data[WIFI_SEND_ARRAY_SIZE*4]; 
     while(1) {
         if(xQueueReceive(wifiQueue, &received_data, portMAX_DELAY) == pdPASS) {
             err = send(sock, received_data, WIFI_SEND_ARRAY_SIZE*4, 0); 
