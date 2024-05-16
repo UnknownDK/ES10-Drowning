@@ -1,6 +1,6 @@
 // ======================================================================
 // SamplingCircuit.v generated from TopDesign.cysch
-// 05/12/2024 at 08:17
+// 05/15/2024 at 12:39
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1715,7 +1715,7 @@ module top ;
 		#(.id("6bdb3b93-50cf-4737-bfeb-6bbfc96aeee4"),
 		  .source_clock_id(""),
 		  .divisor(0),
-		  .period("195312500"),
+		  .period("187511719.482468"),
 		  .is_direct(0),
 		  .is_digital(1))
 		I2S_Clock

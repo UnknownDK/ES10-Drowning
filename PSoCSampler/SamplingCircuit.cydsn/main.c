@@ -21,8 +21,9 @@
 #define DMA_DST_BASE (CYDEV_SRAM_BASE)
 
 // Assuming a buffer size of 1024 bytes for demonstration
-#define BUFFER_SIZE 512
-#define DATA_SIZE 384 // For now, half of buffer_size
+#define SAMPLES 190 // Used to be 128
+#define BUFFER_SIZE SAMPLES*4
+#define DATA_SIZE SAMPLES*3 // For now, half of buffer_size
 
 
 uint8_t I2S_buf_one[BUFFER_SIZE*2];
@@ -97,7 +98,7 @@ uint8 circFlagSix = 0;
 uint8 circFlagSeven = 0;
 
 uint8 moveFlag = 0;
-uint8 circFlag = 1;
+volatile uint8 circFlag = 1;
 
 
 uint16 cpuIndex = 0;
@@ -142,7 +143,6 @@ int main(void)
     for(;;)
     {
        if (dmaIndexOne != 0){
-            CyDmaTdSetAddress(dmaTdi2sOne, LO16((uint32)I2Sone_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_one[BUFFER_SIZE*circFlag]));
             moveBytes(&dataBuffer[0], &I2S_buf_one[BUFFER_SIZE*moveFlag], BUFFER_SIZE);
             transFlag++;
             circFlagOne = (circFlagOne == 0) ? 1 : 0;
@@ -150,7 +150,6 @@ int main(void)
             dmaIndexOne = 0;
         }
        if (dmaIndexTwo != 0){
-            CyDmaTdSetAddress(dmaTdi2sTwo, LO16((uint32)I2Stwo_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_two[BUFFER_SIZE*circFlag]));
             moveBytes(&dataBuffer[DATA_SIZE], &I2S_buf_two[BUFFER_SIZE*moveFlag], BUFFER_SIZE);
             transFlag++;
             circFlagTwo = (circFlagTwo == 0) ? 1 : 0;
@@ -158,7 +157,6 @@ int main(void)
         }
         
        if (dmaIndexThree != 0){
-            CyDmaTdSetAddress(dmaTdi2sThree, LO16((uint32)I2Sthree_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_three[BUFFER_SIZE*circFlag]));
             moveBytes(&dataBuffer[DATA_SIZE*2], &I2S_buf_three[BUFFER_SIZE*moveFlag], BUFFER_SIZE);
             transFlag++;
             circFlagThree = (circFlagThree == 0) ? 1 : 0;
@@ -166,28 +164,25 @@ int main(void)
         }
         
        if (dmaIndexFour != 0){
-            CyDmaTdSetAddress(dmaTdi2sFour, LO16((uint32)I2Sfour_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_four[BUFFER_SIZE*circFlag]));
             moveBytes(&dataBuffer[DATA_SIZE*3], &I2S_buf_four[BUFFER_SIZE*moveFlag], BUFFER_SIZE);
             transFlag++;
             circFlagFour = (circFlagFour == 0) ? 1 : 0;
             dmaIndexFour = 0;
         }
        if (dmaIndexFive != 0){
-            CyDmaTdSetAddress(dmaTdi2sFive, LO16((uint32)I2Sfive_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_five[BUFFER_SIZE*circFlag]));
             moveBytes(&dataBuffer[DATA_SIZE*4], &I2S_buf_five[BUFFER_SIZE*moveFlag], BUFFER_SIZE);
             transFlag++;
             circFlagFive = (circFlagFive == 0) ? 1 : 0;
             dmaIndexFive = 0;
         }
        if (dmaIndexSix != 0){
-            CyDmaTdSetAddress(dmaTdi2sSix, LO16((uint32)I2Ssix_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_six[BUFFER_SIZE*circFlag]));
             moveBytes(&dataBuffer[DATA_SIZE*5], &I2S_buf_six[BUFFER_SIZE*moveFlag], BUFFER_SIZE);
             transFlag++;
             circFlagSix = (circFlagSix == 0) ? 1 : 0;
             dmaIndexSix = 0;
         }
        if (dmaIndexSeven != 0){
-            CyDmaTdSetAddress(dmaTdi2sSeven, LO16((uint32)I2Sseven_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_seven[BUFFER_SIZE*circFlag]));
+            
             moveBytes(&dataBuffer[DATA_SIZE*6], &I2S_buf_seven[BUFFER_SIZE*moveFlag], BUFFER_SIZE);
             transFlag++;
             circFlagSeven = (circFlagSeven == 0) ? 1 : 0;
@@ -196,7 +191,7 @@ int main(void)
         
                 // Wait for DMA transfer completion
         //if (dmaIndexOne != 0 && dmaIndexTwo != 0 && dmaIndexThree != 0 && dmaIndexFour != 0 && dmaIndexFive != 0 && dmaIndexSix !=0 && dmaIndexSeven != 0) {
-        if (transFlag > 5){
+        if (transFlag > 6){
             SPIM_TX_STATUS_MASK_REG|=(SPIM_INT_ON_TX_EMPTY);          //start new transfer
             circFlag = (circFlag == 0) ? 1 : 0;
             moveFlag = (moveFlag == 0) ? 1 : 0;
@@ -409,6 +404,7 @@ CY_ISR(DmaI2S_one) {
     //}
     
     dmaIndexOne++;
+    CyDmaTdSetAddress(dmaTdi2sOne, LO16((uint32)I2Sone_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_one[BUFFER_SIZE*circFlag]));
 }
 
 
@@ -421,6 +417,8 @@ CY_ISR(DmaI2S_two) {
         z = z + 2;
     }*/
     dmaIndexTwo++;;
+    CyDmaTdSetAddress(dmaTdi2sTwo, LO16((uint32)I2Stwo_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_two[BUFFER_SIZE*circFlag]));
+            
 }
 
 CY_ISR(DmaI2S_three) {
@@ -432,6 +430,8 @@ CY_ISR(DmaI2S_three) {
         z = z + 2;
     }*/
     dmaIndexThree++;
+    CyDmaTdSetAddress(dmaTdi2sThree, LO16((uint32)I2Sthree_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_three[BUFFER_SIZE*circFlag]));
+            
 }
 
 CY_ISR(DmaI2S_four) {
@@ -443,6 +443,8 @@ CY_ISR(DmaI2S_four) {
         z = z + 2;
     }*/
     dmaIndexFour++;
+    CyDmaTdSetAddress(dmaTdi2sFour, LO16((uint32)I2Sfour_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_four[BUFFER_SIZE*circFlag]));
+            
 }
 CY_ISR(DmaI2S_five) {
     /*
@@ -453,6 +455,8 @@ CY_ISR(DmaI2S_five) {
         z = z + 2;
     }*/
     dmaIndexFive++;
+    CyDmaTdSetAddress(dmaTdi2sFive, LO16((uint32)I2Sfive_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_five[BUFFER_SIZE*circFlag]));
+            
 }
 CY_ISR(DmaI2S_six) {
     /*
@@ -463,6 +467,7 @@ CY_ISR(DmaI2S_six) {
         z = z + 2;
     }*/
     dmaIndexSix++;
+    CyDmaTdSetAddress(dmaTdi2sSix, LO16((uint32)I2Ssix_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_six[BUFFER_SIZE*circFlag]));
 }
 CY_ISR(DmaI2S_seven) {
     /*
@@ -473,6 +478,7 @@ CY_ISR(DmaI2S_seven) {
         z = z + 2;
     }*/
     dmaIndexSeven++;
+    CyDmaTdSetAddress(dmaTdi2sSeven, LO16((uint32)I2Sseven_RX_CH0_F0_PTR), LO16((uint32)&I2S_buf_seven[BUFFER_SIZE*circFlag]));
 }
 
 /* [] END OF FILE */

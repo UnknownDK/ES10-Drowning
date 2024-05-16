@@ -1,5 +1,5 @@
 -- Project:   SamplingCircuit
--- Generated: 05/12/2024 08:17:47
+-- Generated: 05/15/2024 12:39:55
 -- PSoC Creator  4.4
 
 ENTITY SamplingCircuit IS
