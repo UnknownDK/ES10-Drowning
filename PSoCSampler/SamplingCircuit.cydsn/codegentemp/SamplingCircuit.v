@@ -1,6 +1,6 @@
 // ======================================================================
 // SamplingCircuit.v generated from TopDesign.cysch
-// 05/15/2024 at 12:39
+// 05/17/2024 at 14:58
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -824,100 +824,11 @@ module I2S_v2_70_7 (
 
 endmodule
 
-// I2S_v2_70(ClipPresent=false, ClockSyncMode=true, CommonClipThresholds=false, DataBits=32, Direction=1, EnableClipDetect=false, EnableRxByteSwap=false, EnableTxByteSwap=false, InterruptSource=0, NegThresholds=-1, NumRxChannels=0, NumRxLines=1, NumTxChannels=0, NumTxLines=1, PosThresholds=0u, RxDataInterleaved=true, RxDataInterleaving=1, RxDMA_present=1, RxDmaPresent=true, RxInterruptSource=0, RxStsReg0Present=true, RxStsReg1Present=false, RxStsReg2Present=false, StaticBitResolution=true, TermVisibility_clip=false, TermVisibility_clock=true, TermVisibility_rx_dma0=true, TermVisibility_rx_dma1=false, TermVisibility_rx_interrupt=true, TermVisibility_sck=true, TermVisibility_sdi=true, TermVisibility_sdo=false, TermVisibility_tx_dma0=false, TermVisibility_tx_dma1=false, TermVisibility_tx_interrupt=false, TermVisibility_ws=true, TxDataInterleaved=true, TxDataInterleaving=1, TxDMA_present=1, TxDmaPresent=false, TxInterruptSource=0, TxStsReg0Present=false, TxStsReg1Present=false, TxStsReg2Present=false, WordSelect=64, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMMENT=, CY_COMPONENT_NAME=I2S_v2_70, CY_CONFIG_TITLE=I2Seight, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=I2Seight, CY_INSTANCE_SHORT_NAME=I2Seight, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.4, INSTANCE_NAME=I2Seight, )
-module I2S_v2_70_8 (
-    clip,
-    clock,
-    rx_dma0,
-    rx_dma1,
-    rx_interrupt,
-    sck,
-    sdi,
-    sdo,
-    tx_dma0,
-    tx_dma1,
-    tx_interrupt,
-    ws);
-    output     [4:0] clip;
-    input       clock;
-    output     [4:0] rx_dma0;
-    output     [4:0] rx_dma1;
-    output      rx_interrupt;
-    output      sck;
-    input      [4:0] sdi;
-    output     [4:0] sdo;
-    output     [4:0] tx_dma0;
-    output     [4:0] tx_dma1;
-    output      tx_interrupt;
-    output      ws;
-
-
-          wire [4:0] tx_line;
-          wire [4:0] tx_drq1;
-          wire [4:0] rx_drq1;
-          wire [4:0] tx_drq0;
-          wire [4:0] rx_drq0;
-          wire [4:0] rx_line;
-          wire [4:0] clip_detect;
-
-    bI2S_v2_70 bI2S (
-        .clip(clip_detect[4:0]),
-        .clock(clock),
-        .rx_dma0(rx_drq0[4:0]),
-        .rx_dma1(rx_drq1[4:0]),
-        .rx_interrupt(rx_interrupt),
-        .sck(sck),
-        .sdi(rx_line[4:0]),
-        .sdo(tx_line[4:0]),
-        .tx_dma0(tx_drq0[4:0]),
-        .tx_dma1(tx_drq1[4:0]),
-        .tx_interrupt(tx_interrupt),
-        .ws(ws));
-    defparam bI2S.ClockSyncMode = 1;
-    defparam bI2S.DataBits = 32;
-    defparam bI2S.Direction = 1;
-    defparam bI2S.EnableClipDetect = 0;
-    defparam bI2S.EnableRxByteSwap = 0;
-    defparam bI2S.EnableTxByteSwap = 0;
-    defparam bI2S.NumRxChannels = 0;
-    defparam bI2S.NumTxChannels = 0;
-    defparam bI2S.RxDataInterleaving = 1;
-    defparam bI2S.StaticBitResolution = 1;
-    defparam bI2S.TxDataInterleaving = 1;
-    defparam bI2S.WordSelect = 64;
-
-
-    assign clip = clip_detect[4:0];
-
-    assign rx_dma0 = rx_drq0[4:0];
-
-    assign rx_dma1 = rx_drq1[4:0];
-
-    assign rx_line[4:0] = sdi;
-
-    assign sdo = tx_line[4:0];
-
-    assign tx_dma0 = tx_drq0[4:0];
-
-    assign tx_dma1 = tx_drq1[4:0];
-
-
-endmodule
-
 // top
 module top ;
 
           wire  Net_748;
           wire  Net_749;
-          wire  Net_727;
-          wire  Net_724;
-          wire [0:0] Net_723;
-          wire [0:0] Net_722;
-          wire [0:0] Net_721;
-          wire  Net_719;
-          wire  Net_718;
-          wire [0:0] Net_717;
-          wire [0:0] Net_714;
           wire  Net_713;
           wire  Net_710;
           wire [0:0] Net_709;
@@ -986,9 +897,6 @@ module top ;
           wire [0:0] Net_646;
           wire  Net_655;
           wire  Net_747;
-          wire  Net_726;
-          wire [0:0] Net_716;
-          wire  Net_720;
           wire  Net_742;
           wire  Net_684;
           wire [0:0] Net_674;
@@ -996,7 +904,6 @@ module top ;
           wire  Net_74;
           wire [0:0] Net_26;
           wire  Net_639;
-          wire  Net_725;
           wire  Net_712;
           wire  Net_711;
           wire  Net_683;
@@ -1019,7 +926,7 @@ module top ;
           wire [0:0] Net_559;
           wire  Net_663;
           wire  Net_620;
-          wire  Net_743;
+          wire  Net_750;
           wire  Net_535;
           wire  Net_23;
           wire  Net_263;
@@ -1268,7 +1175,7 @@ module top ;
 
     I2S_v2_70_0 I2Sthree (
         .clip(Net_646[0:0]),
-        .clock(Net_743),
+        .clock(Net_750),
         .rx_dma0(Net_616[0:0]),
         .rx_dma1(Net_648[0:0]),
         .rx_interrupt(Net_649),
@@ -1691,7 +1598,7 @@ module top ;
 
     I2S_v2_70_2 I2Sone (
         .clip(Net_636[0:0]),
-        .clock(Net_743),
+        .clock(Net_750),
         .rx_dma0(Net_559[0:0]),
         .rx_dma1(Net_637[0:0]),
         .rx_interrupt(Net_638),
@@ -1719,7 +1626,7 @@ module top ;
 		  .is_direct(0),
 		  .is_digital(1))
 		I2S_Clock
-		 (.clock_out(Net_743));
+		 (.clock_out(Net_750));
 
 
 
@@ -1770,22 +1677,22 @@ module top ;
 		  .pin_aliases("SCK,WS"),
 		  .pin_mode("OO"),
 		  .por_state(4),
-		  .sio_group_cnt(0),
+		  .sio_group_cnt(2),
 		  .sio_hyst(2'b1_1),
-		  .sio_ibuf(""),
-		  .sio_info(4'b00_00),
-		  .sio_obuf(""),
-		  .sio_refsel(""),
-		  .sio_vtrip(""),
-		  .sio_hifreq(""),
-		  .sio_vohsel(""),
+		  .sio_ibuf(2'b0_0),
+		  .sio_info(4'b01_01),
+		  .sio_obuf(2'b0_0),
+		  .sio_refsel(2'b0_0),
+		  .sio_vtrip(2'b1_1),
+		  .sio_hifreq(2'b1_1),
+		  .sio_vohsel(6'b000_000),
 		  .slew_rate(2'b0_0),
 		  .spanning(0),
 		  .use_annotation(2'b0_0),
 		  .vtrip(4'b10_10),
 		  .width(2),
 		  .ovt_hyst_trim(2'b0_0),
-		  .ovt_needed(2'b0_0),
+		  .ovt_needed(2'b1_1),
 		  .ovt_slew_control(4'b00_00),
 		  .input_buffer_sel(4'b00_00))
 		I2S_one
@@ -1889,7 +1796,7 @@ module top ;
 
     I2S_v2_70_3 I2Stwo (
         .clip(Net_628[0:0]),
-        .clock(Net_743),
+        .clock(Net_750),
         .rx_dma0(Net_26[0:0]),
         .rx_dma1(Net_629[0:0]),
         .rx_interrupt(Net_630),
@@ -1903,7 +1810,7 @@ module top ;
 
     I2S_v2_70_4 I2Sfour (
         .clip(Net_657[0:0]),
-        .clock(Net_743),
+        .clock(Net_750),
         .rx_dma0(Net_659[0:0]),
         .rx_dma1(Net_660[0:0]),
         .rx_interrupt(Net_661),
@@ -2082,7 +1989,7 @@ module top ;
 
     I2S_v2_70_5 I2Ssix (
         .clip(Net_672[0:0]),
-        .clock(Net_743),
+        .clock(Net_750),
         .rx_dma0(Net_674[0:0]),
         .rx_dma1(Net_675[0:0]),
         .rx_interrupt(Net_676),
@@ -2261,7 +2168,7 @@ module top ;
 
     I2S_v2_70_6 I2Sfive (
         .clip(Net_686[0:0]),
-        .clock(Net_743),
+        .clock(Net_750),
         .rx_dma0(Net_688[0:0]),
         .rx_dma1(Net_689[0:0]),
         .rx_interrupt(Net_690),
@@ -2366,7 +2273,7 @@ module top ;
 
     I2S_v2_70_7 I2Sseven (
         .clip(Net_700[0:0]),
-        .clock(Net_743),
+        .clock(Net_750),
         .rx_dma0(Net_702[0:0]),
         .rx_dma1(Net_703[0:0]),
         .rx_interrupt(Net_704),
@@ -2467,111 +2374,6 @@ module top ;
 		#(.int_type(2'b10))
 		DmaI2S_seven
 		 (.int_signal(Net_712));
-
-
-    I2S_v2_70_8 I2Seight (
-        .clip(Net_714[0:0]),
-        .clock(Net_743),
-        .rx_dma0(Net_716[0:0]),
-        .rx_dma1(Net_717[0:0]),
-        .rx_interrupt(Net_718),
-        .sck(Net_719),
-        .sdi(Net_720),
-        .sdo(Net_721[0:0]),
-        .tx_dma0(Net_722[0:0]),
-        .tx_dma1(Net_723[0:0]),
-        .tx_interrupt(Net_724),
-        .ws(Net_725));
-
-
-	cy_dma_v1_0
-		#(.drq_type(2'b10))
-		I2S_DMA_eight
-		 (.drq(Net_716[0:0]),
-		  .nrq(Net_726),
-		  .trq(1'b0));
-
-
-	wire [0:0] tmpOE__I2S_eight_ws_net;
-	wire [0:0] tmpFB_0__I2S_eight_ws_net;
-	wire [0:0] tmpIO_0__I2S_eight_ws_net;
-	wire [0:0] tmpINTERRUPT_0__I2S_eight_ws_net;
-	electrical [0:0] tmpSIOVREF__I2S_eight_ws_net;
-
-	cy_psoc3_pins_v1_10
-		#(.id("94882658-57f3-436e-8612-e3be6245144e"),
-		  .drive_mode(3'b110),
-		  .ibuf_enabled(1'b1),
-		  .init_dr_st(1'b1),
-		  .input_clk_en(0),
-		  .input_sync(1'b1),
-		  .input_sync_mode(1'b0),
-		  .intr_mode(2'b00),
-		  .invert_in_clock(0),
-		  .invert_in_clock_en(0),
-		  .invert_in_reset(0),
-		  .invert_out_clock(0),
-		  .invert_out_clock_en(0),
-		  .invert_out_reset(0),
-		  .io_voltage(""),
-		  .layout_mode("CONTIGUOUS"),
-		  .oe_conn(1'b0),
-		  .oe_reset(0),
-		  .oe_sync(1'b0),
-		  .output_clk_en(0),
-		  .output_clock_mode(1'b0),
-		  .output_conn(1'b1),
-		  .output_mode(1'b0),
-		  .output_reset(0),
-		  .output_sync(1'b0),
-		  .pa_in_clock(-1),
-		  .pa_in_clock_en(-1),
-		  .pa_in_reset(-1),
-		  .pa_out_clock(-1),
-		  .pa_out_clock_en(-1),
-		  .pa_out_reset(-1),
-		  .pin_aliases("SCK"),
-		  .pin_mode("O"),
-		  .por_state(4),
-		  .sio_group_cnt(0),
-		  .sio_hyst(1'b1),
-		  .sio_ibuf(""),
-		  .sio_info(2'b00),
-		  .sio_obuf(""),
-		  .sio_refsel(""),
-		  .sio_vtrip(""),
-		  .sio_hifreq(""),
-		  .sio_vohsel(""),
-		  .slew_rate(1'b0),
-		  .spanning(0),
-		  .use_annotation(1'b0),
-		  .vtrip(2'b10),
-		  .width(1),
-		  .ovt_hyst_trim(1'b0),
-		  .ovt_needed(1'b0),
-		  .ovt_slew_control(2'b00),
-		  .input_buffer_sel(2'b00))
-		I2S_eight_ws
-		 (.oe(tmpOE__I2S_eight_ws_net),
-		  .y({Net_725}),
-		  .fb({tmpFB_0__I2S_eight_ws_net[0:0]}),
-		  .io({tmpIO_0__I2S_eight_ws_net[0:0]}),
-		  .siovref(tmpSIOVREF__I2S_eight_ws_net),
-		  .interrupt({tmpINTERRUPT_0__I2S_eight_ws_net[0:0]}),
-		  .in_clock({1'b0}),
-		  .in_clock_en({1'b1}),
-		  .in_reset({1'b0}),
-		  .out_clock({1'b0}),
-		  .out_clock_en({1'b1}),
-		  .out_reset({1'b0}));
-
-	assign tmpOE__I2S_eight_ws_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
-
-
-	cy_isr_v1_0
-		#(.int_type(2'b10))
-		DmaI2S_eight
-		 (.int_signal(Net_726));
 
 
 	wire [0:0] tmpOE__I2S_SDI_five_net;
@@ -2721,80 +2523,6 @@ module top ;
 		  .out_reset({1'b0}));
 
 	assign tmpOE__I2S_SDI_seven_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
-
-	wire [0:0] tmpOE__I2S_SDI_eight_net;
-	wire [0:0] tmpIO_0__I2S_SDI_eight_net;
-	wire [0:0] tmpINTERRUPT_0__I2S_SDI_eight_net;
-	electrical [0:0] tmpSIOVREF__I2S_SDI_eight_net;
-
-	cy_psoc3_pins_v1_10
-		#(.id("60032d31-c774-4ae0-88ec-d8f0867a6cfa"),
-		  .drive_mode(3'b001),
-		  .ibuf_enabled(1'b1),
-		  .init_dr_st(1'b0),
-		  .input_clk_en(0),
-		  .input_sync(1'b0),
-		  .input_sync_mode(1'b0),
-		  .intr_mode(2'b00),
-		  .invert_in_clock(0),
-		  .invert_in_clock_en(0),
-		  .invert_in_reset(0),
-		  .invert_out_clock(0),
-		  .invert_out_clock_en(0),
-		  .invert_out_reset(0),
-		  .io_voltage(""),
-		  .layout_mode("CONTIGUOUS"),
-		  .oe_conn(1'b0),
-		  .oe_reset(0),
-		  .oe_sync(1'b0),
-		  .output_clk_en(0),
-		  .output_clock_mode(1'b0),
-		  .output_conn(1'b0),
-		  .output_mode(1'b0),
-		  .output_reset(0),
-		  .output_sync(1'b0),
-		  .pa_in_clock(-1),
-		  .pa_in_clock_en(-1),
-		  .pa_in_reset(-1),
-		  .pa_out_clock(-1),
-		  .pa_out_clock_en(-1),
-		  .pa_out_reset(-1),
-		  .pin_aliases(""),
-		  .pin_mode("I"),
-		  .por_state(4),
-		  .sio_group_cnt(0),
-		  .sio_hyst(1'b1),
-		  .sio_ibuf(""),
-		  .sio_info(2'b00),
-		  .sio_obuf(""),
-		  .sio_refsel(""),
-		  .sio_vtrip(""),
-		  .sio_hifreq(""),
-		  .sio_vohsel(""),
-		  .slew_rate(1'b0),
-		  .spanning(0),
-		  .use_annotation(1'b0),
-		  .vtrip(2'b00),
-		  .width(1),
-		  .ovt_hyst_trim(1'b0),
-		  .ovt_needed(1'b0),
-		  .ovt_slew_control(2'b00),
-		  .input_buffer_sel(2'b00))
-		I2S_SDI_eight
-		 (.oe(tmpOE__I2S_SDI_eight_net),
-		  .y({1'b0}),
-		  .fb({Net_720}),
-		  .io({tmpIO_0__I2S_SDI_eight_net[0:0]}),
-		  .siovref(tmpSIOVREF__I2S_SDI_eight_net),
-		  .interrupt({tmpINTERRUPT_0__I2S_SDI_eight_net[0:0]}),
-		  .in_clock({1'b0}),
-		  .in_clock_en({1'b1}),
-		  .in_reset({1'b0}),
-		  .out_clock({1'b0}),
-		  .out_clock_en({1'b1}),
-		  .out_reset({1'b0}));
-
-	assign tmpOE__I2S_SDI_eight_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 
 	cy_dma_v1_0

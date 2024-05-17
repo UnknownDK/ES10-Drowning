@@ -1,5 +1,5 @@
 # SamplingCircuit
-# 2024-05-15 10:39:55Z
+# 2024-05-17 12:58:16Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -20,11 +20,9 @@ set_io "I2S_one(1)" iocell 12 3
 set_io "I2S_SDI_two(0)" iocell 3 0
 set_io "I2S_four_ws(0)" iocell 15 0
 set_io "I2S_SDI_four(0)" iocell 15 1
-set_io "I2S_SDI_six(0)" iocell 12 6
-set_io "I2S_six_ws(0)" iocell 12 7
+set_io "I2S_SDI_six(0)" iocell 3 3
+set_io "I2S_six_ws(0)" iocell 15 2
 set_io "I2S_five_ws(0)" iocell 3 5
 set_io "I2S_seven_ws(0)" iocell 0 1
-set_io "I2S_eight_ws(0)" iocell 15 2
 set_io "I2S_SDI_five(0)" iocell 3 6
 set_io "I2S_SDI_seven(0)" iocell 15 3
-set_io "I2S_SDI_eight(0)" iocell 3 3

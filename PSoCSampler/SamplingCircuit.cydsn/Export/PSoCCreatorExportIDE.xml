@@ -168,14 +168,6 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_seven_dma.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_seven.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_seven.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Seight.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Seight.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Seight_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2Seight_PVT.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_eight_dma.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2S_DMA_eight_dma.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_eight.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DmaI2S_eight.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DMA_TX_dma.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DMA_TX_dma.h</File>
         </Files>

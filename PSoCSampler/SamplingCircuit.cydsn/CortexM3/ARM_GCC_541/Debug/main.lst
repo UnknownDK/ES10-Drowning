@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
   28:main.c        **** 
   29:main.c        **** uint8_t I2S_buf_one[BUFFER_SIZE*2];
   30:main.c        **** uint8_t I2S_buf_two[BUFFER_SIZE*2];
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 2
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 2
 
 
   31:main.c        **** uint8_t I2S_buf_three[BUFFER_SIZE*2];
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
   85:main.c        **** volatile uint8 dmaIndexTwo = 0;
   86:main.c        **** volatile uint8 dmaIndexThree = 0;
   87:main.c        **** volatile uint8 dmaIndexFour = 0;
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 3
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 3
 
 
   88:main.c        **** volatile uint8 dmaIndexFive = 0;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  142:main.c        ****     
  143:main.c        ****     for(;;)
  144:main.c        ****     {
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 4
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 4
 
 
  145:main.c        ****        if (dmaIndexOne != 0){
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  199:main.c        ****         }
  200:main.c        ****         
  201:main.c        **** 
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 5
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 5
 
 
  202:main.c        ****     }
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  256:main.c        ****     SPIM_TX_STATUS_MASK_REG&=(~SPIM_INT_ON_TX_EMPTY);
  257:main.c        ****        
  258:main.c        ****     /* Take a copy of SPIM_TX_STATUS_MASK_REG which will be used to disable the TX interrupt using 
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 6
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 6
 
 
  259:main.c        ****     InterruptControl=SPIM_TX_STATUS_MASK_REG;
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  313:main.c        ****     CyDmaChEnable(txChannel,1);
  314:main.c        ****    
  315:main.c        ****     /* Set TD_tx as the initial TD associated with channel_tx */
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 7
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 7
 
 
  316:main.c        ****     CyDmaChSetInitialTd(txChannel, txTD); 
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  370:main.c        ****     CyDmaTdSetAddress(dmaTdi2sFour, LO16((uint32)I2Sfour_RX_CH0_F0_PTR), LO16((uint32)I2S_buf_four)
  371:main.c        ****     CyDmaTdSetAddress(dmaTdi2sFive, LO16((uint32)I2Sfive_RX_CH0_F0_PTR), LO16((uint32)I2S_buf_five)
  372:main.c        ****     CyDmaTdSetAddress(dmaTdi2sSix, LO16((uint32)I2Ssix_RX_CH0_F0_PTR), LO16((uint32)I2S_buf_six));
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 8
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 8
 
 
  373:main.c        ****     CyDmaTdSetAddress(dmaTdi2sSeven, LO16((uint32)I2Sseven_RX_CH0_F0_PTR), LO16((uint32)I2S_buf_sev
@@ -477,8 +477,8 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
   46 0012 4FF43E73 		mov	r3, #760
   47 0016 01FB0322 		mla	r2, r1, r3, r2
   48 001a 92B2     		uxth	r2, r2
-  49 001c 46F24A41 		movw	r1, #25674
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 9
+  49 001c 46F24241 		movw	r1, #25666
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 9
 
 
   50 0020 054B     		ldr	r3, .L3+12
@@ -538,10 +538,10 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
   91 0012 4FF43E73 		mov	r3, #760
   92 0016 01FB0322 		mla	r2, r1, r3, r2
   93 001a 92B2     		uxth	r2, r2
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 10
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 10
 
 
-  94 001c 46F24451 		movw	r1, #25924
+  94 001c 46F24851 		movw	r1, #25928
   95 0020 054B     		ldr	r3, .L7+12
   96 0022 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
   97 0024 FFF7FEFF 		bl	CyDmaTdSetAddress
@@ -598,11 +598,11 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  135 0010 084A     		ldr	r2, .L11+8
  136 0012 4FF43E73 		mov	r3, #760
  137 0016 01FB0322 		mla	r2, r1, r3, r2
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 11
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 11
 
 
  138 001a 92B2     		uxth	r2, r2
- 139 001c 46F24941 		movw	r1, #25673
+ 139 001c 46F24741 		movw	r1, #25671
  140 0020 054B     		ldr	r3, .L11+12
  141 0022 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
  142 0024 FFF7FEFF 		bl	CyDmaTdSetAddress
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  179 000e 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
  180 0010 084A     		ldr	r2, .L15+8
  181 0012 4FF43E73 		mov	r3, #760
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 12
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 12
 
 
  182 0016 01FB0322 		mla	r2, r1, r3, r2
@@ -718,12 +718,12 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  224 000e 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
  225 0010 084A     		ldr	r2, .L19+8
  226 0012 4FF43E73 		mov	r3, #760
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 13
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 13
 
 
  227 0016 01FB0322 		mla	r2, r1, r3, r2
  228 001a 92B2     		uxth	r2, r2
- 229 001c 46F24751 		movw	r1, #25927
+ 229 001c 46F24441 		movw	r1, #25668
  230 0020 054B     		ldr	r3, .L19+12
  231 0022 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
  232 0024 FFF7FEFF 		bl	CyDmaTdSetAddress
@@ -778,12 +778,12 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  269 000e 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
  270 0010 084A     		ldr	r2, .L23+8
  271 0012 4FF43E73 		mov	r3, #760
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 14
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 14
 
 
  272 0016 01FB0322 		mla	r2, r1, r3, r2
  273 001a 92B2     		uxth	r2, r2
- 274 001c 46F24951 		movw	r1, #25929
+ 274 001c 46F24B41 		movw	r1, #25675
  275 0020 054B     		ldr	r3, .L23+12
  276 0022 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
  277 0024 FFF7FEFF 		bl	CyDmaTdSetAddress
@@ -838,11 +838,11 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  315 0010 084A     		ldr	r2, .L27+8
  316 0012 4FF43E73 		mov	r3, #760
  317 0016 01FB0322 		mla	r2, r1, r3, r2
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 15
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 15
 
 
  318 001a 92B2     		uxth	r2, r2
- 319 001c 46F24341 		movw	r1, #25667
+ 319 001c 46F24141 		movw	r1, #25665
  320 0020 054B     		ldr	r3, .L27+12
  321 0022 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
  322 0024 FFF7FEFF 		bl	CyDmaTdSetAddress
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  367              		.loc 1 127 0 discriminator 3
  368 000e 8C78     		ldrb	r4, [r1, #2]	@ zero_extendqisi2
  369 0010 8470     		strb	r4, [r0, #2]
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 16
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 16
 
 
  129:main.c        ****     }
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  417 000c 0846     		mov	r0, r1
  418 000e FFF7FEFF 		bl	DMA_TX_DmaInitialize
  419              	.LVL15:
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 17
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 17
 
 
  420 0012 1B4C     		ldr	r4, .L35+4
@@ -977,14 +977,14 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  431 0024 3070     		strb	r0, [r6]
  297:main.c        ****    
  432              		.loc 1 297 0
- 433 0026 46F24C42 		movw	r2, #25676
+ 433 0026 46F24D42 		movw	r2, #25677
  434 002a B9B2     		uxth	r1, r7
  435 002c 2878     		ldrb	r0, [r5]	@ zero_extendqisi2
  436 002e FFF7FEFF 		bl	CyDmaTdSetAddress
  437              	.LVL18:
  301:main.c        ****    
  438              		.loc 1 301 0
- 439 0032 46F28A42 		movw	r2, #25738
+ 439 0032 46F28C42 		movw	r2, #25740
  440 0036 1549     		ldr	r1, .L35+16
  441 0038 89B2     		uxth	r1, r1
  442 003a 3078     		ldrb	r0, [r6]	@ zero_extendqisi2
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  466 0064 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
  467 0066 FFF7FEFF 		bl	CyDmaChEnable
  468              	.LVL23:
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 18
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 18
 
 
  316:main.c        ****    
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  519 000e 0846     		mov	r0, r1
  520 0010 FFF7FEFF 		bl	I2S_DMA_one_DmaInitialize
  521              	.LVL26:
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 19
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 19
 
 
  522 0014 DFF86CB2 		ldr	fp, .L39+68
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  570 0080 41F6FF73 		movw	r3, #8191
  571 0084 4FF48042 		mov	r2, #16384
  572 0088 0121     		movs	r1, #1
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 20
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 20
 
 
  573 008a 0846     		mov	r0, r1
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  619              	.LVL40:
  353:main.c        ****                             CY_DMA_TD_INC_DST_ADR | I2S_DMA_two__TD_TERMOUT_EN);
  620              		.loc 1 353 0
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 21
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 21
 
 
  621 00e8 99F80000 		ldrb	r0, [r9]	@ zero_extendqisi2
@@ -1251,18 +1251,18 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  662              		.loc 1 367 0
  663 0140 494A     		ldr	r2, .L39+40
  664 0142 92B2     		uxth	r2, r2
- 665 0144 46F24A41 		movw	r1, #25674
+ 665 0144 46F24241 		movw	r1, #25666
  666 0148 9AF80000 		ldrb	r0, [r10]	@ zero_extendqisi2
  667 014c FFF7FEFF 		bl	CyDmaTdSetAddress
  668              	.LVL47:
  368:main.c        ****     CyDmaTdSetAddress(dmaTdi2sThree, LO16((uint32)I2Sthree_RX_CH0_F0_PTR), LO16((uint32)I2S_buf_thr
  669              		.loc 1 368 0
  670 0150 464A     		ldr	r2, .L39+44
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 22
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 22
 
 
  671 0152 92B2     		uxth	r2, r2
- 672 0154 46F24451 		movw	r1, #25924
+ 672 0154 46F24851 		movw	r1, #25928
  673 0158 99F80000 		ldrb	r0, [r9]	@ zero_extendqisi2
  674 015c FFF7FEFF 		bl	CyDmaTdSetAddress
  675              	.LVL48:
@@ -1270,7 +1270,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  676              		.loc 1 369 0
  677 0160 434A     		ldr	r2, .L39+48
  678 0162 92B2     		uxth	r2, r2
- 679 0164 46F24941 		movw	r1, #25673
+ 679 0164 46F24741 		movw	r1, #25671
  680 0168 98F80000 		ldrb	r0, [r8]	@ zero_extendqisi2
  681 016c FFF7FEFF 		bl	CyDmaTdSetAddress
  682              	.LVL49:
@@ -1286,7 +1286,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  690              		.loc 1 371 0
  691 017e 3E4A     		ldr	r2, .L39+56
  692 0180 92B2     		uxth	r2, r2
- 693 0182 46F24751 		movw	r1, #25927
+ 693 0182 46F24441 		movw	r1, #25668
  694 0186 3078     		ldrb	r0, [r6]	@ zero_extendqisi2
  695 0188 FFF7FEFF 		bl	CyDmaTdSetAddress
  696              	.LVL51:
@@ -1294,7 +1294,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  697              		.loc 1 372 0
  698 018c 3B4A     		ldr	r2, .L39+60
  699 018e 92B2     		uxth	r2, r2
- 700 0190 46F24951 		movw	r1, #25929
+ 700 0190 46F24B41 		movw	r1, #25675
  701 0194 2878     		ldrb	r0, [r5]	@ zero_extendqisi2
  702 0196 FFF7FEFF 		bl	CyDmaTdSetAddress
  703              	.LVL52:
@@ -1302,7 +1302,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  704              		.loc 1 373 0
  705 019a 394A     		ldr	r2, .L39+64
  706 019c 92B2     		uxth	r2, r2
- 707 019e 46F24341 		movw	r1, #25667
+ 707 019e 46F24141 		movw	r1, #25665
  708 01a2 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
  709 01a4 FFF7FEFF 		bl	CyDmaTdSetAddress
  710              	.LVL53:
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  718 01b8 214B     		ldr	r3, .L39
  719 01ba 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
  720 01bc FFF7FEFF 		bl	CyDmaChSetInitialTd
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 23
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 23
 
 
  721              	.LVL55:
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  767 020e FFF7FEFF 		bl	CyDmaChEnable
  768              	.LVL63:
  389:main.c        ****     CyDmaChEnable(i2sChannelFive, 1);
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 24
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 24
 
 
  769              		.loc 1 389 0
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  820              		.size	initDMA, .-initDMA
  821              		.section	.text.initComponents,"ax",%progbits
  822              		.align	2
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 25
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 25
 
 
  823              		.global	initComponents
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  229:main.c        ****     CyDelay(START_DELAY);
  868              		.loc 1 229 0
  869 0026 FFF7FEFF 		bl	I2Sfour_Start
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 26
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 26
 
 
  870              	.LVL75:
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  912              	.LVL87:
  243:main.c        ****     I2Sfour_EnableRx();
  913              		.loc 1 243 0
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 27
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 27
 
 
  914 0066 0220     		movs	r0, #2
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  956              		.loc 1 259 0
  957 00a6 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
  958 00a8 184B     		ldr	r3, .L43+4
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 28
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 28
 
 
  959 00aa 1A70     		strb	r2, [r3]
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1002              	.LVL109:
  273:main.c        ****     DmaI2S_six_StartEx(&DmaI2S_six);
  1003              		.loc 1 273 0
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 29
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 29
 
 
  1004 00ec 0220     		movs	r0, #2
@@ -1703,7 +1703,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1020              	.L44:
  1021 0106 00BF     		.align	2
  1022              	.L43:
- 1023 0108 8A640040 		.word	1073767562
+ 1023 0108 8C640040 		.word	1073767564
  1024 010c 00000000 		.word	InterruptControl
  1025 0110 00000000 		.word	DmaI2S_one
  1026 0114 00000000 		.word	DmaI2S_two
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1053              		.syntax unified
  1054              	@ 136 "main.c" 1
  1055 0002 62B6     		CPSIE   i
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 30
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 30
 
 
  1056              	@ 0 "" 2
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1102 0052 5D49     		ldr	r1, .L56+12
  1103 0054 03FB0011 		mla	r1, r3, r0, r1
  1104 0058 5C48     		ldr	r0, .L56+16
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 31
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 31
 
 
  1105 005a FFF7FEFF 		bl	moveBytes
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1150              		.loc 1 166 0
  1151 00aa 444B     		ldr	r3, .L56
  1152 00ac DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 32
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 32
 
 
  1153 00ae 13F0FF0F 		tst	r3, #255
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1199              		.loc 1 175 0
  1200 0108 637B     		ldrb	r3, [r4, #13]	@ zero_extendqisi2
  1201 010a B3FA83F3 		clz	r3, r3
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 33
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 33
 
 
  1202 010e 5B09     		lsrs	r3, r3, #5
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1248 0162 03FB0011 		mla	r1, r3, r0, r1
  1249 0166 2348     		ldr	r0, .L56+56
  1250 0168 FFF7FEFF 		bl	moveBytes
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 34
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 34
 
 
  1251              	.LVL121:
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1297              	.L56:
  1298 01bc 00000000 		.word	.LANCHOR0
  1299 01c0 00000000 		.word	I2S_buf_one
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 35
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 35
 
 
  1300 01c4 00000000 		.word	dataBuffer
@@ -2054,7 +2054,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1310 01ec 220B0000 		.word	dataBuffer+2850
  1311 01f0 00000000 		.word	I2S_buf_seven
  1312 01f4 5C0D0000 		.word	dataBuffer+3420
- 1313 01f8 8A640040 		.word	1073767562
+ 1313 01f8 8C640040 		.word	1073767564
  1314 01fc 00000000 		.word	.LANCHOR1
  1315              		.cfi_endproc
  1316              	.LFE65:
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1354              		.comm	i2sChannelFour,1,1
  1355              		.comm	i2sChannelThree,1,1
  1356              		.comm	i2sChannelTwo,1,1
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 36
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 36
 
 
  1357              		.comm	i2sChannelOne,1,1
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1411              		.size	circFlagOne, 1
  1412              	circFlagOne:
  1413 0009 00       		.space	1
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 37
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 37
 
 
  1414              		.type	circFlagTwo, %object
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1468              		.file 26 "Generated_Source\\PSoC5/DmaI2S_three.h"
  1469              		.file 27 "Generated_Source\\PSoC5/DmaI2S_four.h"
  1470              		.file 28 "Generated_Source\\PSoC5/DmaI2S_five.h"
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 38
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 38
 
 
  1471              		.file 29 "Generated_Source\\PSoC5/DmaI2S_six.h"
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1525 006c 27060000 		.4byte	.LASF8
  1526 0070 02       		.uleb128 0x2
  1527 0071 08       		.byte	0x8
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 39
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 39
 
 
  1528 0072 05       		.byte	0x5
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1582 00e1 08       		.byte	0x8
  1583 00e2 41030000 		.4byte	.LASF20
  1584 00e6 05       		.uleb128 0x5
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 40
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 40
 
 
  1585 00e7 C0000000 		.4byte	.LASF21
@@ -2372,7 +2372,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1613 0126 51       		.byte	0x51
  1614 0127 03       		.uleb128 0x3
  1615 0128 0A       		.byte	0xa
- 1616 0129 4A64     		.2byte	0x644a
+ 1616 0129 4264     		.2byte	0x6442
  1617 012b 00       		.byte	0
  1618 012c 00       		.byte	0
  1619 012d 07       		.uleb128 0x7
@@ -2392,13 +2392,13 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1633 014e 51       		.byte	0x51
  1634 014f 03       		.uleb128 0x3
  1635 0150 0A       		.byte	0xa
- 1636 0151 4465     		.2byte	0x6544
+ 1636 0151 4865     		.2byte	0x6548
  1637 0153 00       		.byte	0
  1638 0154 00       		.byte	0
  1639 0155 07       		.uleb128 0x7
  1640 0156 88040000 		.4byte	.LASF26
  1641 015a 01       		.byte	0x1
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 41
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 41
 
 
  1642 015b A801     		.2byte	0x1a8
@@ -2415,7 +2415,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1653 0176 51       		.byte	0x51
  1654 0177 03       		.uleb128 0x3
  1655 0178 0A       		.byte	0xa
- 1656 0179 4964     		.2byte	0x6449
+ 1656 0179 4764     		.2byte	0x6447
  1657 017b 00       		.byte	0
  1658 017c 00       		.byte	0
  1659 017d 07       		.uleb128 0x7
@@ -2455,10 +2455,10 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1693 01c6 51       		.byte	0x51
  1694 01c7 03       		.uleb128 0x3
  1695 01c8 0A       		.byte	0xa
- 1696 01c9 4765     		.2byte	0x6547
+ 1696 01c9 4464     		.2byte	0x6444
  1697 01cb 00       		.byte	0
  1698 01cc 00       		.byte	0
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 42
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 42
 
 
  1699 01cd 07       		.uleb128 0x7
@@ -2478,7 +2478,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1713 01ee 51       		.byte	0x51
  1714 01ef 03       		.uleb128 0x3
  1715 01f0 0A       		.byte	0xa
- 1716 01f1 4965     		.2byte	0x6549
+ 1716 01f1 4B64     		.2byte	0x644b
  1717 01f3 00       		.byte	0
  1718 01f4 00       		.byte	0
  1719 01f5 07       		.uleb128 0x7
@@ -2498,7 +2498,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1733 0216 51       		.byte	0x51
  1734 0217 03       		.uleb128 0x3
  1735 0218 0A       		.byte	0xa
- 1736 0219 4364     		.2byte	0x6443
+ 1736 0219 4164     		.2byte	0x6441
  1737 021b 00       		.byte	0
  1738 021c 00       		.byte	0
  1739 021d 0A       		.uleb128 0xa
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1753 023d 00000000 		.4byte	.LLST0
  1754 0241 0C       		.uleb128 0xc
  1755 0242 73726300 		.ascii	"src\000"
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 43
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 43
 
 
  1756 0246 01       		.byte	0x1
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1810 02c0 31       		.byte	0x31
  1811 02c1 09       		.uleb128 0x9
  1812 02c2 01       		.uleb128 0x1
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 44
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 44
 
 
  1813 02c3 51       		.byte	0x51
@@ -2620,7 +2620,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1849 02fd 52       		.byte	0x52
  1850 02fe 03       		.uleb128 0x3
  1851 02ff 0A       		.byte	0xa
- 1852 0300 4C64     		.2byte	0x644c
+ 1852 0300 4D64     		.2byte	0x644d
  1853 0302 00       		.byte	0
  1854 0303 13       		.uleb128 0x13
  1855 0304 40000000 		.4byte	.LVL19
@@ -2637,8 +2637,8 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1866 031b 52       		.byte	0x52
  1867 031c 03       		.uleb128 0x3
  1868 031d 0A       		.byte	0xa
- 1869 031e 8A64     		.2byte	0x648a
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 45
+ 1869 031e 8C64     		.2byte	0x648c
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 45
 
 
  1870 0320 00       		.byte	0
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1924 037e B30E0000 		.4byte	0xeb3
  1925 0382 08       		.uleb128 0x8
  1926 0383 7A000000 		.4byte	.LVL25
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 46
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 46
 
 
  1927 0387 A80E0000 		.4byte	0xea8
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  1981 03e1 01       		.uleb128 0x1
  1982 03e2 51       		.byte	0x51
  1983 03e3 01       		.uleb128 0x1
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 47
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 47
 
 
  1984 03e4 31       		.byte	0x31
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2038 0430 31       		.byte	0x31
  2039 0431 09       		.uleb128 0x9
  2040 0432 01       		.uleb128 0x1
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 48
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 48
 
 
  2041 0433 52       		.byte	0x52
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2095 047f 52       		.byte	0x52
  2096 0480 03       		.uleb128 0x3
  2097 0481 0A       		.byte	0xa
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 49
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 49
 
 
  2098 0482 0040     		.2byte	0x4000
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2152 04e9 D4000000 		.4byte	.LVL39
  2153 04ed 870E0000 		.4byte	0xe87
  2154 04f1 13       		.uleb128 0x13
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 50
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 50
 
 
  2155 04f2 E8000000 		.4byte	.LVL40
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2209 054f 03       		.uleb128 0x3
  2210 0550 0A       		.byte	0xa
  2211 0551 F802     		.2byte	0x2f8
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 51
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 51
 
 
  2212 0553 09       		.uleb128 0x9
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2266 05a7 13       		.uleb128 0x13
  2267 05a8 50010000 		.4byte	.LVL47
  2268 05ac 710E0000 		.4byte	0xe71
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 52
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 52
 
 
  2269 05b0 C5050000 		.4byte	0x5c5
@@ -3067,7 +3067,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2272 05b6 51       		.byte	0x51
  2273 05b7 03       		.uleb128 0x3
  2274 05b8 0A       		.byte	0xa
- 2275 05b9 4A64     		.2byte	0x644a
+ 2275 05b9 4264     		.2byte	0x6442
  2276 05bb 09       		.uleb128 0x9
  2277 05bc 01       		.uleb128 0x1
  2278 05bd 52       		.byte	0x52
@@ -3084,7 +3084,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2289 05d4 51       		.byte	0x51
  2290 05d5 03       		.uleb128 0x3
  2291 05d6 0A       		.byte	0xa
- 2292 05d7 4465     		.2byte	0x6544
+ 2292 05d7 4865     		.2byte	0x6548
  2293 05d9 09       		.uleb128 0x9
  2294 05da 01       		.uleb128 0x1
  2295 05db 52       		.byte	0x52
@@ -3101,7 +3101,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2306 05f2 51       		.byte	0x51
  2307 05f3 03       		.uleb128 0x3
  2308 05f4 0A       		.byte	0xa
- 2309 05f5 4964     		.2byte	0x6449
+ 2309 05f5 4764     		.2byte	0x6447
  2310 05f7 09       		.uleb128 0x9
  2311 05f8 01       		.uleb128 0x1
  2312 05f9 52       		.byte	0x52
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2323 0610 51       		.byte	0x51
  2324 0611 03       		.uleb128 0x3
  2325 0612 0A       		.byte	0xa
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 53
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 53
 
 
  2326 0613 4565     		.2byte	0x6545
@@ -3138,7 +3138,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2340 062e 51       		.byte	0x51
  2341 062f 03       		.uleb128 0x3
  2342 0630 0A       		.byte	0xa
- 2343 0631 4765     		.2byte	0x6547
+ 2343 0631 4464     		.2byte	0x6444
  2344 0633 09       		.uleb128 0x9
  2345 0634 01       		.uleb128 0x1
  2346 0635 52       		.byte	0x52
@@ -3155,7 +3155,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2357 064c 51       		.byte	0x51
  2358 064d 03       		.uleb128 0x3
  2359 064e 0A       		.byte	0xa
- 2360 064f 4965     		.2byte	0x6549
+ 2360 064f 4B64     		.2byte	0x644b
  2361 0651 09       		.uleb128 0x9
  2362 0652 01       		.uleb128 0x1
  2363 0653 52       		.byte	0x52
@@ -3172,13 +3172,13 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2374 066a 51       		.byte	0x51
  2375 066b 03       		.uleb128 0x3
  2376 066c 0A       		.byte	0xa
- 2377 066d 4364     		.2byte	0x6443
+ 2377 066d 4164     		.2byte	0x6441
  2378 066f 09       		.uleb128 0x9
  2379 0670 01       		.uleb128 0x1
  2380 0671 52       		.byte	0x52
  2381 0672 05       		.uleb128 0x5
  2382 0673 03       		.byte	0x3
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 54
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 54
 
 
  2383 0674 00000000 		.4byte	I2S_buf_seven
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2437 06f2 1C020000 		.4byte	.LVL64
  2438 06f6 A80E0000 		.4byte	0xea8
  2439 06fa 04070000 		.4byte	0x704
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 55
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 55
 
 
  2440 06fe 09       		.uleb128 0x9
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2494 076a 74070000 		.4byte	0x774
  2495 076e 09       		.uleb128 0x9
  2496 076f 01       		.uleb128 0x1
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 56
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 56
 
 
  2497 0770 50       		.byte	0x50
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2551 07e2 32       		.byte	0x32
  2552 07e3 00       		.byte	0
  2553 07e4 14       		.uleb128 0x14
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 57
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 57
 
 
  2554 07e5 3E000000 		.4byte	.LVL79
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2608 085d 13       		.uleb128 0x13
  2609 085e 6C000000 		.4byte	.LVL88
  2610 0862 160F0000 		.4byte	0xf16
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 58
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 58
 
 
  2611 0866 70080000 		.4byte	0x870
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2665 08db 01       		.uleb128 0x1
  2666 08dc 50       		.byte	0x50
  2667 08dd 01       		.uleb128 0x1
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 59
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 59
 
 
  2668 08de 32       		.byte	0x32
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2722 0950 CE000000 		.4byte	.LVL104
  2723 0954 160F0000 		.4byte	0xf16
  2724 0958 62090000 		.4byte	0x962
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 60
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 60
 
 
  2725 095c 09       		.uleb128 0x9
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2779 09c5 50       		.byte	0x50
  2780 09c6 05       		.uleb128 0x5
  2781 09c7 03       		.byte	0x3
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 61
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 61
 
 
  2782 09c8 00000000 		.4byte	DmaI2S_five
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2836 0a37 14       		.uleb128 0x14
  2837 0a38 08000000 		.4byte	.LVL114
  2838 0a3c 3A070000 		.4byte	0x73a
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 62
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 62
 
 
  2839 0a40 13       		.uleb128 0x13
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2893 0aa3 B80A0000 		.4byte	0xab8
  2894 0aa7 09       		.uleb128 0x9
  2895 0aa8 01       		.uleb128 0x1
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 63
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 63
 
 
  2896 0aa9 50       		.byte	0x50
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  2950 0b06 09       		.uleb128 0x9
  2951 0b07 01       		.uleb128 0x1
  2952 0b08 52       		.byte	0x52
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 64
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 64
 
 
  2953 0b09 03       		.uleb128 0x3
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  3007 0b7b 21       		.byte	0x21
  3008 0b7c 200B0000 		.4byte	0xb20
  3009 0b80 05       		.uleb128 0x5
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 65
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 65
 
 
  3010 0b81 03       		.byte	0x3
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  3064 0bf3 AD000000 		.4byte	0xad
  3065 0bf7 05       		.uleb128 0x5
  3066 0bf8 03       		.byte	0x3
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 66
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 66
 
 
  3067 0bf9 00000000 		.4byte	i2sChannelFive
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  3121 0c6e 05       		.uleb128 0x5
  3122 0c6f 03       		.byte	0x3
  3123 0c70 00000000 		.4byte	dmaTdi2sFour
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 67
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 67
 
 
  3124 0c74 19       		.uleb128 0x19
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  3178 0ce6 03       		.byte	0x3
  3179 0ce7 00000000 		.4byte	InterruptControl
  3180 0ceb 17       		.uleb128 0x17
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 68
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 68
 
 
  3181 0cec 8C000000 		.4byte	0x8c
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  3235 0d62 19       		.uleb128 0x19
  3236 0d63 A1040000 		.4byte	.LASF71
  3237 0d67 01       		.byte	0x1
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 69
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 69
 
 
  3238 0d68 57       		.byte	0x57
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  3292 0dda B7060000 		.4byte	.LASF78
  3293 0dde 01       		.byte	0x1
  3294 0ddf 5F       		.byte	0x5f
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 70
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 70
 
 
  3295 0de0 AD000000 		.4byte	0xad
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  3349 0e55 600E0000 		.4byte	0xe60
  3350 0e59 1A       		.uleb128 0x1a
  3351 0e5a FE000000 		.4byte	0xfe
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 71
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 71
 
 
  3352 0e5e 0C       		.byte	0xc
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  3406 0ed3 1E       		.byte	0x1e
  3407 0ed4 1B       		.uleb128 0x1b
  3408 0ed5 4D030000 		.4byte	.LASF95
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 72
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 72
 
 
  3409 0ed9 4D030000 		.4byte	.LASF95
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  3463 0f4e 23040000 		.4byte	.LASF106
  3464 0f52 23040000 		.4byte	.LASF106
  3465 0f56 15       		.byte	0x15
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 73
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 73
 
 
  3466 0f57 28       		.byte	0x28
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  3520 0fcf 18       		.byte	0x18
  3521 0fd0 18       		.byte	0x18
  3522 0fd1 1B       		.uleb128 0x1b
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 74
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 74
 
 
  3523 0fd2 04040000 		.4byte	.LASF118
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  3577 0016 0B       		.uleb128 0xb
  3578 0017 0B       		.uleb128 0xb
  3579 0018 3E       		.uleb128 0x3e
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 75
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 75
 
 
  3580 0019 0B       		.uleb128 0xb
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  3634 004f 03       		.uleb128 0x3
  3635 0050 0E       		.uleb128 0xe
  3636 0051 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 76
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 76
 
 
  3637 0052 0B       		.uleb128 0xb
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  3691 008e 9742     		.uleb128 0x2117
  3692 0090 19       		.uleb128 0x19
  3693 0091 01       		.uleb128 0x1
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 77
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 77
 
 
  3694 0092 13       		.uleb128 0x13
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  3748 00c8 0B       		.uleb128 0xb
  3749 00c9 3B       		.uleb128 0x3b
  3750 00ca 0B       		.uleb128 0xb
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 78
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 78
 
 
  3751 00cb 49       		.uleb128 0x49
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  3805 0101 40       		.uleb128 0x40
  3806 0102 18       		.uleb128 0x18
  3807 0103 9742     		.uleb128 0x2117
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 79
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 79
 
 
  3808 0105 19       		.uleb128 0x19
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  3862 0141 16       		.uleb128 0x16
  3863 0142 34       		.uleb128 0x34
  3864 0143 00       		.byte	0
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 80
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 80
 
 
  3865 0144 03       		.uleb128 0x3
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  3919 017a 2F       		.uleb128 0x2f
  3920 017b 0B       		.uleb128 0xb
  3921 017c 00       		.byte	0
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 81
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 81
 
 
  3922 017d 00       		.byte	0
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  3976 004d 06000000 		.4byte	.LVL9
  3977 0051 0A000000 		.4byte	.LVL10
  3978 0055 0300     		.2byte	0x3
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 82
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 82
 
 
  3979 0057 71       		.byte	0x71
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  4033 00d6 30       		.byte	0x30
  4034 00d7 9F       		.byte	0x9f
  4035 00d8 06000000 		.4byte	.LVL9
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 83
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 83
 
 
  4036 00dc 20000000 		.4byte	.LFE64
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  4090 0034 3C000000 		.4byte	.LFE75
  4091 0038 00000000 		.4byte	.LFB64
  4092 003c 20000000 		.4byte	.LFE64
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 84
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 84
 
 
  4093 0040 00000000 		.4byte	.LFB67
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  4123      68616E6E 
  4123      656C00
  4124              	.LASF11:
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 85
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 85
 
 
  4125 0071 756E7369 		.ascii	"unsigned int\000"
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  4149      776F5F45 
  4149      6E61626C 
  4149      65527800 
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 86
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 86
 
 
  4150              	.LASF126:
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  4174 01d6 4932535F 		.ascii	"I2S_DMA_four_DmaInitialize\000"
  4174      444D415F 
  4174      666F7572 
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 87
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 87
 
 
  4174      5F446D61 
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  4194      6576656E 
  4194      5F537461 
  4194      727400
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 88
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 88
 
 
  4195              	.LASF88:
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  4218      00
  4219              	.LASF81:
  4220 039e 63697263 		.ascii	"circFlagSeven\000"
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 89
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 89
 
 
  4220      466C6167 
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  4241              	.LASF79:
  4242 044b 63697263 		.ascii	"circFlagFive\000"
  4242      466C6167 
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 90
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 90
 
 
  4242      46697665 
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  4266      626C6500 
  4267              	.LASF13:
  4268 04f0 75696E74 		.ascii	"uint16_t\000"
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 91
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 91
 
 
  4268      31365F74 
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  4288      6500
  4289              	.LASF25:
  4290 058e 446D6149 		.ascii	"DmaI2S_two\000"
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 92
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 92
 
 
  4290      32535F74 
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  4312      466F7572 
  4312      00
  4313              	.LASF30:
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 93
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 93
 
 
  4314 0646 446D6149 		.ascii	"DmaI2S_seven\000"
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  4336      776F5F53 
  4336      74617274 
  4336      00
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 94
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 94
 
 
  4337              	.LASF43:
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 1
  4363              	.LASF48:
  4364 077f 69327343 		.ascii	"i2sChannelThree\000"
  4364      68616E6E 
-ARM GAS  C:\Users\tardi\AppData\Local\Temp\cc16Oria.s 			page 95
+ARM GAS  C:\Users\tardi\AppData\Local\Temp\ccpEVgv7.s 			page 95
 
 
  4364      656C5468 

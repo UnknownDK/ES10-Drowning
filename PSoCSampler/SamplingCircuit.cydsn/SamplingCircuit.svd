@@ -19,1453 +19,7 @@
         <register>
           <name>RX_STATUS_0_REG</name>
           <description>No description available</description>
-          <addressOffset>0x40006467</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>INT</name>
-              <description>Interrupt bit</description>
-              <lsb>7</lsb>
-              <msb>7</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CH1_F1</name>
-              <description>Stereo channel 1 FIFO 1 state</description>
-              <lsb>5</lsb>
-              <msb>5</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH1_F0</name>
-              <description>Stereo channel 1 FIFO 0 state</description>
-              <lsb>4</lsb>
-              <msb>4</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH1_OVRFL</name>
-              <description>Stereo channel 1 FIFO overflow</description>
-              <lsb>3</lsb>
-              <msb>3</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>NO_OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH0_F1</name>
-              <description>Stereo channel 0 FIFO 1 state</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH0_F0</name>
-              <description>Stereo channel 0 FIFO 0 state</description>
-              <lsb>1</lsb>
-              <msb>1</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH0_OVRFL</name>
-              <description>Stereo channel 0 FIFO overflow</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>NO_OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CONTROL_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x40006477</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>RESOLUTION</name>
-              <description>Specifies data bits value. Applicable only if dynamic bit resolution is selected.</description>
-              <lsb>3</lsb>
-              <msb>4</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>Cy8_BIT</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Cy16_BIT</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Cy24_BIT</name>
-                  <description>No description available</description>
-                  <value>2</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Cy32_BIT</name>
-                  <description>No description available</description>
-                  <value>3</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>ENBL</name>
-              <description>Starts the generation of the WS and SCK outputs.</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ENABLED</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>DISABLED</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>RX_ENBL</name>
-              <description>Enables Rx direction. Applicable only if Rx direction presents for the component.</description>
-              <lsb>1</lsb>
-              <msb>1</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ENABLED</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>DISABLED</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>TX_ENBL</name>
-              <description>Enables Tx direction. Applicable only if Tx direction presents for the component.</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ENABLED</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>DISABLED</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
-      <name>I2Sseven</name>
-      <description>No description available</description>
-      <baseAddress>0x0</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x0</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>RX_STATUS_0_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x40006464</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>INT</name>
-              <description>Interrupt bit</description>
-              <lsb>7</lsb>
-              <msb>7</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CH1_F1</name>
-              <description>Stereo channel 1 FIFO 1 state</description>
-              <lsb>5</lsb>
-              <msb>5</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH1_F0</name>
-              <description>Stereo channel 1 FIFO 0 state</description>
-              <lsb>4</lsb>
-              <msb>4</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH1_OVRFL</name>
-              <description>Stereo channel 1 FIFO overflow</description>
-              <lsb>3</lsb>
-              <msb>3</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>NO_OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH0_F1</name>
-              <description>Stereo channel 0 FIFO 1 state</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH0_F0</name>
-              <description>Stereo channel 0 FIFO 0 state</description>
-              <lsb>1</lsb>
-              <msb>1</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH0_OVRFL</name>
-              <description>Stereo channel 0 FIFO overflow</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>NO_OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CONTROL_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x40006474</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>RESOLUTION</name>
-              <description>Specifies data bits value. Applicable only if dynamic bit resolution is selected.</description>
-              <lsb>3</lsb>
-              <msb>4</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>Cy8_BIT</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Cy16_BIT</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Cy24_BIT</name>
-                  <description>No description available</description>
-                  <value>2</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Cy32_BIT</name>
-                  <description>No description available</description>
-                  <value>3</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>ENBL</name>
-              <description>Starts the generation of the WS and SCK outputs.</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ENABLED</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>DISABLED</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>RX_ENBL</name>
-              <description>Enables Rx direction. Applicable only if Rx direction presents for the component.</description>
-              <lsb>1</lsb>
-              <msb>1</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ENABLED</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>DISABLED</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>TX_ENBL</name>
-              <description>Enables Tx direction. Applicable only if Tx direction presents for the component.</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ENABLED</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>DISABLED</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
-      <name>I2Ssix</name>
-      <description>No description available</description>
-      <baseAddress>0x0</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x0</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>RX_STATUS_0_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x40006569</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>INT</name>
-              <description>Interrupt bit</description>
-              <lsb>7</lsb>
-              <msb>7</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CH1_F1</name>
-              <description>Stereo channel 1 FIFO 1 state</description>
-              <lsb>5</lsb>
-              <msb>5</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH1_F0</name>
-              <description>Stereo channel 1 FIFO 0 state</description>
-              <lsb>4</lsb>
-              <msb>4</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH1_OVRFL</name>
-              <description>Stereo channel 1 FIFO overflow</description>
-              <lsb>3</lsb>
-              <msb>3</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>NO_OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH0_F1</name>
-              <description>Stereo channel 0 FIFO 1 state</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH0_F0</name>
-              <description>Stereo channel 0 FIFO 0 state</description>
-              <lsb>1</lsb>
-              <msb>1</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH0_OVRFL</name>
-              <description>Stereo channel 0 FIFO overflow</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>NO_OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CONTROL_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x40006579</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>RESOLUTION</name>
-              <description>Specifies data bits value. Applicable only if dynamic bit resolution is selected.</description>
-              <lsb>3</lsb>
-              <msb>4</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>Cy8_BIT</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Cy16_BIT</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Cy24_BIT</name>
-                  <description>No description available</description>
-                  <value>2</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Cy32_BIT</name>
-                  <description>No description available</description>
-                  <value>3</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>ENBL</name>
-              <description>Starts the generation of the WS and SCK outputs.</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ENABLED</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>DISABLED</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>RX_ENBL</name>
-              <description>Enables Rx direction. Applicable only if Rx direction presents for the component.</description>
-              <lsb>1</lsb>
-              <msb>1</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ENABLED</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>DISABLED</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>TX_ENBL</name>
-              <description>Enables Tx direction. Applicable only if Tx direction presents for the component.</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ENABLED</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>DISABLED</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
-      <name>I2Seight</name>
-      <description>No description available</description>
-      <baseAddress>0x0</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x0</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>RX_STATUS_0_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x40006461</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>INT</name>
-              <description>Interrupt bit</description>
-              <lsb>7</lsb>
-              <msb>7</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CH1_F1</name>
-              <description>Stereo channel 1 FIFO 1 state</description>
-              <lsb>5</lsb>
-              <msb>5</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH1_F0</name>
-              <description>Stereo channel 1 FIFO 0 state</description>
-              <lsb>4</lsb>
-              <msb>4</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH1_OVRFL</name>
-              <description>Stereo channel 1 FIFO overflow</description>
-              <lsb>3</lsb>
-              <msb>3</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>NO_OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH0_F1</name>
-              <description>Stereo channel 0 FIFO 1 state</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH0_F0</name>
-              <description>Stereo channel 0 FIFO 0 state</description>
-              <lsb>1</lsb>
-              <msb>1</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH0_OVRFL</name>
-              <description>Stereo channel 0 FIFO overflow</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>NO_OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CONTROL_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x40006471</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>RESOLUTION</name>
-              <description>Specifies data bits value. Applicable only if dynamic bit resolution is selected.</description>
-              <lsb>3</lsb>
-              <msb>4</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>Cy8_BIT</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Cy16_BIT</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Cy24_BIT</name>
-                  <description>No description available</description>
-                  <value>2</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Cy32_BIT</name>
-                  <description>No description available</description>
-                  <value>3</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>ENBL</name>
-              <description>Starts the generation of the WS and SCK outputs.</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ENABLED</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>DISABLED</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>RX_ENBL</name>
-              <description>Enables Rx direction. Applicable only if Rx direction presents for the component.</description>
-              <lsb>1</lsb>
-              <msb>1</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ENABLED</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>DISABLED</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>TX_ENBL</name>
-              <description>Enables Tx direction. Applicable only if Tx direction presents for the component.</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ENABLED</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>DISABLED</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
-      <name>I2Sthree</name>
-      <description>No description available</description>
-      <baseAddress>0x0</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x0</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>RX_STATUS_0_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x40006469</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>INT</name>
-              <description>Interrupt bit</description>
-              <lsb>7</lsb>
-              <msb>7</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CH1_F1</name>
-              <description>Stereo channel 1 FIFO 1 state</description>
-              <lsb>5</lsb>
-              <msb>5</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH1_F0</name>
-              <description>Stereo channel 1 FIFO 0 state</description>
-              <lsb>4</lsb>
-              <msb>4</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH1_OVRFL</name>
-              <description>Stereo channel 1 FIFO overflow</description>
-              <lsb>3</lsb>
-              <msb>3</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>NO_OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH0_F1</name>
-              <description>Stereo channel 0 FIFO 1 state</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH0_F0</name>
-              <description>Stereo channel 0 FIFO 0 state</description>
-              <lsb>1</lsb>
-              <msb>1</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH0_OVRFL</name>
-              <description>Stereo channel 0 FIFO overflow</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>NO_OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CONTROL_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x4000647F</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>RESOLUTION</name>
-              <description>Specifies data bits value. Applicable only if dynamic bit resolution is selected.</description>
-              <lsb>3</lsb>
-              <msb>4</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>Cy8_BIT</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Cy16_BIT</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Cy24_BIT</name>
-                  <description>No description available</description>
-                  <value>2</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Cy32_BIT</name>
-                  <description>No description available</description>
-                  <value>3</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>ENBL</name>
-              <description>Starts the generation of the WS and SCK outputs.</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ENABLED</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>DISABLED</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>RX_ENBL</name>
-              <description>Enables Rx direction. Applicable only if Rx direction presents for the component.</description>
-              <lsb>1</lsb>
-              <msb>1</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ENABLED</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>DISABLED</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>TX_ENBL</name>
-              <description>Enables Tx direction. Applicable only if Tx direction presents for the component.</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ENABLED</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>DISABLED</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
-      <name>I2Stwo</name>
-      <description>No description available</description>
-      <baseAddress>0x0</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x0</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>RX_STATUS_0_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x40006567</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>INT</name>
-              <description>Interrupt bit</description>
-              <lsb>7</lsb>
-              <msb>7</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>CH1_F1</name>
-              <description>Stereo channel 1 FIFO 1 state</description>
-              <lsb>5</lsb>
-              <msb>5</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH1_F0</name>
-              <description>Stereo channel 1 FIFO 0 state</description>
-              <lsb>4</lsb>
-              <msb>4</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH1_OVRFL</name>
-              <description>Stereo channel 1 FIFO overflow</description>
-              <lsb>3</lsb>
-              <msb>3</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>NO_OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH0_F1</name>
-              <description>Stereo channel 0 FIFO 1 state</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH0_F0</name>
-              <description>Stereo channel 0 FIFO 0 state</description>
-              <lsb>1</lsb>
-              <msb>1</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>EMPTY</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>NOT_EMPTY</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CH0_OVRFL</name>
-              <description>Stereo channel 0 FIFO overflow</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-only</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>NO_OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>OVERFLOW</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>CONTROL_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x40006578</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>RESOLUTION</name>
-              <description>Specifies data bits value. Applicable only if dynamic bit resolution is selected.</description>
-              <lsb>3</lsb>
-              <msb>4</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>Cy8_BIT</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Cy16_BIT</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Cy24_BIT</name>
-                  <description>No description available</description>
-                  <value>2</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Cy32_BIT</name>
-                  <description>No description available</description>
-                  <value>3</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>ENBL</name>
-              <description>Starts the generation of the WS and SCK outputs.</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ENABLED</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>DISABLED</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>RX_ENBL</name>
-              <description>Enables Rx direction. Applicable only if Rx direction presents for the component.</description>
-              <lsb>1</lsb>
-              <msb>1</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ENABLED</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>DISABLED</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>TX_ENBL</name>
-              <description>Enables Tx direction. Applicable only if Tx direction presents for the component.</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>ENABLED</name>
-                  <description>No description available</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>DISABLED</name>
-                  <description>No description available</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
-      <name>I2Sfour</name>
-      <description>No description available</description>
-      <baseAddress>0x0</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x0</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>RX_STATUS_0_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x40006566</addressOffset>
+          <addressOffset>0x40006564</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1694,7 +248,7 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>I2Sone</name>
+      <name>I2Ssix</name>
       <description>No description available</description>
       <baseAddress>0x0</baseAddress>
       <addressBlock>
@@ -1706,7 +260,7 @@
         <register>
           <name>RX_STATUS_0_REG</name>
           <description>No description available</description>
-          <addressOffset>0x4000646E</addressOffset>
+          <addressOffset>0x40006469</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1838,7 +392,1212 @@
         <register>
           <name>CONTROL_REG</name>
           <description>No description available</description>
-          <addressOffset>0x40006472</addressOffset>
+          <addressOffset>0x4000647A</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>RESOLUTION</name>
+              <description>Specifies data bits value. Applicable only if dynamic bit resolution is selected.</description>
+              <lsb>3</lsb>
+              <msb>4</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>Cy8_BIT</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Cy16_BIT</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Cy24_BIT</name>
+                  <description>No description available</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Cy32_BIT</name>
+                  <description>No description available</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>ENBL</name>
+              <description>Starts the generation of the WS and SCK outputs.</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ENABLED</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DISABLED</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>RX_ENBL</name>
+              <description>Enables Rx direction. Applicable only if Rx direction presents for the component.</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ENABLED</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DISABLED</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>TX_ENBL</name>
+              <description>Enables Tx direction. Applicable only if Tx direction presents for the component.</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ENABLED</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DISABLED</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>I2Sseven</name>
+      <description>No description available</description>
+      <baseAddress>0x0</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>RX_STATUS_0_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x40006460</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>INT</name>
+              <description>Interrupt bit</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH1_F1</name>
+              <description>Stereo channel 1 FIFO 1 state</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH1_F0</name>
+              <description>Stereo channel 1 FIFO 0 state</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH1_OVRFL</name>
+              <description>Stereo channel 1 FIFO overflow</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>NO_OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH0_F1</name>
+              <description>Stereo channel 0 FIFO 1 state</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH0_F0</name>
+              <description>Stereo channel 0 FIFO 0 state</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH0_OVRFL</name>
+              <description>Stereo channel 0 FIFO overflow</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>NO_OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x40006470</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>RESOLUTION</name>
+              <description>Specifies data bits value. Applicable only if dynamic bit resolution is selected.</description>
+              <lsb>3</lsb>
+              <msb>4</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>Cy8_BIT</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Cy16_BIT</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Cy24_BIT</name>
+                  <description>No description available</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Cy32_BIT</name>
+                  <description>No description available</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>ENBL</name>
+              <description>Starts the generation of the WS and SCK outputs.</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ENABLED</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DISABLED</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>RX_ENBL</name>
+              <description>Enables Rx direction. Applicable only if Rx direction presents for the component.</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ENABLED</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DISABLED</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>TX_ENBL</name>
+              <description>Enables Tx direction. Applicable only if Tx direction presents for the component.</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ENABLED</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DISABLED</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>I2Sfour</name>
+      <description>No description available</description>
+      <baseAddress>0x0</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x40006471</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>RESOLUTION</name>
+              <description>Specifies data bits value. Applicable only if dynamic bit resolution is selected.</description>
+              <lsb>3</lsb>
+              <msb>4</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>Cy8_BIT</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Cy16_BIT</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Cy24_BIT</name>
+                  <description>No description available</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Cy32_BIT</name>
+                  <description>No description available</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>ENBL</name>
+              <description>Starts the generation of the WS and SCK outputs.</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ENABLED</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DISABLED</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>RX_ENBL</name>
+              <description>Enables Rx direction. Applicable only if Rx direction presents for the component.</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ENABLED</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DISABLED</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>TX_ENBL</name>
+              <description>Enables Tx direction. Applicable only if Tx direction presents for the component.</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ENABLED</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DISABLED</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>RX_STATUS_0_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x40006566</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>INT</name>
+              <description>Interrupt bit</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH1_F1</name>
+              <description>Stereo channel 1 FIFO 1 state</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH1_F0</name>
+              <description>Stereo channel 1 FIFO 0 state</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH1_OVRFL</name>
+              <description>Stereo channel 1 FIFO overflow</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>NO_OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH0_F1</name>
+              <description>Stereo channel 0 FIFO 1 state</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH0_F0</name>
+              <description>Stereo channel 0 FIFO 0 state</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH0_OVRFL</name>
+              <description>Stereo channel 0 FIFO overflow</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>NO_OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>I2Sthree</name>
+      <description>No description available</description>
+      <baseAddress>0x0</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>RX_STATUS_0_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x40006467</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>INT</name>
+              <description>Interrupt bit</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH1_F1</name>
+              <description>Stereo channel 1 FIFO 1 state</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH1_F0</name>
+              <description>Stereo channel 1 FIFO 0 state</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH1_OVRFL</name>
+              <description>Stereo channel 1 FIFO overflow</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>NO_OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH0_F1</name>
+              <description>Stereo channel 0 FIFO 1 state</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH0_F0</name>
+              <description>Stereo channel 0 FIFO 0 state</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH0_OVRFL</name>
+              <description>Stereo channel 0 FIFO overflow</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>NO_OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x40006479</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>RESOLUTION</name>
+              <description>Specifies data bits value. Applicable only if dynamic bit resolution is selected.</description>
+              <lsb>3</lsb>
+              <msb>4</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>Cy8_BIT</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Cy16_BIT</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Cy24_BIT</name>
+                  <description>No description available</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Cy32_BIT</name>
+                  <description>No description available</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>ENBL</name>
+              <description>Starts the generation of the WS and SCK outputs.</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ENABLED</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DISABLED</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>RX_ENBL</name>
+              <description>Enables Rx direction. Applicable only if Rx direction presents for the component.</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ENABLED</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DISABLED</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>TX_ENBL</name>
+              <description>Enables Tx direction. Applicable only if Tx direction presents for the component.</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ENABLED</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DISABLED</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>I2Stwo</name>
+      <description>No description available</description>
+      <baseAddress>0x0</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>RX_STATUS_0_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x40006468</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>INT</name>
+              <description>Interrupt bit</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH1_F1</name>
+              <description>Stereo channel 1 FIFO 1 state</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH1_F0</name>
+              <description>Stereo channel 1 FIFO 0 state</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH1_OVRFL</name>
+              <description>Stereo channel 1 FIFO overflow</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>NO_OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH0_F1</name>
+              <description>Stereo channel 0 FIFO 1 state</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH0_F0</name>
+              <description>Stereo channel 0 FIFO 0 state</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH0_OVRFL</name>
+              <description>Stereo channel 0 FIFO overflow</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>NO_OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x40006478</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>RESOLUTION</name>
+              <description>Specifies data bits value. Applicable only if dynamic bit resolution is selected.</description>
+              <lsb>3</lsb>
+              <msb>4</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>Cy8_BIT</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Cy16_BIT</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Cy24_BIT</name>
+                  <description>No description available</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Cy32_BIT</name>
+                  <description>No description available</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>ENBL</name>
+              <description>Starts the generation of the WS and SCK outputs.</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ENABLED</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DISABLED</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>RX_ENBL</name>
+              <description>Enables Rx direction. Applicable only if Rx direction presents for the component.</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ENABLED</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DISABLED</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>TX_ENBL</name>
+              <description>Enables Tx direction. Applicable only if Tx direction presents for the component.</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ENABLED</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DISABLED</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>I2Sone</name>
+      <description>No description available</description>
+      <baseAddress>0x0</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>RX_STATUS_0_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x40006463</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>INT</name>
+              <description>Interrupt bit</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH1_F1</name>
+              <description>Stereo channel 1 FIFO 1 state</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH1_F0</name>
+              <description>Stereo channel 1 FIFO 0 state</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH1_OVRFL</name>
+              <description>Stereo channel 1 FIFO overflow</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>NO_OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH0_F1</name>
+              <description>Stereo channel 0 FIFO 1 state</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH0_F0</name>
+              <description>Stereo channel 0 FIFO 0 state</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>EMPTY</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NOT_EMPTY</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CH0_OVRFL</name>
+              <description>Stereo channel 0 FIFO overflow</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>NO_OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>OVERFLOW</name>
+                  <description>No description available</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x40006474</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>

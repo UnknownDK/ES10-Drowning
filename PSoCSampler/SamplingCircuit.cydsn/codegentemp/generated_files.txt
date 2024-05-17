@@ -95,14 +95,6 @@
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_seven_dma.h" value="HEADER;;;;;I2S_DMA_seven" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_seven.c" value="SOURCE_C;CortexM3;;;;DmaI2S_seven" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_seven.h" value="HEADER;;;;;DmaI2S_seven" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Seight.c" value="SOURCE_C;CortexM3;;;;I2Seight" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Seight.h" value="HEADER;;;;;I2Seight" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Seight_PM.c" value="SOURCE_C;CortexM3;;;;I2Seight" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2Seight_PVT.h" value="HEADER;;;;;I2Seight" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_eight_dma.c" value="SOURCE_C;CortexM3;;;;I2S_DMA_eight" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\I2S_DMA_eight_dma.h" value="HEADER;;;;;I2S_DMA_eight" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_eight.c" value="SOURCE_C;CortexM3;;;;DmaI2S_eight" />
-  <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DmaI2S_eight.h" value="HEADER;;;;;DmaI2S_eight" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DMA_TX_dma.c" value="SOURCE_C;CortexM3;;;;DMA_TX" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\DMA_TX_dma.h" value="HEADER;;;;;DMA_TX" />
   <file name="C:\Users\tardi\Desktop\ES10-Drowning\PSoCSampler\SamplingCircuit.cydsn\codegentemp\cm3gcc.ld" value="LINKER_SCRIPT;;;b98f980c-3bd1-4fc7-a887-c56a20a46fdd;;cy_boot" />
