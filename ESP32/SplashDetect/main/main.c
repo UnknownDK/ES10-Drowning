@@ -276,11 +276,13 @@ void app_main(void)
             int16_t concatenated_data = (rawinput[i] << 8) | rawinput[i + 1];
             mic_inputs[i/2] = (float)concatenated_data / (0.5f*65535.0f);
         }*/
-        for (int i = 0; i < SAMPLES_PER_MIC*NUMBER_OF_MICS*3 - 1; i +=3){ // 2688 - last int is number of bytes per sample (24 bit = 3)
+        const float gainAdjustments[7] = {2.5087,    1.9870,    1.6316,    1.2372,    1.0000,    2.1668,    2.2491};
+        for (int i = 0; i < SAMPLES_PER_MIC*NUMBER_OF_MICS*3 - 2; i +=3){ // 2688 - last int is number of bytes per sample (24 bit = 3)
             int32_t concatenated_data = (rawinput[i] << 24) | (rawinput[i + 1] << 16) | (rawinput[i + 2] << 8);
-            mic_inputs[i/3] = (float)concatenated_data;// / (pow(2,31)); //-1
-            //mic_inputs[i/3] = (float)concatenated_data / 2147483648.0f
+            mic_inputs[i/3] = ((float)concatenated_data) * gainAdjustments[(uint8_t)(i/(SAMPLES_PER_MIC*3))];// / (pow(2,31)); //-1
+            //mic_inputs[i/3] = (float)concatenated_data;// / 2147483648.0f
         }
+
 
         //uint32_t end_b = dsp_get_cpu_cycle_count();
         //printf("clocks in for loop: %ld\n", end_b-start_b);
