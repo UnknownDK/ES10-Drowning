@@ -1,4 +1,4 @@
-<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="121px" height="381px" viewBox="-0.5 -0.5 121 381" content="&lt;mxfile&gt;&lt;diagram id=&quot;bOPGWugWOSynisxRNHmb&quot; name=&quot;Page-1&quot;&gt;5VdNj5swEP01XCvASUqPuyTZXiKtFFU9WzABq4ZBxglJf30NDF9xs121u2ylgITsNzO2583zSDgszM5PihfpDmOQju/GZ4etHd9fLgPzrYELAQEBiRJxC3kDsBc/gUCX0KOIoZw4akSpRTEFI8xziPQE40phNXU7oJzuWvAELGAfcWmj30Ws0xYN/M8D/hVEknY7e6svrSXjnTNlUqY8xmoEsY3DQoWo21F2DkHW3HW8tHHbG9b+YApy/ZoAvw04cXmk3MLnb3Q0fenyVXjMY6hDXIc9VqnQsC94VFsrU2CDpTqTZuaZ4UFIGaJE1cSybfMYPFE8FuZYa6FMTQTmxl5D3AQ+llrhDxiFuc0zChvZNqv6NTY7WyLgBErDeQRR9k+AGWh1MS5kZV0lSIoBTauhrl7nko5quiKMk5SSfuWBbTMgwm+Qzyz2LeohNsqjaY45TLkuNVf6oVb0YG6wrah3bcp1k6QSjyqibRZ0i7hKoPMizdYneJFJBZJrcZrejX/hZWHRshORwiI1CZb3LM6FO6c6l/+NOpe2Oju3+dVp0/KwDu9alkaXM8rS7g4fJcu375AU+ozCbDvwHUz5Zu4Vj+3FoKgrKvtjvIrdLqWxurNCioMAddca7+ezaNyzqrCDDGmRO62At5qzAsGbdplI8rIU0VWj8XqirjrIb5h796Zi6P3kTxdpe53VVv681MJa6q87lJkOf0Ot+/BLyTa/AA==&lt;/diagram&gt;&lt;/mxfile&gt;">
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="121px" height="381px" viewBox="-0.5 -0.5 121 381" content="&lt;mxfile&gt;&lt;diagram id=&quot;bOPGWugWOSynisxRNHmb&quot; name=&quot;Page-1&quot;&gt;5VdRb5swEP41vE6Ak5Q+tiTpXipViqY9W3ABa4ZDxgnJfv1sOALESldtFZsUkJD93Z3t++7zSXgsLk4vilf5K6YgvdBPTx5be2G4fHwwXwucCYiiDsiUSDsoGICd+AkE+oQeRAr1xFEjSi2qKZhgWUKiJxhXCpup2x7ldNeKZ+AAu4RLF/0uUp13aBQ+DPhXEFne7xysHjtLwXtnyqTOeYrNCGIbj8UKUXej4hSDtNz1vHRx2xvWy8EUlPojAWEXcOTyQLm9QoHqTKfT5z5lhYcyBRvle+y5yYWGXcUTa21MjQ2W60KaWWCGeyFljBJVG8u27WPwTPFUmJOthTJlEVgau4W4CXyutcIfMArz22cUNrJtVvY1Njdh4uAISsNpBBEBL4AFaJuhT1bWF4PUGNG0GUob9C75qKwrwjipKbusPBBuBsT5Df6ZUwCHekiN+GhaYglTrmvNlX6yoh7MLbYVdte2XDdJqvGgEtpmQReJqwx6L5KtPcG7TCqQXIvj9Hr8DS8LV5ciUVjlJsH6nsW58OdU5/K/UefSVWfvNr86XVqe1vFdy9LockZZut3hX8ny8zskhb6hMNsOfEdTvpl/xWN3MSjqisrLMT7Ebp/SWN1FJcVegLprjV/ms2g8cKoQv327Z/qD1Zz0R5/aYhLJ61okV10meI+ouTuKofdLOF2ka3ROT/n9UgtnqT9uT2Y6/A117sMvJdv8Ag==&lt;/diagram&gt;&lt;/mxfile&gt;">
     <defs>
         <radialGradient x1="0%" y1="0%" x2="0%" y2="0%" id="mx-gradient-ffffff-1-e6e6e6-1-r-0">
             <stop offset="0%" style="stop-color: rgb(255, 255, 255); stop-opacity: 1;"/>
@@ -13,13 +13,13 @@
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 30px; margin-left: 1px;">
                         <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
                             <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                                CPU
+                                Memory
                             </div>
                         </div>
                     </div>
                 </foreignObject>
                 <text x="60" y="34" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    CPU
+                    Memory
                 </text>
             </switch>
         </g>
@@ -87,13 +87,13 @@
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 110px; margin-left: 1px;">
                         <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
                             <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                                Memory
+                                CPU
                             </div>
                         </div>
                     </div>
                 </foreignObject>
                 <text x="60" y="114" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    Memory
+                    CPU
                 </text>
             </switch>
         </g>
