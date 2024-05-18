@@ -154,7 +154,7 @@ static float ula_output_summed[SAMPLES_PER_MIC];
 static float fir_output_summed[SAMPLES_PER_MIC];
 
 const float MIC_ARRAY[7] = {0.0,    0.3333,    0.4286,    0.5000,    0.5714,    0.6667,    1.0};
-const float speed_of_sound = 1496;
+const float speed_of_sound = 343;
 const float sampling_frequency = 41.6667e3; 
 static float steerAng = 35;
 
