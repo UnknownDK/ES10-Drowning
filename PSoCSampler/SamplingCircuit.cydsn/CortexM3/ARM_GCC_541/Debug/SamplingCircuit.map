@@ -163,6 +163,7 @@ Discarded input sections
  .text.CyDmaChRoundRobin
                 0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyLib.o)
+ .data          0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyLib.o)
  .bss           0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyLib.o)
  .text.CyUSB_PowerOnCheck
                 0x00000000       0x48 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyLib.o)
@@ -241,6 +242,7 @@ Discarded input sections
                 0x00000000       0x58 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyLib.o)
  .text.CySoftwareReset
                 0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyLib.o)
+ .text.CyDelay  0x00000000       0x2c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyLib.o)
  .text.CyDelayUs
                 0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyLib.o)
  .text.CyXTAL_32KHZ_SetPowerMode
@@ -772,7 +774,7 @@ END GROUP
                 0x00000800                ee_size = (CY_APPL_LOADABLE && ! (CY_EE_IN_BTLDR))?(CY_EE_SIZE / CY_APPL_MAX):CY_EE_SIZE
                 [!provide]                PROVIDE (CY_ECC_OFFSET, ecc_offset)
 
-.text           0x00000000     0x175e
+.text           0x00000000     0x16b6
  CREATE_OBJECT_SYMBOLS
                 0x00000000                PROVIDE (__cy_interrupt_vector, RomVectors)
  *(.romvectors)
@@ -819,393 +821,392 @@ END GROUP
  .text.initDMA  0x000002d8      0x294 .\CortexM3\ARM_GCC_541\Debug\main.o
                 0x000002d8                initDMA
  .text.initComponents
-                0x0000056c      0x12c .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x0000056c       0xac .\CortexM3\ARM_GCC_541\Debug\main.o
                 0x0000056c                initComponents
- .text.main     0x00000698      0x200 .\CortexM3\ARM_GCC_541\Debug\main.o
-                0x00000698                main
+ .text.main     0x00000618      0x200 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000618                main
  .text.cfg_write_bytes32
-                0x00000898       0x34 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000818       0x34 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.AnalogSetDefault
-                0x000008cc       0x28 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x0000084c       0x28 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.CYMEMZERO
-                0x000008f4        0xc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000874        0xc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.ClockSetup
-                0x00000900       0xb8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000880       0xb8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.CYCONFIGCPY
-                0x000009b8        0x8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000938        0x8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.cyfitter_cfg
-                0x000009c0      0x1dc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
-                0x000009c0                cyfitter_cfg
+                0x00000940      0x1dc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000940                cyfitter_cfg
  .text.IntDefaultHandler
-                0x00000b9c       0x10 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x00000b9c                IntDefaultHandler
- .text.Start_c  0x00000bac       0x4c .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x00000bac                Start_c
+                0x00000b1c       0x10 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000b1c                IntDefaultHandler
+ .text.Start_c  0x00000b2c       0x4c .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000b2c                Start_c
  .text.initialize_psoc
-                0x00000bf8       0x6c .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x00000bf8                initialize_psoc
+                0x00000b78       0x6c .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000b78                initialize_psoc
  .text.CyDmacConfigure
-                0x00000c64       0x34 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
-                0x00000c64                CyDmacConfigure
+                0x00000be4       0x34 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
+                0x00000be4                CyDmacConfigure
  .text.CyDmaChEnable
-                0x00000c98       0x38 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
-                0x00000c98                CyDmaChEnable
+                0x00000c18       0x38 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
+                0x00000c18                CyDmaChEnable
  .text.CyDmaChPriority
-                0x00000cd0       0x24 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
-                0x00000cd0                CyDmaChPriority
+                0x00000c50       0x24 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
+                0x00000c50                CyDmaChPriority
  .text.CyDmaChSetExtendedAddress
-                0x00000cf4       0x34 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
-                0x00000cf4                CyDmaChSetExtendedAddress
+                0x00000c74       0x34 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
+                0x00000c74                CyDmaChSetExtendedAddress
  .text.CyDmaChSetInitialTd
-                0x00000d28       0x18 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
-                0x00000d28                CyDmaChSetInitialTd
+                0x00000ca8       0x18 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
+                0x00000ca8                CyDmaChSetInitialTd
  .text.CyDmaChSetRequest
-                0x00000d40       0x20 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
-                0x00000d40                CyDmaChSetRequest
+                0x00000cc0       0x20 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
+                0x00000cc0                CyDmaChSetRequest
  .text.CyDmaChSetConfiguration
-                0x00000d60       0x44 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
-                0x00000d60                CyDmaChSetConfiguration
+                0x00000ce0       0x44 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
+                0x00000ce0                CyDmaChSetConfiguration
  .text.CyDmaTdAllocate
-                0x00000da4       0x34 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
-                0x00000da4                CyDmaTdAllocate
+                0x00000d24       0x34 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
+                0x00000d24                CyDmaTdAllocate
  .text.CyDmaTdSetConfiguration
-                0x00000dd8       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
-                0x00000dd8                CyDmaTdSetConfiguration
+                0x00000d58       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
+                0x00000d58                CyDmaTdSetConfiguration
  .text.CyDmaTdSetAddress
-                0x00000e00       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
-                0x00000e00                CyDmaTdSetAddress
- .text.CyDelay  0x00000e1c       0x2c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyLib.o)
-                0x00000e1c                CyDelay
+                0x00000d80       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
+                0x00000d80                CyDmaTdSetAddress
  .text.SPIM_Enable
-                0x00000e48       0x30 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(SPIM.o)
-                0x00000e48                SPIM_Enable
+                0x00000d9c       0x30 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(SPIM.o)
+                0x00000d9c                SPIM_Enable
  .text.SPIM_ReadTxStatus
-                0x00000e78        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(SPIM.o)
-                0x00000e78                SPIM_ReadTxStatus
+                0x00000dcc        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(SPIM.o)
+                0x00000dcc                SPIM_ReadTxStatus
  .text.SPIM_ReadRxStatus
-                0x00000e84        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(SPIM.o)
-                0x00000e84                SPIM_ReadRxStatus
+                0x00000dd8        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(SPIM.o)
+                0x00000dd8                SPIM_ReadRxStatus
  .text.SPIM_ClearFIFO
-                0x00000e90       0x3c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(SPIM.o)
-                0x00000e90                SPIM_ClearFIFO
+                0x00000de4       0x3c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(SPIM.o)
+                0x00000de4                SPIM_ClearFIFO
  .text.SPIM_Init
-                0x00000ecc       0x2c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(SPIM.o)
-                0x00000ecc                SPIM_Init
+                0x00000e20       0x2c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(SPIM.o)
+                0x00000e20                SPIM_Init
  .text.SPIM_Start
-                0x00000ef8       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(SPIM.o)
-                0x00000ef8                SPIM_Start
+                0x00000e4c       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(SPIM.o)
+                0x00000e4c                SPIM_Start
  .text.I2Stwo_Enable
-                0x00000f14       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Stwo.o)
-                0x00000f14                I2Stwo_Enable
+                0x00000e68       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Stwo.o)
+                0x00000e68                I2Stwo_Enable
  .text.I2Stwo_Init
-                0x00000f3c       0x18 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Stwo.o)
-                0x00000f3c                I2Stwo_Init
+                0x00000e90       0x18 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Stwo.o)
+                0x00000e90                I2Stwo_Init
  .text.I2Stwo_Start
-                0x00000f54       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Stwo.o)
-                0x00000f54                I2Stwo_Start
+                0x00000ea8       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Stwo.o)
+                0x00000ea8                I2Stwo_Start
  .text.I2Stwo_EnableRx
-                0x00000f70       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Stwo.o)
-                0x00000f70                I2Stwo_EnableRx
+                0x00000ec4       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Stwo.o)
+                0x00000ec4                I2Stwo_EnableRx
  .text.DmaI2S_three_SetVector
-                0x00000f98        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_three.o)
-                0x00000f98                DmaI2S_three_SetVector
+                0x00000eec        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_three.o)
+                0x00000eec                DmaI2S_three_SetVector
  .text.DmaI2S_three_SetPriority
-                0x00000fa4       0x10 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_three.o)
-                0x00000fa4                DmaI2S_three_SetPriority
+                0x00000ef8       0x10 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_three.o)
+                0x00000ef8                DmaI2S_three_SetPriority
  .text.DmaI2S_three_Enable
-                0x00000fb4        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_three.o)
-                0x00000fb4                DmaI2S_three_Enable
+                0x00000f08        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_three.o)
+                0x00000f08                DmaI2S_three_Enable
  .text.DmaI2S_three_Disable
-                0x00000fc0        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_three.o)
-                0x00000fc0                DmaI2S_three_Disable
+                0x00000f14        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_three.o)
+                0x00000f14                DmaI2S_three_Disable
  .text.DmaI2S_three_StartEx
-                0x00000fcc       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_three.o)
-                0x00000fcc                DmaI2S_three_StartEx
+                0x00000f20       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_three.o)
+                0x00000f20                DmaI2S_three_StartEx
  .text.I2S_DMA_three_DmaInitialize
-                0x00000fe8       0x3c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_three_dma.o)
-                0x00000fe8                I2S_DMA_three_DmaInitialize
+                0x00000f3c       0x3c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_three_dma.o)
+                0x00000f3c                I2S_DMA_three_DmaInitialize
  .text.I2Sthree_Enable
-                0x00001024       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sthree.o)
-                0x00001024                I2Sthree_Enable
+                0x00000f78       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sthree.o)
+                0x00000f78                I2Sthree_Enable
  .text.I2Sthree_Init
-                0x0000104c       0x18 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sthree.o)
-                0x0000104c                I2Sthree_Init
+                0x00000fa0       0x18 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sthree.o)
+                0x00000fa0                I2Sthree_Init
  .text.I2Sthree_Start
-                0x00001064       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sthree.o)
-                0x00001064                I2Sthree_Start
+                0x00000fb8       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sthree.o)
+                0x00000fb8                I2Sthree_Start
  .text.I2Sthree_EnableRx
-                0x00001080       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sthree.o)
-                0x00001080                I2Sthree_EnableRx
+                0x00000fd4       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sthree.o)
+                0x00000fd4                I2Sthree_EnableRx
  .text.I2S_DMA_one_DmaInitialize
-                0x000010a8       0x3c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_one_dma.o)
-                0x000010a8                I2S_DMA_one_DmaInitialize
+                0x00000ffc       0x3c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_one_dma.o)
+                0x00000ffc                I2S_DMA_one_DmaInitialize
  .text.I2Sone_Enable
-                0x000010e4       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sone.o)
-                0x000010e4                I2Sone_Enable
+                0x00001038       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sone.o)
+                0x00001038                I2Sone_Enable
  .text.I2Sone_Init
-                0x0000110c       0x18 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sone.o)
-                0x0000110c                I2Sone_Init
+                0x00001060       0x18 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sone.o)
+                0x00001060                I2Sone_Init
  .text.I2Sone_Start
-                0x00001124       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sone.o)
-                0x00001124                I2Sone_Start
+                0x00001078       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sone.o)
+                0x00001078                I2Sone_Start
  .text.I2Sone_EnableRx
-                0x00001140       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sone.o)
-                0x00001140                I2Sone_EnableRx
+                0x00001094       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sone.o)
+                0x00001094                I2Sone_EnableRx
  .text.DmaI2S_one_SetVector
-                0x00001168        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_one.o)
-                0x00001168                DmaI2S_one_SetVector
+                0x000010bc        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_one.o)
+                0x000010bc                DmaI2S_one_SetVector
  .text.DmaI2S_one_SetPriority
-                0x00001174       0x10 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_one.o)
-                0x00001174                DmaI2S_one_SetPriority
+                0x000010c8       0x10 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_one.o)
+                0x000010c8                DmaI2S_one_SetPriority
  .text.DmaI2S_one_Enable
-                0x00001184        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_one.o)
-                0x00001184                DmaI2S_one_Enable
+                0x000010d8        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_one.o)
+                0x000010d8                DmaI2S_one_Enable
  .text.DmaI2S_one_Disable
-                0x00001190        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_one.o)
-                0x00001190                DmaI2S_one_Disable
+                0x000010e4        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_one.o)
+                0x000010e4                DmaI2S_one_Disable
  .text.DmaI2S_one_StartEx
-                0x0000119c       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_one.o)
-                0x0000119c                DmaI2S_one_StartEx
+                0x000010f0       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_one.o)
+                0x000010f0                DmaI2S_one_StartEx
  .text.DmaI2S_two_SetVector
-                0x000011b8        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_two.o)
-                0x000011b8                DmaI2S_two_SetVector
+                0x0000110c        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_two.o)
+                0x0000110c                DmaI2S_two_SetVector
  .text.DmaI2S_two_SetPriority
-                0x000011c4       0x10 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_two.o)
-                0x000011c4                DmaI2S_two_SetPriority
+                0x00001118       0x10 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_two.o)
+                0x00001118                DmaI2S_two_SetPriority
  .text.DmaI2S_two_Enable
-                0x000011d4        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_two.o)
-                0x000011d4                DmaI2S_two_Enable
+                0x00001128        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_two.o)
+                0x00001128                DmaI2S_two_Enable
  .text.DmaI2S_two_Disable
-                0x000011e0        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_two.o)
-                0x000011e0                DmaI2S_two_Disable
+                0x00001134        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_two.o)
+                0x00001134                DmaI2S_two_Disable
  .text.DmaI2S_two_StartEx
-                0x000011ec       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_two.o)
-                0x000011ec                DmaI2S_two_StartEx
+                0x00001140       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_two.o)
+                0x00001140                DmaI2S_two_StartEx
  .text.I2S_DMA_two_DmaInitialize
-                0x00001208       0x3c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_two_dma.o)
-                0x00001208                I2S_DMA_two_DmaInitialize
+                0x0000115c       0x3c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_two_dma.o)
+                0x0000115c                I2S_DMA_two_DmaInitialize
  .text.I2Sfour_Enable
-                0x00001244       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfour.o)
-                0x00001244                I2Sfour_Enable
+                0x00001198       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfour.o)
+                0x00001198                I2Sfour_Enable
  .text.I2Sfour_Init
-                0x0000126c       0x18 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfour.o)
-                0x0000126c                I2Sfour_Init
+                0x000011c0       0x18 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfour.o)
+                0x000011c0                I2Sfour_Init
  .text.I2Sfour_Start
-                0x00001284       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfour.o)
-                0x00001284                I2Sfour_Start
+                0x000011d8       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfour.o)
+                0x000011d8                I2Sfour_Start
  .text.I2Sfour_EnableRx
-                0x000012a0       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfour.o)
-                0x000012a0                I2Sfour_EnableRx
+                0x000011f4       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfour.o)
+                0x000011f4                I2Sfour_EnableRx
  .text.I2S_DMA_four_DmaInitialize
-                0x000012c8       0x3c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_four_dma.o)
-                0x000012c8                I2S_DMA_four_DmaInitialize
+                0x0000121c       0x3c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_four_dma.o)
+                0x0000121c                I2S_DMA_four_DmaInitialize
  .text.DmaI2S_four_SetVector
-                0x00001304        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_four.o)
-                0x00001304                DmaI2S_four_SetVector
+                0x00001258        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_four.o)
+                0x00001258                DmaI2S_four_SetVector
  .text.DmaI2S_four_SetPriority
-                0x00001310       0x10 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_four.o)
-                0x00001310                DmaI2S_four_SetPriority
+                0x00001264       0x10 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_four.o)
+                0x00001264                DmaI2S_four_SetPriority
  .text.DmaI2S_four_Enable
-                0x00001320        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_four.o)
-                0x00001320                DmaI2S_four_Enable
+                0x00001274        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_four.o)
+                0x00001274                DmaI2S_four_Enable
  .text.DmaI2S_four_Disable
-                0x0000132c        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_four.o)
-                0x0000132c                DmaI2S_four_Disable
+                0x00001280        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_four.o)
+                0x00001280                DmaI2S_four_Disable
  .text.DmaI2S_four_StartEx
-                0x00001338       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_four.o)
-                0x00001338                DmaI2S_four_StartEx
+                0x0000128c       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_four.o)
+                0x0000128c                DmaI2S_four_StartEx
  .text.I2Ssix_Enable
-                0x00001354       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Ssix.o)
-                0x00001354                I2Ssix_Enable
+                0x000012a8       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Ssix.o)
+                0x000012a8                I2Ssix_Enable
  .text.I2Ssix_Init
-                0x0000137c       0x18 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Ssix.o)
-                0x0000137c                I2Ssix_Init
+                0x000012d0       0x18 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Ssix.o)
+                0x000012d0                I2Ssix_Init
  .text.I2Ssix_Start
-                0x00001394       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Ssix.o)
-                0x00001394                I2Ssix_Start
+                0x000012e8       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Ssix.o)
+                0x000012e8                I2Ssix_Start
  .text.I2Ssix_EnableRx
-                0x000013b0       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Ssix.o)
-                0x000013b0                I2Ssix_EnableRx
+                0x00001304       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Ssix.o)
+                0x00001304                I2Ssix_EnableRx
  .text.I2S_DMA_six_DmaInitialize
-                0x000013d8       0x3c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_six_dma.o)
-                0x000013d8                I2S_DMA_six_DmaInitialize
+                0x0000132c       0x3c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_six_dma.o)
+                0x0000132c                I2S_DMA_six_DmaInitialize
  .text.DmaI2S_six_SetVector
-                0x00001414        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_six.o)
-                0x00001414                DmaI2S_six_SetVector
+                0x00001368        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_six.o)
+                0x00001368                DmaI2S_six_SetVector
  .text.DmaI2S_six_SetPriority
-                0x00001420       0x10 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_six.o)
-                0x00001420                DmaI2S_six_SetPriority
+                0x00001374       0x10 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_six.o)
+                0x00001374                DmaI2S_six_SetPriority
  .text.DmaI2S_six_Enable
-                0x00001430        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_six.o)
-                0x00001430                DmaI2S_six_Enable
+                0x00001384        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_six.o)
+                0x00001384                DmaI2S_six_Enable
  .text.DmaI2S_six_Disable
-                0x0000143c        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_six.o)
-                0x0000143c                DmaI2S_six_Disable
+                0x00001390        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_six.o)
+                0x00001390                DmaI2S_six_Disable
  .text.DmaI2S_six_StartEx
-                0x00001448       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_six.o)
-                0x00001448                DmaI2S_six_StartEx
+                0x0000139c       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_six.o)
+                0x0000139c                DmaI2S_six_StartEx
  .text.I2Sfive_Enable
-                0x00001464       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfive.o)
-                0x00001464                I2Sfive_Enable
+                0x000013b8       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfive.o)
+                0x000013b8                I2Sfive_Enable
  .text.I2Sfive_Init
-                0x0000148c       0x18 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfive.o)
-                0x0000148c                I2Sfive_Init
+                0x000013e0       0x18 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfive.o)
+                0x000013e0                I2Sfive_Init
  .text.I2Sfive_Start
-                0x000014a4       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfive.o)
-                0x000014a4                I2Sfive_Start
+                0x000013f8       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfive.o)
+                0x000013f8                I2Sfive_Start
  .text.I2Sfive_EnableRx
-                0x000014c0       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfive.o)
-                0x000014c0                I2Sfive_EnableRx
+                0x00001414       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfive.o)
+                0x00001414                I2Sfive_EnableRx
  .text.I2S_DMA_five_DmaInitialize
-                0x000014e8       0x3c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_five_dma.o)
-                0x000014e8                I2S_DMA_five_DmaInitialize
+                0x0000143c       0x3c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_five_dma.o)
+                0x0000143c                I2S_DMA_five_DmaInitialize
  .text.DmaI2S_five_SetVector
-                0x00001524        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_five.o)
-                0x00001524                DmaI2S_five_SetVector
+                0x00001478        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_five.o)
+                0x00001478                DmaI2S_five_SetVector
  .text.DmaI2S_five_SetPriority
-                0x00001530       0x10 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_five.o)
-                0x00001530                DmaI2S_five_SetPriority
+                0x00001484       0x10 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_five.o)
+                0x00001484                DmaI2S_five_SetPriority
  .text.DmaI2S_five_Enable
-                0x00001540        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_five.o)
-                0x00001540                DmaI2S_five_Enable
+                0x00001494        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_five.o)
+                0x00001494                DmaI2S_five_Enable
  .text.DmaI2S_five_Disable
-                0x0000154c        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_five.o)
-                0x0000154c                DmaI2S_five_Disable
+                0x000014a0        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_five.o)
+                0x000014a0                DmaI2S_five_Disable
  .text.DmaI2S_five_StartEx
-                0x00001558       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_five.o)
-                0x00001558                DmaI2S_five_StartEx
+                0x000014ac       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_five.o)
+                0x000014ac                DmaI2S_five_StartEx
  .text.I2Sseven_Enable
-                0x00001574       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sseven.o)
-                0x00001574                I2Sseven_Enable
+                0x000014c8       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sseven.o)
+                0x000014c8                I2Sseven_Enable
  .text.I2Sseven_Init
-                0x0000159c       0x18 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sseven.o)
-                0x0000159c                I2Sseven_Init
+                0x000014f0       0x18 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sseven.o)
+                0x000014f0                I2Sseven_Init
  .text.I2Sseven_Start
-                0x000015b4       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sseven.o)
-                0x000015b4                I2Sseven_Start
+                0x00001508       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sseven.o)
+                0x00001508                I2Sseven_Start
  .text.I2Sseven_EnableRx
-                0x000015d0       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sseven.o)
-                0x000015d0                I2Sseven_EnableRx
+                0x00001524       0x28 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sseven.o)
+                0x00001524                I2Sseven_EnableRx
  .text.I2S_DMA_seven_DmaInitialize
-                0x000015f8       0x3c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_seven_dma.o)
-                0x000015f8                I2S_DMA_seven_DmaInitialize
+                0x0000154c       0x3c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_seven_dma.o)
+                0x0000154c                I2S_DMA_seven_DmaInitialize
  .text.DmaI2S_seven_SetVector
-                0x00001634        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_seven.o)
-                0x00001634                DmaI2S_seven_SetVector
+                0x00001588        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_seven.o)
+                0x00001588                DmaI2S_seven_SetVector
  .text.DmaI2S_seven_SetPriority
-                0x00001640       0x10 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_seven.o)
-                0x00001640                DmaI2S_seven_SetPriority
+                0x00001594       0x10 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_seven.o)
+                0x00001594                DmaI2S_seven_SetPriority
  .text.DmaI2S_seven_Enable
-                0x00001650        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_seven.o)
-                0x00001650                DmaI2S_seven_Enable
+                0x000015a4        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_seven.o)
+                0x000015a4                DmaI2S_seven_Enable
  .text.DmaI2S_seven_Disable
-                0x0000165c        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_seven.o)
-                0x0000165c                DmaI2S_seven_Disable
+                0x000015b0        0xc .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_seven.o)
+                0x000015b0                DmaI2S_seven_Disable
  .text.DmaI2S_seven_StartEx
-                0x00001668       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_seven.o)
-                0x00001668                DmaI2S_seven_StartEx
+                0x000015bc       0x1c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_seven.o)
+                0x000015bc                DmaI2S_seven_StartEx
  .text.DMA_TX_DmaInitialize
-                0x00001684       0x3c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DMA_TX_dma.o)
-                0x00001684                DMA_TX_DmaInitialize
- .text          0x000016c0       0x20 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyBootAsmGnu.o)
-                0x000016c0                CyDelayCycles
-                0x000016d0                CyEnterCriticalSection
-                0x000016d8                CyExitCriticalSection
- .text.__errno  0x000016e0        0xc c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
-                0x000016e0                __errno
+                0x000015d8       0x3c .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DMA_TX_dma.o)
+                0x000015d8                DMA_TX_DmaInitialize
+ *fill*         0x00001614        0x4 
+ .text          0x00001618       0x20 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyBootAsmGnu.o)
+                0x00001618                CyDelayCycles
+                0x00001628                CyEnterCriticalSection
+                0x00001630                CyExitCriticalSection
+ .text.__errno  0x00001638        0xc c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                0x00001638                __errno
  .text.__libc_init_array
-                0x000016ec       0x4c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
-                0x000016ec                __libc_init_array
- .text.memcpy   0x00001738       0x16 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
-                0x00001738                memcpy
- .text.memset   0x0000174e       0x10 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
-                0x0000174e                memset
+                0x00001644       0x4c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                0x00001644                __libc_init_array
+ .text.memcpy   0x00001690       0x16 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x00001690                memcpy
+ .text.memset   0x000016a6       0x10 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                0x000016a6                memset
  *(.plt)
  *(.gnu.warning)
  *(.glue_7t)
- .glue_7t       0x0000175e        0x0 linker stubs
+ .glue_7t       0x000016b6        0x0 linker stubs
  *(.glue_7)
- .glue_7        0x0000175e        0x0 linker stubs
+ .glue_7        0x000016b6        0x0 linker stubs
  *(.vfp11_veneer)
- .vfp11_veneer  0x0000175e        0x0 linker stubs
+ .vfp11_veneer  0x000016b6        0x0 linker stubs
  *(.bootloader)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  *(.gcc_except_table)
 
-.v4_bx          0x00001760        0x0
- .v4_bx         0x00001760        0x0 linker stubs
+.v4_bx          0x000016b8        0x0
+ .v4_bx         0x000016b8        0x0 linker stubs
 
-.iplt           0x00001760        0x0
- .iplt          0x00001760        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+.iplt           0x000016b8        0x0
+ .iplt          0x000016b8        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
 
-.eh_frame       0x00001760        0x4
+.eh_frame       0x000016b8        0x4
  *(.eh_frame)
- .eh_frame      0x00001760        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
- .eh_frame      0x00001760        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .eh_frame      0x000016b8        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .eh_frame      0x000016b8        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
                 [!provide]                PROVIDE (__exidx_start, .)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00001764                __exidx_end = .
+                0x000016bc                __exidx_end = .
 
-.rodata         0x00001764       0xbc
+.rodata         0x000016bc       0xbc
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x00001764       0x84 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .rodata        0x000016bc       0x84 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .rodata.str1.1
-                0x000017e8        0x2 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
-                0x000017ec                . = ALIGN (0x4)
- *fill*         0x000017ea        0x2 
+                0x00001740        0x2 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x00001744                . = ALIGN (0x4)
+ *fill*         0x00001742        0x2 
  *(.init)
- .init          0x000017ec        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
-                0x000017ec                _init
- .init          0x000017f0        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
-                0x000017f8                . = ALIGN (0x4)
-                0x000017f8                __preinit_array_start = .
+ .init          0x00001744        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x00001744                _init
+ .init          0x00001748        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x00001750                . = ALIGN (0x4)
+                0x00001750                __preinit_array_start = .
  *(.preinit_array)
-                0x000017f8                __preinit_array_end = .
-                0x000017f8                . = ALIGN (0x4)
-                0x000017f8                __init_array_start = .
+                0x00001750                __preinit_array_end = .
+                0x00001750                . = ALIGN (0x4)
+                0x00001750                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x000017f8        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
- .init_array    0x000017fc        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                0x00001800                __init_array_end = .
-                0x00001800                . = ALIGN (0x4)
+ .init_array    0x00001750        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .init_array    0x00001754        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00001758                __init_array_end = .
+                0x00001758                . = ALIGN (0x4)
  *(.fini)
- .fini          0x00001800        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
-                0x00001800                _fini
- .fini          0x00001804        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
-                0x0000180c                . = ALIGN (0x4)
-                0x0000180c                __fini_array_start = .
+ .fini          0x00001758        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x00001758                _fini
+ .fini          0x0000175c        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x00001764                . = ALIGN (0x4)
+                0x00001764                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x0000180c        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .fini_array    0x00001764        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x00001810                __fini_array_end = .
-                0x00001810                . = ALIGN (0x4)
+                0x00001768                __fini_array_end = .
+                0x00001768                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x00001810                . = ALIGN (0x4)
+                0x00001768                . = ALIGN (0x4)
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x00001810                . = ALIGN (0x4)
-                0x00001810                __cy_regions = .
-                0x00001810        0x4 LONG 0x1820 __cy_region_init_ram
-                0x00001814        0x4 LONG 0x1fff80c8 __cy_region_start_data
-                0x00001818        0x4 LONG 0x90 __cy_region_init_size_ram
-                0x0000181c        0x4 LONG 0x3990 __cy_region_zero_size_ram
-                0x00001820                __cy_regions_end = .
-                0x00001820                . = ALIGN (0x8)
-                0x00001820                _etext = .
+                0x00001768                . = ALIGN (0x4)
+                0x00001768                __cy_regions = .
+                0x00001768        0x4 LONG 0x1778 __cy_region_init_ram
+                0x0000176c        0x4 LONG 0x1fff80c8 __cy_region_start_data
+                0x00001770        0x4 LONG 0x80 __cy_region_init_size_ram
+                0x00001774        0x4 LONG 0x3990 __cy_region_zero_size_ram
+                0x00001778                __cy_regions_end = .
+                0x00001778                . = ALIGN (0x8)
+                0x00001778                _etext = .
 
 .cy_checksum_exclude
-                0x00001820        0x0
+                0x00001778        0x0
  *(.cy_checksum_exclude)
 
 .ramvectors     0x1fff8000       0xc0
@@ -1219,7 +1220,7 @@ END GROUP
  .noinit        0x1fff80c0        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyLib.o)
                 0x1fff80c0                CyResetStatus
 
-.data           0x1fff80c8       0x90 load address 0x00001820
+.data           0x1fff80c8       0x80 load address 0x00001778
                 0x1fff80c8                __cy_region_start_data = .
  *(.jcr)
  .jcr           0x1fff80c8        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
@@ -1232,126 +1233,121 @@ END GROUP
                 0x1fff80cc                circFlag
  *fill*         0x1fff80cd        0x3 
  .data          0x1fff80d0        0x8 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
- .data          0x1fff80d8       0x10 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyLib.o)
-                0x1fff80d8                cydelay_32k_ms
-                0x1fff80dc                cydelay_freq_khz
-                0x1fff80e0                cydelay_freq_mhz
-                0x1fff80e4                cydelay_freq_hz
- .data          0x1fff80e8        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_three_dma.o)
-                0x1fff80e8                I2S_DMA_three_DmaHandle
- .data          0x1fff80e9        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_one_dma.o)
-                0x1fff80e9                I2S_DMA_one_DmaHandle
- .data          0x1fff80ea        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_two_dma.o)
-                0x1fff80ea                I2S_DMA_two_DmaHandle
- .data          0x1fff80eb        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_four_dma.o)
-                0x1fff80eb                I2S_DMA_four_DmaHandle
- .data          0x1fff80ec        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_six_dma.o)
-                0x1fff80ec                I2S_DMA_six_DmaHandle
- .data          0x1fff80ed        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_five_dma.o)
-                0x1fff80ed                I2S_DMA_five_DmaHandle
- .data          0x1fff80ee        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_seven_dma.o)
-                0x1fff80ee                I2S_DMA_seven_DmaHandle
- .data          0x1fff80ef        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DMA_TX_dma.o)
-                0x1fff80ef                DMA_TX_DmaHandle
+ .data          0x1fff80d8        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_three_dma.o)
+                0x1fff80d8                I2S_DMA_three_DmaHandle
+ .data          0x1fff80d9        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_one_dma.o)
+                0x1fff80d9                I2S_DMA_one_DmaHandle
+ .data          0x1fff80da        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_two_dma.o)
+                0x1fff80da                I2S_DMA_two_DmaHandle
+ .data          0x1fff80db        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_four_dma.o)
+                0x1fff80db                I2S_DMA_four_DmaHandle
+ .data          0x1fff80dc        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_six_dma.o)
+                0x1fff80dc                I2S_DMA_six_DmaHandle
+ .data          0x1fff80dd        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_five_dma.o)
+                0x1fff80dd                I2S_DMA_five_DmaHandle
+ .data          0x1fff80de        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_seven_dma.o)
+                0x1fff80de                I2S_DMA_seven_DmaHandle
+ .data          0x1fff80df        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DMA_TX_dma.o)
+                0x1fff80df                DMA_TX_DmaHandle
  .data.impure_data
-                0x1fff80f0       0x60 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x1fff80e0       0x60 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
  .data._impure_ptr
-                0x1fff8150        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
-                0x1fff8150                _impure_ptr
-                0x1fff8158                . = ALIGN (0x8)
- *fill*         0x1fff8154        0x4 
+                0x1fff8140        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x1fff8140                _impure_ptr
+                0x1fff8148                . = ALIGN (0x8)
+ *fill*         0x1fff8144        0x4 
  *(.ram)
-                0x1fff8158                _edata = .
+                0x1fff8148                _edata = .
 
-.igot.plt       0x1fff8158        0x0 load address 0x000018b0
- .igot.plt      0x1fff8158        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+.igot.plt       0x1fff8148        0x0 load address 0x000017f8
+ .igot.plt      0x1fff8148        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
-.bss            0x1fff8158     0x3990 load address 0x000018b0
-                0x1fff8158                PROVIDE (__bss_start__, .)
+.bss            0x1fff8148     0x3990 load address 0x000017f8
+                0x1fff8148                PROVIDE (__bss_start__, .)
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x1fff8158       0x1c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
- .bss           0x1fff8174       0x12 .\CortexM3\ARM_GCC_541\Debug\main.o
-                0x1fff8174                dmaIndexOne
-                0x1fff8175                dmaIndexTwo
-                0x1fff8176                dmaIndexThree
-                0x1fff8177                dmaIndexFour
-                0x1fff8178                dmaIndexFive
-                0x1fff8179                dmaIndexSix
-                0x1fff817a                dmaIndexSeven
-                0x1fff817b                moveFlag
-                0x1fff817c                transFlag
-                0x1fff817d                circFlagOne
-                0x1fff817e                circFlagTwo
-                0x1fff817f                circFlagThree
-                0x1fff8180                circFlagFour
-                0x1fff8181                circFlagFive
-                0x1fff8182                circFlagSix
-                0x1fff8183                circFlagSeven
-                0x1fff8184                cpuIndex
- .bss           0x1fff8186        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(SPIM.o)
-                0x1fff8186                SPIM_initVar
- .bss           0x1fff8187        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Stwo.o)
-                0x1fff8187                I2Stwo_initVar
- .bss           0x1fff8188        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sthree.o)
-                0x1fff8188                I2Sthree_initVar
- .bss           0x1fff8189        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sone.o)
-                0x1fff8189                I2Sone_initVar
- .bss           0x1fff818a        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfour.o)
-                0x1fff818a                I2Sfour_initVar
- .bss           0x1fff818b        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Ssix.o)
-                0x1fff818b                I2Ssix_initVar
- .bss           0x1fff818c        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfive.o)
-                0x1fff818c                I2Sfive_initVar
- .bss           0x1fff818d        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sseven.o)
-                0x1fff818d                I2Sseven_initVar
+ .bss           0x1fff8148       0x1c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .bss           0x1fff8164       0x12 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x1fff8164                dmaIndexOne
+                0x1fff8165                dmaIndexTwo
+                0x1fff8166                dmaIndexThree
+                0x1fff8167                dmaIndexFour
+                0x1fff8168                dmaIndexFive
+                0x1fff8169                dmaIndexSix
+                0x1fff816a                dmaIndexSeven
+                0x1fff816b                moveFlag
+                0x1fff816c                transFlag
+                0x1fff816d                circFlagOne
+                0x1fff816e                circFlagTwo
+                0x1fff816f                circFlagThree
+                0x1fff8170                circFlagFour
+                0x1fff8171                circFlagFive
+                0x1fff8172                circFlagSix
+                0x1fff8173                circFlagSeven
+                0x1fff8174                cpuIndex
+ .bss           0x1fff8176        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(SPIM.o)
+                0x1fff8176                SPIM_initVar
+ .bss           0x1fff8177        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Stwo.o)
+                0x1fff8177                I2Stwo_initVar
+ .bss           0x1fff8178        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sthree.o)
+                0x1fff8178                I2Sthree_initVar
+ .bss           0x1fff8179        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sone.o)
+                0x1fff8179                I2Sone_initVar
+ .bss           0x1fff817a        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfour.o)
+                0x1fff817a                I2Sfour_initVar
+ .bss           0x1fff817b        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Ssix.o)
+                0x1fff817b                I2Ssix_initVar
+ .bss           0x1fff817c        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfive.o)
+                0x1fff817c                I2Sfive_initVar
+ .bss           0x1fff817d        0x1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sseven.o)
+                0x1fff817d                I2Sseven_initVar
  *(COMMON)
- *fill*         0x1fff818e        0x2 
- COMMON         0x1fff8190     0x3958 .\CortexM3\ARM_GCC_541\Debug\main.o
-                0x1fff8190                i2sChannelThree
-                0x1fff8194                I2S_buf_six
-                0x1fff8784                I2S_buf_one
-                0x1fff8d74                dmaTdi2sTwo
-                0x1fff8d75                dmaTdi2sOne
-                0x1fff8d76                dmaTdi2sFive
-                0x1fff8d77                dmaTdi2sSix
-                0x1fff8d78                txChannel
-                0x1fff8d7c                I2S_buf_five
-                0x1fff936c                I2S_buf_two
-                0x1fff995c                dmaTdi2sThree
-                0x1fff995d                i2sChannelFour
-                0x1fff995e                i2sChannelOne
-                0x1fff9960                I2S_buf_seven
-                0x1fff9f50                dataBuffer
-                0x1fffaee6                spiChannel
-                0x1fffaee7                i2sChannelTwo
-                0x1fffaee8                i2sChannelSix
-                0x1fffaee9                InterruptControlTD
-                0x1fffaeea                dmaTdi2sSeven
-                0x1fffaeeb                InterruptControl
-                0x1fffaeec                i2sChannelSeven
-                0x1fffaeed                i2sChannelFive
-                0x1fffaef0                hex_string
-                0x1fffaf00                I2S_buf_three
-                0x1fffb4f0                txTD
-                0x1fffb4f4                I2S_buf_four
-                0x1fffbae4                dmaTdi2sFour
-                0x1fffbae6                dataIdx
-                0x1fffbae8                . = ALIGN (0x8)
+ *fill*         0x1fff817e        0x2 
+ COMMON         0x1fff8180     0x3958 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x1fff8180                i2sChannelThree
+                0x1fff8184                I2S_buf_six
+                0x1fff8774                I2S_buf_one
+                0x1fff8d64                dmaTdi2sTwo
+                0x1fff8d65                dmaTdi2sOne
+                0x1fff8d66                dmaTdi2sFive
+                0x1fff8d67                dmaTdi2sSix
+                0x1fff8d68                txChannel
+                0x1fff8d6c                I2S_buf_five
+                0x1fff935c                I2S_buf_two
+                0x1fff994c                dmaTdi2sThree
+                0x1fff994d                i2sChannelFour
+                0x1fff994e                i2sChannelOne
+                0x1fff9950                I2S_buf_seven
+                0x1fff9f40                dataBuffer
+                0x1fffaed6                spiChannel
+                0x1fffaed7                i2sChannelTwo
+                0x1fffaed8                i2sChannelSix
+                0x1fffaed9                InterruptControlTD
+                0x1fffaeda                dmaTdi2sSeven
+                0x1fffaedb                InterruptControl
+                0x1fffaedc                i2sChannelSeven
+                0x1fffaedd                i2sChannelFive
+                0x1fffaee0                hex_string
+                0x1fffaef0                I2S_buf_three
+                0x1fffb4e0                txTD
+                0x1fffb4e4                I2S_buf_four
+                0x1fffbad4                dmaTdi2sFour
+                0x1fffbad6                dataIdx
+                0x1fffbad8                . = ALIGN (0x8)
  *(.ram.b)
-                0x1fffbae8                _end = .
-                0x1fffbae8                __end = .
-                0x1fffbae8                PROVIDE (end, .)
-                0x1fffbae8                PROVIDE (__bss_end__, .)
-                0x00001820                __cy_region_init_ram = LOADADDR (.data)
-                0x00000090                __cy_region_init_size_ram = (_edata - ADDR (.data))
+                0x1fffbad8                _end = .
+                0x1fffbad8                __end = .
+                0x1fffbad8                PROVIDE (end, .)
+                0x1fffbad8                PROVIDE (__bss_end__, .)
+                0x00001778                __cy_region_init_ram = LOADADDR (.data)
+                0x00000080                __cy_region_init_size_ram = (_edata - ADDR (.data))
                 0x00003990                __cy_region_zero_size_ram = (_end - _edata)
 
-.heap           0x1fffbae8       0x80 load address 0x000018b0
-                0x1fffbae8                . = _end
-                0x1fffbb68                . = (. + 0x80)
- *fill*         0x1fffbae8       0x80 
-                0x1fffbb68                __cy_heap_limit = .
+.heap           0x1fffbad8       0x80 load address 0x000017f8
+                0x1fffbad8                . = _end
+                0x1fffbb58                . = (. + 0x80)
+ *fill*         0x1fffbad8       0x80 
+                0x1fffbb58                __cy_heap_limit = .
 
 .stack          0x20007800      0x800
                 0x20007800                __cy_stack_limit = .
@@ -1398,8 +1394,8 @@ END GROUP
  .cymeta        0x90500000        0xc .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
                 0x90500000                cy_metadata
 
-.rel.dyn        0x000018b0        0x0 load address 0x9050000c
- .rel.iplt      0x000018b0        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+.rel.dyn        0x000017f8        0x0 load address 0x9050000c
+ .rel.iplt      0x000017f8        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
 .stab
  *(.stab)
@@ -1491,41 +1487,41 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x846d
+.debug_info     0x00000000     0x82d3
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000     0x1014 .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_info    0x00001014      0x71f .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_info    0x00001733      0x139 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
- .debug_info    0x0000186c      0x3cf .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_info    0x00001c3b      0x94e .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
- .debug_info    0x00002589     0x1374 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyLib.o)
- .debug_info    0x000038fd      0xa2a .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(cyPm.o)
- .debug_info    0x00004327      0x493 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(SPIM.o)
- .debug_info    0x000047ba      0x237 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Stwo.o)
- .debug_info    0x000049f1      0x2d2 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_three.o)
- .debug_info    0x00004cc3      0x1a8 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_three_dma.o)
- .debug_info    0x00004e6b      0x237 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sthree.o)
- .debug_info    0x000050a2      0x1a9 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_one_dma.o)
- .debug_info    0x0000524b      0x237 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sone.o)
- .debug_info    0x00005482      0x2d2 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_one.o)
- .debug_info    0x00005754      0x2d2 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_two.o)
- .debug_info    0x00005a26      0x1a8 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_two_dma.o)
- .debug_info    0x00005bce      0x237 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfour.o)
- .debug_info    0x00005e05      0x1a8 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_four_dma.o)
- .debug_info    0x00005fad      0x2d2 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_four.o)
- .debug_info    0x0000627f      0x237 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Ssix.o)
- .debug_info    0x000064b6      0x1a8 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_six_dma.o)
- .debug_info    0x0000665e      0x2d2 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_six.o)
- .debug_info    0x00006930      0x237 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfive.o)
- .debug_info    0x00006b67      0x1aa .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_five_dma.o)
- .debug_info    0x00006d11      0x2d2 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_five.o)
- .debug_info    0x00006fe3      0x237 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sseven.o)
- .debug_info    0x0000721a      0x1a8 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_seven_dma.o)
- .debug_info    0x000073c2      0x2d2 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_seven.o)
- .debug_info    0x00007694      0x1a7 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DMA_TX_dma.o)
- .debug_info    0x0000783b       0x95 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyBootAsmGnu.o)
- .debug_info    0x000078d0      0x64d .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyFlash.o)
- .debug_info    0x00007f1d      0x550 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CySpc.o)
+ .debug_info    0x00000000      0xe7a .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_info    0x00000e7a      0x71f .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_info    0x00001599      0x139 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_info    0x000016d2      0x3cf .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_info    0x00001aa1      0x94e .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
+ .debug_info    0x000023ef     0x1374 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyLib.o)
+ .debug_info    0x00003763      0xa2a .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(cyPm.o)
+ .debug_info    0x0000418d      0x493 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(SPIM.o)
+ .debug_info    0x00004620      0x237 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Stwo.o)
+ .debug_info    0x00004857      0x2d2 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_three.o)
+ .debug_info    0x00004b29      0x1a8 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_three_dma.o)
+ .debug_info    0x00004cd1      0x237 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sthree.o)
+ .debug_info    0x00004f08      0x1a9 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_one_dma.o)
+ .debug_info    0x000050b1      0x237 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sone.o)
+ .debug_info    0x000052e8      0x2d2 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_one.o)
+ .debug_info    0x000055ba      0x2d2 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_two.o)
+ .debug_info    0x0000588c      0x1a8 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_two_dma.o)
+ .debug_info    0x00005a34      0x237 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfour.o)
+ .debug_info    0x00005c6b      0x1a8 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_four_dma.o)
+ .debug_info    0x00005e13      0x2d2 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_four.o)
+ .debug_info    0x000060e5      0x237 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Ssix.o)
+ .debug_info    0x0000631c      0x1a8 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_six_dma.o)
+ .debug_info    0x000064c4      0x2d2 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_six.o)
+ .debug_info    0x00006796      0x237 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfive.o)
+ .debug_info    0x000069cd      0x1aa .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_five_dma.o)
+ .debug_info    0x00006b77      0x2d2 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_five.o)
+ .debug_info    0x00006e49      0x237 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sseven.o)
+ .debug_info    0x00007080      0x1a8 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_seven_dma.o)
+ .debug_info    0x00007228      0x2d2 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_seven.o)
+ .debug_info    0x000074fa      0x1a7 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DMA_TX_dma.o)
+ .debug_info    0x000076a1       0x95 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyBootAsmGnu.o)
+ .debug_info    0x00007736      0x64d .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyFlash.o)
+ .debug_info    0x00007d83      0x550 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CySpc.o)
 
 .debug_abbrev   0x00000000     0x2687
  *(.debug_abbrev)
@@ -1563,41 +1559,41 @@ END GROUP
  .debug_abbrev  0x0000234c      0x1a7 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyFlash.o)
  .debug_abbrev  0x000024f3      0x194 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CySpc.o)
 
-.debug_line     0x00000000     0x326a
+.debug_line     0x00000000     0x324a
  *(.debug_line)
- .debug_line    0x00000000      0x475 .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_line    0x00000475      0x1ec .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_line    0x00000661      0x141 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
- .debug_line    0x000007a2      0x241 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_line    0x000009e3      0x2e4 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
- .debug_line    0x00000cc7      0x816 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyLib.o)
- .debug_line    0x000014dd      0x367 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(cyPm.o)
- .debug_line    0x00001844      0x22e .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(SPIM.o)
- .debug_line    0x00001a72       0xe6 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Stwo.o)
- .debug_line    0x00001b58      0x139 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_three.o)
- .debug_line    0x00001c91       0x8a .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_three_dma.o)
- .debug_line    0x00001d1b       0xe8 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sthree.o)
- .debug_line    0x00001e03       0x88 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_one_dma.o)
- .debug_line    0x00001e8b       0xe6 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sone.o)
- .debug_line    0x00001f71      0x137 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_one.o)
- .debug_line    0x000020a8      0x137 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_two.o)
- .debug_line    0x000021df       0x88 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_two_dma.o)
- .debug_line    0x00002267       0xe7 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfour.o)
- .debug_line    0x0000234e       0x89 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_four_dma.o)
- .debug_line    0x000023d7      0x138 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_four.o)
- .debug_line    0x0000250f       0xe6 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Ssix.o)
- .debug_line    0x000025f5       0x88 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_six_dma.o)
- .debug_line    0x0000267d      0x137 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_six.o)
- .debug_line    0x000027b4       0xe7 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfive.o)
- .debug_line    0x0000289b       0x89 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_five_dma.o)
- .debug_line    0x00002924      0x138 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_five.o)
- .debug_line    0x00002a5c       0xe8 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sseven.o)
- .debug_line    0x00002b44       0x8a .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_seven_dma.o)
- .debug_line    0x00002bce      0x139 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_seven.o)
- .debug_line    0x00002d07       0x83 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DMA_TX_dma.o)
- .debug_line    0x00002d8a       0x66 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyBootAsmGnu.o)
- .debug_line    0x00002df0      0x21a .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyFlash.o)
- .debug_line    0x0000300a      0x260 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CySpc.o)
+ .debug_line    0x00000000      0x455 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_line    0x00000455      0x1ec .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_line    0x00000641      0x141 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_line    0x00000782      0x241 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_line    0x000009c3      0x2e4 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
+ .debug_line    0x00000ca7      0x816 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyLib.o)
+ .debug_line    0x000014bd      0x367 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(cyPm.o)
+ .debug_line    0x00001824      0x22e .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(SPIM.o)
+ .debug_line    0x00001a52       0xe6 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Stwo.o)
+ .debug_line    0x00001b38      0x139 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_three.o)
+ .debug_line    0x00001c71       0x8a .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_three_dma.o)
+ .debug_line    0x00001cfb       0xe8 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sthree.o)
+ .debug_line    0x00001de3       0x88 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_one_dma.o)
+ .debug_line    0x00001e6b       0xe6 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sone.o)
+ .debug_line    0x00001f51      0x137 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_one.o)
+ .debug_line    0x00002088      0x137 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_two.o)
+ .debug_line    0x000021bf       0x88 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_two_dma.o)
+ .debug_line    0x00002247       0xe7 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfour.o)
+ .debug_line    0x0000232e       0x89 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_four_dma.o)
+ .debug_line    0x000023b7      0x138 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_four.o)
+ .debug_line    0x000024ef       0xe6 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Ssix.o)
+ .debug_line    0x000025d5       0x88 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_six_dma.o)
+ .debug_line    0x0000265d      0x137 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_six.o)
+ .debug_line    0x00002794       0xe7 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sfive.o)
+ .debug_line    0x0000287b       0x89 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_five_dma.o)
+ .debug_line    0x00002904      0x138 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_five.o)
+ .debug_line    0x00002a3c       0xe8 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2Sseven.o)
+ .debug_line    0x00002b24       0x8a .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(I2S_DMA_seven_dma.o)
+ .debug_line    0x00002bae      0x139 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DmaI2S_seven.o)
+ .debug_line    0x00002ce7       0x83 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(DMA_TX_dma.o)
+ .debug_line    0x00002d6a       0x66 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyBootAsmGnu.o)
+ .debug_line    0x00002dd0      0x21a .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyFlash.o)
+ .debug_line    0x00002fea      0x260 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CySpc.o)
 
 .debug_frame    0x00000000     0x2324
  *(.debug_frame)
@@ -1640,17 +1636,17 @@ END GROUP
 
 .debug_str      0x00000000     0x2bc1
  *(.debug_str)
- .debug_str     0x00000000      0x740 .\CortexM3\ARM_GCC_541\Debug\main.o
-                                0x79e (size before relaxing)
- .debug_str     0x00000740      0x171 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_str     0x00000000      0x738 .\CortexM3\ARM_GCC_541\Debug\main.o
+                                0x796 (size before relaxing)
+ .debug_str     0x00000738      0x171 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
                                 0x32b (size before relaxing)
- .debug_str     0x000008b1       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_str     0x000008a9       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
                                 0x1e9 (size before relaxing)
- .debug_str     0x00000926      0x154 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_str     0x0000091e      0x154 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
                                 0x31f (size before relaxing)
- .debug_str     0x00000a7a      0x324 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
+ .debug_str     0x00000a72      0x324 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyDmac.o)
                                 0x54f (size before relaxing)
- .debug_str     0x00000d9e      0x7f1 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyLib.o)
+ .debug_str     0x00000d96      0x7f9 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(CyLib.o)
                                 0xa4c (size before relaxing)
  .debug_str     0x0000158f      0x365 .\CortexM3\ARM_GCC_541\Debug\SamplingCircuit.a(cyPm.o)
                                 0x738 (size before relaxing)

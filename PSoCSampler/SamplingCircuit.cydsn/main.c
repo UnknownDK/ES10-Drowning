@@ -221,34 +221,34 @@ void initComponents() {
     
     /* Start I2S */
     I2Sone_Start();   
-    CyDelay(START_DELAY);
+    
     I2Stwo_Start();
-    CyDelay(START_DELAY);
+    
     I2Sthree_Start();
-    CyDelay(START_DELAY);
+    
     I2Sfour_Start();
-    CyDelay(START_DELAY);
+    
     I2Sfive_Start();
-    CyDelay(START_DELAY);
+    
     I2Ssix_Start();
-    CyDelay(START_DELAY);
+    
     I2Sseven_Start();
-    CyDelay(START_DELAY);
+    
     
     I2Sone_EnableRx();
-    CyDelay(START_DELAY);
+    
     I2Stwo_EnableRx();
-    CyDelay(START_DELAY);
+    
     I2Sthree_EnableRx();
-    CyDelay(START_DELAY);
+    
     I2Sfour_EnableRx();
-    CyDelay(START_DELAY);
+    
     I2Sfive_EnableRx();
-    CyDelay(START_DELAY);
+    
     I2Ssix_EnableRx();
-    CyDelay(START_DELAY);
+    
     I2Sseven_EnableRx();
-    CyDelay(START_DELAY);
+    
     
     SPIM_Start();
     SPIM_ClearFIFO();
@@ -260,19 +260,19 @@ void initComponents() {
 
     DmaTxConfiguration();
     
-    CyDelay(START_DELAY);
+    
     DmaI2S_one_StartEx(&DmaI2S_one);
-    CyDelay(START_DELAY);
+    
     DmaI2S_two_StartEx(&DmaI2S_two);
-    CyDelay(START_DELAY);
+    
     DmaI2S_three_StartEx(&DmaI2S_three);
-    CyDelay(START_DELAY);
+    
     DmaI2S_four_StartEx(&DmaI2S_four);
-    CyDelay(START_DELAY);
+    
     DmaI2S_five_StartEx(&DmaI2S_five);
-    CyDelay(START_DELAY);
+    
     DmaI2S_six_StartEx(&DmaI2S_six);
-    CyDelay(START_DELAY);
+    
     DmaI2S_seven_StartEx(&DmaI2S_seven);
     
     
