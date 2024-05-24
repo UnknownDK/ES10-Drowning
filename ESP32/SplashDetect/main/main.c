@@ -117,7 +117,7 @@ void spi_slave_task(void *pvParameters) {
     t.tx_buffer = NULL;
     t.rx_buffer = recvbuf;
 
-    uint32_t lasttime_b = dsp_get_cpu_cycle_count();
+
     while(1) {
         // Wait for a signal to transmit data
         //ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -126,9 +126,7 @@ void spi_slave_task(void *pvParameters) {
         memcpy(sendbuf, recvbuf, 3990);
         
         xQueueSend(dasQueue, &sendbuf, ( TickType_t ) 0 ); //&
-        //printf("sendetask: %ld\n", dsp_get_cpu_cycle_count()-lasttime_b);
-        lasttime_b = dsp_get_cpu_cycle_count();
-        
+
 
     }
 }
@@ -152,20 +150,24 @@ static __attribute__((aligned(16))) float ula3_output_summed[SAMPLES_PER_MIC];
 static float ula_output_summed[SAMPLES_PER_MIC];
 //static __attribute__((aligned(16))) float fir_output_summed[SAMPLES_PER_MIC];
 static float fir_output_summed[SAMPLES_PER_MIC];
-
+// 0    33.3    43.1      50.4     67.5        100.5    
 const float MIC_ARRAY[7] = {0.0,    0.3333,    0.4286,    0.5000,    0.5714,    0.6667,    1.0};
 const float speed_of_sound = 343;
 const float sampling_frequency = 41.6667e3; 
-static float steerAng = 35;
+static float steerAng = 50;
 
 static int32_t offset_in_samples_ula1[3];
 static int32_t offset_in_samples_ula2[3];
 static int32_t offset_in_samples_ula3[3];
 
-static int8_t memory_pointer_new = 2; // Designates which buffer the new data is input to
-static int8_t memory_pointer_middle = 1; // Designates which buffer should be used in DAS (delayed by 1, such surrounding buffers with old and new data are accesible)
-static int8_t memory_pointer_old = 0;
 
+static float old_mic_inputs[SAMPLES_PER_MIC*NUMBER_OF_MICS];
+static float current_mic_inputs[SAMPLES_PER_MIC*NUMBER_OF_MICS];
+static float new_mic_inputs[SAMPLES_PER_MIC*NUMBER_OF_MICS];
+
+static float* new_dat = &new_mic_inputs;
+static float* curr_dat = &current_mic_inputs;
+static float* old_dat = &old_mic_inputs;
 
 void calculate_DAS_delays(){
     const float spacings_ula1[3] = {MIC_ARRAY[0] - MIC_ARRAY[0], MIC_ARRAY[3] - MIC_ARRAY[0], MIC_ARRAY[6] - MIC_ARRAY[0]};
@@ -198,6 +200,12 @@ void calculate_DAS_delays(){
 }
 
 ///////////////////////// DAS SETUP END ////////////////////////
+
+
+fir_f32_t fir_ula1;
+fir_f32_t fir_ula2;
+fir_f32_t fir_ula3;
+
 
 #define WIFI_SEND_ARRAY_SIZE SAMPLES_PER_MIC*8//*NUMBER_OF_MICS//+FIR1LENGTH // NUMBER OF INDICES IN ARRAY TO SEND TO WIFI (NOT NUMBER OF BITS) MATCH WITH VAR IN offloading.c
 static float wifiOutputArray[WIFI_SEND_ARRAY_SIZE]; 
@@ -236,30 +244,25 @@ void app_main(void)
     //const int32_t fir_decim = 1;                                   // FIR filter decimation
     //const int32_t N_buff = SAMPLES_PER_MIC + fir_len_ula;
 
-    fir_f32_t fir_ula1;
-    fir_f32_t fir_ula2;
-    fir_f32_t fir_ula3;
 
     //float *fir_out_ula1 = (float *)malloc( N_buff * sizeof(float));
     float *fir_out_ula1 = (float *)malloc( SAMPLES_PER_MIC * sizeof(float));
-    dsps_fir_init_f32(&fir_ula1, FIR1WEIGHTS, delay_line_ula1, FIR1LENGTH); //fir_len_ula
+    dsps_fir_init_f32(&fir_ula1, FIR1WEIGHTS, delay_line_ula1, FIR1LENGTH - 1); //fir_len_ula
     float *fir_out_ula2 = (float *)malloc( SAMPLES_PER_MIC * sizeof(float));
-    dsps_fir_init_f32(&fir_ula2, FIR2WEIGHTS, delay_line_ula2, FIR2LENGTH); 
+    dsps_fir_init_f32(&fir_ula2, FIR2WEIGHTS, delay_line_ula2, FIR2LENGTH - 1); 
     float *fir_out_ula3 = (float *)malloc( SAMPLES_PER_MIC * sizeof(float));
-    dsps_fir_init_f32(&fir_ula3, FIR3WEIGHTS, delay_line_ula3, FIR3LENGTH); 
+    dsps_fir_init_f32(&fir_ula3, FIR3WEIGHTS, delay_line_ula3, FIR3LENGTH - 1); 
 
-    //uint32_t dastime = dsp_get_cpu_cycle_count();
+
+    uint32_t lasttime_b = dsp_get_cpu_cycle_count();
+    uint32_t count = 0;
+
+    
     while (1) {
+
+
         if(xQueueReceive(dasQueue, &rawinput, portMAX_DELAY) == pdPASS) {
-            //printf("dastask: %ld\n", dsp_get_cpu_cycle_count()-dastime);
 
-
-        /* This call enables the SPI slave interface to send/receive to the sendbuf and recvbuf. The transaction is
-        initialized by the SPI master, however, so it will not actually happen until the master starts a hardware transaction
-        by pulling CS low and pulsing the clock etc. In this specific example, we use the handshake line, pulled up by the
-        .post_setup_cb callback that is called as soon as a transaction is ready, to let the master know it is free to transfer
-        data.
-        */
         //ret = spi_slave_transmit(RCV_HOST, &t, portMAX_DELAY);
 
         
@@ -276,32 +279,21 @@ void app_main(void)
             int16_t concatenated_data = (rawinput[i] << 8) | rawinput[i + 1];
             mic_inputs[i/2] = (float)concatenated_data / (0.5f*65535.0f);
         }*/
-        const float gainAdjustments[7] = {2.5087,    1.9870,    1.6316,    1.2372,    1.0000,    2.1668,    2.2491};
+        const float gainAdjustments[7] = {2.8398, 1.2439, 1.0000, 1.7921, 2.4467, 1.2676, 1.4078};
         for (int i = 0; i < SAMPLES_PER_MIC*NUMBER_OF_MICS*3 - 2; i +=3){ // 2688 - last int is number of bytes per sample (24 bit = 3)
             int32_t concatenated_data = (rawinput[i] << 24) | (rawinput[i + 1] << 16) | (rawinput[i + 2] << 8);
             mic_inputs[i/3] = ((float)concatenated_data) * gainAdjustments[(uint8_t)(i/(SAMPLES_PER_MIC*3))];// / (pow(2,31)); //-1
             //mic_inputs[i/3] = (float)concatenated_data;// / 2147483648.0f
         }
 
+        float *temp = old_dat; 
+        old_dat = curr_dat;
+        curr_dat = new_dat;
+        new_dat = temp;
+        memcpy(new_dat, mic_inputs, sizeof(float)*NUMBER_OF_MICS*SAMPLES_PER_MIC);
 
-        //uint32_t end_b = dsp_get_cpu_cycle_count();
-        //printf("clocks in for loop: %ld\n", end_b-start_b);
 
-        if (1 == 0){ 
-             //printf("Mic inputs\n");The extension (_ae32) is optimized for ESP32 chip.
-            for (int i = 0; i < SAMPLES_PER_MIC; i++) {  
-                for (int j = 0 ; j < NUMBER_OF_MICS ; j++){
-                    //printf("%f", mic_inputs[i+SAMPLES_PER_MIC*j]);
-                    if (j < NUMBER_OF_MICS - 1){
-                        printf(", ");
-                    } else {
-                        printf("\n");
-                    }
-                }
-            }
-        }
-        
-        memcpy(&mic_inputs_big[memory_pointer_new*SAMPLES_PER_MIC*NUMBER_OF_MICS], mic_inputs, sizeof(float)*NUMBER_OF_MICS*SAMPLES_PER_MIC);
+
 
         int32_t ula1_mic_list[3] = {0, 3, 6}; 
         int32_t ula2_mic_list[3] = {1, 3, 5}; 
@@ -310,53 +302,61 @@ void app_main(void)
         memset(ula1_output_summed, 0, SAMPLES_PER_MIC*sizeof(float));
         memset(ula2_output_summed, 0, SAMPLES_PER_MIC*sizeof(float));
         memset(ula3_output_summed, 0, SAMPLES_PER_MIC*sizeof(float));
-    
+
+        
         for (int j = 0; j < 3; j++){ // Number of microphones in ULA
             for (int i = 0; i < SAMPLES_PER_MIC; i++) {
                 //printf("mem. pointer mid.: %d\n", memory_pointer_middle);
                 //printf("sample index: %d\n", i);
                 if ((i + offset_in_samples_ula1[j]) >= SAMPLES_PER_MIC){ 
                 // offset is positive (forwards in time), meaning rightmost mic of ULA is furthest away
-                    ula1_output_summed[i] += mic_inputs_big[memory_pointer_new*NUMBER_OF_MICS*SAMPLES_PER_MIC+ula1_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula1[j]-SAMPLES_PER_MIC] * 1/3;
+                    ula1_output_summed[i] += new_dat[ula1_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula1[j]-SAMPLES_PER_MIC] * 1/3;
                     //printf("offset: %ld\n", offset_in_samples_ula1[j]);
                     //printf("sample with os: %ld\n", memory_pointer_new*NUMBER_OF_MICS*SAMPLES_PER_MIC+ula1_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula1[j]-SAMPLES_PER_MIC);
                 } else if((i + offset_in_samples_ula1[j]) < 0){ 
-                    ula1_output_summed[i] += mic_inputs_big[memory_pointer_old*NUMBER_OF_MICS*SAMPLES_PER_MIC+ula1_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula1[j]+SAMPLES_PER_MIC] * 1/3;
+                    ula1_output_summed[i] += old_dat[ula1_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula1[j]+SAMPLES_PER_MIC] * 1/3;
                     //printf("offset: %ld\n", offset_in_samples_ula1[j]);
                     //printf("sample with os: %ld\n", memory_pointer_old*NUMBER_OF_MICS*SAMPLES_PER_MIC+ula1_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula1[j]+SAMPLES_PER_MIC);
                     //printf("jamen, %ld\n", i+offset_in_samples_ula1[j]+SAMPLES_PER_MIC);
                 } else{
-                    ula1_output_summed[i] += mic_inputs_big[memory_pointer_middle*NUMBER_OF_MICS*SAMPLES_PER_MIC+ula1_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula1[j]] * 1/3;
+                    ula1_output_summed[i] += curr_dat[ula1_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula1[j]] * 1/3;
                     //printf("mic no.: %ld\n", ula1_mic_list[j]);
                     //printf("sample in mid buffer: %ld\n", memory_pointer_middle*NUMBER_OF_MICS*SAMPLES_PER_MIC+ula1_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula1[j]);
                 }
                 // ULA2
                 if ((i + offset_in_samples_ula2[j]) >= SAMPLES_PER_MIC){ 
                 // offset is positive (forwards in time), meaning rightmost mic of ULA is furthest away
-                    ula2_output_summed[i] += mic_inputs_big[memory_pointer_new*NUMBER_OF_MICS*SAMPLES_PER_MIC+ula2_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula2[j]-SAMPLES_PER_MIC] * 1/3;
+                    ula2_output_summed[i] += new_dat[ula2_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula2[j]-SAMPLES_PER_MIC] * 1/3;
 
                 } else if((i + offset_in_samples_ula2[j]) < 0){ 
-                    ula2_output_summed[i] += mic_inputs_big[memory_pointer_old*NUMBER_OF_MICS*SAMPLES_PER_MIC+ula2_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula2[j]+SAMPLES_PER_MIC] * 1/3;
+                    ula2_output_summed[i] += old_dat[ula2_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula2[j]+SAMPLES_PER_MIC] * 1/3;
                 } else{
-                    ula2_output_summed[i] += mic_inputs_big[memory_pointer_middle*NUMBER_OF_MICS*SAMPLES_PER_MIC+ula2_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula2[j]] * 1/3;
+                    ula2_output_summed[i] += curr_dat[ula2_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula2[j]] * 1/3;
                 }
                  // ULA3
                 if ((i + offset_in_samples_ula3[j]) >= SAMPLES_PER_MIC){ 
                 // offset is positive (forwards in time), meaning rightmost mic of ULA is furthest away
-                    ula3_output_summed[i] += mic_inputs_big[memory_pointer_new*NUMBER_OF_MICS*SAMPLES_PER_MIC+ula3_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula3[j]-SAMPLES_PER_MIC] * 1/3;
+                    ula3_output_summed[i] += new_dat[ula3_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula3[j]-SAMPLES_PER_MIC] * 1/3;
 
                 } else if((i + offset_in_samples_ula3[j]) < 0){ 
-                    ula3_output_summed[i] += mic_inputs_big[memory_pointer_old*NUMBER_OF_MICS*SAMPLES_PER_MIC+ula3_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula3[j]+SAMPLES_PER_MIC] * 1/3;
+                    ula3_output_summed[i] += old_dat[ula3_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula3[j]+SAMPLES_PER_MIC] * 1/3;
                 } else{
-                    ula3_output_summed[i] += mic_inputs_big[memory_pointer_middle*NUMBER_OF_MICS*SAMPLES_PER_MIC+ula3_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula3[j]] * 1/3;
+                    ula3_output_summed[i] += curr_dat[ula3_mic_list[j]*SAMPLES_PER_MIC+i+offset_in_samples_ula3[j]] * 1/3;
                 }
             }
         }
+        
 
         //for (int i = 0; i < SAMPLES_PER_MIC; i++){
-        //    ula_output_summed[i] = (ula1_output_summed[i]+ula2_output_summed[i]+ula3_output_summed[i])*1/3; // combined 1/3 pga. før filter
-        // }
+            //ula_output_summed[i] = (ula1_output_summed[i]+ula2_output_summed[i]+ula3_output_summed[i])*one_third; // combined 1/3 pga. før filter
+        //    ula_output_summed[i] = ula3_output_summed[i];
+        //}
 
+
+        
+
+
+        /*
         memory_pointer_old = memory_pointer_middle;
         memory_pointer_middle = memory_pointer_new;
         memory_pointer_new++;
@@ -364,25 +364,34 @@ void app_main(void)
             memory_pointer_new = 0;
         }else if (memory_pointer_new < 0){  // Descending
             memory_pointer_new = 2;
-        }
+        }*/
 
         //printf("Delay line \n");
         //for (int i = 0; i < FIR1LENGTH; i++){
         //    printf("%f\n",delay_line_ula1[i]);
         //}        
-
+        
         //uint32_t firstart = dsp_get_cpu_cycle_count();
         //dsps_fird_f32_ae32(&fir_ula1, ula1_output_summed, fir_out_ula1, N_buff);
         //dsps_fird_f32(&fir_ula1, ula1_output_summed, fir_out_ula1, N_buff / fir_decim);
-        dsps_fir_f32(&fir_ula1, ula1_output_summed, fir_out_ula1, SAMPLES_PER_MIC); //FIR1LENGTH +
+
+
+        //lasttime_b = dsp_get_cpu_cycle_count();
+        dsps_fir_f32_aes3(&fir_ula1, ula1_output_summed, fir_out_ula1, SAMPLES_PER_MIC); //FIR1LENGTH +
+        //count += 1;
+        //if(count == 1000) {
+        //    printf("f32: %ld\n", dsp_get_cpu_cycle_count()-lasttime_b);
+        //    count = 0;
+        //}
+        //lasttime_b = dsp_get_cpu_cycle_count();
         //printf("Fir1: %ld\n", dsp_get_cpu_cycle_count()-firstart);
         //dsps_fird_f32_ae32(&fir_ula2, ula2_output_summed, fir_out_ula2, N_buff);
         //dsps_fird_f32(&fir_ula2, ula2_output_summed, fir_out_ula2, N_buff / fir_decim);
-        dsps_fir_f32(&fir_ula2, ula2_output_summed, fir_out_ula2, SAMPLES_PER_MIC);
+        dsps_fir_f32_aes3(&fir_ula2, ula2_output_summed, fir_out_ula2, SAMPLES_PER_MIC);
         //printf("Fir2: %ld\n", dsp_get_cpu_cycle_count()-firstart);
         //dsps_fird_f32_ae32(&fir_ula3, ula3_output_summed, fir_out_ula3, N_buff);
         //dsps_fird_f32(&fir_ula3, ula3_output_summed, fir_out_ula3, N_buff / fir_decim);
-        dsps_fir_f32(&fir_ula3, ula3_output_summed, fir_out_ula3, SAMPLES_PER_MIC);
+        dsps_fir_f32_aes3(&fir_ula3, ula3_output_summed, fir_out_ula3, SAMPLES_PER_MIC);
         //printf("Fir3: %ld\n", dsp_get_cpu_cycle_count()-firstart);
         
         //printf("Outputs \n");
@@ -393,12 +402,13 @@ void app_main(void)
         for (int i = 0; i < SAMPLES_PER_MIC; i++){
             //fir_output_summed[i] = fir_out_ula1[FIR1LENGTH+i] + fir_out_ula2[FIR2LENGTH+i] + fir_out_ula3[FIR3LENGTH+i]; //+ fir_out_ula2[FIR1LENGTH+i] + fir_out_ula3[FIR1LENGTH+i]; // combined
             fir_output_summed[i] = fir_out_ula1[i] + fir_out_ula2[i] + fir_out_ula3[i]; //+ fir_out_ula2[FIR1LENGTH+i] + fir_out_ula3[FIR1LENGTH+i]; // combined
+            //fir_output_summed[i] = fir_out_ula3[i];
         }
         
         memcpy(&wifiOutputArray, mic_inputs, NUMBER_OF_MICS*SAMPLES_PER_MIC*sizeof(float));
         
+        //memcpy(&wifiOutputArray[NUMBER_OF_MICS*SAMPLES_PER_MIC], fir_output_summed, (SAMPLES_PER_MIC)*sizeof(float));
         memcpy(&wifiOutputArray[NUMBER_OF_MICS*SAMPLES_PER_MIC], fir_output_summed, (SAMPLES_PER_MIC)*sizeof(float));
-        //memcpy(&wifiOutputArray[NUMBER_OF_MICS*SAMPLES_PER_MIC], ula_output_summed, (SAMPLES_PER_MIC)*sizeof(float));
 
         //testArray[3584] = {1};
         //for (int i = 0; i < 3584/4; i++){
