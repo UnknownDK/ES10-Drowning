@@ -125,7 +125,7 @@ void wifi_init_sta(void)
     }
 }
 
-#define WIFI_SEND_ARRAY_SIZE 190*8 // NUMBER OF INDICES IN ARRAY TO RECEIVE (NOT NUMBER OF BITS) MATCH WITH VAR IN main.c
+#define WIFI_SEND_ARRAY_SIZE 190 // NUMBER OF INDICES IN ARRAY TO RECEIVE (NOT NUMBER OF BITS) MATCH WITH VAR IN main.c
 void socket_task(void *pvParameters) {
 
     char host_ip[] = "192.168.1.103";

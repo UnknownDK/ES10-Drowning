@@ -154,7 +154,7 @@ static float fir_output_summed[SAMPLES_PER_MIC];
 const float MIC_ARRAY[7] = {0.0,    0.3333,    0.4286,    0.5000,    0.5714,    0.6667,    1.0};
 const float speed_of_sound = 343;
 const float sampling_frequency = 41.6667e3; 
-static float steerAng = 50;
+static float steerAng = 90;
 
 static int32_t offset_in_samples_ula1[3];
 static int32_t offset_in_samples_ula2[3];
@@ -207,7 +207,7 @@ fir_f32_t fir_ula2;
 fir_f32_t fir_ula3;
 
 
-#define WIFI_SEND_ARRAY_SIZE SAMPLES_PER_MIC*8//*NUMBER_OF_MICS//+FIR1LENGTH // NUMBER OF INDICES IN ARRAY TO SEND TO WIFI (NOT NUMBER OF BITS) MATCH WITH VAR IN offloading.c
+#define WIFI_SEND_ARRAY_SIZE SAMPLES_PER_MIC//*NUMBER_OF_MICS//+FIR1LENGTH // NUMBER OF INDICES IN ARRAY TO SEND TO WIFI (NOT NUMBER OF BITS) MATCH WITH VAR IN offloading.c
 static float wifiOutputArray[WIFI_SEND_ARRAY_SIZE]; 
 uint8_t rawinput[3990];
 //Main application
@@ -405,10 +405,10 @@ void app_main(void)
             //fir_output_summed[i] = fir_out_ula3[i];
         }
         
-        memcpy(&wifiOutputArray, mic_inputs, NUMBER_OF_MICS*SAMPLES_PER_MIC*sizeof(float));
+        //memcpy(&wifiOutputArray, mic_inputs, NUMBER_OF_MICS*SAMPLES_PER_MIC*sizeof(float));
         
         //memcpy(&wifiOutputArray[NUMBER_OF_MICS*SAMPLES_PER_MIC], fir_output_summed, (SAMPLES_PER_MIC)*sizeof(float));
-        memcpy(&wifiOutputArray[NUMBER_OF_MICS*SAMPLES_PER_MIC], fir_output_summed, (SAMPLES_PER_MIC)*sizeof(float));
+        memcpy(&wifiOutputArray, fir_output_summed, (SAMPLES_PER_MIC)*sizeof(float));
 
         //testArray[3584] = {1};
         //for (int i = 0; i < 3584/4; i++){
