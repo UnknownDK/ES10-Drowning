@@ -17,3 +17,5 @@ DAS/**/.vscode
 DAS/**/.devcontainer
 *.mat
 *.pdf
+*.eps
+*.wav
