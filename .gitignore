@@ -16,3 +16,4 @@ DAS/**/managed_components
 DAS/**/.vscode
 DAS/**/.devcontainer
 *.mat
+*.pdf
